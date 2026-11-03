@@ -1,0 +1,22 @@
+name: Probe result sources
+on: workflow_dispatch
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          mkdir probe && cd probe
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"
+          f(){ curl -sSL -A "$UA" -e "$3" --max-time 30 -o "$1" "$2" || echo "fail $1"; ls -la "$1" || true; }
+          f magnum.json "https://www.magnum4d.my/results/past/between-dates/null/2026-11-01/3" https://www.magnum4d.my/results/draw-results
+          f magnum_home.html "https://www.magnum4d.my/en/results" https://www.magnum4d.my/
+          f toto_past.html "https://www.sportstoto.com.my/results_past.asp?date=11/15/2026" https://www.sportstoto.com.my/
+          f toto_home.html "https://www.sportstoto.com.my/" https://www.sportstoto.com.my/
+          f toto_jp.html "https://www.sportstoto.com.my/jackpot.asp" https://www.sportstoto.com.my/
+          curl -sSL -A "$UA" -e https://www.damacai.com.my/ -H "cookiesession: 301" "https://www.damacai.com.my/callpassresult?pastdate=20261101" -o dmc_link.json; cat dmc_link.json
+          L=$(python3 -c "import json;print(json.load(open('dmc_link.json')).get('link',''))"); [ -n "$L" ] && f dmc.json "$L" https://www.damacai.com.my/
+          f gd.html "https://gdlotto.net/results/today/" https://gdlotto.net/
+          f 9lotto.html "https://9lotto.com/result" https://9lotto.com/
+      - uses: actions/upload-artifact@v4
+        with: {name: probe, path: probe}
