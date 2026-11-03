@@ -565,6 +565,9 @@ try{const l=localStorage.getItem("4dl");if(T[l])st.lang=l}catch(e){}
 const P=new URLSearchParams(location.search);
 if(T[P.get("lang")])st.lang=P.get("lang");
 {const PL=location.pathname.match(/\/(ms|zh|ta)\/(?:index\.html)?$/);if(PL)st.lang=PL[1]}
+/* keep the address in the shown language, so a copied or shared link opens in that language */
+const langUrl=()=>(st.lang==="en"?"/":"/"+st.lang+"/")+location.search.replace(/([?&])lang=[^&]*&?/,"$1").replace(/[?&]$/,"")+location.hash;
+function syncLangUrl(){try{if(location.pathname.replace(/index\.html$/,"")!==(st.lang==="en"?"/":"/"+st.lang+"/"))history.replaceState(history.state,"",langUrl())}catch(e){}}
 if(/^\d{4}$/.test(P.get("n")||""))st.q=P.get("n");
 if(P.get("box")==="1")st.mode="box";
 if(/^\d{4}$/.test(location.hash.slice(1)))st.q=location.hash.slice(1);
@@ -849,7 +852,7 @@ window.addEventListener("popstate",e=>{const v=(e.state&&e.state.v)||{tab:"resul
 function checkNum(n){st.q=n;$("#q").value=n;paintCells();setTab("check");renderCheck();syncHash();scrollTo({top:0,behavior:"smooth"})}
 function all(init){renderLatest();paintCells();renderStatic();renderFilters();if(init)(window.requestIdleCallback||setTimeout)(renderFreq);else renderFreq();renderCheck();if(st.tab==="browse")renderDraws();if(st.tab==="dict")renderDict()}
 
-document.querySelectorAll("[data-lang]").forEach(b=>b.onclick=()=>{st.lang=b.dataset.lang;try{localStorage.setItem("4dl",st.lang)}catch(e){}all();document.title=TITLES[st.lang];{const sv=document.querySelector(".seo");if(sv)sv.hidden=sv.dataset.l!==st.lang}const bh=document.querySelector("base");if(bh)try{history.replaceState(null,"",bh.getAttribute("href")+(st.lang==="en"?"":st.lang+"/")+location.search+location.hash)}catch(e){}});
+document.querySelectorAll("[data-lang]").forEach(b=>b.onclick=()=>{st.lang=b.dataset.lang;try{localStorage.setItem("4dl",st.lang)}catch(e){}syncLangUrl();all();document.title=TITLES[st.lang];{const sv=document.querySelector(".seo");if(sv)sv.hidden=sv.dataset.l!==st.lang}const bh=document.querySelector("base");if(bh)try{history.replaceState(null,"",bh.getAttribute("href")+(st.lang==="en"?"":st.lang+"/")+location.search+location.hash)}catch(e){}});
 document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{st.mode=b.dataset.mode;renderStatic();renderCheck()});
 $("#tab-results").onclick=()=>setTab("results");
 $("#home").href=st.lang==="en"?"./":st.lang+"/";
@@ -966,7 +969,7 @@ $("#dlucky").onclick=()=>{const n=String(Math.floor(Math.random()*1e4)).padStart
 $("#q").value=st.q;
 all(1);
 if(P.get("tab")==="dict")setTab("dict");else if(st.q||P.get("tab")==="check")setTab("check");else setTab("results");
-try{history.replaceState({v:hview()},"",location.href)}catch(e){}HREADY=true;
+syncLangUrl();try{history.replaceState({v:hview()},"",location.href)}catch(e){}HREADY=true;
 }
 (function load(n){fetch("live.json").then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(start).catch(e=>{if(n<2)return setTimeout(()=>load(n+1),1500);const m=document.getElementById("err");m.innerHTML='Results history could not load ('+(e&&e.message||"network")+'). <button type="button" class="retry" onclick="location.reload()">Retry</button>'})})(1);
 if("serviceWorker"in navigator&&location.protocol==="https:")addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{})});
