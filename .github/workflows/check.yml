@@ -1,21 +1,12 @@
 name: Check sources (dry run)
 on: workflow_dispatch
 permissions:
-  contents: write
+  contents: read
 jobs:
   check:
     runs-on: ubuntu-latest
     timeout-minutes: 4
     steps:
-      - run: |
-          mkdir probe && cd probe
-          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"
-          f(){ curl -sSL -A "$UA" -e "$3" --max-time 30 -o "$1" -w "$1 %{http_code} %{size_download}\n" "$2" || echo "fail $1"; }
-          f sp.html "https://www.singaporepools.com.sg/en/product/pages/4d_results.aspx" https://www.singaporepools.com.sg/
-          f sp_arch.html "https://www.singaporepools.com.sg/DataFileArchive/Lottery/Output/fourd_result_draw_list_en.html" https://www.singaporepools.com.sg/
-          f moon_sg.html "https://www.4dmoon.com/singapore-4d-results/" https://www.4dmoon.com/
-          f c4d_past.html "https://www.check4d.org/past-results/2026-10-28" https://www.check4d.org/
-          f c4d_past2.html "https://www.check4d.org/past-results?date=2026-10-28" https://www.check4d.org/
-          f c4d_sg.html "https://www.check4d.org/singapore-4d-results" https://www.check4d.org/
-          git init -q -b probe && git add -A && git -c user.name=p -c user.email=p@l commit -qm probe
-          git push -fq "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe:probe-data
+      - name: Auto-save self-test
+        run: |
+          echo "RESULT: $(curl -sS --max-time 30 'https://www.4dmalamini.com/api/live?selftest=1')"
