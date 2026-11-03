@@ -11,15 +11,17 @@ jobs:
           mkdir probe && cd probe
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"
           f(){ curl -sSL -A "$UA" -e "$3" --max-time 30 -o "$1" "$2" || echo "fail $1"; ls -la "$1" || true; }
-          f magnum.json "https://www.magnum4d.my/results/past/between-dates/null/2026-11-01/3" https://www.magnum4d.my/results/draw-results
-          f magnum_home.html "https://www.magnum4d.my/en/results" https://www.magnum4d.my/
-          f toto_past.html "https://www.sportstoto.com.my/results_past.asp?date=11/15/2026" https://www.sportstoto.com.my/
-          f toto_home.html "https://www.sportstoto.com.my/" https://www.sportstoto.com.my/
-          f toto_jp.html "https://www.sportstoto.com.my/jackpot.asp" https://www.sportstoto.com.my/
-          curl -sSL -A "$UA" -e https://www.damacai.com.my/ -H "cookiesession: 301" "https://www.damacai.com.my/callpassresult?pastdate=20261101" -o dmc_link.json; cat dmc_link.json
-          L=$(python3 -c "import json;print(json.load(open('dmc_link.json')).get('link',''))"); [ -n "$L" ] && f dmc.json "$L" https://www.damacai.com.my/
-          f gd.html "https://gdlotto.net/results/today/" https://gdlotto.net/
-          f 9lotto.html "https://9lotto.com/result" https://9lotto.com/
+          f toto_m.html "https://m.sportstoto.com.my/" https://m.sportstoto.com.my/
+          f toto_api.html "https://www.sportstoto.com.my/api/results" https://www.sportstoto.com.my/
+          f check4d.html "https://www.check4d.org/" https://www.check4d.org/
+          f check4d_sp.html "https://www.check4d.org/sabah-sarawak-4d-results" https://www.check4d.org/
+          f 4dyes.html "https://4dyes3.com/en/" https://4dyes3.com/
+          f 4dtoday.html "https://4d.today/" https://4d.today/
+          f 4d2u.html "https://4d2ulive.com/" https://4d2ulive.com/
+          f 4dmoon.html "https://www.4dmoon.com/" https://www.4dmoon.com/
+          f live4d2u.html "https://live4d2u.net/" https://live4d2u.net/
+          f 4dresult88.html "https://www.4dresult88.com/" https://www.4dresult88.com/
+          f gd4d.html "https://gd4d.co/en/" https://gd4d.co/
       - run: |
           cd probe && git init -q -b probe && git add -A && git -c user.name=probe -c user.email=probe@local commit -qm probe
           git push -fq "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe:probe-data
