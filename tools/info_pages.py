@@ -12,6 +12,7 @@ CO = [
     ("N", "9 Lotto", "", "#0E8F86", "#2EC4B6", "n-w", None, "https://9lotto.com/result", ["4D", "Daily 7pm"]),
     ("S", "Singapore 4D", "新加坡万字", "#B91C2C", "#38BDF8", "s", "1968", "https://www.singaporepools.com.sg/en/product/pages/4d_results.aspx", ["4D", "Big", "Small", "iBet"]),
     ("C", "Cash Sweep", "砂拉越大万", "#0B7A3B", "#4ADE80", "c", "1992", "https://www.cashsweep.my/", ["1+3D", "3D", "1+3D Jackpot", "Sarawak"]),
+    ("H", "Sandakan 4D", "山打根", "#14532D", "#FACC15", "h", None, "https://stc4d.com/", ["4D", "Big", "Small", "Sabah"]),
     ("J", "Super J3 & J9", "", "#5B21B6", "#A78BFA", "j", None, "https://superj3.net/", ["J3 · 3pm", "J9 · 9pm", "4D", "6D Jackpot"]),
 ]
 PRIZES = [("RM2,500", "RM3,500"), ("RM1,000", "RM2,000"), ("RM500", "RM1,000"), ("RM180", "–"), ("RM60", "–")]
@@ -195,7 +196,22 @@ for _lg, (_sub, _intro, _facts, _s2) in _CX.items():
     T[_lg]["sub"]["C"], T[_lg]["intro"]["C"], T[_lg]["facts"]["C"] = _sub, _intro, _facts
     T[_lg]["s2s"] = T[_lg]["s2s"].rstrip() + _s2
 
-OPSLUG = {"C": "cash-sweep-result/", "S": "singapore-4d-result/", "M": "magnum-4d-result/", "T": "sports-toto-result/", "D": "da-ma-cai-result/", "G": "gd-lotto-result/", "N": "9-lotto-result/", "J": "super-j3-j9-result/"}
+# Sandakan STC 4D (added Nov 2026)
+_HX = {
+ "en": ("Sandakan Turf Club", "3×/wk", "The 4D game of the Sandakan Turf Club (STC 4D, 山打根马会万字) in Sabah, one of the East Malaysia draws. It follows the West Malaysia draw days, and its Special prize list has 13 slots, a few of which are left blank each draw.",
+        [("Based in", "Sandakan, Sabah"), ("Draws", "Wed, Sat, Sun · 7pm + special Tuesdays")], " Sandakan STC 4D (Sabah) draws on the same days at 7pm."),
+ "ms": ("Sandakan Turf Club", "3×/mgg", "Permainan 4D Kelab Lumba Kuda Sandakan (STC 4D, 山打根马会万字) di Sabah, salah satu cabutan Malaysia Timur. Ia mengikut hari cabutan Semenanjung, dan senarai hadiah Spesialnya ada 13 slot dengan beberapa dibiarkan kosong setiap cabutan.",
+        [("Berpusat di", "Sandakan, Sabah"), ("Cabutan", "Rabu, Sabtu, Ahad · 7 mlm + Selasa khas")], " Sandakan STC 4D (Sabah) membuat cabutan pada hari yang sama pada 7 malam."),
+ "zh": ("山打根赛马会", "每周3次", "沙巴山打根赛马会（STC 4D）的万字，是东马的开彩之一。开彩日和西马相同，特别奖有13格，每期会留几格空白。",
+        [("总部", "沙巴山打根"), ("开彩", "星期三、六、日 · 晚上7点 + 特别星期二")], "山打根万字同日晚上7点开彩。"),
+ "ta": ("Sandakan Turf Club", "3×/வாரம்", "சபாவின் Sandakan Turf Club நடத்தும் 4D (STC 4D, 山打根马会万字), கிழக்கு மலேசியக் குலுக்கல்களில் ஒன்று. தீபகற்ப குலுக்கல் நாட்களையே பின்பற்றுகிறது; சிறப்புப் பரிசுப் பட்டியலில் 13 இடங்கள், சில காலியாக விடப்படும்.",
+        [("தலைமையகம்", "சண்டாக்கான், சபா"), ("குலுக்கல்", "புதன், சனி, ஞாயிறு · இரவு 7 + சிறப்பு செவ்வாய்")], " Sandakan STC 4D (சபா) அதே நாட்களில் இரவு 7 மணிக்கு குலுக்கல் நடத்துகிறது."),
+}
+for _lg, (_sub, _w3, _intro, _facts, _s2) in _HX.items():
+    T[_lg]["sub"]["H"], T[_lg]["intro"]["H"], T[_lg]["facts"]["H"], T[_lg]["w3"] = _sub, _intro, _facts, _w3
+    T[_lg]["s2s"] = T[_lg]["s2s"].rstrip() + _s2
+
+OPSLUG = {"H": "sandakan-4d-result/", "C": "cash-sweep-result/", "S": "singapore-4d-result/", "M": "magnum-4d-result/", "T": "sports-toto-result/", "D": "da-ma-cai-result/", "G": "gd-lotto-result/", "N": "9-lotto-result/", "J": "super-j3-j9-result/"}
 ABOUT = {"en": "About us", "ms": "Tentang kami", "zh": "关于我们", "ta": "எங்களைப் பற்றி"}
 SCHED = {"M": "s", "T": "s", "D": "s"}  # Wed/Sat/Sun + special Tue
 
@@ -219,7 +235,7 @@ def build(site) -> None:
                + f'<a class="ab" href="{site.u(pre + "about/")}">{esc(ABOUT[lang])} ›</a></nav></div>')
         cards = ""
         for k, name, zh, hb, c, logo, since, url, chips in CO:
-            sv = f'<small>{esc(x["since"])}</small><br><span>{since}</span>' if since else f'<small>{esc(x["draws"])}</small><br><span>{esc(x["twice"] if k == "J" else x["daily"])}</span>'
+            sv = f'<small>{esc(x["since"])}</small><br><span>{since}</span>' if since else f'<small>{esc(x["draws"])}</small><br><span>{esc(x["twice"] if k == "J" else x.get("w3", "3×") if k == "H" else x["daily"])}</span>'
             zhh = f' <i>{zh}</i>' if zh and lang != "zh" else ""
             nm = (zh if lang == "zh" and zh else name)
             alt = ' alt="9 Lotto"' if k == "N" else ' alt=""'

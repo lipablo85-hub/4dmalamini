@@ -58,6 +58,7 @@ export async function onRequestGet(ctx) {
     put("T", parse(block(c, "SportsToto 4D", E)));
     put("G", parse(block(c, "Grand Dragon 4D", E)));
     put("S", parse(block(c, "Singapore 4D Date", E.concat(["Singapore Toto"]))));
+    put("H", parse(block(c, "Sandakan 4D", E.concat(["Special CashSweep", "Sabah 88"]))));
     put("C", parse(block(c, "Special CashSweep", E.concat(["Sabah 88", "SABAH"]))));
   }
   if (l) {
