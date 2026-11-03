@@ -460,13 +460,13 @@ function boardDraw(k){const o=LIVE.find(x=>x.k===k);if(!o)return null;if(!st.rd)
 function renderLatest(){
   const nb=(n,lab)=>`<button type="button" data-n="${n}">${lab?`<small>${lab}</small>`:""}<span class="mono">${n}</span></button>`;
   const asc=a=>[...a].sort();
-  const L=liveNow(),lg=k=>`<img class="opl" src="img/op/${k.toLowerCase()}.webp" width="32" height="32" alt="">`;
+  const L=liveNow(),lg=k=>`<img class="opl" src="img/op/${k.toLowerCase()}.webp?v=2" width="32" height="32" alt="">`;
   const cards=BOARD.map(([k,c])=>{const o=LIVE.find(x=>x.k===k),nm=o?oname(o):OPS.find(x=>x.k===k).name;
     if(L&&L.wait.includes(k))return`<article class="rc wait" id="rc-${k}" style="--c:${c}"><header><b>${lg(k)}${nm}</b><span>${t("tonight")} · ${t(k==="P"?"at9":"at7")}</span></header><div class="rb"><div class="r3">${["p1","p2","p3"].map(p=>`<button type="button" disabled><small>${t(p)}</small><span class="mono">····</span></button>`).join("")}</div><p class="lv"><i></i><span class="cd" data-k="${k}">${liveMsg(L.n,k)}</span></p></div></article>`;
-    if(!o||!o.D.length)return`<article class="rc soon" id="rc-${k}" style="--c:${c}"><header><b><img class="opl" src="img/op/${k.toLowerCase()}.webp" width="32" height="32" alt="">${nm}</b><span>${t("soon")}</span></header><div class="rb">${t("gdSoon")}</div></article>`;
+    if(!o||!o.D.length)return`<article class="rc soon" id="rc-${k}" style="--c:${c}"><header><b><img class="opl" src="img/op/${k.toLowerCase()}.webp?v=2" width="32" height="32" alt="">${nm}</b><span>${t("soon")}</span></header><div class="rb">${t("gdSoon")}</div></article>`;
     const dr=boardDraw(k);
-    if(!dr)return`<article class="rc none" id="rc-${k}" style="--c:${c}"><header><b><img class="opl" src="img/op/${k.toLowerCase()}.webp" width="32" height="32" alt="">${nm}</b><span>${fD(st.rd)}</span></header><div class="rb">${t("noDraw")}</div></article>`;
-    return`<article class="rc${L&&dr.d===L.n.ymd?" fresh":""}" id="rc-${k}" style="--c:${c}"><header><b><img class="opl" src="img/op/${k.toLowerCase()}.webp" width="32" height="32" alt="">${nm}</b><span>${fmt(dr.d,{weekday:"short",day:"numeric",month:"short",year:"numeric"})}${dr.no?` · #${dr.no}`:""}</span></header><div class="rb">`+
+    if(!dr)return`<article class="rc none" id="rc-${k}" style="--c:${c}"><header><b><img class="opl" src="img/op/${k.toLowerCase()}.webp?v=2" width="32" height="32" alt="">${nm}</b><span>${fD(st.rd)}</span></header><div class="rb">${t("noDraw")}</div></article>`;
+    return`<article class="rc${L&&dr.d===L.n.ymd?" fresh":""}" id="rc-${k}" style="--c:${c}"><header><b><img class="opl" src="img/op/${k.toLowerCase()}.webp?v=2" width="32" height="32" alt="">${nm}</b><span>${fmt(dr.d,{weekday:"short",day:"numeric",month:"short",year:"numeric"})}${dr.no?` · #${dr.no}`:""}</span></header><div class="rb">`+
       `<div class="r3">${nb(dr.n[0],t("p1"))}${nb(dr.n[1],t("p2"))}${nb(dr.n[2],t("p3"))}</div>`+
       `<div class="rl"><span>${t("p4")}</span></div><div class="r5">${asc(dr.n.slice(3,13)).map(n=>nb(n)).join("")}</div>`+
       `<div class="rl"><span>${t("p5")}</span></div><div class="r5">${asc(dr.n.slice(13)).map(n=>nb(n)).join("")}</div></div></article>`}).join("");

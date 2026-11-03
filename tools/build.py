@@ -97,12 +97,12 @@ def prerender_latest(html: str, data: dict) -> str:
     cards, last = [], ""
     for k, name, c in board:
         if k not in data:
-            cards.append(f'<article class="rc soon" id="rc-{k}" style="--c:{c}"><header><b><img class="opl" src="img/op/{k.lower()}.webp" width="32" height="32" alt="">{name}</b><span>Soon</span></header><div class="rb">Results coming soon</div></article>')
+            cards.append(f'<article class="rc soon" id="rc-{k}" style="--c:{c}"><header><b><img class="opl" src="img/op/{k.lower()}.webp?v=2" width="32" height="32" alt="">{name}</b><span>Soon</span></header><div class="rb">Results coming soon</div></article>')
             continue
         d, no, dg = data[k].split("|")[-1].split(",")
         last = max(last, d)
         n = [dg[i:i + 4] for i in range(0, 92, 4)]
-        cards.append(f'<article class="rc" id="rc-{k}" style="--c:{c}"><header><b><img class="opl" src="img/op/{k.lower()}.webp" width="32" height="32" alt="">{name}</b><span>{fd(d)}' + (f" · #{no}" if no else "") + '</span></header><div class="rb">'
+        cards.append(f'<article class="rc" id="rc-{k}" style="--c:{c}"><header><b><img class="opl" src="img/op/{k.lower()}.webp?v=2" width="32" height="32" alt="">{name}</b><span>{fd(d)}' + (f" · #{no}" if no else "") + '</span></header><div class="rb">'
                      f'<div class="r3">{nb(n[0], "1st Prize")}{nb(n[1], "2nd Prize")}{nb(n[2], "3rd Prize")}</div>'
                      f'<div class="rl"><span>Special</span></div><div class="r5">{"".join(nb(x) for x in sorted(n[3:13]))}</div>'
                      f'<div class="rl"><span>Consolation</span></div><div class="r5">{"".join(nb(x) for x in sorted(n[13:]))}</div></div></article>')
