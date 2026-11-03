@@ -221,6 +221,11 @@ def parse_check4d_extras(text: str, day: dt.date) -> dict:
             m = re.search(re.escape(name) + r" ((?:\d{1,2} ){6})(?:\+ (\d{1,2}) )?(.*?)(?=Star Toto|Power Toto|Supreme Toto|$)", b)
             if m:
                 x[key] = {"n": m.group(1).split(), **({"b": m.group(2)} if m.group(2) else {}), "jp": _amts(m.group(3))[:2]}
+    b = _block(t, "Da Ma Cai 3+3D", ["Magnum Life", "Magnum Jackpot Gold", "SINGAPORE", "Advertisements"])
+    if dated(b):
+        rows = re.findall(r"(\d{6}) ([A-Z]+) Bonus (\d) (RM [\d,.]+(?: Partially Won| Won)?)", b)
+        if len(rows) == 3:
+            out.setdefault("D", {})["b33"] = [{"n": n, "z": z.title(), **_amts(a)[0]} for n, z, _, a in rows]
     b = _block(t, "Magnum Life", ["Magnum Jackpot Gold", "SINGAPORE", "Advertisements"])
     if dated(b):
         m = re.search(r"Winning Numbers ((?:\d{2} ){8})Bonus Numbers (\d{2}) (\d{2})", b)
