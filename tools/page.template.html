@@ -833,9 +833,19 @@ function renderDraws(){
 function setTab(tab){
   ["results","check","browse","dict"].forEach(k=>{const b=$("#tab-"+k);if(b)b.setAttribute("aria-selected",k===tab);$("#p-"+k).hidden=k!==tab});
   $("#ops").hidden=!(tab==="check"||tab==="browse");
-  st.tab=tab;if(tab==="browse")renderDraws();if(tab==="dict"){renderDict();Promise.all(needChunks().map(k=>ensureDict(k))).then(renderDict)}
+  st.tab=tab;setTimeout(hist,0);if(tab==="browse")renderDraws();if(tab==="dict"){renderDict();Promise.all(needChunks().map(k=>ensureDict(k))).then(renderDict)}
 }
-function syncHash(){try{history.replaceState(null,"",st.q?"#"+st.q:location.pathname+location.search)}catch(e){}}
+function syncHash(){try{history.replaceState(history.state,"",st.q?"#"+st.q:location.pathname+location.search)}catch(e){}}
+/* phone Back steps back inside the app (entry -> search -> previous tab) instead of leaving the site */
+let HREADY=false,HREST=false;
+const hview=()=>({tab:st.tab||"results",dq:ds.q||"",dopen:ds.open||"",q:st.q||""});
+function hist(){if(!HREADY||HREST)return;const v=hview(),c=history.state&&history.state.v;
+  if(c&&c.tab===v.tab&&c.dopen===v.dopen&&c.q===v.q&&c.dq===v.dq)return;
+  const typing=c&&c.tab==="dict"&&v.tab==="dict"&&c.dopen===v.dopen&&c.dq&&v.dq;
+  try{(typing?history.replaceState:history.pushState).call(history,{v},"",location.href)}catch(e){}}
+window.addEventListener("popstate",e=>{const v=(e.state&&e.state.v)||{tab:"results",dq:"",dopen:"",q:""};HREST=true;
+  try{ds.q=v.dq;ds.open=v.dopen||null;ds.page=1;$("#dq").value=v.dq;if(v.q&&v.q!==st.q){st.q=v.q;$("#q").value=v.q;paintCells()}
+    setTab(v.tab);if(v.tab==="check"&&st.q)renderCheck();if(v.tab==="dict")renderDict()}finally{HREST=false}});
 function checkNum(n){st.q=n;$("#q").value=n;paintCells();setTab("check");renderCheck();syncHash();scrollTo({top:0,behavior:"smooth"})}
 function all(init){renderLatest();paintCells();renderStatic();renderFilters();if(init)(window.requestIdleCallback||setTimeout)(renderFreq);else renderFreq();renderCheck();if(st.tab==="browse")renderDraws();if(st.tab==="dict")renderDict()}
 
@@ -933,7 +943,7 @@ function renderDict(){
     h+=`</button>`;if(op)h+=`<button type="button" class="share" data-n="${e.n}" style="grid-column:1/-1;justify-content:center;margin-top:0">${t("checkHist")} · <span class="mono">${e.n}</span></button>`+dExtra(e);return h}).join(""):`<p class="empty" style="grid-column:1/-1">${t("noMatch")}</p>`;
   $("#dmore").hidden=show.length>=list.length;
 }
-$("#dq").addEventListener("input",e=>{const v=e.target.value;ds.q=v;ds.page=1;renderDict();Promise.all(needChunks().map(k=>ensureDict(k))).then(()=>{if(ds.q===v)renderDict()})});
+$("#dq").addEventListener("input",e=>{const v=e.target.value;ds.q=v;ds.page=1;renderDict();hist();Promise.all(needChunks().map(k=>ensureDict(k))).then(()=>{if(ds.q===v)renderDict()})});
 $("#dmore").onclick=()=>{ds.page++;renderDict()};
 $("#tab-dict").onclick=()=>setTab("dict");
 document.addEventListener("click",e=>{const r=e.target.closest("[data-r]");if(r){ds.r=+r.dataset.r;ds.q="";$("#dq").value="";ds.page=1;renderDict();ensureDict(ds.r).then(renderDict);return}
@@ -943,7 +953,7 @@ document.addEventListener("click",e=>{const r=e.target.closest("[data-r]");if(r)
     if(navigator.share){ga("share",{method:"native",content_type:"dictionary",item_id:n});navigator.share(d).catch(()=>{})}
     else{ga("share",{method:"copy",content_type:"dictionary",item_id:n});try{navigator.clipboard.writeText(d.text+" "+d.url).then(()=>{sp.textContent=t("copied")},()=>{})}catch(err){}}return}
   const sm=e.target.closest("[data-shm]");if(sm){ga("share",{method:sm.dataset.shm,content_type:"dictionary",item_id:sm.dataset.shn});return}
-  const en=e.target.closest("[data-e]");if(en){ds.open=ds.open===en.dataset.e?null:en.dataset.e;if(ds.open)ga("view_item",{content_type:"dictionary",item_id:ds.open});renderDict()}});
+  const en=e.target.closest("[data-e]");if(en){ds.open=ds.open===en.dataset.e?null:en.dataset.e;if(ds.open)ga("view_item",{content_type:"dictionary",item_id:ds.open});renderDict();hist()}});
 /* "Search another number": appears once the search box is scrolled away; brings the cursor back to it */
 {const ag=$("#dagain"),sb=document.querySelector(".dsearch");let out=false;
   const upd=()=>{const on=out&&!$("#p-dict").hidden;ag.classList.toggle("on",on);ag.setAttribute("aria-hidden",!on);ag.tabIndex=on?0:-1};
@@ -951,11 +961,12 @@ document.addEventListener("click",e=>{const r=e.target.closest("[data-r]");if(r)
   document.addEventListener("click",e=>{if(e.target.closest('[role=tab],#nav-guide'))setTimeout(upd,50)});
   ag.onclick=()=>{const q=$("#dq");q.value="";ds.q="";ds.open=null;ds.page=1;renderDict();q.focus({preventScroll:true});
     sb.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"});
-    sb.classList.remove("flash");void sb.offsetWidth;sb.classList.add("flash");ga("select_content",{content_type:"dictionary_search_again"})}}
-$("#dlucky").onclick=()=>{const n=String(Math.floor(Math.random()*1e4)).padStart(4,"0");ds.q=n;$("#dq").value=n;ds.open=n;ds.page=1;ga("select_content",{content_type:"dictionary_random",item_id:n});renderDict();ensureDict(+n[0]).then(()=>{renderDict();const el=document.querySelector('[data-e="'+n+'"]');if(el)el.scrollIntoView({block:"center",behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"})})};
+    sb.classList.remove("flash");void sb.offsetWidth;sb.classList.add("flash");hist();ga("select_content",{content_type:"dictionary_search_again"})}}
+$("#dlucky").onclick=()=>{const n=String(Math.floor(Math.random()*1e4)).padStart(4,"0");ds.q=n;$("#dq").value=n;ds.open=n;ds.page=1;setTimeout(hist,0);ga("select_content",{content_type:"dictionary_random",item_id:n});renderDict();ensureDict(+n[0]).then(()=>{renderDict();const el=document.querySelector('[data-e="'+n+'"]');if(el)el.scrollIntoView({block:"center",behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"})})};
 $("#q").value=st.q;
 all(1);
 if(P.get("tab")==="dict")setTab("dict");else if(st.q||P.get("tab")==="check")setTab("check");else setTab("results");
+try{history.replaceState({v:hview()},"",location.href)}catch(e){}HREADY=true;
 }
 (function load(n){fetch("live.json").then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(start).catch(e=>{if(n<2)return setTimeout(()=>load(n+1),1500);const m=document.getElementById("err");m.innerHTML='Results history could not load ('+(e&&e.message||"network")+'). <button type="button" class="retry" onclick="location.reload()">Retry</button>'})})(1);
 if("serviceWorker"in navigator&&location.protocol==="https:")addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{})});
