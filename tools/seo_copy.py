@@ -95,7 +95,20 @@ def block(lang: str) -> str:
     faq = "".join(f'<details><summary>{H.escape(q)}</summary><p>{a}</p></details>' for q, a in c["faq"])
     return (f'<section class="seo" data-l="{lang}" aria-labelledby="seo-h"><h2 id="seo-h">{H.escape(c["h"])}</h2>'
             + "".join(f"<p>{p}</p>" for p in c["p"])
-            + f'<h2>{H.escape(c["fh"])}</h2><div class="faq">{faq}</div></section>')
+            + _bycompany(lang) + f'<h2>{H.escape(c["fh"])}</h2><div class="faq">{faq}</div></section>')
+
+
+BYCO = {"en": ("Results by company", "{n} result today"), "ms": ("Keputusan mengikut syarikat", "Keputusan {n} hari ini"),
+        "zh": ("各公司成绩", "今日{n}成绩"), "ta": ("நிறுவன வாரியான முடிவுகள்", "இன்றைய {n} முடிவுகள்")}
+BYCO_N = [("magnum-4d-result", {"zh": "万能"}, "Magnum 4D"), ("sports-toto-result", {"zh": "多多"}, "Sports Toto"), ("da-ma-cai-result", {"zh": "大马彩"}, "Da Ma Cai"),
+          ("gd-lotto-result", {"zh": "豪龙"}, "GD Lotto"), ("9-lotto-result", {}, "9 Lotto")]
+
+
+def _bycompany(lang: str) -> str:
+    h, t = BYCO[lang]
+    pre = "" if lang == "en" else lang + "/"
+    return f'<h2>{H.escape(h)}</h2><ul class="byco">' + "".join(
+        f'<li><a href="{pre}{s}/">{H.escape(t.replace("{n}", z.get(lang, n)))}</a></li>' for s, z, n in BYCO_N) + "</ul>"
 
 
 def _plain(s: str) -> str:

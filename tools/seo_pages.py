@@ -179,8 +179,10 @@ class Site:
             prev = f'<a href="{self.u(f"keputusan/{d8(self.dates[i - 1]).isoformat()}/")}">‹ {self.date_ms(self.dates[i - 1])}</a>' if i else "<span></span>"
             nxt = f'<a href="{self.u(f"keputusan/{d8(self.dates[i + 1]).isoformat()}/")}">{self.date_ms(self.dates[i + 1])} ›</a>' if i + 1 < len(self.dates) else "<span></span>"
             dd = d8(d)
-            title = f"Keputusan 4D {self.date_ms(d)} | 4D Malam Ini"
-            desc = f"Keputusan penuh 4D {self.date_ms(d)}: " + "; ".join(
+            title = f"4D Result {dd.day} {dd:%B %Y} ({dd:%A}) · Keputusan 4D | 4D Malam Ini"
+            if len(title) > 70:
+                title = f"4D Result {dd.day} {dd:%B %Y} · Keputusan 4D | 4D Malam Ini"
+            desc = f"4D result {dd.day} {dd:%b %Y} / keputusan 4D {self.date_ms(d)}: " + "; ".join(
                 f"{name} {by[k][d][2][0]}, {by[k][d][2][1]}, {by[k][d][2][2]}" for k, name, _, _ in OPS if d in by[k]) + ". Hadiah istimewa dan saguhati."
             desc = desc if len(desc) <= 158 else desc[:155].rsplit(";", 1)[0] + "…"
             body = (f"{nav}<h1>Keputusan 4D {self.date_ms(d)}<small><span lang='en'>4D results {dd:%A, %-d %B %Y}</span> · <span lang='zh-Hans'>{dd.year}年{dd.month}月{dd.day}日万字成绩</span></small></h1>"
@@ -220,15 +222,22 @@ class Site:
             pn = (f'<div class="pn"><a href="{self.u(f"4d/{prev}/")}">‹ {prev} {esc(self.dict.get(prev, {}).get("zh", ""))}</a>'
                   f'<a href="{self.u(f"4d/{nxt}/")}">{nxt} {esc(self.dict.get(nxt, {}).get("zh", ""))} ›</a></div>')
             lastwin = f"Terakhir: {d8(hits[0][0]).day} {BULAN[d8(hits[0][0]).month - 1][:3]} {d8(hits[0][0]).year}, {opn[hits[0][1]]}." if hits else "Belum menang dalam 5 tahun ini."
-            title = f"4D {n}" + (f" {e['ms']}" if e["ms"] else "") + (f" {e['zh']}" if e["zh"] else "") + " – Sejarah Menang | 4D Malam Ini"
-            if len(title) > 65:
-                m_ = e["ms"] or e["zh"]
-                m_ = m_ if len(m_) <= 38 else m_[:37].rstrip() + "…"
-                title = f"4D {n} {m_} | 4D Malam Ini"
+            mn = " ".join(x for x in (e["en"], e["zh"]) if x)
+            title = f"4D {n} Meaning: {mn} · Maksud & Sejarah | 4D Malam Ini" if mn else f"4D {n} Meaning · Maksud & Sejarah Menang | 4D Malam Ini"
+            if len(title) > 68:
+                title = f"4D {n} Meaning: {mn} | 4D Malam Ini"
+            if len(title) > 68:
+                m_ = (e["en"] or e["zh"] or e["ms"])
+                m_ = m_ if len(m_) <= 30 else m_[:29].rstrip() + "…"
+                title = f"4D {n} Meaning: {m_} | 4D Malam Ini"
             mean = ", ".join(x for x in (e["ms"], e["zh"]) if x)
-            desc = (f"Nombor 4D {n}" + (f" ({mean})" if mean else "") + f": menang {len(hits)} kali sejak {span}. {lastwin} Semak sejarah penuh dan maksud 万字图.")
+            mean = ", ".join(x for x in (e["en"], e["zh"], e["ms"]) if x)
+            desc = (f"4D {n} meaning / maksud" + (f": {mean}." if mean else ".") + f" Menang {len(hits)} kali sejak {span}. {lastwin} Sejarah penuh dan 万字图.")
             if len(desc) > 158:
-                desc = f"Nombor 4D {n}: menang {len(hits)} kali sejak {span}. {lastwin}"
+                m1 = e["en"] or e["zh"] or e["ms"]
+                desc = f"4D {n} meaning: {m1}. Menang {len(hits)} kali sejak {span}. {lastwin}"
+            if len(desc) > 158:
+                desc = f"4D {n} meaning: {m1}. Menang {len(hits)} kali sejak {span}."
             from urllib.parse import quote
             su = self.site + f"4d/{n}/"
             stx = f"4D {n} = " + " ".join(x for x in (e["zh"], e["en"]) if x) + ". Pernah menang? Semak di sini:"
@@ -238,7 +247,7 @@ class Site:
                      f'<a class="fb" href="https://www.facebook.com/sharer/sharer.php?u={quote(su)}" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M13.6 21.5v-8h2.7l.4-3.2h-3.1V8.3c0-.9.3-1.5 1.6-1.5h1.7V4a22 22 0 0 0-2.5-.1c-2.4 0-4.1 1.5-4.1 4.2v2.3H7.6v3.2h2.7v8z"/></svg></a></div>'
                      '<script>document.querySelector(".shr .sb").onclick=function(){var b=this,d={title:document.title,text:b.dataset.t,url:b.dataset.u};'
                      'if(navigator.share)navigator.share(d).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(d.text+" "+d.url).then(function(){b.textContent="Pautan disalin · Copied"})}</script>')
-            body = (f"{nav}<h1><span class=\"mono\">{n}</span> {esc(e['zh'])}<small>{esc(e['en'])}{' · ' + esc(e['ms']) if e['ms'] else ''}</small></h1>{pic}"
+            body = (f"{nav}<h1><span class=\"mono\">{n}</span> {esc(e['zh'])}<small>4D {n} meaning: {esc(e['en'])}{' · maksud: ' + esc(e['ms']) if e['ms'] else ''}</small></h1>{pic}"
                     f'<div class="card"><dl>{dl}</dl></div>'
                     f'<a class="btn" href="{self.u("?n=" + n)}">Semak {n} dalam semua syarikat</a>{share}'
                     f"<h2>Sejarah menang {n} ({span})</h2>{hist}"
@@ -275,7 +284,9 @@ class Site:
         self.page("keputusan/", "Arkib keputusan 4D Malaysia — Magnum, Sports Toto, Da Ma Cai | 4D Malam Ini",
                   f"Semua keputusan 4D Magnum, Sports Toto dan Da Ma Cai dari {self.date_ms(self.dates[0])} hingga {self.date_ms(last)}.",
                   f"{nav}<h1>Arkib keputusan 4D<small>4D results archive · 万字成绩档案</small></h1>"
-                  f'<p>Terkini: <a href="{self.u(f"keputusan/{lastiso}/")}">{self.date_ms(last)}</a></p>{secs}', "ms", [ld], lastiso)
+                  f'<p>Terkini: <a href="{self.u(f"keputusan/{lastiso}/")}">{self.date_ms(last)}</a></p>'
+                  + '<p>' + " · ".join(f'<a href="{self.u("ms/" + s + "/")}">Keputusan {n} hari ini</a>' for s, n in (("magnum-4d-result", "Magnum 4D"), ("sports-toto-result", "Sports Toto"), ("da-ma-cai-result", "Da Ma Cai"), ("gd-lotto-result", "GD Lotto"), ("9-lotto-result", "9 Lotto"))) + '</p>'
+                  + secs, "ms", [ld], lastiso)
 
     def not_found(self) -> None:
         body = (f'<h1>Halaman tidak dijumpai<small>Page not found · 找不到页面 · பக்கம் கிடைக்கவில்லை</small></h1>'

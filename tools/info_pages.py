@@ -15,8 +15,8 @@ PRIZES = [("RM2,500", "RM3,500"), ("RM1,000", "RM2,000"), ("RM500", "RM1,000"), 
 
 T = {
 "en": dict(
- title="4D Info: Magnum, Sports Toto, Da Ma Cai, GD Lotto & 9 Lotto", desc="Who runs each Malaysian 4D draw, when they draw, how to play Big and Small, and how to play responsibly.",
- crumb="Info", home="Home", h1="Info", lead="Who runs each 4D draw, when they draw, and how to play: everything behind the results board in one place.",
+ title="Malaysia 4D Draw Days, Companies & How to Play", desc="Malaysia 4D draw days and times for Magnum, Sports Toto, Da Ma Cai, GD Lotto and 9 Lotto, who runs each draw, how to play Big and Small, and 21+ rules.",
+ crumb="Info", home="Home", h1="Malaysia 4D draw days, companies & how to play", lead="Who runs each 4D draw, when they draw, and how to play: everything behind the results board in one place.",
  tabs=("Companies", "Draw days", "How to play", "Play responsibly"),
  s1="The companies", s1s="Five draws on one board. Here is who is behind each one.",
  since="Since", draws="Draws", daily="Daily", twice="2× daily", res="Latest results", off="Official site",
@@ -31,7 +31,7 @@ T = {
         "D": [("Owner", "Jana Pendidikan Malaysia (since 2011)"), ("Draws", "Wed, Sat, Sun · 7pm + special Tuesdays")],
         "G": [("Based in", "Phnom Penh, Cambodia"), ("Draws", "Every day · 7pm")],
         "N": [("Draws", "Every day · 7pm and 9pm")]},
- s2="Draw days", s2s="All times are Malaysia time. Results appear on the board within minutes.",
+ s2="Malaysia 4D draw days", s2s="Magnum 4D, Sports Toto and Da Ma Cai draw every Wednesday, Saturday and Sunday at 7pm, plus special draws (usually a Tuesday). GD Lotto draws every day at 7pm, and 9 Lotto twice a day at 7pm and 9pm. All times Malaysia time.",
  days=("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"), sp="sp", spn="sp = special draw. The companies announce these in advance, usually on a Tuesday.", n9="7pm & 9pm, every day",
  s3="How to play 4D", s3s="The short version. Tap a step to open it.",
  steps=[("Pick a 4-digit number", "<p>Any number from 0000 to 9999. Every number has the same chance in each draw. Many players use birthdays, car plates or a dream looked up in the 4D dictionary.</p>"),
@@ -45,8 +45,8 @@ T = {
  r2="Set a budget, never chase losses, and take a break if it stops being fun. 4D is entertainment with a cost, never income.",
  src="4D Malam Ini is an independent results site, not affiliated with any operator. Company details are summarised from each operator's own pages and annual reports; their official pages always take priority."),
 "ms": dict(
- title="Info 4D: Magnum, Sports Toto, Da Ma Cai, GD Lotto & 9 Lotto", desc="Siapa yang mengendalikan setiap cabutan 4D Malaysia, hari cabutan, cara main Big dan Small, dan bermain secara bertanggungjawab.",
- crumb="Info", home="Utama", h1="Info", lead="Siapa yang mengendalikan setiap cabutan 4D, bila cabutan dibuat, dan cara bermain: semua di sebalik papan keputusan, di satu tempat.",
+ title="Hari Cabutan 4D Malaysia, Syarikat & Cara Main", desc="Hari dan waktu cabutan 4D Malaysia untuk Magnum, Sports Toto, Da Ma Cai, GD Lotto dan 9 Lotto, siapa pengendalinya, cara main Big dan Small, dan peraturan 21+.",
+ crumb="Info", home="Utama", h1="Hari cabutan 4D Malaysia, syarikat & cara main", lead="Siapa yang mengendalikan setiap cabutan 4D, bila cabutan dibuat, dan cara bermain: semua di sebalik papan keputusan, di satu tempat.",
  tabs=("Syarikat", "Hari cabutan", "Cara main", "Main berhemah"),
  s1="Syarikat-syarikat", s1s="Lima cabutan dalam satu papan. Ini siapa di sebalik setiap satu.",
  since="Sejak", draws="Cabutan", daily="Setiap hari", twice="2× sehari", res="Keputusan terkini", off="Laman rasmi",
@@ -61,7 +61,7 @@ T = {
         "D": [("Pemilik", "Jana Pendidikan Malaysia (sejak 2011)"), ("Cabutan", "Rabu, Sabtu, Ahad · 7 mlm + Selasa khas")],
         "G": [("Pangkalan", "Phnom Penh, Kemboja"), ("Cabutan", "Setiap hari · 7 mlm")],
         "N": [("Cabutan", "Setiap hari · 7 mlm dan 9 mlm")]},
- s2="Hari cabutan", s2s="Semua waktu ialah waktu Malaysia. Keputusan muncul di papan dalam beberapa minit.",
+ s2="Hari cabutan 4D Malaysia", s2s="Magnum 4D, Sports Toto dan Da Ma Cai membuat cabutan setiap Rabu, Sabtu dan Ahad pada 7 malam, serta cabutan khas (biasanya hari Selasa). GD Lotto setiap hari pada 7 malam, dan 9 Lotto dua kali sehari pada 7 dan 9 malam. Semua waktu Malaysia.",
  days=("Isn", "Sel", "Rab", "Kha", "Jum", "Sab", "Ahd"), sp="kh", spn="kh = cabutan khas. Syarikat mengumumkannya lebih awal, biasanya pada hari Selasa.", n9="7 mlm & 9 mlm, setiap hari",
  s3="Cara main 4D", s3s="Versi ringkas. Ketik satu langkah untuk membukanya.",
  steps=[("Pilih nombor 4 digit", "<p>Apa-apa nombor dari 0000 hingga 9999. Setiap nombor ada peluang yang sama dalam setiap cabutan. Ramai pemain guna tarikh lahir, nombor plat kereta atau mimpi yang dicari dalam kamus 4D.</p>"),
@@ -75,8 +75,8 @@ T = {
  r2="Tetapkan bajet, jangan kejar kerugian, dan berehat jika ia tidak lagi menyeronokkan. 4D ialah hiburan yang ada kosnya, bukan pendapatan.",
  src="4D Malam Ini ialah laman keputusan bebas, tidak bergabung dengan mana-mana syarikat. Butiran syarikat diringkaskan daripada laman dan laporan tahunan syarikat sendiri; laman rasmi mereka sentiasa diutamakan."),
 "zh": dict(
- title="万字资讯：万能、多多、大马彩、豪龙与 9 Lotto", desc="马来西亚各家万字公司简介、开彩日、大字小字玩法，以及理性投注须知。",
- crumb="资讯", home="首页", h1="资讯", lead="每家万字公司是谁、几时开彩、怎么玩：成绩板背后的一切，都在这一页。",
+ title="马来西亚万字开彩日、开彩时间、公司与玩法", desc="马来西亚各家万字公司简介、开彩日、大字小字玩法，以及理性投注须知。",
+ crumb="资讯", home="首页", h1="马来西亚万字开彩日、公司与玩法", lead="每家万字公司是谁、几时开彩、怎么玩：成绩板背后的一切，都在这一页。",
  tabs=("公司简介", "开彩日", "玩法", "理性投注"),
  s1="万字公司", s1s="五家开彩，一个成绩板。以下是每一家的背景。",
  since="成立", draws="开彩", daily="每天", twice="每天2期", res="最新成绩", off="官方网站",
@@ -91,7 +91,7 @@ T = {
         "D": [("拥有者", "Jana Pendidikan Malaysia（2011年起）"), ("开彩", "星期三、六、日 · 晚上7点 + 特别星期二")],
         "G": [("总部", "柬埔寨金边"), ("开彩", "每天 · 晚上7点")],
         "N": [("开彩", "每天 · 晚上7点及9点")]},
- s2="开彩日", s2s="全部为马来西亚时间。成绩会在几分钟内出现在成绩板上。",
+ s2="马来西亚万字开彩日", s2s="万能、多多、大马彩逢星期三、六、日晚上7点开彩，另有特别开彩（通常在星期二）。豪龙每天晚上7点开彩，9 Lotto 每天晚上7点和9点开彩两次。全部为马来西亚时间。",
  days=("一", "二", "三", "四", "五", "六", "日"), sp="特", spn="特 = 特别开彩，公司会提前宣布，通常在星期二。", n9="每天晚上7点和9点",
  s3="万字怎么玩", s3s="简单版本，点击步骤展开。",
  steps=[("选一个四位号码", "<p>0000 到 9999 任何号码，每期每个号码的机会都一样。很多人用生日、车牌，或在万字字典里查梦。</p>"),
@@ -105,8 +105,8 @@ T = {
  r2="先定预算，不要追输，不好玩了就休息。万字是有成本的娱乐，不是收入。",
  src="4D Malam Ini 是独立的成绩网站，与任何公司无关。公司资料摘自各公司官网及年报；一切以官方网页为准。"),
 "ta": dict(
- title="4D தகவல்: Magnum, Sports Toto, Da Ma Cai, GD Lotto & 9 Lotto", desc="மலேசிய 4D குலுக்கல்களை நடத்துபவர்கள், குலுக்கல் நாட்கள், Big மற்றும் Small விளையாடும் முறை, பொறுப்புடன் விளையாடுதல்.",
- crumb="தகவல்", home="முகப்பு", h1="தகவல்", lead="ஒவ்வொரு 4D குலுக்கலையும் யார் நடத்துகிறார்கள், எப்போது குலுக்கல், எப்படி விளையாடுவது: முடிவுப் பலகையின் பின்னால் உள்ள அனைத்தும் ஒரே இடத்தில்.",
+ title="மலேசியா 4D குலுக்கல் நாட்கள், நிறுவனங்கள் & விளையாடும் முறை", desc="மலேசிய 4D குலுக்கல்களை நடத்துபவர்கள், குலுக்கல் நாட்கள், Big மற்றும் Small விளையாடும் முறை, பொறுப்புடன் விளையாடுதல்.",
+ crumb="தகவல்", home="முகப்பு", h1="மலேசியா 4D குலுக்கல் நாட்கள், நிறுவனங்கள் & விளையாடும் முறை", lead="ஒவ்வொரு 4D குலுக்கலையும் யார் நடத்துகிறார்கள், எப்போது குலுக்கல், எப்படி விளையாடுவது: முடிவுப் பலகையின் பின்னால் உள்ள அனைத்தும் ஒரே இடத்தில்.",
  tabs=("நிறுவனங்கள்", "குலுக்கல் நாட்கள்", "விளையாடும் முறை", "பொறுப்புடன்"),
  s1="நிறுவனங்கள்", s1s="ஒரே பலகையில் ஐந்து குலுக்கல்கள். ஒவ்வொன்றின் பின்னணி இதோ.",
  since="முதல்", draws="குலுக்கல்", daily="தினமும்", twice="தினம் 2×", res="சமீபத்திய முடிவுகள்", off="அதிகாரப்பூர்வ தளம்",
@@ -121,7 +121,7 @@ T = {
         "D": [("உரிமையாளர்", "Jana Pendidikan Malaysia (2011 முதல்)"), ("குலுக்கல்", "புதன், சனி, ஞாயிறு · இரவு 7 + சிறப்பு செவ்வாய்")],
         "G": [("தளம்", "புனோம் பென், கம்போடியா"), ("குலுக்கல்", "தினமும் · இரவு 7")],
         "N": [("குலுக்கல்", "தினமும் · இரவு 7 மற்றும் 9")]},
- s2="குலுக்கல் நாட்கள்", s2s="அனைத்தும் மலேசிய நேரம். முடிவுகள் சில நிமிடங்களில் பலகையில் தோன்றும்.",
+ s2="மலேசியா 4D குலுக்கல் நாட்கள்", s2s="Magnum 4D, Sports Toto, Da Ma Cai ஒவ்வொரு புதன், சனி, ஞாயிறு இரவு 7 மணிக்கு குலுக்கல்; சிறப்பு குலுக்கல்கள் பொதுவாக செவ்வாய். GD Lotto தினமும் இரவு 7, 9 Lotto தினமும் இரவு 7 மற்றும் 9. அனைத்தும் மலேசிய நேரம்.",
  days=("தி", "செ", "பு", "வி", "வெ", "ச", "ஞா"), sp="சி", spn="சி = சிறப்பு குலுக்கல். நிறுவனங்கள் முன்கூட்டியே அறிவிக்கும், பொதுவாக செவ்வாய்க்கிழமை.", n9="தினமும் இரவு 7 & 9",
  s3="4D விளையாடுவது எப்படி", s3s="சுருக்கமான வடிவம். திறக்க ஒரு படியைத் தட்டவும்.",
  steps=[("4 இலக்க எண்ணைத் தேர்ந்தெடுங்கள்", "<p>0000 முதல் 9999 வரை எந்த எண்ணும். ஒவ்வொரு குலுக்கலிலும் எல்லா எண்களுக்கும் ஒரே வாய்ப்பு. பலர் பிறந்தநாள், கார் எண் அல்லது 4D அகராதியில் தேடிய கனவைப் பயன்படுத்துவர்.</p>"),
@@ -144,7 +144,7 @@ CSS = """.info{--mu:#9DB0D3;--ln:rgba(255,255,255,.09);--cd:#0F1F3D;--gold:#E9C4
 .info .tabs a.ab{grid-column:1/-1;min-height:32px;padding:4px 10px;background:linear-gradient(90deg,rgba(233,196,107,.18),rgba(233,196,107,.06));color:#E9C46B;border-color:rgba(233,196,107,.4);font-size:12.5px}
 .info .tabs a{display:flex;align-items:center;justify-content:center;text-align:center;min-height:36px;text-decoration:none;font-size:12.5px;line-height:1.2;font-weight:700;padding:5px 4px;border-radius:12px;background:#13274A;color:var(--mu);border:1px solid var(--ln);overflow-wrap:normal;word-break:normal;hyphens:auto}
 .info [lang=ta] .tabs a,.info .tabs a:lang(ta){font-size:11px}.info .tabs a.on{background:var(--gold);color:#1B1300;border-color:transparent}
-.info .hero{padding:20px 0 4px}.info h1{margin:0;font-size:28px;letter-spacing:-.02em}.info .hero p{margin:6px 0 0;color:var(--mu);max-width:640px}
+.info .hero{padding:20px 0 4px}.info h1{margin:0;font-size:23px;line-height:1.2;letter-spacing:-.02em}.info .hero p{margin:6px 0 0;color:var(--mu);max-width:640px}
 .info section{padding-top:26px;scroll-margin-top:110px}
 .info h2{font-size:20px;margin:0 0 4px;display:flex;align-items:center;gap:10px}.info h2 i{font-style:normal;display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:rgba(233,196,107,.15);color:var(--gold);font-size:14px}
 .info .sub{color:var(--mu);margin:0 0 14px;font-size:14px}
@@ -177,6 +177,7 @@ JS = ("<script>(function(){var t=[].slice.call(document.querySelectorAll('.info 
       "var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)t.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)})})},{rootMargin:'-120px 0px -60% 0px'});"
       "t.forEach(function(a){var s=document.querySelector(a.getAttribute('href'));if(s)io.observe(s)})})()</script>")
 
+OPSLUG = {"M": "magnum-4d-result/", "T": "sports-toto-result/", "D": "da-ma-cai-result/", "G": "gd-lotto-result/", "N": "9-lotto-result/"}
 ABOUT = {"en": "About us", "ms": "Tentang kami", "zh": "关于我们", "ta": "எங்களைப் பற்றி"}
 SCHED = {"M": "s", "T": "s", "D": "s"}  # Wed/Sat/Sun + special Tue
 
@@ -209,7 +210,7 @@ def build(site) -> None:
                       f'<div><b>{esc(nm)}{zhh}</b><small>{esc(x["sub"][k])}</small></div><div class="since">{sv}</div></div>'
                       f'<div class="cb"><p>{esc(x["intro"][k])}</p><dl>' + "".join(f"<dt>{esc(a)}</dt><dd>{esc(b)}</dd>" for a, b in x["facts"][k]) + "</dl>"
                       '<div class="chips">' + "".join(f"<span>{esc(ch)}</span>" for ch in chips) + "</div></div>"
-                      f'<div class="cf"><a class="p" href="{home}#rc-{k}">{esc(x["res"])}</a><a href="{url}" target="_blank" rel="noopener nofollow">{esc(x["off"])} ›</a></div></article>')
+                      f'<div class="cf"><a class="p" href="{site.u(pre + OPSLUG[k])}">{esc(x["res"])}</a><a href="{url}" target="_blank" rel="noopener nofollow">{esc(x["off"])} ›</a></div></article>')
         rows = ""
         for k, name, zh, hb, c, *_ in CO:
             nm = (zh if lang == "zh" and zh else name.replace(" 4D", ""))
