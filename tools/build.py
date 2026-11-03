@@ -97,7 +97,7 @@ def prerender_latest(html: str, data: dict) -> str:
     fd = lambda d: datetime.date(int(d[:4]), int(d[4:6]), int(d[6:])).strftime("%a, %-d %b %Y")
     cdf = lambda d: datetime.date(int(d[:4]), int(d[4:6]), int(d[6:])).strftime("(%a) %d-%b-%Y")
     nb = lambda n: f'<button type="button" data-n="{n}">{n}</button>'
-    head = lambda k, name, sub: (f'<div class="sh"><span class="lgw">{('<img class="opl" src="img/op/n-w.webp" width="102" height="25" alt="9 Lotto">' if k in "NP" else f'<img class="opl" src="img/op/{k.lower()}{"-n" if k in "DT" else ""}.webp?v=3" width="40" height="40" alt="">')}</span>'
+    head = lambda k, name, sub: (f'<div class="sh"><span class="lgw">{('<img class="opl" src="img/op/n-s.webp" width="46" height="46" alt="9 Lotto">' if k in "NP" else f'<img class="opl" src="img/op/{k.lower()}{"-n" if k in "DT" else ""}.webp?v=3" width="40" height="40" alt="">')}</span>'
                                  f'<div class="sht"><b>{name} <i>{zh[k]}</i></b><small>{sub}</small></div></div>')
     lb = '<div class="lbar"><span>1st Prize<em>首奖</em></span><span>2nd Prize<em>二奖</em></span><span>3rd Prize<em>三奖</em></span></div>'
     cards, last = [], ""
@@ -283,6 +283,10 @@ def main() -> None:
     if imgs:
         print(f"  img/d2/  {len(imgs)} pictures in sprite sheets, {sum(f.stat().st_size for f in (out / 'img' / 'd2').rglob('*.avif'))/1048576:.1f} MB on server")
     live = {k: "|".join(v.split("|")[-3:]) for k, v in data.items()}
+    xf = Path(a.results).with_name("extras.json")  # jackpots, Toto 5D/6D/lotto, blank slots (written by fetch_results.py)
+    if xf.exists():
+        xj = json.loads(xf.read_text(encoding="utf-8"))
+        live["X"] = {d: xj[d] for d in sorted(xj)[-4:]}
     (out / "live.json").write_text(json.dumps(live, separators=(",", ":")))
     (out / "_headers").write_text(HEADERS)
     (out / ".htaccess").write_text(HTACCESS)

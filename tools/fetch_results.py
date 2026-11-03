@@ -384,6 +384,31 @@ def fetch_9lotto_9pm(day: dt.date) -> dict | None:
 FETCHERS = [("Magnum 4D", fetch_magnum), ("Sports Toto 4D", fetch_toto), ("Da Ma Cai 1+3D", fetch_damacai), ("GD Lotto 4D", fetch_gd), (N7, fetch_9lotto_7pm), (N9, fetch_9lotto_9pm)]
 
 
+def save_extras(path: Path, day: dt.date, dry: bool) -> None:
+    """Merge tonight's jackpots / 5D / 6D / lotto / blank slots into extras.json (keyed YYYYMMDD, last 40 draw days)."""
+    try:
+        x = parse_check4d_extras(check4d_text(), day)
+    except Exception as e:
+        log(f"extras: could not fetch ({type(e).__name__}: {e})")
+        return
+    x.pop("date", None)
+    if not x:
+        log(f"extras: nothing for {day} yet")
+        return
+    j = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    key = day.strftime("%Y%m%d")
+    cur = j.get(key, {})
+    for k, v in x.items():
+        cur[k] = {**cur.get(k, {}), **v}
+    if j.get(key) == cur:
+        return
+    j[key] = cur
+    j = {d: j[d] for d in sorted(j)[-40:]}
+    log(f"extras: {key} " + ", ".join(f"{k}:{'/'.join(sorted(v))}" for k, v in cur.items()))
+    if not dry:
+        path.write_text(json.dumps(j, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+
+
 def row_of(r: dict, day: dt.date) -> dict:
     vals = [r["operator"], day.isoformat(), r["draw_no"]] + r["top"] + r["sp"] + r["co"]
     return dict(zip(COLS, vals))
@@ -432,6 +457,7 @@ def main() -> int:
                 continue
             new.append(row_of(r, day))
             log(f"{name}: {day} {r['draw_no']} {' '.join(r['top'])}  OK")
+        save_extras(Path(a.csv).with_name("extras.json"), day, a.dry_run)
         if not new:
             return 0
         if a.dry_run:
