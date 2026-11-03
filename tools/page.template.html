@@ -660,21 +660,23 @@ function renderCheck(){
     const won=sel.filter(o=>by.get(o)).sort((a,b)=>by.get(b)-by.get(a)),zero=sel.filter(o=>!by.get(o)),mx=Math.max(1,...won.map(o=>by.get(o)));
     const tb=(v,on,l)=>`<button type="button" role="radio" aria-checked="${on}" data-hxco="${v}"${on?' class="on"':""}><i aria-hidden="true">${on?"✓":""}</i>${l}</button>`;
     h+=`<section class="card"><div class="hx-hd"><p class="hx-l">${t("hxWhere")}<span>${t("hxOf",{a:won.length,b:sel.length})}</span></p>${tg?`<div class="hx-tg" role="radiogroup" aria-label="${t("hxWhere")}">${tb("mkt",!all,"MKT")}${tb("all",all,t("all"))}</div>`:""}</div><div class="hx-co">${won.map(o=>`<div class="r" style="--c:${o.c}"><img src="img/op/${o.k.toLowerCase()}${"TD".includes(o.k)?"-n":""}.webp?v=4" width="30" height="30" alt=""><div class="hb"><i style="width:${Math.max(30,by.get(o)/mx*100)}%"></i><span>${oname(o)}</span></div><b class="mono">${by.get(o)}</b></div>`).join("")}</div>${zero.length?`<p class="hx-none">${t("hxNone",{l:zero.map(oname).join(", ")})}</p>`:!all?`<p class="hx-none">MKT = ${sel.map(oname).join(" · ")}</p>`:""}</section>`;
-    const wonT=base.filter(o=>by.get(o)).sort((a,b)=>by.get(b)-by.get(a));
+    const fh=hits.filter(x=>sel.includes(x.o));
+    if(fh.length){
     /* timeline */
     const span=Math.max(1,(dt(st.to)-dt(st.from))/864e5),pos=d=>Math.min(100,Math.max(0,(dt(d)-dt(st.from))/864e5/span*100));
     let tk="";for(let y=+st.from.slice(0,4)+1;y<=+st.to.slice(0,4);y++){const p=pos(y+"0101");tk+=`<i class="tk" style="left:${p}%"></i><span class="hy" style="left:${p}%">${y}</span>`}
-    let prev=-9,alt=0;const dots=hits.map((x,i)=>[x,i]).reverse().map(([x,i])=>{const p=pos(x.dr.d);alt=p-prev<4?(alt+1)%3:0;prev=p;return`<button type="button" class="g${gz(x.j)} ${["","up","dn"][alt]}" style="left:${p}%;--c:${x.o.c}" data-go="hx${i}" aria-label="${fD(x.dr.d)} · ${oname(x.o)} · ${t("p"+tier(x.j))}"></button>`}).join("");
-    h+=`<section class="card"><p class="hx-l">${t("hxTime")}<span>${t("hxDot")}</span></p><div class="hx-strip"><i class="ax"></i>${tk}${dots}</div><div class="hx-leg">${wonT.map(o=>`<span><i style="background:${o.c}"></i>${oname(o)}</span>`).join("")}</div></section>`;
+    let prev=-9,alt=0;const dots=fh.map((x,i)=>[x,i]).reverse().map(([x,i])=>{const p=pos(x.dr.d);alt=p-prev<4?(alt+1)%3:0;prev=p;return`<button type="button" class="g${gz(x.j)} ${["","up","dn"][alt]}" style="left:${p}%;--c:${x.o.c}" data-go="hx${i}" aria-label="${fD(x.dr.d)} · ${oname(x.o)} · ${t("p"+tier(x.j))}"></button>`}).join("");
+    h+=`<section class="card"><p class="hx-l">${t("hxTime")}<span>${t("hxDot")}</span></p><div class="hx-strip"><i class="ax"></i>${tk}${dots}</div><div class="hx-leg">${won.map(o=>`<span><i style="background:${o.c}"></i>${oname(o)}</span>`).join("")}</div></section>`;
     /* every win */
-    const yc={};hits.forEach(x=>{const y=x.dr.d.slice(0,4);yc[y]=(yc[y]||0)+1});let cy="",li="";
+    const yc={};fh.forEach(x=>{const y=x.dr.d.slice(0,4);yc[y]=(yc[y]||0)+1});let cy="",li="";
     const cell=(x,k,lab)=>{const v=x.dr.n[k];return`<button type="button" class="${k===x.j?"hm":""}" data-n="${v}">${lab?`<small>${lab}</small>`:""}${v}</button>`};
     const so=(x,a,b)=>Array.from({length:b-a},(_,k)=>k+a).sort((p,r)=>x.dr.n[p]<x.dr.n[r]?-1:1);
-    hits.forEach((x,i)=>{const y=x.dr.d.slice(0,4),n=x.dr.n[x.j];if(y!==cy){if(cy)li+="</div>";cy=y;li+=`<p class="hx-yh">${y} · ${yc[y]===1?t("win1"):t("winsY",{n:yc[y]})}</p><div class="hx-tl">`}
+    fh.forEach((x,i)=>{const y=x.dr.d.slice(0,4),n=x.dr.n[x.j];if(y!==cy){if(cy)li+="</div>";cy=y;li+=`<p class="hx-yh">${y} · ${yc[y]===1?t("win1"):t("winsY",{n:yc[y]})}</p><div class="hx-tl">`}
       li+=`<div class="hx-it" id="hx${i}" style="--c:${x.o.c}" aria-expanded="${i===0}"><button type="button" class="hd" data-hx><img src="img/op/${x.o.k.toLowerCase()}${"TD".includes(x.o.k)?"-n":""}.webp?v=4" width="34" height="34" alt=""><span><b>${fD(x.dr.d)}</b><small>${oname(x.o)}${x.dr.no?" · "+t("draw",{n:x.dr.no}):""}${n!==q?" · "+t("drawn",{n}):""}</small></span><em class="pz g${gz(x.j)}">${t("p"+tier(x.j))}</em></button>`+
         `<div class="bd mono"><div class="h3r">${[0,1,2].map(k=>cell(x,k,t("p"+(k+1)))).join("")}</div><p>${t("p4")}</p><div class="g5">${so(x,3,13).map(k=>cell(x,k)).join("")}</div><p>${t("p5")}</p><div class="g5">${so(x,13,23).map(k=>cell(x,k)).join("")}</div></div></div>`});
     li+="</div>";
-    h+=`<section class="card"><p class="hx-l">${t("every")} · ${hits.length}<span>${t("hxTap")}</span></p>${li}</section>`;
+    h+=`<section class="card"><p class="hx-l">${t("every")} · ${fh.length}<span>${t("hxTap")}</span></p>${li}</section>`;
+    }
   }
   /* box: other orders of the same digits */
   if(st.mode!=="box"){const ps=perms(q).filter(p=>p!==q).sort();if(ps.length){
