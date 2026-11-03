@@ -38,6 +38,8 @@ h2{font-size:18px;margin:28px 0 10px}
 .pic{display:block;width:100%;max-width:360px;aspect-ratio:1/1;border-radius:16px;overflow:hidden;background:#172A4D;margin:14px 0}
 .pic img{display:block;width:100%;height:100%;object-fit:cover}
 .pic .sp{display:block;width:100%;height:100%;background-size:500% 500%;background-repeat:no-repeat}
+.shr{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:12px}.shr .sb,.shr a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 6px;border-radius:12px;border:0;font:inherit;font-size:13px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}.shr .sb{background:#172A4D;border:1px solid #233862;color:#F8F4E8}.shr .wa{background:#177A45}.shr .tg2{background:#1877B8}.shr .fb{background:#1B5FC2}
+@media(max-width:420px){.shr{grid-template-columns:1fr 1fr}}
 dl{display:grid;grid-template-columns:130px 1fr;gap:8px 12px;margin:0}dt{color:#A9B4CC;font-size:13px;font-weight:700}dd{margin:0}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border-radius:14px;background:#E9C46B;color:#07142B;font-weight:800;text-decoration:none;margin-top:14px}
 .btn:hover{color:#07142B;background:#F3D892}
@@ -200,10 +202,19 @@ class Site:
             lastwin = f"Kali terakhir menang {self.date_ms(hits[0][0])} ({opn[hits[0][1]]})." if hits else "Belum menang dalam 5 tahun ini."
             title = f"4D {n}" + (f" {e['zh']}" if e["zh"] else "") + (f" · {e['en']}" if e["en"] else "") + " — 万字图 & sejarah menang | 4D Malam Ini"
             desc = (f"Nombor 4D {n} dalam 万字图: {e['zh']} ({e['en']} / {e['ms']} / {e['ta']}). "
-                    f"Menang {len(hits)} kali dalam Magnum, Sports Toto dan Da Ma Cai sejak {span}. {lastwin}")
+                    f"Menang {len(hits)} kali dalam Magnum, Sports Toto, Da Ma Cai, GD Lotto dan 9 Lotto sejak {span}. {lastwin}")
+            from urllib.parse import quote
+            su = self.site + f"4d/{n}/"
+            stx = f"4D {n} = " + " ".join(x for x in (e["zh"], e["en"]) if x) + ". Pernah menang? Semak di sini:"
+            share = (f'<div class="shr"><button type="button" class="sb" data-u="{su}" data-t="{esc(stx)}">Kongsi · Share</button>'
+                     f'<a class="wa" href="https://wa.me/?text={quote(stx + " " + su)}" target="_blank" rel="noopener">WhatsApp</a>'
+                     f'<a class="tg2" href="https://t.me/share/url?url={quote(su)}&amp;text={quote(stx)}" target="_blank" rel="noopener">Telegram</a>'
+                     f'<a class="fb" href="https://www.facebook.com/sharer/sharer.php?u={quote(su)}" target="_blank" rel="noopener">Facebook</a></div>'
+                     '<script>document.querySelector(".shr .sb").onclick=function(){var b=this,d={title:document.title,text:b.dataset.t,url:b.dataset.u};'
+                     'if(navigator.share)navigator.share(d).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(d.text+" "+d.url).then(function(){b.textContent="Pautan disalin · Copied"})}</script>')
             body = (f"{nav}<h1><span class=\"mono\">{n}</span> {esc(e['zh'])}<small>{esc(e['en'])}{' · ' + esc(e['ms']) if e['ms'] else ''}</small></h1>{pic}"
                     f'<div class="card"><dl>{dl}</dl></div>'
-                    f'<a class="btn" href="{self.u("?n=" + n)}">Semak {n} dalam semua syarikat</a>'
+                    f'<a class="btn" href="{self.u("?n=" + n)}">Semak {n} dalam semua syarikat</a>{share}'
                     f"<h2>Sejarah menang {n} ({span})</h2>{hist}"
                     + (f"<h2>Susunan digit sama (Box) · {len(perms)}</h2><div class=\"chips\">{box}</div>" if perms else "") + pn)
             lastmod = d8(hits[0][0]).isoformat() if hits else None
