@@ -8,7 +8,7 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
-OPS = [("M", "Magnum 4D", "万能", "#E9C46B"), ("D", "Da Ma Cai", "大马彩", "#4C8DFF"), ("T", "Sports Toto", "多多", "#FF5A5F"), ("G", "GD Lotto", "豪龙", "#F27BA5"), ("N", "9 Lotto", "9 Lotto", "#2EC4B6"), ("J", "Super J3 3pm", "J3 下午3点", "#A78BFA"), ("K", "Super J9 9pm", "J9 晚上9点", "#FB923C")]
+OPS = [("M", "Magnum 4D", "万能", "#E9C46B"), ("D", "Da Ma Cai", "大马彩", "#4C8DFF"), ("T", "Sports Toto", "多多", "#FF5A5F"), ("G", "GD Lotto", "豪龙", "#F27BA5"), ("N", "9 Lotto", "9 Lotto", "#2EC4B6"), ("S", "Singapore 4D", "新加坡万字", "#38BDF8"), ("J", "Super J3 3pm", "J3 下午3点", "#A78BFA"), ("K", "Super J9 9pm", "J9 晚上9点", "#FB923C")]
 PRIZE = {1: ("Hadiah Pertama", "1st Prize", "头奖"), 2: ("Hadiah Kedua", "2nd Prize", "二奖"), 3: ("Hadiah Ketiga", "3rd Prize", "三奖"),
          4: ("Istimewa", "Special", "特别奖"), 5: ("Saguhati", "Consolation", "安慰奖")}
 HARI = ["Isnin", "Selasa", "Rabu", "Khamis", "Jumaat", "Sabtu", "Ahad"]
@@ -29,7 +29,7 @@ BN_ICONS = ['<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" 
 BN_LAB = {"ms": ("Keputusan", "Semak nombor", "Kamus", "Info"), "en": ("Results", "Check number", "Dictionary", "Info"),
           "zh-Hans": ("开彩成绩", "查号码", "万字字典", "资讯"), "ta": ("முடிவுகள்", "எண் சரிபார்ப்பு", "அகராதி", "தகவல்")}
 LIVEJS = ("<script>(function(){var d=new Date(Date.now()+288e5),m=d.getUTCHours()*60+d.getUTCMinutes();"
-          "if((m>=895&&m<930)||(m>=1135&&m<1215)||(m>=1255&&m<1290)){var a=document.querySelector('.bnav a');if(a)a.classList.add('lvn')}})()</script>")
+          "if((m>=895&&m<930)||(m>=1105&&m<1215)||(m>=1255&&m<1290)){var a=document.querySelector('.bnav a');if(a)a.classList.add('lvn')}})()</script>")
 BN_CSS = (".bnav{position:fixed;left:0;right:0;bottom:0;z-index:6;background:rgba(10,24,50,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid #1A2C50;padding:6px 8px calc(8px + env(safe-area-inset-bottom))}"
           ".bnav .bw{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}"
           ".bnav a{text-decoration:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:54px;border-radius:14px;color:#9AA6C0;font-size:11px;font-weight:800;line-height:1.15;text-align:center;padding:4px}"
