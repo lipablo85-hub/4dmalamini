@@ -25,13 +25,15 @@ LANG_META = {
 }
 HTML_LANG = {"en": "en", "ms": "ms", "zh": "zh-Hans", "ta": "ta"}
 
-BN_ICONS = ['<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>', '<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>', '<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"></path><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"></path></svg>', '<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"></path><path d="M12 17h.01"></path></svg>']
-BN_LAB = {"ms": ("Keputusan", "Semak nombor", "Kamus", "Panduan"), "en": ("Results", "Check number", "Dictionary", "Guide"),
-          "zh-Hans": ("开彩成绩", "查号码", "万字字典", "攻略"), "ta": ("முடிவுகள்", "எண் சரிபார்ப்பு", "அகராதி", "வழிகாட்டி")}
+BN_ICONS = ['<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>', '<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>', '<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"></path><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"></path></svg>', '<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 11v6"></path><path d="M12 7.5h.01"></path></svg>']
+BN_LAB = {"ms": ("Keputusan", "Semak nombor", "Kamus", "Info"), "en": ("Results", "Check number", "Dictionary", "Info"),
+          "zh-Hans": ("开彩成绩", "查号码", "万字字典", "资讯"), "ta": ("முடிவுகள்", "எண் சரிபார்ப்பு", "அகராதி", "தகவல்")}
+LIVEJS = ("<script>(function(){var d=new Date(Date.now()+288e5),m=d.getUTCHours()*60+d.getUTCMinutes();"
+          "if(m>=1135&&m<1275){var a=document.querySelector('.bnav a');if(a)a.classList.add('lvn')}})()</script>")
 BN_CSS = (".bnav{position:fixed;left:0;right:0;bottom:0;z-index:6;background:rgba(10,24,50,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid #1A2C50;padding:6px 8px calc(8px + env(safe-area-inset-bottom))}"
           ".bnav .bw{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}"
           ".bnav a{text-decoration:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:54px;border-radius:14px;color:#9AA6C0;font-size:11px;font-weight:800;line-height:1.15;text-align:center;padding:4px}"
-          ".bnav a[aria-current]{color:#E9C46B;background:#13254A}body{padding-bottom:calc(80px + env(safe-area-inset-bottom))}")
+          ".bnav a[aria-current]{color:#E9C46B;background:#13254A}.bnav .lvn{color:#FF6B6B!important}.bnav .lvn svg{display:none}.bnav .lvn::before{content:\"LIVE\";display:grid;place-items:center;height:22px;padding:0 7px;border-radius:6px;background:#FF3B3B;color:#fff;font:800 11px/1 system-ui,sans-serif;letter-spacing:.06em;box-shadow:0 0 0 0 rgba(255,59,59,.6);animation:lvb 1.2s ease-in-out infinite}@keyframes lvb{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(255,59,59,.55)}50%{opacity:.45;box-shadow:0 0 0 6px rgba(255,59,59,0)}}@media (prefers-reduced-motion:reduce){.bnav .lvn::before{animation:none}}body{padding-bottom:calc(80px + env(safe-area-inset-bottom))}")
 
 
 CSS = """*{box-sizing:border-box}""" + BN_CSS + """body{margin:0;background:#07142B;color:#F8F4E8;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans Tamil","PingFang SC","Microsoft YaHei",sans-serif}
@@ -109,7 +111,7 @@ class Site:
     def page(self, path: str, title: str, desc: str, body: str, lang: str = "ms", ld: list | None = None, lastmod: str | None = None, head: str = "", foot: str | None = None) -> None:
         canon = self.site + path.lstrip("/")
         DEFAULT_FOOT = f"""<footer>Rekod tidak rasmi untuk rujukan. Sahkan dengan syarikat sebelum menuntut hadiah. 21+ · Bukan Islam sahaja · Main secara bertanggungjawab.<br>
-<a href="{self.u('')}">Semak nombor</a> · <a href="{self.u('keputusan/')}">Arkib keputusan</a> · <a href="{self.u('4d/')}">Kamus 4D 万字图</a> · <a href="{self.u('guide/')}">Panduan 4D · Guide</a><br><a class="tg" href="https://t.me/ssgsales" target="_blank" rel="noopener"><i class="tgi" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.6-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.1l-4.7-1.5c-1-.3-1-1 .2-1.5L20.5 3c.9-.3 1.6.2 1.4 1.3Z"/></svg></i><span>Hubungi kami · Contact us · Telegram</span></a></footer>"""
+<a href="{self.u('')}">Semak nombor</a> · <a href="{self.u('keputusan/')}">Arkib keputusan</a> · <a href="{self.u('4d/')}">Kamus 4D 万字图</a> · <a href="{self.u('info/')}">Info 4D</a> · <a href="{self.u('guide/')}">Panduan 4D · Guide</a><br><a class="tg" href="https://t.me/ssgsales" target="_blank" rel="noopener"><i class="tgi" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.6-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.1l-4.7-1.5c-1-.3-1-1 .2-1.5L20.5 3c.9-.3 1.6.2 1.4 1.3Z"/></svg></i><span>Hubungi kami · Contact us · Telegram</span></a></footer>"""
         lds = "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False, separators=(",", ":"))}</script>' for x in (ld or []))
         doc = f"""<!DOCTYPE html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)}</title><meta name="description" content="{esc(desc)}"><link rel="canonical" href="{canon}">
@@ -128,12 +130,12 @@ class Site:
         self.urls.append((canon, lastmod))
 
     def bnav(self, path: str, lang: str) -> str:
-        pre = {"en": "", "ms": "ms/", "zh-Hans": "zh/", "ta": "ta/"}.get(lang, "") if "guide/" in path else ""
+        pre = {"en": "", "ms": "ms/", "zh-Hans": "zh/", "ta": "ta/"}.get(lang, "") if ("guide/" in path or "info/" in path) else ""
         lab = BN_LAB.get(lang, BN_LAB["ms"])
-        cur = 3 if "guide/" in path else 2 if path.startswith("4d/") else 0 if path.startswith("keputusan/") else -1
-        hrefs = [self.u(pre), self.u(pre + "?tab=check"), self.u(pre + "?tab=dict"), self.u(pre + "guide/" if pre or "guide/" in path else "guide/")]
+        cur = 3 if ("guide/" in path or "info/" in path) else 2 if path.startswith("4d/") else 0 if path.startswith("keputusan/") else -1
+        hrefs = [self.u(pre), self.u(pre + "?tab=check"), self.u(pre + "?tab=dict"), self.u(pre + "info/")]
         return '<nav class="bnav" aria-label="Main"><div class="bw">' + "".join(
-            f'<a href="{h}"' + (' aria-current="page"' if i == cur else "") + f'>{BN_ICONS[i]}<span>{esc(lab[i])}</span></a>' for i, h in enumerate(hrefs)) + "</div></nav>"
+            f'<a href="{h}"' + (' aria-current="page"' if i == cur else "") + f'>{BN_ICONS[i]}<span>{esc(lab[i])}</span></a>' for i, h in enumerate(hrefs)) + "</div></nav>" + LIVEJS
 
     def crumbs(self, items: list) -> tuple[str, dict]:
         html = " › ".join(f'<a href="{self.u(p)}">{esc(n)}</a>' if p is not None else esc(n) for n, p in items)

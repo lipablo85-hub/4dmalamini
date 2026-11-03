@@ -97,7 +97,7 @@ def prerender_latest(html: str, data: dict) -> str:
     fd = lambda d: datetime.date(int(d[:4]), int(d[4:6]), int(d[6:])).strftime("%a, %-d %b %Y")
     cdf = lambda d: datetime.date(int(d[:4]), int(d[4:6]), int(d[6:])).strftime("(%a) %d-%b-%Y")
     nb = lambda n: f'<button type="button" data-n="{n}">{n}</button>'
-    head = lambda k, name, sub: (f'<div class="sh"><span class="lgw">{('<img class="opl" src="img/op/n-w.webp" width="102" height="25" alt="9 Lotto">' if k in "NP" else f'<img class="opl" src="img/op/{k.lower()}{"-n" if k in "DT" else ""}.webp?v=2" width="40" height="40" alt="">')}</span>'
+    head = lambda k, name, sub: (f'<div class="sh"><span class="lgw">{('<img class="opl" src="img/op/n-w.webp" width="102" height="25" alt="9 Lotto">' if k in "NP" else f'<img class="opl" src="img/op/{k.lower()}{"-n" if k in "DT" else ""}.webp?v=3" width="40" height="40" alt="">')}</span>'
                                  f'<div class="sht"><b>{name} <i>{zh[k]}</i></b><small>{sub}</small></div></div>')
     lb = '<div class="lbar"><span>1st Prize<em>首奖</em></span><span>2nd Prize<em>二奖</em></span><span>3rd Prize<em>三奖</em></span></div>'
     cards, last = [], ""
@@ -252,7 +252,7 @@ def main() -> None:
         title, desc = SP.LANG_META[lang]
         page = (prerender_lang(html, lang).replace("__HTMLLANG__", SP.HTML_LANG[lang]).replace("__CANON__", url[lang])
                 .replace("__TITLE__", H.escape(title)).replace("__DESC__", H.escape(desc)).replace("__OGLOCALE__", locale[lang])
-                .replace("__H1__", H.escape(h1[lang])).replace("<!--SEO-->", SC.block(lang) + SC.faq_ld(lang)).replace('id="nav-guide" href="guide/"', f'id="nav-guide" href="{"" if lang == "en" else lang + "/"}guide/"').replace('id="home" href="./"', f'id="home" href="{"./" if lang == "en" else lang + "/"}"'))
+                .replace("__H1__", H.escape(h1[lang])).replace("<!--SEO-->", SC.block(lang) + SC.faq_ld(lang)).replace('id="nav-guide" href="info/"', f'id="nav-guide" href="{"" if lang == "en" else lang + "/"}info/"').replace('id="home" href="./"', f'id="home" href="{"./" if lang == "en" else lang + "/"}"'))
         f = out / ("index.html" if lang == "en" else f"{lang}/index.html")
         f.parent.mkdir(exist_ok=True)
         f.write_text(page)
@@ -264,6 +264,8 @@ def main() -> None:
     sp.build()
     import guide_pages as GP
     GP.build(sp)
+    import info_pages as IP
+    IP.build(sp)
     n_urls = sp.sitemap(alts)
     print(f"  SEO pages: {len(sp.urls)} static pages, sitemap.xml with {n_urls} URLs, robots.txt, 404.html")
 
