@@ -421,8 +421,22 @@ def main() -> int:
     ap.add_argument("--dist", default="dist")
     ap.add_argument("--date")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--pending", action="store_true", help="print the draws due today that are not saved yet, then exit")
     a = ap.parse_args()
     day = dt.date.fromisoformat(a.date) if a.date else dt.datetime.now(MYT).date()
+    if a.pending:
+        rows = list(csv.DictReader(open(a.csv, encoding="utf-8-sig")))
+        have = {(r["operator"], r["date"]) for r in rows}
+        due = ["GD Lotto 4D", N7, N9] + (["Magnum 4D", "Sports Toto 4D", "Da Ma Cai 1+3D"] if day.weekday() in (2, 5, 6) else [])
+        for name in due:
+            if (name, day.isoformat()) not in have:
+                print(name)
+        xf = Path(a.csv).with_name("extras.json")
+        if day.weekday() in (2, 5, 6):
+            x = json.loads(xf.read_text(encoding="utf-8")).get(day.strftime("%Y%m%d"), {}) if xf.exists() else {}
+            if not (x.get("T", {}).get("d6") and x.get("M", {}).get("jp") and x.get("D", {}).get("b33")):
+                print("extras")
+        return 0
 
     lock = Path(a.csv).with_suffix(".lock")
     if lock.exists() and time.time() - lock.stat().st_mtime < 600:

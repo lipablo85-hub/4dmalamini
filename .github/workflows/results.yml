@@ -1,41 +1,48 @@
-# Fetch tonight's 4D results from the official sites every 5 minutes, 6:55-10:55 pm Malaysia time,
-# plus catch-up runs at 9:30 pm and 11:30 pm. New complete draws are committed to the CSV,
-# then the deploy job rebuilds and publishes the site to Cloudflare Pages.
+# Nightly 4D results. One run checks every minute during draw hours until every draw due today is saved
+# (or the time limit is reached), committing each new result and publishing the site straight away.
+# Started by a schedule below and/or by hand (Actions -> Nightly 4D results -> Run workflow).
 # Jackpots, Toto 5D/6D/lotto and blank prize slots go to extras.json (from check4d.org).
 name: Nightly 4D results
 on:
   schedule:
-    - cron: "55 10 * * *"       # 18:55 MYT standby run (GitHub may start it a few minutes late)
-    - cron: "*/5 11-14 * * *"   # every 5 min, 19:00-22:55 MYT (UTC+8); 9 Lotto also draws at 9pm
-    - cron: "30 13,15 * * *"    # 21:30 and 23:30 MYT
-  workflow_dispatch: {}
+    - cron: "55 10 * * *"   # 18:55 MYT
+    - cron: "40 11 * * *"   # 19:40 MYT backup start
+    - cron: "55 12 * * *"   # 20:55 MYT (9 Lotto 9pm)
+  workflow_dispatch:
+    inputs:
+      minutes:
+        description: "Keep checking for this many minutes"
+        default: "150"
 permissions:
   contents: write
+  actions: write
 concurrency:
   group: results
   cancel-in-progress: false
 jobs:
   fetch:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
-    outputs:
-      changed: ${{ steps.commit.outputs.changed }}
+    timeout-minutes: 200
     steps:
       - uses: actions/checkout@v4
-      - name: Fetch tonight's results
-        run: python3 tools/fetch_results.py --csv malaysia_4d_draws_2021-2026.csv
-      - name: Commit new draws
-        id: commit
+      - name: Check every minute until tonight's draws are in
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MINUTES: ${{ inputs.minutes || '150' }}
         run: |
-          if git diff --quiet -- malaysia_4d_draws_2021-2026.csv extras.json && [ -z "$(git status --porcelain extras.json)" ]; then echo "No new draws"; exit 0; fi
+          CSV=malaysia_4d_draws_2021-2026.csv
           git config user.name "4d-results-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add malaysia_4d_draws_2021-2026.csv extras.json
-          git commit -m "Results $(TZ=Asia/Kuala_Lumpur date +%Y-%m-%d)"
-          git push
-          echo "changed=yes" >> "$GITHUB_OUTPUT"
-  deploy:
-    needs: fetch
-    if: needs.fetch.outputs.changed == 'yes'
-    uses: ./.github/workflows/deploy.yml
-    secrets: inherit
+          end=$(( $(date +%s) + MINUTES * 60 ))
+          while :; do
+            python3 tools/fetch_results.py --csv $CSV || true
+            if ! git diff --quiet -- $CSV extras.json || [ -n "$(git status --porcelain extras.json)" ]; then
+              git add $CSV extras.json
+              git commit -qm "Results $(TZ=Asia/Kuala_Lumpur date '+%Y-%m-%d %H:%M')"
+              git pull -q --rebase origin main && git push -q origin HEAD:main && gh workflow run deploy.yml --ref main && echo "published"
+            fi
+            left=$(python3 tools/fetch_results.py --csv $CSV --pending)
+            [ -z "$left" ] && { echo "all of today's draws are in"; break; }
+            [ $(date +%s) -ge $end ] && { echo "time limit; still waiting for: $left"; break; }
+            sleep 60
+          done
