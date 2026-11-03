@@ -7,9 +7,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
+          curl -sS -m 25 "https://www.4dmalamini.com/api/live?x=$RANDOM" | python3 -c "import sys,json;j=json.load(sys.stdin);v=j['ops'].get('9');print('API9',v)"
           python3 - <<'PY'
           import sys,re;sys.path.insert(0,'tools');import fetch_results as F
-          t=re.sub(r'\s+',' ',F.html_text(F.get('https://9lotto.com/result',{'Referer':'https://9lotto.com/'})))
-          print('PARSE',F.parse_9lotto(t));i=t.find('DRAW NO');print('PAGE',t[i:i+900])
-          l=re.sub(r'\s+',' ',F.html_text(F.get('https://loto4d.com/',{'Referer':'https://loto4d.com/'})));i=l.find('Nine Lotto Date');print('LOTO',l[i:i+500])
+          t=re.sub(r'\s+',' ',F.html_text(F.get('https://9lotto.com/result',{'Referer':'https://9lotto.com/'})));i=t.find('DRAW NO');print('PAGE9',t[i:i+420])
           PY
