@@ -10,15 +10,10 @@ jobs:
       - run: |
           mkdir probe && cd probe
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"
-          f(){ curl -sSL -A "$UA" -e "$3" --max-time 30 -o "$1" "$2" || echo "fail $1"; }
-          f j3.html https://superj3.net/ https://superj3.net/
-          f today.html https://4d.today/super-j3-j9-jackpot/ https://4d.today/
-          f c4d.html https://www.check4d.org/ https://www.check4d.org/
-          f loto.html https://loto4d.com/ https://loto4d.com/
-          for u in $(grep -oE '(src|href)="[^"]+\.js[^"]*"' j3.html | sed -E 's/^(src|href)="//;s/"$//' | head -12); do
-            case "$u" in http*) url="$u";; //*) url="https:$u";; /*) url="https://superj3.net$u";; *) url="https://superj3.net/$u";; esac
-            n=$(echo "$url" | md5sum | cut -c1-8); f "js_$n.js" "$url" https://superj3.net/; echo "$url -> js_$n.js" >> jslist.txt
-          done
+          K=e0a5d3fsdfdsghhg18b0c8bgfdgd7c06e
+          curl -sSL -A "$UA" -e https://superj3.net/ -o landing.json "https://superj3.net/data/data-api.php?op=get_landing_info&api_key=$K&ao=1"
+          for dt in 15 21; do curl -sSL -A "$UA" -e https://superj3.net/ -o last_$dt.json "https://superj3.net/data/data-api.php?op=get_last_result&dt=$dt&api_key=$K"; done
+          curl -sSL -A "$UA" -e https://superj3.net/ -o last.json "https://superj3.net/data/data-api.php?op=get_last_result&api_key=$K"
           ls -la
           git init -q -b probe && git add -A && git -c user.name=p -c user.email=p@l commit -qm probe
           git push -fq "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe:probe-data
