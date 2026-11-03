@@ -682,7 +682,7 @@ let LV={},LVS="",LPT=0;
 function livePart(k,n){const key=k==="N"||k==="P"?"9":k,v=LV[key];if(!v||v.d!==n.ymd)return null;
   if(key==="9"){const o=LIVE.find(x=>x.k==="N"),done7=o&&o.D.length&&o.D[o.D.length-1].d===n.ymd;if((k==="N")===!!done7)return null;if(k==="P"&&n.m<1255)return null}
   return v}
-function lpoll(){if(document.hidden)return;fetch("/api/live?"+Math.floor(Date.now()/10000),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(!j||!j.ops)return;const s_=JSON.stringify(j.ops);if(s_===LVS)return;LVS=s_;LV=j.ops;
+function lpoll(){if(document.hidden)return;{const L=liveNow();if(!L||!L.wait.some(k=>L.n.m>=(DRAWM[k]||1140)-2))return}fetch("/api/live?"+Math.floor(Date.now()/20000),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(!j||!j.ops)return;const s_=JSON.stringify(j.ops);if(s_===LVS)return;LVS=s_;LV=j.ops;
   const L=liveNow();if(!L)return;let add=0;
   L.wait.forEach(k=>{const v=livePart(k,L.n);if(!v)return;const sp=v.sl.filter(Boolean);if(v.top.every(Boolean)&&sp.length===10&&v.co.length===10&&v.co.every(Boolean)){const o=LIVE.find(x=>x.k===k);if(!o)return;
     let no=v.no;if(!no&&o.D.length){const m=String(o.D[o.D.length-1].no).match(/^(\d+)\/(\d+)$/);if(m)no=(+m[1]+1)+"/"+L.n.ymd.slice(0,4)}
@@ -691,7 +691,7 @@ function lpoll(){if(document.hidden)return;fetch("/api/live?"+Math.floor(Date.no
   renderLatest()}).catch(()=>{})}
 function liveStop(){clearInterval(LT);clearInterval(PT);clearInterval(LPT);LT=PT=LPT=0}
 function liveTick(){const L=liveNow();if(!L||!L.wait.length){liveStop();if(document.querySelector(".rc.wait"))renderLatest();return}if([...document.querySelectorAll(".rc.wait:not(.live) .cd")].some(e=>L.n.m>=(DRAWM[e.dataset.k]||1140))){renderLatest();return}document.querySelectorAll(".rc.wait .cd").forEach(e=>e.textContent=liveMsg(L.n,e.dataset.k))}
-function armLive(){const L=liveNow();if(!L||!L.wait.length){liveStop();return}if(!LT)LT=setInterval(liveTick,1000);if(!PT){PT=setInterval(poll,45000);poll()}if(!LPT){LPT=setInterval(lpoll,12000);lpoll()}}
+function armLive(){const L=liveNow();if(!L||!L.wait.length){liveStop();return}if(!LT)LT=setInterval(liveTick,1000);if(!PT){PT=setInterval(poll,45000);poll()}if(!LPT){LPT=setInterval(lpoll,25000);lpoll()}}
 function poll(){if(document.hidden)return;fetch("live.json?"+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(!j)return;let add=0;if(j.X&&JSON.stringify(j.X)!==JSON.stringify(XT)){XT=j.X;add++}
   LIVE.forEach(o=>{const last=o.D.length?o.D[o.D.length-1].d:"";(j[o.k]||"").split("|").filter(Boolean).forEach(s=>{const a=s.split(",");if(a[0]>last&&a[2]&&a[2].length===92){const n=[];for(let i=0;i<92;i+=4)n.push(a[2].slice(i,i+4));o.D.push({d:a[0],no:a[1],n});add++}})});
   if(add){const old=MAX;DATES=[...new Set(LIVE.flatMap(o=>o.D.map(x=>x.d)))].sort();MAX=DATES[DATES.length-1];if(st.to===old)st.to=MAX;IX=null;renderLatest()}}).catch(()=>{})}

@@ -1,5 +1,5 @@
 // GET /api/live : numbers drawn so far tonight (partial while a draw is in progress).
-// Reads check4d.org (Magnum, Da Ma Cai, Sports Toto, GD) and loto4d.com (9 Lotto, GD backup); cached 8 s at the edge.
+// Reads check4d.org (Magnum, Da Ma Cai, Sports Toto, GD) and loto4d.com (9 Lotto, GD backup); cached 15 s at the edge.
 const SRC = { c4d: "https://www.check4d.org/", loto: "https://loto4d.com/" };
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36";
 
@@ -29,7 +29,7 @@ async function grab(url, ctx) {
   if (!r) {
     const up = await fetch(url, { headers: { "User-Agent": UA, Referer: url }, cf: { cacheTtl: 0 } });
     if (!up.ok) return "";
-    r = new Response(await up.text(), { headers: { "Cache-Control": "max-age=8" } });
+    r = new Response(await up.text(), { headers: { "Cache-Control": "max-age=15" } });
     ctx.waitUntil(cache.put(key, r.clone()));
   }
   return text(await r.text());
@@ -49,5 +49,5 @@ export async function onRequestGet(ctx) {
     put("G", parse(block(l, "Grand Dragon 4D", E)));
     put("9", parse(block(l, "Nine Lotto Date", E)));
   }
-  return new Response(JSON.stringify(out), { headers: { "Content-Type": "application/json", "Cache-Control": "public, max-age=8" } });
+  return new Response(JSON.stringify(out), { headers: { "Content-Type": "application/json", "Cache-Control": "public, max-age=15" } });
 }
