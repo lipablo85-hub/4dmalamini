@@ -12,13 +12,60 @@ OPS = [  # slug, key, name, colour, official how-to-play URL
     ("da-ma-cai-1-3d", "D", "Da Ma Cai 1+3D", "#4C8DFF", "https://www.damacai.com.my/how-to-play/"),
 ]
 
-CSS = """.gd h2{display:flex;align-items:center;gap:10px}.gd h2 i{display:inline-grid;place-items:center;min-width:28px;height:28px;border-radius:50%;background:#E9C46B;color:#07142B;font-style:normal;font-size:14px}
-.gd p,.gd li{color:#D5DCEA}.gd ul{padding-left:20px}.gd li{margin:4px 0}.gd strong{color:#F8F4E8}
-.gd table td:not(:first-child),.gd table th:not(:first-child){text-align:right}.gd .num{font-variant-numeric:tabular-nums;font-weight:800;color:#F8F4E8}
-.note{background:#172A4D;border-left:4px solid #E9C46B;border-radius:10px;padding:12px 14px;margin:14px 0;font-size:14px}
-.opg{display:grid;gap:10px;margin-top:10px}.opg a{display:flex;align-items:center;justify-content:space-between;min-height:56px;padding:0 16px;border-radius:14px;background:#0F1F3D;border:1px solid #233862;border-left:5px solid var(--c);color:#F8F4E8;text-decoration:none;font-weight:800}
-.opg a span{color:#A9B4CC;font-weight:600;font-size:13px}.lng{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}.lng a{min-height:36px;display:inline-flex;align-items:center;padding:0 12px;border-radius:999px;background:#172A4D;color:#F8F4E8;text-decoration:none;font-size:13px;font-weight:700}.lng a[aria-current]{background:#F8F4E8;color:#07142B}
-.toc{display:flex;gap:8px;overflow-x:auto;padding:4px 0 8px;scrollbar-width:none}.toc a{flex:none;min-height:40px;display:inline-flex;align-items:center;padding:0 14px;border-radius:999px;border:1px solid #233862;color:#F8F4E8;text-decoration:none;font-size:14px}"""
+CSS = """@font-face{font-family:"Jakarta";src:url(__FONT__) format("woff2");font-weight:200 800;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+body{font-family:"Jakarta",system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans Tamil","PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.gd{font-size:16px;line-height:1.7;color:#D5DCEA;padding-bottom:24px}
+.gd p{margin:0 0 12px}.gd strong{color:#F8F4E8;font-weight:700}
+.gd a{color:#E9C46B;text-underline-offset:3px;text-decoration-thickness:1px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:14px 0 4px}.top .bc{margin:0}
+.lng{display:inline-flex;gap:2px;background:#0F1F3D;border:1px solid #233862;border-radius:999px;padding:3px}
+.lng a{min-width:40px;height:32px;display:inline-grid;place-items:center;padding:0 10px;border-radius:999px;color:#A9B4CC;text-decoration:none;font-size:12px;font-weight:800}
+.lng a[aria-current]{background:#F8F4E8;color:#07142B}
+.hero{margin:18px 0 6px;padding:22px 18px;border-radius:22px;background:radial-gradient(120% 140% at 0% 0%,#1C3567 0%,#0F1F3D 55%,#0B1934 100%);border:1px solid #233862}
+.hero .kick{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#E9C46B;margin-bottom:8px}
+.gd h1{font-size:clamp(26px,7vw,34px);line-height:1.15;letter-spacing:-.02em;font-weight:800;margin:0;color:#F8F4E8}
+.gd h1 small{display:block;margin-top:10px;font-size:15px;line-height:1.55;font-weight:500;color:#A9B4CC;letter-spacing:0}
+.toc{position:sticky;top:0;z-index:3;display:flex;gap:8px;overflow-x:auto;margin:0 -16px;padding:10px 16px;background:rgba(7,20,43,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);scrollbar-width:none;border-bottom:1px solid #1A2C50}
+.toc::-webkit-scrollbar{display:none}
+.toc a{flex:none;min-height:38px;display:inline-flex;align-items:center;gap:6px;padding:0 14px;border-radius:999px;background:#0F1F3D;border:1px solid #233862;color:#F8F4E8;text-decoration:none;font-size:13px;font-weight:700}
+.toc a b{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#E9C46B;color:#07142B;font-size:11px}
+.st{scroll-margin-top:70px;margin-top:16px;padding:20px 18px 8px;border-radius:20px;background:#0F1F3D;border:1px solid #1E3361}
+.st h2{display:grid;grid-template-columns:34px 1fr;align-items:center;gap:12px;margin:0 0 12px;font-size:19px;line-height:1.3;font-weight:800;letter-spacing:-.01em;color:#F8F4E8}
+.st h2 i{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:#E9C46B;color:#07142B;font-style:normal;font-size:16px;font-weight:800}
+.gd ul{list-style:none;padding:0;margin:0 0 14px}
+.gd li{position:relative;padding:0 0 0 22px;margin:0 0 10px}
+.gd li::before{content:"";position:absolute;left:4px;top:.68em;width:7px;height:7px;border-radius:50%;background:#E9C46B}
+.tbl{margin:4px 0 14px;border-radius:16px;overflow:hidden;border:1px solid #233862;background:#0B1934}
+.tbl table{width:100%;border-collapse:collapse;font-size:15px}
+.tbl caption{caption-side:top;text-align:left;padding:12px 14px 4px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#A9B4CC}
+.tbl th,.tbl td{padding:12px 14px;border-bottom:1px solid #1A2C50;text-align:left;vertical-align:middle}
+.tbl tr:last-child th,.tbl tr:last-child td{border-bottom:0}
+.tbl thead th{font-size:12px;font-weight:800;color:#A9B4CC;background:#0F1F3D;text-transform:uppercase;letter-spacing:.04em}
+.tbl tbody th{font-weight:600;color:#F8F4E8;font-size:14px}
+.tbl .n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:800;color:#F8F4E8}
+.tbl .n.big{color:#E9C46B}.tbl .n.na{color:#5A6A8C;font-weight:600}
+.tbl .mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;letter-spacing:.06em;color:#E9C46B}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 14px}
+.duo div{padding:14px;border-radius:14px;background:#0B1934;border:1px solid #233862;font-size:14px;line-height:1.5}
+.duo b{display:block;font-size:17px;color:#F8F4E8;margin-bottom:4px}.duo .cnt{display:inline-block;margin-top:8px;padding:2px 8px;border-radius:999px;background:#172A4D;color:#E9C46B;font-size:12px;font-weight:800}
+.note{position:relative;background:#13254A;border:1px solid #2A4475;border-radius:14px;padding:14px 14px 14px 48px;margin:4px 0 14px;font-size:15px;line-height:1.6}
+.note::before{content:"i";position:absolute;left:14px;top:15px;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#E9C46B;color:#07142B;font-weight:800;font-size:13px;font-style:italic}
+.note.warn::before{content:"!";font-style:normal;background:#FF8A65}
+.opg{display:grid;gap:10px;margin:0 0 14px}
+.opg a{display:grid;grid-template-columns:40px 1fr 18px;align-items:center;gap:12px;min-height:64px;padding:10px 14px;border-radius:16px;background:#0B1934;border:1px solid #233862;border-left:5px solid var(--c);color:#F8F4E8;text-decoration:none}
+.opg img{width:40px;height:40px;object-fit:contain}.opg b{display:block;font-size:16px;line-height:1.3;color:#F8F4E8}.opg span span{display:block;font-size:13px;color:#A9B4CC;font-weight:500}
+.opg a::after{content:"›";font-size:24px;color:#A9B4CC;line-height:1}
+.ext{display:grid;gap:8px;margin:0 0 14px}.ext a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:50px;padding:0 14px;border-radius:14px;background:#0B1934;border:1px solid #233862;color:#F8F4E8;text-decoration:none;font-weight:600;font-size:15px}
+.ext a::after{content:"↗";color:#E9C46B}
+.cta{display:grid;gap:10px;margin:18px 0}
+.cta a{display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:14px;font-weight:800;text-decoration:none;font-size:16px;text-align:center;padding:0 16px}
+.cta .p{background:#E9C46B;color:#07142B}.cta .s{background:#172A4D;color:#F8F4E8;border:1px solid #233862}
+.ophero{display:flex;align-items:center;gap:14px;margin:18px 0 6px;padding:18px;border-radius:22px;background:#0F1F3D;border:1px solid #233862;box-shadow:inset 0 5px 0 var(--c)}
+.ophero img{width:56px;height:56px;object-fit:contain;flex:none}
+.ophero h1{font-size:clamp(22px,6vw,30px)}.ophero h1 small{margin-top:6px;font-size:14px}
+.back{display:inline-flex;align-items:center;min-height:44px;font-weight:700}
+@media(min-width:720px){.st{padding:26px 26px 12px}.hero{padding:30px 28px}.cta{grid-template-columns:1fr 1fr}.toc{margin:0;border-radius:0 0 14px 14px}}
+@media(max-width:380px){.duo{grid-template-columns:1fr}.tbl th,.tbl td{padding:11px 10px}}"""
 
 # ---------------- text per language ----------------
 T = {
@@ -52,7 +99,7 @@ T = {
        "Da Ma Cai's 4D game is called 1+3D. Its bet types use letters: <strong>ABC</strong> is Big (all 23 numbers) and <strong>A</strong> is Small (1st, 2nd, 3rd only). Special prizes are called <strong>Starter</strong>.",
        ["Minimum RM1 for a straight bet.", "Box: B24 / B12 / B6 / B4 cost RM24 / RM12 / RM6 / RM4 and pay the full prize.", "iBox: IB24 / IB12 / IB6 / IB4 from RM1; e.g. an IB24 Big 1st prize pays RM105 per RM1.", "Roll bet from RM10; Lucky Pick (random number) from RM1."]),
   ),
-  back="← Back to 4D Guide", res="See the latest results", lnk="Official page",
+  checkbtn="Check a 4D number", back="← Back to 4D Guide", res="See the latest results", lnk="Official page",
 ),
 "ms": dict(
   home="Utama", guide="Panduan 4D", title="Cara Main 4D di Malaysia: Big, Small, Box & Hadiah",
@@ -84,7 +131,7 @@ T = {
        "Permainan 4D Da Ma Cai dipanggil 1+3D. Jenis pertaruhannya guna huruf: <strong>ABC</strong> ialah Big (semua 23 nombor) dan <strong>A</strong> ialah Small (hadiah 1, 2, 3 sahaja). Hadiah Special dipanggil <strong>Starter</strong>.",
        ["Minimum RM1 untuk pertaruhan straight.", "Box: B24 / B12 / B6 / B4 berharga RM24 / RM12 / RM6 / RM4 dan dibayar hadiah penuh.", "iBox: IB24 / IB12 / IB6 / IB4 dari RM1; cth. IB24 Big hadiah pertama membayar RM105 setiap RM1.", "Roll dari RM10; Lucky Pick (nombor rawak) dari RM1."]),
   ),
-  back="← Kembali ke Panduan 4D", res="Lihat keputusan terkini", lnk="Halaman rasmi",
+  checkbtn="Semak nombor 4D", back="← Kembali ke Panduan 4D", res="Lihat keputusan terkini", lnk="Halaman rasmi",
 ),
 "zh": dict(
   home="首页", guide="万字攻略", title="马来西亚万字怎么玩：大字、小字、Box 与奖金说明",
@@ -116,7 +163,7 @@ T = {
        "大马彩的万字游戏叫 1+3D。注项用字母表示：<strong>ABC</strong> 是大字（23 个号码），<strong>A</strong> 是小字（只有头、二、三奖）。特别奖在大马彩叫 <strong>入围奖（Starter）</strong>。",
        ["正字最低 RM1。", "Box：B24 / B12 / B6 / B4 分别 RM24 / RM12 / RM6 / RM4，中奖拿全额奖金。", "iBox：IB24 / IB12 / IB6 / IB4 从 RM1 起；例如 IB24 大字头奖每 RM1 得 RM105。", "Roll 从 RM10 起；Lucky Pick（电脑选号）从 RM1 起。"]),
   ),
-  back="← 返回万字攻略", res="查看最新成绩", lnk="官方网页",
+  checkbtn="查询万字号码", back="← 返回万字攻略", res="查看最新成绩", lnk="官方网页",
 ),
 "ta": dict(
   home="முகப்பு", guide="4D வழிகாட்டி", title="மலேசியாவில் 4D விளையாடுவது எப்படி: Big, Small, Box & பரிசுகள்",
@@ -148,7 +195,7 @@ T = {
        "Da Ma Cai-யின் 4D விளையாட்டின் பெயர் 1+3D. பந்தய வகைகள் எழுத்துகளால்: <strong>ABC</strong> = Big (23 எண்கள்), <strong>A</strong> = Small (முதல் 3 மட்டும்). சிறப்புப் பரிசு இங்கு <strong>Starter</strong> எனப்படும்.",
        ["Straight பந்தயம் குறைந்தது RM1.", "Box: B24 / B12 / B6 / B4 விலை RM24 / RM12 / RM6 / RM4, முழுப் பரிசு.", "iBox: IB24 / IB12 / IB6 / IB4 RM1 முதல்; எ.கா. IB24 Big முதல் பரிசு RM1-க்கு RM105.", "Roll RM10 முதல்; Lucky Pick (சீரற்ற எண்) RM1 முதல்."]),
   ),
-  back="← 4D வழிகாட்டிக்குத் திரும்ப", res="சமீபத்திய முடிவுகள்", lnk="அதிகாரப்பூர்வ பக்கம்",
+  checkbtn="4D எண்ணைச் சரிபார்", back="← 4D வழிகாட்டிக்குத் திரும்ப", res="சமீபத்திய முடிவுகள்", lnk="அதிகாரப்பூர்வ பக்கம்",
 ),
 }
 
@@ -163,11 +210,21 @@ FOOT = {
 
 def build(site) -> None:
     """site: seo_pages.Site (already built, so site.css exists)."""
+    import hashlib, shutil
+    from pathlib import Path
     (site.out / "assets").mkdir(exist_ok=True)
-    import hashlib
-    css_name = "assets/g." + hashlib.sha256(CSS.encode()).hexdigest()[:8] + ".css"
-    (site.out / css_name).write_text(CSS)
-    cssl = f'<link rel="stylesheet" href="{site.u(css_name)}">'
+    font = Path(__file__).with_name("brand") / "fonts" / "jakarta-latin.woff2"
+    font_url, preload = "", ""
+    if font.exists():
+        fname = "assets/jakarta." + hashlib.sha256(font.read_bytes()).hexdigest()[:8] + ".woff2"
+        shutil.copy2(font, site.out / fname)
+        font_url = site.u(fname)
+        preload = f'<link rel="preload" href="{font_url}" as="font" type="font/woff2" crossorigin>'
+    css = CSS.replace("__FONT__", font_url or "about:blank")
+    css_name = "assets/g." + hashlib.sha256(css.encode()).hexdigest()[:8] + ".css"
+    (site.out / css_name).write_text(css)
+    cssl = preload + f'<link rel="stylesheet" href="{site.u(css_name)}">'
+    logo = lambda k: site.u(f"img/op/{k.lower()}.webp")
 
     def path(lang, sub=""):
         return LANGS[lang][1] + "guide/" + sub
@@ -176,10 +233,11 @@ def build(site) -> None:
         h = "".join(f'<link rel="alternate" hreflang="{LANGS[l][0]}" href="{site.site}{path(l, sub)}">' for l in LANGS)
         return h + f'<link rel="alternate" hreflang="x-default" href="{site.site}{path("en", sub)}">'
 
-    def lang_bar(cur, sub=""):
+    def top(cur, crumbs_html, sub=""):
         names = {"en": "EN", "ms": "BM", "zh": "中文", "ta": "தமிழ்"}
-        return '<nav class="lng" aria-label="Language">' + "".join(
-            f'<a href="{site.u(path(l, sub))}" hreflang="{LANGS[l][0]}"' + (' aria-current="page"' if l == cur else "") + f'>{names[l]}</a>' for l in LANGS) + "</nav>"
+        bar = '<nav class="lng" aria-label="Language">' + "".join(
+            f'<a href="{site.u(path(l, sub))}" hreflang="{LANGS[l][0]}" lang="{LANGS[l][0]}"' + (' aria-current="page"' if l == cur else "") + f'>{names[l]}</a>' for l in LANGS) + "</nav>"
+        return f'<div class="top">{crumbs_html}{bar}</div>'
 
     def foot(lang):
         x = T[lang]
@@ -192,26 +250,31 @@ def build(site) -> None:
         links = {"home": home, "check": home + "?tab=check", "dict": home + "?tab=dict"}
         hl = LANGS[lang][0]
         bc, bld = site.crumbs([(x["home"], LANGS[lang][1]), (x["guide"], None)])
-        table = (f'<div class="card"><table><caption class="lbl" style="text-align:left;caption-side:top;padding-bottom:6px">{esc(x["tcap"])}</caption>'
-                 f'<thead><tr><th scope="col">{esc(x["tprize"])}</th><th scope="col">{esc(x["tbig"])}</th><th scope="col">{esc(x["tsmall"])}</th></tr></thead><tbody>'
-                 + "".join(f'<tr><th scope="row" style="font-size:14px;color:#F8F4E8">{esc(r)}</th><td class="num">{"RM" + b}</td><td class="num">{("RM" + s) if s != "—" else s}</td></tr>' for r, (b, s) in zip(x["rows"], PRIZES))
+        table = (f'<div class="tbl"><table><caption>{esc(x["tcap"])}</caption>'
+                 f'<thead><tr><th scope="col">{esc(x["tprize"])}</th><th scope="col" class="n">{esc(x["tbig"])}</th><th scope="col" class="n">{esc(x["tsmall"])}</th></tr></thead><tbody>'
+                 + "".join(f'<tr><th scope="row">{esc(r)}</th><td class="n{" big" if i == 0 else ""}">RM{b}</td><td class="n{" big" if i == 0 else ""}{" na" if s_ == "—" else ""}">{("RM" + s_) if s_ != "—" else "—"}</td></tr>'
+                           for i, (r, (b, s_)) in enumerate(zip(x["rows"], PRIZES)))
                  + "</tbody></table></div>")
-        perm = (f'<div class="card"><table><caption class="lbl" style="text-align:left;caption-side:top;padding-bottom:6px">{esc(x["pcap"])}</caption><thead><tr>'
-                + "".join(f'<th scope="col">{esc(h)}</th>' for h in x["pt"]) + "</tr></thead><tbody>"
-                + "".join(f'<tr><td>{esc(a)}</td><td class="mono">{b}</td><td class="num">{c}</td></tr>' for a, b, c in x["prow"]) + "</tbody></table></div>")
+        perm = (f'<div class="tbl"><table><caption>{esc(x["pcap"])}</caption><thead><tr>'
+                + "".join(f'<th scope="col"{" class=\"n\"" if k == 2 else ""}>{esc(h)}</th>' for k, h in enumerate(x["pt"])) + "</tr></thead><tbody>"
+                + "".join(f'<tr><th scope="row">{esc(a)}</th><td class="mono">{b}</td><td class="n">{c}</td></tr>' for a, b, c in x["prow"]) + "</tbody></table></div>")
+        duo = (f'<div class="duo"><div>{x["big"]}<span class="cnt">23 / 23</span></div><div>{x["small"]}<span class="cnt">3 / 23</span></div></div>')
         opg = '<div class="opg">' + "".join(
-            f'<a href="{site.u(path(lang, slug + "/"))}" style="--c:{c}">{esc(name)}<span>{esc(x["opdesc"][k])}</span></a>' for slug, k, name, c, _ in OPS) + "</div>"
-        offl = "<ul>" + "".join(f'<li><a href="{u}" target="_blank" rel="noopener nofollow">{esc(name)} — {esc(x["lnk"])}</a></li>' for _, _, name, _, u in OPS) + "</ul>"
-        toc = '<nav class="toc" aria-label="Contents">' + "".join(f'<a href="#{i}">{esc(n)}</a>' for i, n in x["toc"]) + "</nav>"
-        sec = lambda i, n, ttl: f'<h2 id="{i}"><i>{n}</i>{esc(ttl)}</h2>'
-        body = (bc + lang_bar(lang) + f'<article class="gd"><h1>{esc(x["h1"])}<small>{esc(x["sub"])}</small></h1>{toc}'
-                + sec("pick", 1, x["s1"]) + f'<p>{x["p1"].format(**links)}</p>'
-                + sec("bigsmall", 2, x["s2"]) + f'<p>{x["p2"]}</p><ul><li>{x["big"]}</li><li>{x["small"]}</li></ul>{table}<p class="note">{x["ex"]}</p>'
-                + sec("ways", 3, x["s3"]) + f'<p>{x["p3"]}</p><ul>' + "".join(f"<li>{w}</li>" for w in x["ways"]) + f'</ul>{perm}<p class="note">{x["pnote"]}</p>'
-                + sec("odds", 4, x["s4"]) + f'<p>{x["p4"]}</p>'
-                + sec("days", 5, x["s5"]) + f'<p>{x["p5"].format(**links)}</p>'
-                + sec("rules", 6, x["s6"]) + "<ul>" + "".join(f"<li>{r}</li>" for r in x["rules"]) + "</ul>"
-                + f'<h2>{esc(x["s7"])}</h2>{opg}<h2>{esc(x["s8"])}</h2>{offl}<p class="note">{esc(x["official"])}</p></article>')
+            f'<a href="{site.u(path(lang, slug + "/"))}" style="--c:{c}"><img src="{logo(k)}" width="40" height="40" alt="" loading="lazy"><span><b>{esc(name)}</b><span>{esc(x["opdesc"][k])}</span></span></a>'
+            for slug, k, name, c, _ in OPS) + "</div>"
+        ext = '<div class="ext">' + "".join(f'<a href="{u}" target="_blank" rel="noopener nofollow">{esc(name)} — {esc(x["lnk"])}</a>' for _, _, name, _, u in OPS) + "</div>"
+        toc = '<nav class="toc" aria-label="Contents">' + "".join(f'<a href="#{i}"><b>{n + 1}</b>{esc(t_)}</a>' for n, (i, t_) in enumerate(x["toc"])) + "</nav>"
+        sec = lambda i, n, ttl, inner: f'<section class="st" id="{i}" aria-labelledby="{i}-h"><h2 id="{i}-h"><i>{n}</i>{esc(ttl)}</h2>{inner}</section>'
+        body = (top(lang, bc) + f'<article class="gd"><div class="hero"><span class="kick">{esc(x["guide"])}</span><h1>{esc(x["h1"])}<small>{esc(x["sub"])}</small></h1></div>{toc}'
+                + sec("pick", 1, x["s1"], f'<p>{x["p1"].format(**links)}</p>')
+                + sec("bigsmall", 2, x["s2"], f'<p>{x["p2"]}</p>{duo}{table}<p class="note">{x["ex"]}</p>')
+                + sec("ways", 3, x["s3"], f'<p>{x["p3"]}</p><ul>' + "".join(f"<li>{w}</li>" for w in x["ways"]) + f'</ul>{perm}<p class="note">{x["pnote"]}</p>')
+                + sec("odds", 4, x["s4"], f'<p>{x["p4"]}</p>')
+                + sec("days", 5, x["s5"], f'<p>{x["p5"].format(**links)}</p>')
+                + sec("rules", 6, x["s6"], "<ul>" + "".join(f"<li>{r}</li>" for r in x["rules"]) + "</ul>")
+                + f'<section class="st"><h2 style="grid-template-columns:1fr">{esc(x["s7"])}</h2>{opg}</section>'
+                + f'<section class="st"><h2 style="grid-template-columns:1fr">{esc(x["s8"])}</h2>{ext}<p class="note warn">{esc(x["official"])}</p></section>'
+                + f'<div class="cta"><a class="p" href="{home}">{esc(x["res"])}</a><a class="s" href="{links["check"]}">{esc(x["checkbtn"])}</a></div></article>')
         art = {"@context": "https://schema.org", "@type": "Article", "headline": x["h1"], "inLanguage": hl, "description": x["desc"],
                "author": {"@type": "Organization", "name": "4D Malam Ini", "url": site.site}, "publisher": {"@type": "Organization", "name": "4D Malam Ini"}}
         site.page(path(lang), x["title"] + " | 4D Malam Ini", x["desc"], body, lang=hl, ld=[bld, art], head=cssl + alts(), foot=foot(lang))
@@ -219,12 +282,11 @@ def build(site) -> None:
         for slug, k, name, c, url in OPS:
             ttl, dsc, intro, pts = x["op"][k]
             bc, bld = site.crumbs([(x["home"], LANGS[lang][1]), (x["guide"], path(lang)), (name, None)])
-            body = (bc + lang_bar(lang, slug + "/") + f'<article class="gd"><h1 style="border-left:6px solid {c};padding-left:12px">{esc(ttl)}<small>{esc(x["opdesc"][k])}</small></h1>'
-                    f'<p>{intro}</p><ul>' + "".join(f"<li>{p}</li>" for p in pts) + f'</ul>{table}'
-                    f'<p class="note">{esc(x["official"])}</p>'
-                    f'<p><a class="btn" href="{url}" target="_blank" rel="noopener nofollow">{esc(name)} — {esc(x["lnk"])} ↗</a></p>'
-                    f'<p><a class="btn" style="background:#172A4D;color:#F8F4E8" href="{home}#rc-{k}">{esc(x["res"])}</a></p>'
-                    f'<p><a href="{site.u(path(lang))}">{esc(x["back"])}</a></p></article>')
+            body = (top(lang, bc, slug + "/") + f'<article class="gd"><div class="ophero" style="--c:{c}"><img src="{logo(k)}" width="56" height="56" alt="{esc(name)}"><h1>{esc(ttl)}<small>{esc(x["opdesc"][k])}</small></h1></div>'
+                    f'<section class="st"><p>{intro}</p><ul>' + "".join(f"<li>{p}</li>" for p in pts) + f'</ul>{table}<p class="note warn">{esc(x["official"])}</p></section>'
+                    f'<div class="cta"><a class="p" href="{url}" target="_blank" rel="noopener nofollow">{esc(name)} — {esc(x["lnk"])} ↗</a>'
+                    f'<a class="s" href="{home}#rc-{k}">{esc(x["res"])}</a></div>'
+                    f'<a class="back" href="{site.u(path(lang))}">{esc(x["back"])}</a></article>')
             art = {"@context": "https://schema.org", "@type": "Article", "headline": ttl, "inLanguage": hl, "description": dsc,
                    "author": {"@type": "Organization", "name": "4D Malam Ini", "url": site.site}}
             site.page(path(lang, slug + "/"), ttl + " | 4D Malam Ini", dsc, body, lang=hl, ld=[bld, art], head=cssl + alts(slug + "/"), foot=foot(lang))
