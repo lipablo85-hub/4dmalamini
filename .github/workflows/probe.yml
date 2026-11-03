@@ -11,17 +11,10 @@ jobs:
           mkdir probe && cd probe
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"
           f(){ curl -sSL -A "$UA" -e "$3" --max-time 30 -o "$1" "$2" || echo "fail $1"; ls -la "$1" || true; }
-          f toto_m.html "https://m.sportstoto.com.my/" https://m.sportstoto.com.my/
-          f toto_api.html "https://www.sportstoto.com.my/api/results" https://www.sportstoto.com.my/
-          f check4d.html "https://www.check4d.org/" https://www.check4d.org/
-          f check4d_sp.html "https://www.check4d.org/sabah-sarawak-4d-results" https://www.check4d.org/
-          f 4dyes.html "https://4dyes3.com/en/" https://4dyes3.com/
-          f 4dtoday.html "https://4d.today/" https://4d.today/
-          f 4d2u.html "https://4d2ulive.com/" https://4d2ulive.com/
-          f 4dmoon.html "https://www.4dmoon.com/" https://www.4dmoon.com/
-          f live4d2u.html "https://live4d2u.net/" https://live4d2u.net/
-          f 4dresult88.html "https://www.4dresult88.com/" https://www.4dresult88.com/
-          f gd4d.html "https://gd4d.co/en/" https://gd4d.co/
+          f gd.html "https://gdlotto.net/results/today/" https://gdlotto.net/
+          f 9lotto.html "https://9lotto.com/result" https://9lotto.com/
+          f gd4d_9l.html "https://gd4d.co/en/9-lotto-4d" https://gd4d.co/
+          f 4dyes_9l.html "https://4dyes3.com/en/9lotto" https://4dyes3.com/
       - run: |
           cd probe && git init -q -b probe && git add -A && git -c user.name=probe -c user.email=probe@local commit -qm probe
           git push -fq "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe:probe-data
