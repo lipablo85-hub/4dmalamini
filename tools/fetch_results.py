@@ -410,7 +410,51 @@ def fetch_9lotto_7pm(day: dt.date) -> dict | None:
     return _fetch9(day, 7)
 
 
-FETCHERS = [("Magnum 4D", fetch_magnum), ("Sports Toto 4D", fetch_toto), ("Da Ma Cai 1+3D", fetch_damacai), ("GD Lotto 4D", fetch_gd), (N7, fetch_9lotto_7pm)]
+# ---------- Super J3 & J9: superj3.net JSON feed, two sessions a day (3pm = "J3", 9pm = "J9") ----------
+J3, J9 = "Super J3 3PM", "Super J9 9PM"
+J3KEY = "e0a5d3fsdfdsghhg18b0c8bgfdgd7c06e"   # public key embedded in superj3.net's own page
+_J3: dict = {}
+
+
+def j3_landing() -> dict:
+    if "j" not in _J3:
+        _J3["j"] = json.loads(get(f"https://superj3.net/data/data-api.php?op=get_landing_info&api_key={J3KEY}&ao=1", {"Referer": "https://superj3.net/"}))
+    return _J3["j"]
+
+
+def parse_j3(r: dict) -> dict | None:
+    """One superj3.net draw -> our row; SP A-M (blanks "-"), CS N-W."""
+    top = [d4(r.get(k, "")) for k in ("FIRST", "SECOND", "THIRD")]
+    sp = [d4(v) for v in (r.get("SP") or {}).values()]
+    co = [d4(v) for v in (r.get("CS") or {}).values()]
+    sp, co = [x for x in sp if x], [x for x in co if x]
+    if not complete(top, sp, co):
+        return None
+    return {"top": top, "sp": sp, "co": co, "draw_no": ""}
+
+
+def _fetch_j(day: dt.date, dtk: str, name: str) -> dict | None:
+    now = dt.datetime.now(MYT)
+    if day == now.date() and now.hour < int(dtk):
+        return None
+    j = j3_landing()
+    r = (j.get("last_result") or {}).get(f"{day:%Y%m%d}_{dtk}")
+    if not r:
+        want = ("3PM" if dtk == "15" else "9PM")
+        r = next((x for x in j.get("past_results") or [] if x.get("DATE", "")[:10] == day.isoformat() and x.get("TIME") == want), None)
+    p = parse_j3(r) if r else None
+    return dict(p, operator=name) if p else None
+
+
+def fetch_j3(day: dt.date) -> dict | None:
+    return _fetch_j(day, "15", J3)
+
+
+def fetch_j9(day: dt.date) -> dict | None:
+    return _fetch_j(day, "21", J9)
+
+
+FETCHERS = [("Magnum 4D", fetch_magnum), ("Sports Toto 4D", fetch_toto), ("Da Ma Cai 1+3D", fetch_damacai), ("GD Lotto 4D", fetch_gd), (N7, fetch_9lotto_7pm), (J3, fetch_j3), (J9, fetch_j9)]
 
 
 def save_extras(path: Path, day: dt.date, dry: bool) -> None:
@@ -456,7 +500,9 @@ def main() -> int:
     if a.pending:
         rows = list(csv.DictReader(open(a.csv, encoding="utf-8-sig")))
         have = {(r["operator"], r["date"]) for r in rows}
-        due = ["GD Lotto 4D", N7] + (["Magnum 4D", "Sports Toto 4D", "Da Ma Cai 1+3D"] if day.weekday() in (2, 5, 6) else [])
+        now = dt.datetime.now(MYT)
+        mins = (now.hour * 60 + now.minute) if day == now.date() else 24 * 60
+        due = ([J3] if mins >= 900 else []) + (["GD Lotto 4D", N7] if mins >= 1140 else []) + (["Magnum 4D", "Sports Toto 4D", "Da Ma Cai 1+3D"] if day.weekday() in (2, 5, 6) and mins >= 1140 else []) + ([J9] if mins >= 1260 else [])
         for name in due:
             if (name, day.isoformat()) not in have:
                 print(name)

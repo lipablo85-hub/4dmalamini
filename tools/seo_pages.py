@@ -8,7 +8,7 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
-OPS = [("M", "Magnum 4D", "万能", "#E9C46B"), ("D", "Da Ma Cai", "大马彩", "#4C8DFF"), ("T", "Sports Toto", "多多", "#FF5A5F"), ("G", "GD Lotto", "豪龙", "#F27BA5"), ("N", "9 Lotto", "9 Lotto", "#2EC4B6")]
+OPS = [("M", "Magnum 4D", "万能", "#E9C46B"), ("D", "Da Ma Cai", "大马彩", "#4C8DFF"), ("T", "Sports Toto", "多多", "#FF5A5F"), ("G", "GD Lotto", "豪龙", "#F27BA5"), ("N", "9 Lotto", "9 Lotto", "#2EC4B6"), ("J", "Super J3 3pm", "J3 下午3点", "#A78BFA"), ("K", "Super J9 9pm", "J9 晚上9点", "#FB923C")]
 PRIZE = {1: ("Hadiah Pertama", "1st Prize", "头奖"), 2: ("Hadiah Kedua", "2nd Prize", "二奖"), 3: ("Hadiah Ketiga", "3rd Prize", "三奖"),
          4: ("Istimewa", "Special", "特别奖"), 5: ("Saguhati", "Consolation", "安慰奖")}
 HARI = ["Isnin", "Selasa", "Rabu", "Khamis", "Jumaat", "Sabtu", "Ahad"]
@@ -29,7 +29,7 @@ BN_ICONS = ['<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" 
 BN_LAB = {"ms": ("Keputusan", "Semak nombor", "Kamus", "Info"), "en": ("Results", "Check number", "Dictionary", "Info"),
           "zh-Hans": ("开彩成绩", "查号码", "万字字典", "资讯"), "ta": ("முடிவுகள்", "எண் சரிபார்ப்பு", "அகராதி", "தகவல்")}
 LIVEJS = ("<script>(function(){var d=new Date(Date.now()+288e5),m=d.getUTCHours()*60+d.getUTCMinutes();"
-          "if(m>=1135&&m<1215){var a=document.querySelector('.bnav a');if(a)a.classList.add('lvn')}})()</script>")
+          "if((m>=895&&m<930)||(m>=1135&&m<1215)||(m>=1255&&m<1290)){var a=document.querySelector('.bnav a');if(a)a.classList.add('lvn')}})()</script>")
 BN_CSS = (".bnav{position:fixed;left:0;right:0;bottom:0;z-index:6;background:rgba(10,24,50,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid #1A2C50;padding:6px 8px calc(8px + env(safe-area-inset-bottom))}"
           ".bnav .bw{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}"
           ".bnav a{text-decoration:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:54px;border-radius:14px;color:#9AA6C0;font-size:11px;font-weight:800;line-height:1.15;text-align:center;padding:4px}"
@@ -49,7 +49,7 @@ h2{font-size:18px;margin:28px 0 10px}
 .pic{display:block;width:100%;max-width:360px;aspect-ratio:1/1;border-radius:16px;overflow:hidden;background:#172A4D;margin:14px 0}
 .pic img{display:block;width:100%;height:100%;object-fit:cover}
 .pic .sp{display:block;width:100%;height:100%;background-size:500% 500%;background-repeat:no-repeat}
-.shr{display:grid;grid-template-columns:1fr 48px 48px 48px;gap:8px;margin-top:12px}.shr .sb,.shr a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 6px;border-radius:12px;border:0;font:inherit;font-size:13px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}.shr .sb{background:#172A4D;border:1px solid #233862;color:#F8F4E8}.shr .wa{background:#177A45}.shr .tg2{background:#1877B8}.shr .fb{background:#1B5FC2}
+.shr{display:grid;grid-template-columns:1fr 48px 48px 48px;gap:8px;margin-top:12px}.shr .sb,.shr a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 6px;border-radius:12px;border:0;font:inherit;font-size:13px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}.shr .sb{background:#172A4D;border:1px solid #233862;color:#F8F4E8}.shr .wa{background:#177A45}.shr .tg2{background:#1877B8}.shr .wc{background:#07A653}.shr .fb{background:#1B5FC2}
 dl{display:grid;grid-template-columns:130px 1fr;gap:8px 12px;margin:0}dt{color:#A9B4CC;font-size:13px;font-weight:700}dd{margin:0}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border-radius:14px;background:#E9C46B;color:#07142B;font-weight:800;text-decoration:none;margin-top:14px}
 .btn:hover{color:#07142B;background:#F3D892}
@@ -243,10 +243,13 @@ class Site:
             stx = f"4D {n} = " + " ".join(x for x in (e["zh"], e["en"]) if x) + ". Pernah menang? Semak di sini:"
             share = (f'<div class="shr"><button type="button" class="sb" data-u="{su}" data-t="{esc(stx)}">Kongsi · Share</button>'
                      f'<a class="wa" href="https://api.whatsapp.com/send?text={quote(stx + " " + su)}" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.4 4.8 5-1.3A9.8 9.8 0 1 0 12 2.2z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M8.4 7.4c.3-.6.6-.6 1-.6h.6c.2 0 .4.1.5.4l.8 1.9c.1.3 0 .5-.1.7l-.6.7c-.1.2-.1.4 0 .6.5 1 1.6 2.1 2.6 2.6.2.1.4.1.6 0l.7-.6c.2-.2.4-.2.7-.1l1.9.8c.3.1.4.3.4.5v.6c0 .3 0 .7-.6 1-.6.4-1.6.6-2.5.3-3-1-5.4-3.4-6.4-6.4-.3-.9-.1-1.9.4-2.4z" fill="currentColor"/></svg></a>'
-                     f'<a class="tg2" href="https://t.me/share/url?url={quote(su)}&amp;text={quote(stx)}" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.6-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.1l-4.7-1.5c-1-.3-1-1 .2-1.5L20.5 3c.9-.3 1.6.2 1.4 1.3Z"/></svg></a>'
+                     f'<button type="button" class="wc" aria-label="WeChat" title="WeChat"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M9.2 4C5.2 4 2 6.7 2 10c0 1.9 1 3.6 2.7 4.7L4 17l2.6-1.3c.8.2 1.7.4 2.6.4h.5a5.6 5.6 0 0 1-.2-1.5c0-3.3 3.1-6 7-6h.4C16.2 6 13 4 9.2 4zm-2.5 3.3a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8zm5 0a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8zM16.5 10c-3.3 0-6 2.2-6 5s2.7 5 6 5c.7 0 1.4-.1 2-.3l2.1 1.3-.6-2c1.2-.9 2-2.2 2-3.6 0-2.8-2.5-5.4-5.5-5.4zm-2 2.6a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm4 0a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5z"/></svg></button>'
                      f'<a class="fb" href="https://www.facebook.com/sharer/sharer.php?u={quote(su)}" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M13.6 21.5v-8h2.7l.4-3.2h-3.1V8.3c0-.9.3-1.5 1.6-1.5h1.7V4a22 22 0 0 0-2.5-.1c-2.4 0-4.1 1.5-4.1 4.2v2.3H7.6v3.2h2.7v8z"/></svg></a></div>'
                      '<script>document.querySelector(".shr .sb").onclick=function(){var b=this,d={title:document.title,text:b.dataset.t,url:b.dataset.u};'
-                     'if(navigator.share)navigator.share(d).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(d.text+" "+d.url).then(function(){b.textContent="Pautan disalin · Copied"})}</script>')
+                     'if(navigator.share)navigator.share(d).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(d.text+" "+d.url).then(function(){b.textContent="Pautan disalin · Copied"})};'
+                     'document.querySelector(".shr .wc").onclick=function(){var s=document.querySelector(".shr .sb"),x=s.dataset.t+" "+s.dataset.u;'
+                     'function ok(){s.textContent="Disalin · 已复制 · buka WeChat";if(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent))setTimeout(function(){location.href="weixin://"},900)}'
+                     'if(navigator.clipboard)navigator.clipboard.writeText(x).then(ok,function(){prompt("WeChat",x)});else prompt("WeChat",x)}</script>')
             body = (f"{nav}<h1><span class=\"mono\">{n}</span> {esc(e['zh'])}<small>4D {n} meaning: {esc(e['en'])}{' · maksud: ' + esc(e['ms']) if e['ms'] else ''}</small></h1>{pic}"
                     f'<div class="card"><dl>{dl}</dl></div>'
                     f'<a class="btn" href="{self.u("?n=" + n)}">Semak {n} dalam semua syarikat</a>{share}'

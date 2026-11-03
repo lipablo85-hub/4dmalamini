@@ -17,7 +17,7 @@ Run it again after every draw (add the new rows to the results CSV) and upload t
 import argparse, csv, hashlib, html as H, json, re, shutil, subprocess
 from pathlib import Path
 
-OPS = {"Magnum 4D": "M", "Sports Toto 4D": "T", "Da Ma Cai 1+3D": "D", "GD Lotto 4D": "G", "9 Lotto 4D": "N", "9 Lotto 4D 9PM": "N"}
+OPS = {"Magnum 4D": "M", "Sports Toto 4D": "T", "Da Ma Cai 1+3D": "D", "GD Lotto 4D": "G", "9 Lotto 4D": "N", "9 Lotto 4D 9PM": "N", "Super J3 3PM": "J", "Super J9 9PM": "K"}
 
 
 def h8(b: bytes) -> str:
@@ -91,9 +91,9 @@ def prerender_lang(html: str, lang: str) -> str:
 def prerender_latest(html: str, data: dict) -> str:
     """Write the results board (classic result slips, official draw order) into the page; the page script redraws it in the visitor's language."""
     import datetime
-    board = [("M", "Magnum 4D", "#E9C46B"), ("D", "Da Ma Cai", "#4C8DFF"), ("T", "Sports Toto", "#FF5A5F"), ("G", "GD Lotto", "#F27BA5"), ("N", "9 Lotto", "#2EC4B6")]
-    zh = {"M": "万能", "D": "大马彩", "T": "多多", "G": "豪龙", "N": ""}
-    hc = {"M": "#FFF200", "D": "#000080", "T": "#C00000", "G": "#B0121B", "N": "#0E8F86"}
+    board = [("M", "Magnum 4D", "#E9C46B"), ("D", "Da Ma Cai", "#4C8DFF"), ("T", "Sports Toto", "#FF5A5F"), ("G", "GD Lotto", "#F27BA5"), ("N", "9 Lotto", "#2EC4B6"), ("J", "Super J3 3pm", "#A78BFA"), ("K", "Super J9 9pm", "#FB923C")]
+    zh = {"M": "万能", "D": "大马彩", "T": "多多", "G": "豪龙", "N": "", "J": "下午3点", "K": "晚上9点"}
+    hc = {"M": "#FFF200", "D": "#000080", "T": "#C00000", "G": "#B0121B", "N": "#0E8F86", "J": "#5B21B6", "K": "#C2410C"}
     fd = lambda d: datetime.date(int(d[:4]), int(d[4:6]), int(d[6:])).strftime("%a, %-d %b %Y")
     cdf = lambda d: datetime.date(int(d[:4]), int(d[4:6]), int(d[6:])).strftime("(%a) %d-%b-%Y")
     nb = lambda n: f'<button type="button" data-n="{n}">{n}</button>'
