@@ -111,8 +111,8 @@ def prerender_latest(html: str, data: dict) -> str:
         n = [dg[i:i + 4] for i in range(0, 92, 4)]
         cards.append(f'<article class="rc slip k-{k}" id="rc-{k}" {stl}>{head(k, name, cdf(d) + (f" #{no}" if no else ""))}{lb}'
                      f'<div class="s3">{"".join(nb(x) for x in n[:3])}</div>'
-                     f'<div class="sec">Special<em>特别奖</em></div><div class="s5">{"".join(nb(x) for x in n[3:13])}</div>'
-                     f'<div class="sec">Consolation<em>安慰奖</em></div><div class="s5">{"".join(nb(x) for x in n[13:])}</div></article>')
+                     f'<div class="sec">Special<em>特别奖</em></div><div class="s5">{"".join(nb(x) for x in sorted(n[3:13]))}</div>'
+                     f'<div class="sec">Consolation<em>安慰奖</em></div><div class="s5">{"".join(nb(x) for x in sorted(n[13:]))}</div></article>')
     jump = "".join(f'<a href="#rc-{k}" style="--c:{c}"><i></i>{name}</a>' for k, name, c in board)
     assert "<!--BOARD-->" in html
     html = html.replace("<!--BOARD-->", "".join(cards)).replace('<nav class="jump" id="rjump" aria-label="Jump to company"></nav>', f'<nav class="jump" id="rjump" aria-label="Jump to company">{jump}</nav>')
