@@ -5,13 +5,4 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
-      - uses: actions/checkout@v4
-      - run: |
-          python3 - <<'PY'
-          import sys,re;sys.path.insert(0,'tools');import fetch_results as F
-          for u in ['https://www.live4d2u.net/cambodia-4d-results','https://loto4d.com/']:
-              try:
-                  t=re.sub(r'\s+',' ',F.html_text(F.get(u,{'Referer':u})));i=max(t.find('Grand Dragon'),t.find('GD Lotto'),t.find('Dragon'));print('SRC',u,len(t),'|',t[i:i+500] if i>=0 else t[:300])
-                  j=max(t.find('9 Lotto'),t.find('Nine Lotto'),t.find('9Lotto'));print('SRC9',u,'|',t[j:j+400] if j>=0 else '-')
-              except Exception as e:print('SRC',u,'ERR',e)
-          PY
+      - run: curl -sS -m 25 https://www.4dmalamini.com/api/live; echo; curl -sSI -m 15 https://www.4dmalamini.com/api/live | head -5
