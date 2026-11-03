@@ -227,6 +227,37 @@ footer{font-size:12px;color:#A9B4CC;margin-top:28px;padding-top:14px;border-top:
 .hx-box b{font-size:11px;background:#E9C46B;color:#07142B;border-radius:999px;padding:1px 6px}.hx-box .z{opacity:.5}
 @media(max-width:370px){.hx-tiles b{width:40px;height:50px;font-size:26px}.hx-stats{grid-template-columns:1fr 1fr}.hx-stats .big{grid-column:1/-1}}
 @media (prefers-reduced-motion:reduce){.hx-co .hb i{animation:none}}
+.stage{position:relative;isolation:isolate;border-radius:26px;padding:16px 12px;margin:4px -4px 0;overflow:hidden;background:radial-gradient(60% 40% at 15% 0%,rgba(233,196,107,.26),transparent 70%),radial-gradient(55% 35% at 100% 25%,rgba(76,141,255,.2),transparent 70%),radial-gradient(70% 40% at 50% 105%,rgba(242,123,165,.13),transparent 70%),linear-gradient(180deg,#0E1E3D,#0A1733);box-shadow:inset 0 0 0 1px rgba(233,196,107,.33),0 24px 50px rgba(0,0,0,.3)}
+.stage::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:18px 18px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 80%);mask-image:linear-gradient(180deg,#000,transparent 80%)}
+.stage .board{margin-top:0;gap:16px}
+.rc.slip{background:#fff;color:#1a1a1a;border:3px solid #fff;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.35);font-family:Roboto,"Segoe UI",Arial,"PingFang SC","Microsoft YaHei","Noto Sans Tamil",sans-serif}
+.slip .sh{display:flex;align-items:center;gap:12px;padding:8px 10px;background:var(--hb);color:#fff}
+.slip.k-M .sh{color:#111}.slip.k-G .sh{color:#FFE7A3}
+.slip .lgw{width:52px;height:40px;display:grid;place-items:center;background:#fff;border-radius:5px;flex:none}
+.slip .lgw img{width:44px;height:36px;object-fit:contain}
+.slip.k-N .lgw,.slip.k-P .lgw{width:auto;padding:0 8px;background:#0A1733}.slip.k-N .lgw img,.slip.k-P .lgw img{width:102px;height:22px}
+.slip .sht{min-width:0;flex:1}.slip .sht b{display:block;font-size:17px;line-height:1.15;font-weight:800}.slip .sht b i{font-style:normal;font-weight:700}
+.slip .sht small{display:block;font-size:12.5px;font-weight:700;margin-top:2px;opacity:.95}
+.slip .lvp{flex:none;background:#000;color:#fff}
+.slip .lbar{display:grid;grid-template-columns:repeat(3,1fr);background:#5A4630;color:#fff;font-weight:700;font-size:12.5px;text-align:center}
+.slip .lbar span{padding:6px 2px;border-left:2px solid #fff}.slip .lbar span:first-child{border-left:0}
+.slip em{font-style:normal;font-size:10.5px;opacity:.85;margin-left:3px}
+.slip .s3{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:2px solid #5A4630}
+.slip .s3 button{border:0;border-left:2px solid #5A4630;background:#fff;color:#1a1a1a;font:700 30px/1.25 Roboto,"Segoe UI",Arial,sans-serif;letter-spacing:.02em;padding:3px 0;font-variant-numeric:tabular-nums}
+.slip .s3 button:first-child{border-left:0}
+.slip .sec{background:#5A4630;color:#fff;text-align:center;font-weight:700;font-size:12.5px;padding:5px 0;margin-top:6px}
+.slip .s5{display:grid;grid-template-columns:repeat(5,1fr)}
+.slip .s5 button{border:0;border-right:1px solid #CFC5B5;border-bottom:1px solid #CFC5B5;background:#fff;color:#1a1a1a;font:500 21px/1.3 Roboto,"Segoe UI",Arial,sans-serif;padding:4px 0;font-variant-numeric:tabular-nums}
+.slip .s5 button:nth-child(5n){border-right:0}
+.slip button[data-n]{cursor:pointer}.slip button[data-n]:hover{background:#FFF6D6}
+.slip .rb{padding:14px;color:#5A4630;font-size:14px;font-weight:600}
+.slip.wait button{color:#B9AE9C}.slip .lv{margin:0;padding:8px 12px;background:#F4EFE6;color:#5A4630;font-weight:700}.slip .lv i{background:#FF3B3B}
+.board .slip button.me{background:#FFE36B!important;color:#111!important;box-shadow:inset 0 0 0 2px #D4A100!important;font-weight:800}
+.rc.slip.fresh .s3 button,.rc.slip.fresh .s5 button{animation:mflip .45s cubic-bezier(.3,1.4,.5,1) both}
+@media(min-width:760px){.stage .board{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1080px){.stage .board{grid-template-columns:repeat(3,minmax(0,1fr))}.stage{padding:22px 20px}}
+@media(max-width:400px){.slip .s3 button{font-size:27px}.slip .s5 button{font-size:19px}.slip .sht b{font-size:15.5px}}
+@media (prefers-reduced-motion:reduce){.rc.slip.fresh .s3 button,.rc.slip.fresh .s5 button{animation:none}}
 .mine{background:#0F1F3D;border:1px solid #1E3361;border-radius:16px;padding:10px 12px;margin:0 0 12px}
 .mh{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}.mh b{font-size:14px;color:#E9C46B;white-space:nowrap}
 .mst{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#A9B4CC;text-align:right;min-width:0}.mst i{width:8px;height:8px;border-radius:50%;background:#5A6A8C;flex:none}
@@ -338,7 +369,7 @@ footer a{color:#A9B4CC}
     </div>
     <nav class="jump" id="rjump" aria-label="Jump to company"></nav>
     <section class="mine" id="mine" aria-labelledby="mh"><div class="mh"><b id="mh" data-t="myNums"></b><span class="mst" id="mst"><i></i><span></span></span></div><form class="madd" id="madd"><input id="mnum" inputmode="numeric" maxlength="4" placeholder="0000" autocomplete="off" aria-label="4D"><label><input type="checkbox" id="mbox"><span data-t="mBox"></span></label><button type="submit" data-t="mAdd"></button></form><div class="mchips" id="mchips"></div></section>
-    <div class="board" id="board"><!--BOARD--></div><script>(function(){var d=new Date(Date.now()+288e5).getUTCDay();if(d!==0&&d!==3&&d!==6){document.getElementById("board").classList.add("nd");document.getElementById("rjump").classList.add("nd")}})()</script>
+    <div class="stage"><div class="board" id="board"><!--BOARD--></div></div><script>(function(){var d=new Date(Date.now()+288e5).getUTCDay();if(d!==0&&d!==3&&d!==6){document.getElementById("board").classList.add("nd");document.getElementById("rjump").classList.add("nd")}})()</script>
   <!--SEO-->
   </section>
 
@@ -536,18 +567,20 @@ function renderCheck(){
 const BOARD=[["M","#E9C46B"],["D","#4C8DFF"],["T","#FF5A5F"],["G","#F27BA5"],["N","#2EC4B6"],["P","#2EC4B6"]];
 function boardDraw(k){const o=LIVE.find(x=>x.k===k);if(!o)return null;if(!st.rd)return o.D[o.D.length-1];return o.D.find(x=>x.d===st.rd)||null}
 function renderLatest(){
-  const nb=(n,lab)=>`<button type="button" data-n="${n}"${mineHit(n).length?' class="me"':""}>${lab?`<small>${lab}</small>`:""}<span class="mono">${n}</span></button>`;
-  const asc=a=>[...a].sort();
-  const L=liveNow(),lg=k=>`<img class="opl" src="img/op/${k.toLowerCase()}.webp?v=2" width="32" height="32" alt="">`;
-  const cards=BOARD.map(([k,c])=>{const o=LIVE.find(x=>x.k===k),nm=o?oname(o):OPS.find(x=>x.k===k).name;
-    if(L&&L.wait.includes(k)){const on=L.n.m>=(DRAWM[k]||1140);return`<article class="rc wait${on?" live":""}" id="rc-${k}" style="--c:${c}"><header><b><span class="lgw">${lg(k)}</span>${nm}</b>${on?`<span class="lvp"><i></i>${t("liveTag")}</span>`:`<span>${t("tonight")} · ${t(k==="P"?"at9":"at7")}</span>`}</header><div class="rb"><div class="r3">${["p1","p2","p3"].map(p=>`<button type="button" disabled><small>${t(p)}</small><span class="mono">····</span></button>`).join("")}</div><p class="lv"><i></i><span class="cd" data-k="${k}">${liveMsg(L.n,k)}</span></p></div></article>`}
-    if(!o||!o.D.length)return`<article class="rc soon" id="rc-${k}" style="--c:${c}"><header><b><img class="opl" src="img/op/${k.toLowerCase()}.webp?v=2" width="32" height="32" alt="">${nm}</b><span>${t("soon")}</span></header><div class="rb">${t("gdSoon")}</div></article>`;
+  /* classic result slip: company colours, brown label bars, bordered grids, official draw order */
+  const L=liveNow(),HC={M:"#FFF200",D:"#000080",T:"#C00000",G:"#B0121B",N:"#0E8F86",P:"#0E8F86"};
+  const zhn=o=>st.lang==="zh"||!o.zh||/lotto/i.test(o.zh)?"":`<i>${o.zh}</i>`,lab=k=>st.lang==="zh"?t(k):`${t(k)}<em>${["p1","p2","p3"].includes(k)?["首奖","二奖","三奖"][+k[1]-1]:k==="p4"?"特别奖":"安慰奖"}</em>`;
+  const cd=d=>`(${fmt(d,{weekday:"short"})}) ${d.slice(6)}-${fmt(d,{month:"short"})}-${d.slice(0,4)}`;
+  const nb=(n,dis)=>`<button type="button"${dis?" disabled":` data-n="${n}"`}${!dis&&mineHit(n).length?' class="me"':""}>${n}</button>`;
+  const head=(k,o,nm,sub,on)=>`<div class="sh"><span class="lgw">${k==="N"||k==="P"?`<img class="opl" src="img/op/n-w.webp" width="102" height="25" alt="9 Lotto">`:`<img class="opl" src="img/op/${k.toLowerCase()}.webp?v=2" width="40" height="40" alt="">`}</span><div class="sht"><b>${nm} ${o?zhn(o):""}</b><small>${sub}</small></div>${on?`<span class="lvp"><i></i>${t("liveTag")}</span>`:""}</div>`;
+  const body=(n,dis)=>`<div class="lbar">${["p1","p2","p3"].map(p=>`<span>${lab(p)}</span>`).join("")}</div><div class="s3">${n.slice(0,3).map(x=>nb(x,dis)).join("")}</div>`+
+    `<div class="sec">${lab("p4")}</div><div class="s5">${n.slice(3,13).map(x=>nb(x,dis)).join("")}</div><div class="sec">${lab("p5")}</div><div class="s5">${n.slice(13).map(x=>nb(x,dis)).join("")}</div>`;
+  const cards=BOARD.map(([k,c])=>{const o=LIVE.find(x=>x.k===k),nm=o?oname(o):OPS.find(x=>x.k===k).name,st_=`style="--c:${c};--hb:${HC[k]}"`;
+    if(L&&L.wait.includes(k)){const on=L.n.m>=(DRAWM[k]||1140);return`<article class="rc slip wait${on?" live":""} k-${k}" id="rc-${k}" ${st_}>${head(k,o,nm,`${t("tonight")} · ${t(k==="P"?"at9":"at7")}`,on)}${body(Array(23).fill("----"),1)}<p class="lv"><i></i><span class="cd" data-k="${k}">${liveMsg(L.n,k)}</span></p></article>`}
+    if(!o||!o.D.length)return`<article class="rc slip soon k-${k}" id="rc-${k}" ${st_}>${head(k,o,nm,t("soon"))}<div class="rb">${t("gdSoon")}</div></article>`;
     const dr=boardDraw(k);
-    if(!dr)return`<article class="rc none" id="rc-${k}" style="--c:${c}"><header><b><img class="opl" src="img/op/${k.toLowerCase()}.webp?v=2" width="32" height="32" alt="">${nm}</b><span>${fD(st.rd)}</span></header><div class="rb">${t("noDraw")}</div></article>`;
-    return`<article class="rc${L&&dr.d===L.n.ymd?" fresh":""}" id="rc-${k}" style="--c:${c}"><header><b><img class="opl" src="img/op/${k.toLowerCase()}.webp?v=2" width="32" height="32" alt="">${nm}</b><span>${fmt(dr.d,{weekday:"short",day:"numeric",month:"short",year:"numeric"})}${dr.no?` · #${dr.no}`:""}</span></header><div class="rb">`+
-      `<div class="r3">${nb(dr.n[0],t("p1"))}${nb(dr.n[1],t("p2"))}${nb(dr.n[2],t("p3"))}</div>`+
-      `<div class="rl"><span>${t("p4")}</span></div><div class="r5">${asc(dr.n.slice(3,13)).map(n=>nb(n)).join("")}</div>`+
-      `<div class="rl"><span>${t("p5")}</span></div><div class="r5">${asc(dr.n.slice(13)).map(n=>nb(n)).join("")}</div></div></article>`}).join("");
+    if(!dr)return`<article class="rc slip none k-${k}" id="rc-${k}" ${st_}>${head(k,o,nm,fD(st.rd))}<div class="rb">${t("noDraw")}</div></article>`;
+    return`<article class="rc slip k-${k}${L&&dr.d===L.n.ymd?" fresh":""}" id="rc-${k}" ${st_}>${head(k,o,nm,cd(dr.d)+(dr.no?` #${dr.no}`:""))}${body(dr.n)}</article>`}).join("");
   if($("#board").innerHTML!==cards)$("#board").innerHTML=cards;
   $("#rjump").innerHTML=BOARD.map(([k,c])=>{const o=LIVE.find(x=>x.k===k);return`<a href="#rc-${k}" style="--c:${c}"><i></i>${o?oname(o):OPS.find(x=>x.k===k).name}</a>`}).join("");
   const i=st.rd?DATES.indexOf(st.rd):DATES.length-1;

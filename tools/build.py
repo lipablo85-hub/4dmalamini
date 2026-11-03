@@ -89,23 +89,30 @@ def prerender_lang(html: str, lang: str) -> str:
 
 
 def prerender_latest(html: str, data: dict) -> str:
-    """Write the results board (each company's latest full result, Special/Consolation ascending) into the page."""
+    """Write the results board (classic result slips, official draw order) into the page; the page script redraws it in the visitor's language."""
     import datetime
     board = [("M", "Magnum 4D", "#E9C46B"), ("D", "Da Ma Cai", "#4C8DFF"), ("T", "Sports Toto", "#FF5A5F"), ("G", "GD Lotto", "#F27BA5"), ("N", "9 Lotto 7pm", "#2EC4B6"), ("P", "9 Lotto 9pm", "#2EC4B6")]
+    zh = {"M": "万能", "D": "大马彩", "T": "多多", "G": "豪龙", "N": "", "P": ""}
+    hc = {"M": "#FFF200", "D": "#000080", "T": "#C00000", "G": "#B0121B", "N": "#0E8F86", "P": "#0E8F86"}
     fd = lambda d: datetime.date(int(d[:4]), int(d[4:6]), int(d[6:])).strftime("%a, %-d %b %Y")
-    nb = lambda n, lab="": f'<button type="button" data-n="{n}">' + (f"<small>{lab}</small>" if lab else "") + f'<span class="mono">{n}</span></button>'
+    cdf = lambda d: datetime.date(int(d[:4]), int(d[4:6]), int(d[6:])).strftime("(%a) %d-%b-%Y")
+    nb = lambda n: f'<button type="button" data-n="{n}">{n}</button>'
+    head = lambda k, name, sub: (f'<div class="sh"><span class="lgw">{('<img class="opl" src="img/op/n-w.webp" width="102" height="25" alt="9 Lotto">' if k in "NP" else f'<img class="opl" src="img/op/{k.lower()}.webp?v=2" width="40" height="40" alt="">')}</span>'
+                                 f'<div class="sht"><b>{name} <i>{zh[k]}</i></b><small>{sub}</small></div></div>')
+    lb = '<div class="lbar"><span>1st Prize<em>首奖</em></span><span>2nd Prize<em>二奖</em></span><span>3rd Prize<em>三奖</em></span></div>'
     cards, last = [], ""
     for k, name, c in board:
+        stl = f'style="--c:{c};--hb:{hc[k]}"'
         if k not in data:
-            cards.append(f'<article class="rc soon" id="rc-{k}" style="--c:{c}"><header><b><img class="opl" src="img/op/{k.lower()}.webp?v=2" width="32" height="32" alt="">{name}</b><span>Soon</span></header><div class="rb">Results coming soon</div></article>')
+            cards.append(f'<article class="rc slip soon k-{k}" id="rc-{k}" {stl}>{head(k, name, "Soon")}<div class="rb">Results coming soon</div></article>')
             continue
         d, no, dg = data[k].split("|")[-1].split(",")
         last = max(last, d)
         n = [dg[i:i + 4] for i in range(0, 92, 4)]
-        cards.append(f'<article class="rc" id="rc-{k}" style="--c:{c}"><header><b><img class="opl" src="img/op/{k.lower()}.webp?v=2" width="32" height="32" alt="">{name}</b><span>{fd(d)}' + (f" · #{no}" if no else "") + '</span></header><div class="rb">'
-                     f'<div class="r3">{nb(n[0], "1st Prize")}{nb(n[1], "2nd Prize")}{nb(n[2], "3rd Prize")}</div>'
-                     f'<div class="rl"><span>Special</span></div><div class="r5">{"".join(nb(x) for x in sorted(n[3:13]))}</div>'
-                     f'<div class="rl"><span>Consolation</span></div><div class="r5">{"".join(nb(x) for x in sorted(n[13:]))}</div></div></article>')
+        cards.append(f'<article class="rc slip k-{k}" id="rc-{k}" {stl}>{head(k, name, cdf(d) + (f" #{no}" if no else ""))}{lb}'
+                     f'<div class="s3">{"".join(nb(x) for x in n[:3])}</div>'
+                     f'<div class="sec">Special<em>特别奖</em></div><div class="s5">{"".join(nb(x) for x in n[3:13])}</div>'
+                     f'<div class="sec">Consolation<em>安慰奖</em></div><div class="s5">{"".join(nb(x) for x in n[13:])}</div></article>')
     jump = "".join(f'<a href="#rc-{k}" style="--c:{c}"><i></i>{name}</a>' for k, name, c in board)
     assert "<!--BOARD-->" in html
     html = html.replace("<!--BOARD-->", "".join(cards)).replace('<nav class="jump" id="rjump" aria-label="Jump to company"></nav>', f'<nav class="jump" id="rjump" aria-label="Jump to company">{jump}</nav>')
