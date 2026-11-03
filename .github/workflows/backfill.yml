@@ -1,4 +1,4 @@
-name: Backfill Cash Sweep history
+name: Backfill Sandakan history
 on: workflow_dispatch
 permissions:
   contents: write
@@ -8,8 +8,8 @@ jobs:
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
-      - run: python3 tools/backfill_cs.py malaysia_4d_draws_2021-2026.csv
+      - run: python3 tools/backfill_stc.py malaysia_4d_draws_2021-2026.csv
       - run: |
           git config user.name "4d-results-bot"; git config user.email "actions@users.noreply.github.com"
-          git add malaysia_4d_draws_2021-2026.csv && git commit -qm "Backfill Sarawak Cash Sweep history" || exit 0
+          git add malaysia_4d_draws_2021-2026.csv && git commit -qm "Backfill Sandakan STC 4D history" || exit 0
           git pull -q --rebase origin main && git push -q
