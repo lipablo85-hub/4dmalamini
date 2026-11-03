@@ -158,6 +158,84 @@ def parse_check4d_toto(text: str, day: dt.date) -> dict | None:
     return None
 
 
+def _amts(seg: str) -> list:
+    """['RM 1,234.50 Won', ...] -> [{'a': '1,234.50', 'w': 'Won'}, ...]"""
+    return [{"a": a, **({"w": w} if w else {})} for a, w in re.findall(r"RM\s*([\d,]+(?:\.\d+)?)\s*(Partially Won|Won)?", seg)]
+
+
+def _block(text: str, start: str, ends: list) -> str:
+    i = text.find(start)
+    if i < 0:
+        return ""
+    j = min([k for k in (text.find(e, i + len(start)) for e in ends) if k > 0] or [len(text)])
+    return text[i:j]
+
+
+def parse_check4d_extras(text: str, day: dt.date) -> dict:
+    """Jackpots, Toto 5D/6D/lotto, Magnum Life/Gold, blank slots of the Special rows. Only blocks dated `day` are kept."""
+    t = re.sub(r"\s+", " ", text)
+    want = day.strftime("%d-%m-%Y")
+    out: dict = {}
+
+    def dated(b):
+        return bool(b) and f"Date: {want}" in b[:200]
+
+    def slots(b):  # Special row as printed, blanks kept as ""
+        m = re.search(r"Special\S*\s+(.*?)\s+Consolation", b)
+        return [x if x[0].isdigit() else "" for x in re.findall(r"\d{4}|-{4}|\*{4}", m.group(1))] if m else []
+
+    def jp(b):
+        m = re.search(r"4D Jackpot 1 Prize 4D Jackpot 2 Prize (.*?)(?:3D Jackpot|Next Draw|$)", b)
+        nx = re.search(r"Next Draw Estimated Amount.*?Prize\s+(RM.*?)(?:3D Jackpot|Advertisements|$)", b)
+        r = {}
+        if m:
+            r["jp"] = _amts(m.group(1))[:2]
+        if nx:
+            r["next"] = [x["a"] for x in _amts(nx.group(1))[:2]]
+        return r
+
+    ends4 = ["Advertisements", "Da Ma Cai 1+3D", "SportsToto 4D", "SportsToto 5D", "Da Ma Cai 3+3D", "Magnum Life"]
+    b = _block(t, "Magnum 4D 萬能", ends4)
+    if dated(b):
+        out["M"] = {"sl": slots(b), **jp(b)}
+    b = _block(t, "Da Ma Cai 1+3D", ends4)
+    if dated(b):
+        d = {"sl": slots(b), **jp(b)}
+        m3 = re.search(r"3D Jackpot Prize (RM [\d,.]+(?: Partially Won| Won)?)", b)
+        if m3:
+            d["jp3"] = _amts(m3.group(1))[0]
+        out["D"] = d
+    b = _block(t, "SportsToto 4D", ["SportsToto 5D", "Advertisements"])
+    if dated(b):
+        out["T"] = {"sl": slots(b), **jp(b)}
+    b = _block(t, "SportsToto 5D", ["Da Ma Cai 3+3D", "Magnum Life", "SINGAPORE", "Advertisements"])
+    if dated(b):
+        x = out.setdefault("T", {})
+        m = re.search(r"5D 1st (\d{5}) 4th (\d{4}) 2nd (\d{5}) 5th (\d{3}) 3rd (\d{5}) 6th (\d{2})", b)
+        if m:
+            x["d5"] = [m.group(i) for i in (1, 3, 5, 2, 4, 6)]
+        m = re.search(r"6D 1st (\d{6})", b)
+        if m:
+            x["d6"] = m.group(1)
+        for key, name in (("star", "Star Toto 6/50"), ("power", "Power Toto 6/55"), ("supreme", "Supreme Toto 6/58")):
+            m = re.search(re.escape(name) + r" ((?:\d{1,2} ){6})(?:\+ (\d{1,2}) )?(.*?)(?=Star Toto|Power Toto|Supreme Toto|$)", b)
+            if m:
+                x[key] = {"n": m.group(1).split(), **({"b": m.group(2)} if m.group(2) else {}), "jp": _amts(m.group(3))[:2]}
+    b = _block(t, "Magnum Life", ["Magnum Jackpot Gold", "SINGAPORE", "Advertisements"])
+    if dated(b):
+        m = re.search(r"Winning Numbers ((?:\d{2} ){8})Bonus Numbers (\d{2}) (\d{2})", b)
+        if m:
+            out.setdefault("M", {})["life"] = {"n": m.group(1).split(), "b": [m.group(2), m.group(3)]}
+    b = _block(t, "Magnum Jackpot Gold", ["SINGAPORE", "Advertisements"])
+    if dated(b):
+        m = re.search(r"Jackpot 1 ((?:\d ){6})\+ ((?:\d ){2})Prize : (RM [\d,.]+(?: Partially Won| Won)?).*?Jackpot 2 .*?Prize : (RM [\d,.]+(?: Partially Won| Won)?)", b)
+        if m:
+            out.setdefault("M", {})["gold"] = {"n": m.group(1).replace(" ", ""), "b": m.group(2).replace(" ", ""), "jp": _amts(m.group(3)) + _amts(m.group(4))}
+    if out:
+        out["date"] = day.isoformat()
+    return out
+
+
 def fetch_toto(day: dt.date) -> dict | None:
     """Official page first; it blocks most cloud servers (GitHub included), so fall back to check4d.org."""
     try:
