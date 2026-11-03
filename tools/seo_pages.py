@@ -130,9 +130,9 @@ class Site:
         self.urls.append((canon, lastmod))
 
     def bnav(self, path: str, lang: str) -> str:
-        pre = {"en": "", "ms": "ms/", "zh-Hans": "zh/", "ta": "ta/"}.get(lang, "") if ("guide/" in path or "info/" in path) else ""
+        pre = {"en": "", "ms": "ms/", "zh-Hans": "zh/", "ta": "ta/"}.get(lang, "") if ("guide/" in path or "info/" in path or "about/" in path) else ""
         lab = BN_LAB.get(lang, BN_LAB["ms"])
-        cur = 3 if ("guide/" in path or "info/" in path) else 2 if path.startswith("4d/") else 0 if path.startswith("keputusan/") else -1
+        cur = 3 if ("guide/" in path or "info/" in path or "about/" in path) else 2 if path.startswith("4d/") else 0 if path.startswith("keputusan/") else -1
         hrefs = [self.u(pre), self.u(pre + "?tab=check"), self.u(pre + "?tab=dict"), self.u(pre + "info/")]
         return '<nav class="bnav" aria-label="Main"><div class="bw">' + "".join(
             f'<a href="{h}"' + (' aria-current="page"' if i == cur else "") + f'>{BN_ICONS[i]}<span>{esc(lab[i])}</span></a>' for i, h in enumerate(hrefs)) + "</div></nav>" + LIVEJS

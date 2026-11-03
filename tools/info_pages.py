@@ -141,7 +141,8 @@ CSS = """.info{--mu:#9DB0D3;--ln:rgba(255,255,255,.09);--cd:#0F1F3D;--gold:#E9C4
 .info .crumb{font-size:12.5px;color:var(--mu)}.info .crumb a{color:var(--mu)}
 .info .lng{display:flex;gap:6px;float:right}.info .lng a{font-size:12px;font-weight:700;color:var(--mu);text-decoration:none;padding:2px 6px;border-radius:6px}.info .lng a[aria-current]{background:#13274A;color:#fff}
 .info .tabs{clear:both;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding:10px 0}
-.info .tabs a{display:flex;align-items:center;justify-content:center;text-align:center;min-height:36px;text-decoration:none;font-size:12.5px;line-height:1.2;font-weight:700;padding:5px 4px;border-radius:12px;background:#13274A;color:var(--mu);border:1px solid var(--ln);overflow-wrap:anywhere}
+.info .tabs a.ab{grid-column:1/-1;min-height:32px;padding:4px 10px;background:linear-gradient(90deg,rgba(233,196,107,.18),rgba(233,196,107,.06));color:#E9C46B;border-color:rgba(233,196,107,.4);font-size:12.5px}
+.info .tabs a{display:flex;align-items:center;justify-content:center;text-align:center;min-height:36px;text-decoration:none;font-size:12.5px;line-height:1.2;font-weight:700;padding:5px 4px;border-radius:12px;background:#13274A;color:var(--mu);border:1px solid var(--ln);overflow-wrap:normal;word-break:normal;hyphens:auto}
 .info [lang=ta] .tabs a,.info .tabs a:lang(ta){font-size:11px}.info .tabs a.on{background:var(--gold);color:#1B1300;border-color:transparent}
 .info .hero{padding:20px 0 4px}.info h1{margin:0;font-size:28px;letter-spacing:-.02em}.info .hero p{margin:6px 0 0;color:var(--mu);max-width:640px}
 .info section{padding-top:26px;scroll-margin-top:110px}
@@ -172,10 +173,11 @@ CSS = """.info{--mu:#9DB0D3;--ln:rgba(255,255,255,.09);--cd:#0F1F3D;--gold:#E9C4
 .info .rp b.a{flex:none;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:18px;background:#FF5A5F;color:#fff}.info .rp p{margin:0 0 6px;font-size:14px;color:#D3DDF2}
 .info .src{font-size:12px;color:var(--mu);margin:22px 0 0;border-top:1px solid var(--ln);padding-top:12px}"""
 
-JS = ("<script>(function(){var t=[].slice.call(document.querySelectorAll('.info .tabs a'));if(!('IntersectionObserver'in window))return;"
+JS = ("<script>(function(){var t=[].slice.call(document.querySelectorAll('.info .tabs a[href^=\"#\"]'));if(!('IntersectionObserver'in window))return;"
       "var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)t.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)})})},{rootMargin:'-120px 0px -60% 0px'});"
       "t.forEach(function(a){var s=document.querySelector(a.getAttribute('href'));if(s)io.observe(s)})})()</script>")
 
+ABOUT = {"en": "About us", "ms": "Tentang kami", "zh": "关于我们", "ta": "எங்களைப் பற்றி"}
 SCHED = {"M": "s", "T": "s", "D": "s"}  # Wed/Sat/Sun + special Tue
 
 
@@ -194,7 +196,8 @@ def build(site) -> None:
         lng = '<nav class="lng" aria-label="Language">' + "".join(f'<a href="{site.u(path(l))}" hreflang="{LANGS[l][0]}"' + (' aria-current="page"' if l == lang else "") + f'>{names[l]}</a>' for l in LANGS) + "</nav>"
         ids = ("companies", "schedule", "guide", "responsible")
         top = (f'<div class="itop">{lng}<div class="crumb"><a href="{home}">{esc(x["home"])}</a> › <b>{esc(x["crumb"])}</b></div>'
-               '<nav class="tabs" aria-label="Sections">' + "".join(f'<a href="#{i}"' + (' class="on"' if n == 0 else "") + f'>{esc(t_)}</a>' for n, (i, t_) in enumerate(zip(ids, x["tabs"]))) + "</nav></div>")
+               '<nav class="tabs" aria-label="Sections">' + "".join(f'<a href="#{i}"' + (' class="on"' if n == 0 else "") + f'>{esc(t_)}</a>' for n, (i, t_) in enumerate(zip(ids, x["tabs"])))
+               + f'<a class="ab" href="{site.u(pre + "about/")}">{esc(ABOUT[lang])} ›</a></nav></div>')
         cards = ""
         for k, name, zh, hb, c, logo, since, url, chips in CO:
             sv = f'<small>{esc(x["since"])}</small><br><span>{since}</span>' if since else f'<small>{esc(x["draws"])}</small><br><span>{esc(x["twice"] if k == "N" else x["daily"])}</span>'

@@ -266,6 +266,8 @@ def main() -> None:
     GP.build(sp)
     import info_pages as IP
     IP.build(sp)
+    import about_pages as AP
+    AP.build(sp)
     n_urls = sp.sitemap(alts)
     print(f"  SEO pages: {len(sp.urls)} static pages, sitemap.xml with {n_urls} URLs, robots.txt, 404.html")
 
