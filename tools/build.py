@@ -97,7 +97,7 @@ def prerender_latest(html: str, data: dict) -> str:
     fd = lambda d: datetime.date(int(d[:4]), int(d[4:6]), int(d[6:])).strftime("%a, %-d %b %Y")
     cdf = lambda d: datetime.date(int(d[:4]), int(d[4:6]), int(d[6:])).strftime("(%a) %d-%b-%Y")
     nb = lambda n: f'<button type="button" data-n="{n}">{n}</button>'
-    head = lambda k, name, sub: (f'<div class="sh"><span class="lgw">{('<img class="opl" src="img/op/n-s.webp" width="46" height="46" alt="9 Lotto">' if k == "N" else f'<img class="opl" src="img/op/{k.lower()}{"-n" if k in "DT" else ""}.webp?v=3" width="40" height="40" alt="">')}</span>'
+    head = lambda k, name, sub: (f'<div class="sh"><span class="lgw">{('<img class="opl" src="img/op/n-s.webp" width="46" height="46" alt="9 Lotto">' if k == "N" else f'<img class="opl" src="img/op/{k.lower()}{"-n" if k in "DT" else ""}.webp?v=4" width="40" height="40" alt="">')}</span>'
                                  f'<div class="sht"><b>{name} <i>{zh[k]}</i></b><small>{sub}</small></div></div>')
     lb = '<div class="lbar"><span>1st Prize<em>首奖</em></span><span>2nd Prize<em>二奖</em></span><span>3rd Prize<em>三奖</em></span></div>'
     cards, last = [], ""

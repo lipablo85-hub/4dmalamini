@@ -47,6 +47,7 @@ async function jgrab(ctx) {
   return JSON.parse(await r.text());
 }
 export async function onRequestGet(ctx) {
+  if (new URL(ctx.request.url).searchParams.has("selftest")) return selftest(ctx);
   const out = { t: Date.now(), ops: {} };
   const [c, l] = await Promise.all([grab(SRC.c4d, ctx).catch(() => ""), grab(SRC.loto, ctx).catch(() => "")]);
   const E = ["Advertisements", "Da Ma Cai 1+3D", "SportsToto 4D", "SportsToto 5D", "Da Ma Cai 3+3D", "Magnum Life", "Grand Dragon", "Perdana", "Lucky HariHari", "Nine Lotto", "Magnum 4D", "SINGAPORE", "Sandakan", "4D Jackpot 1 Prize", "-->"];
@@ -98,4 +99,20 @@ async function autosave(ctx, ops) {
                "X-GitHub-Api-Version": "2022-11-28" },
     body: JSON.stringify({ ref: "main", inputs: { minutes: "30" } })
   });
+}
+
+// GET /api/live?selftest : checks the auto-save token by starting the results workflow once
+// (it exits in seconds when nothing is due). Shares the 10-minute gate with autosave.
+async function selftest(ctx) {
+  const tok = ctx.env && ctx.env.GH_DISPATCH, J = o => new Response(JSON.stringify(o), { headers: { "Content-Type": "application/json", "Cache-Control": "no-store" } });
+  if (!tok) return J({ ok: false, why: "GH_DISPATCH secret missing" });
+  const cache = caches.default, gate = new Request("https://www.4dmalamini.com/__autosave_gate");
+  if (await cache.match(gate)) return J({ ok: null, why: "a start was sent less than 10 minutes ago" });
+  await cache.put(gate, new Response("1", { headers: { "Cache-Control": "max-age=600" } }));
+  const r = await fetch("https://api.github.com/repos/lipablo85-hub/4dmalamini/actions/workflows/results.yml/dispatches", {
+    method: "POST",
+    headers: { Authorization: "Bearer " + tok, Accept: "application/vnd.github+json", "User-Agent": "4dmalamini-autosave", "X-GitHub-Api-Version": "2022-11-28" },
+    body: JSON.stringify({ ref: "main", inputs: { minutes: "1" } })
+  });
+  return J({ ok: r.status === 204, status: r.status, why: r.status === 204 ? "workflow started" : (await r.text()).slice(0, 200) });
 }

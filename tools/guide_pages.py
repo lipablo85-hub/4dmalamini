@@ -224,7 +224,7 @@ def build(site) -> None:
     css_name = "assets/g." + hashlib.sha256(css.encode()).hexdigest()[:8] + ".css"
     (site.out / css_name).write_text(css)
     cssl = preload + f'<link rel="stylesheet" href="{site.u(css_name)}">'
-    logo = lambda k: site.u(f"img/op/{k.lower()}{'-n' if k in 'TD' else ''}.webp?v=3")  # light-text versions on dark cards
+    logo = lambda k: site.u(f"img/op/{k.lower()}{'-n' if k in 'TD' else ''}.webp?v=4")  # light-text versions on dark cards
 
     def path(lang, sub=""):
         return LANGS[lang][1] + "guide/" + sub

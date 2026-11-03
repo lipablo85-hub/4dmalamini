@@ -208,7 +208,7 @@ def build(site) -> None:
             nm = (zh if lang == "zh" and zh else name)
             alt = ' alt="9 Lotto"' if k == "N" else ' alt=""'
             wh = 'width="110" height="24"' if k == "N" else 'width="48" height="40"'
-            cards += (f'<article class="cc k-{k}" style="--hb:{hb};--c:{c}"><div class="ch"><img src="{site.u("img/op/" + logo + ".webp?v=3")}" {wh}{alt} loading="lazy">'
+            cards += (f'<article class="cc k-{k}" style="--hb:{hb};--c:{c}"><div class="ch"><img src="{site.u("img/op/" + logo + ".webp?v=4")}" {wh}{alt} loading="lazy">'
                       f'<div><b>{esc(nm)}{zhh}</b><small>{esc(x["sub"][k])}</small></div><div class="since">{sv}</div></div>'
                       f'<div class="cb"><p>{esc(x["intro"][k])}</p><dl>' + "".join(f"<dt>{esc(a)}</dt><dd>{esc(b)}</dd>" for a, b in x["facts"][k]) + "</dl>"
                       '<div class="chips">' + "".join(f"<span>{esc(ch)}</span>" for ch in chips) + "</div></div>"
