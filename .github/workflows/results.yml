@@ -1,11 +1,11 @@
-# Fetch tonight's 4D results from the official sites every 5 minutes, 6:55-9:55 pm Malaysia time,
+# Fetch tonight's 4D results from the official sites every 5 minutes, 6:55-10:55 pm Malaysia time,
 # plus catch-up runs at 9:30 pm and 11:30 pm. New complete draws are committed to the CSV,
 # and Netlify rebuilds and publishes the site automatically (about 1-2 minutes).
 name: Nightly 4D results
 on:
   schedule:
     - cron: "55 10 * * *"       # 18:55 MYT standby run (GitHub may start it a few minutes late)
-    - cron: "*/5 11-13 * * *"   # every 5 min, 19:00-21:55 MYT (UTC+8)
+    - cron: "*/5 11-14 * * *"   # every 5 min, 19:00-22:55 MYT (UTC+8); 9 Lotto also draws at 9pm
     - cron: "30 13,15 * * *"    # 21:30 and 23:30 MYT
   workflow_dispatch: {}
 permissions:

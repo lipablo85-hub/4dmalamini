@@ -17,7 +17,7 @@ Run it again after every draw (add the new rows to the results CSV) and upload t
 import argparse, csv, hashlib, html as H, json, re, shutil, subprocess
 from pathlib import Path
 
-OPS = {"Magnum 4D": "M", "Sports Toto 4D": "T", "Da Ma Cai 1+3D": "D", "GD Lotto 4D": "G", "9 Lotto 4D": "N"}
+OPS = {"Magnum 4D": "M", "Sports Toto 4D": "T", "Da Ma Cai 1+3D": "D", "GD Lotto 4D": "G", "9 Lotto 4D": "N", "9 Lotto 4D 9PM": "P"}
 
 
 def h8(b: bytes) -> str:
@@ -91,7 +91,7 @@ def prerender_lang(html: str, lang: str) -> str:
 def prerender_latest(html: str, data: dict) -> str:
     """Write the results board (each company's latest full result, Special/Consolation ascending) into the page."""
     import datetime
-    board = [("M", "Magnum 4D", "#E9C46B"), ("D", "Da Ma Cai", "#4C8DFF"), ("T", "Sports Toto", "#FF5A5F"), ("G", "GD Lotto", "#F27BA5"), ("N", "9 Lotto", "#2EC4B6")]
+    board = [("M", "Magnum 4D", "#E9C46B"), ("D", "Da Ma Cai", "#4C8DFF"), ("T", "Sports Toto", "#FF5A5F"), ("G", "GD Lotto", "#F27BA5"), ("N", "9 Lotto 7pm", "#2EC4B6"), ("P", "9 Lotto 9pm", "#2EC4B6")]
     fd = lambda d: datetime.date(int(d[:4]), int(d[4:6]), int(d[6:])).strftime("%a, %-d %b %Y")
     nb = lambda n, lab="": f'<button type="button" data-n="{n}">' + (f"<small>{lab}</small>" if lab else "") + f'<span class="mono">{n}</span></button>'
     cards, last = [], ""
@@ -245,7 +245,7 @@ def main() -> None:
         title, desc = SP.LANG_META[lang]
         page = (prerender_lang(html, lang).replace("__HTMLLANG__", SP.HTML_LANG[lang]).replace("__CANON__", url[lang])
                 .replace("__TITLE__", H.escape(title)).replace("__DESC__", H.escape(desc)).replace("__OGLOCALE__", locale[lang])
-                .replace("__H1__", H.escape(h1[lang])).replace("<!--SEO-->", SC.block(lang) + SC.faq_ld(lang)).replace('id="nav-guide" href="guide/"', f'id="nav-guide" href="{"" if lang == "en" else lang + "/"}guide/"'))
+                .replace("__H1__", H.escape(h1[lang])).replace("<!--SEO-->", SC.block(lang) + SC.faq_ld(lang)).replace('id="nav-guide" href="guide/"', f'id="nav-guide" href="{"" if lang == "en" else lang + "/"}guide/"').replace('id="home" href="./"', f'id="home" href="{"./" if lang == "en" else lang + "/"}"'))
         f = out / ("index.html" if lang == "en" else f"{lang}/index.html")
         f.parent.mkdir(exist_ok=True)
         f.write_text(page)

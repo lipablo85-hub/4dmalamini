@@ -8,7 +8,7 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
-OPS = [("M", "Magnum 4D", "万能", "#E9C46B"), ("D", "Da Ma Cai", "大马彩", "#4C8DFF"), ("T", "Sports Toto", "多多", "#FF5A5F"), ("G", "GD Lotto", "豪龙", "#F27BA5"), ("N", "9 Lotto", "9 Lotto", "#2EC4B6")]
+OPS = [("M", "Magnum 4D", "万能", "#E9C46B"), ("D", "Da Ma Cai", "大马彩", "#4C8DFF"), ("T", "Sports Toto", "多多", "#FF5A5F"), ("G", "GD Lotto", "豪龙", "#F27BA5"), ("N", "9 Lotto 7pm", "9 Lotto 7pm", "#2EC4B6"), ("P", "9 Lotto 9pm", "9 Lotto 9pm", "#2EC4B6")]
 PRIZE = {1: ("Hadiah Pertama", "1st Prize", "头奖"), 2: ("Hadiah Kedua", "2nd Prize", "二奖"), 3: ("Hadiah Ketiga", "3rd Prize", "三奖"),
          4: ("Istimewa", "Special", "特别奖"), 5: ("Saguhati", "Consolation", "安慰奖")}
 HARI = ["Isnin", "Selasa", "Rabu", "Khamis", "Jumaat", "Sabtu", "Ahad"]
@@ -138,7 +138,8 @@ class Site:
         self.not_found()
 
     def result_pages(self) -> None:
-        by = {k: {r[0]: r for r in rows} for k, rows in self.draws.items()}
+        by = {k: {} for k, _, _, _ in OPS}
+        by.update({k: {r[0]: r for r in rows} for k, rows in self.draws.items()})
         for i, d in enumerate(self.dates):
             iso = d8(d).isoformat()
             body_ops, titles = [], []

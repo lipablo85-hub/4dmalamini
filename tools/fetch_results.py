@@ -193,17 +193,52 @@ def parse_9lotto(text: str) -> dict | None:
     return None
 
 
-def fetch_9lotto(day: dt.date) -> dict | None:
+N7, N9 = "9 Lotto 4D", "9 Lotto 4D 9PM"   # two draws a night: 7pm and 9pm
+HIST9: list = []   # [(date, slot 7|9, (year, number))] of saved 9 Lotto draws, oldest first; filled by main()
+_PAGE9: dict = {}
+
+
+def _slot9(key, now) -> int | None:
+    """Which slot (7 or 9) a newly seen 9 Lotto draw belongs to, tonight.
+    Draw numbers go up by one per draw (7pm, 9pm, next day 7pm ...), so we count on from the last saved draw.
+    If that chain is broken (missed days, new year), fall back to the clock: before 9pm = 7pm draw."""
+    if HIST9:
+        d, slot, last = HIST9[-1]
+        if key <= last:
+            return None
+        if key[0] == last[0]:
+            for _ in range(key[1] - last[1]):
+                d, slot = (d, 9) if slot == 7 else (d + dt.timedelta(days=1), 7)
+            if d == now.date():
+                return slot
+            if d < now.date() - dt.timedelta(days=0):
+                pass  # chain says an older draw: we missed some, use the clock
+            else:
+                return None
+    return 7 if now.hour < 21 else 9
+
+
+def _fetch9(day: dt.date, want: int) -> dict | None:
     now = dt.datetime.now(MYT)
     if day != now.date() or now.hour < 19:
         return None
-    r = parse_9lotto(html_text(get("https://9lotto.com/result", {"Referer": "https://9lotto.com/"})))
-    if r and _drawkey(r["draw_no"]) > _drawkey(LAST_NO.get("9 Lotto 4D", "")):
-        return r
-    return None
+    if "r" not in _PAGE9:
+        _PAGE9["r"] = parse_9lotto(html_text(get("https://9lotto.com/result", {"Referer": "https://9lotto.com/"})))
+    r = _PAGE9["r"]
+    if not r or _slot9(_drawkey(r["draw_no"]), now) != want:
+        return None
+    return dict(r, operator=N7 if want == 7 else N9)
 
 
-FETCHERS = [("Magnum 4D", fetch_magnum), ("Sports Toto 4D", fetch_toto), ("Da Ma Cai 1+3D", fetch_damacai), ("GD Lotto 4D", fetch_gd), ("9 Lotto 4D", fetch_9lotto)]
+def fetch_9lotto_7pm(day: dt.date) -> dict | None:
+    return _fetch9(day, 7)
+
+
+def fetch_9lotto_9pm(day: dt.date) -> dict | None:
+    return _fetch9(day, 9)
+
+
+FETCHERS = [("Magnum 4D", fetch_magnum), ("Sports Toto 4D", fetch_toto), ("Da Ma Cai 1+3D", fetch_damacai), ("GD Lotto 4D", fetch_gd), (N7, fetch_9lotto_7pm), (N9, fetch_9lotto_9pm)]
 
 
 def row_of(r: dict, day: dt.date) -> dict:
@@ -231,6 +266,8 @@ def main() -> int:
         have = {(r["operator"], r["date"]): r for r in rows}
         for r in sorted(rows, key=lambda r: r["date"]):
             LAST_NO[r["operator"]] = r["draw_no"]
+        for r in sorted((r for r in rows if r["operator"] in (N7, N9)), key=lambda r: (r["date"], r["operator"] == N9)):
+            HIST9.append((dt.date.fromisoformat(r["date"]), 9 if r["operator"] == N9 else 7, _drawkey(r["draw_no"])))
         new = []
         for name, fn in FETCHERS:
             if (name, day.isoformat()) in have and not a.dry_run:
