@@ -26,7 +26,7 @@ LANG_META = {
 HTML_LANG = {"en": "en", "ms": "ms", "zh": "zh-Hans", "ta": "ta"}
 
 CSS = """*{box-sizing:border-box}body{margin:0;background:#07142B;color:#F8F4E8;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans Tamil","PingFang SC","Microsoft YaHei",sans-serif}
-a{color:#E9C46B}a:hover{color:#F3D892}:focus-visible{outline:2px solid #E9C46B;outline-offset:2px}
+a{color:#E9C46B}a:hover{color:#F3D892}.lst{transform-box:view-box;transform-origin:432px 122px}.lsp{transform-box:fill-box;transform-origin:center;opacity:0}.lgl{opacity:0}@media (prefers-reduced-motion:no-preference){.lst{animation:ltw 3.6s ease-in-out infinite}.lsp{animation:lpop 3.6s ease-in-out infinite}.lsp.s2{animation-delay:1.2s}.lsp.s3{animation-delay:2.3s}.lgl{animation:lgl 3.6s ease-in-out infinite}}@keyframes ltw{0%,100%{transform:scale(1) rotate(0);opacity:1}45%{transform:scale(.72) rotate(-12deg);opacity:.75}55%{transform:scale(1.22) rotate(18deg);opacity:1;filter:drop-shadow(0 0 10px #FFE7A3)}70%{transform:scale(1) rotate(0)}}@keyframes lpop{0%,60%,100%{opacity:0;transform:scale(.2) rotate(0)}70%{opacity:1;transform:scale(1) rotate(45deg)}82%{opacity:0;transform:scale(.3) rotate(90deg)}}@keyframes lgl{0%,50%{stroke-dashoffset:40;opacity:0}55%{opacity:.95}85%{stroke-dashoffset:-360;opacity:.95}90%,100%{stroke-dashoffset:-380;opacity:0}}header svg{overflow:visible}:focus-visible{outline:2px solid #E9C46B;outline-offset:2px}
 .w{max-width:720px;margin:0 auto;padding:0 16px 48px}
 header{border-bottom:1px solid #1A2C50;background:#0A1832}header .w{display:flex;align-items:center;gap:10px;padding:10px 16px}
 header a{display:flex;align-items:center;gap:10px;color:#F8F4E8;text-decoration:none;font-weight:800;font-size:17px}
