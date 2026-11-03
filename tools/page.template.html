@@ -352,7 +352,7 @@ header{background-color:rgba(7,20,43,.92);background-image:radial-gradient(1px 1
 .r5 button{height:42px;border:0;border-radius:10px;background:#172A4D;font-size:17px;color:#F8F4E8;padding:0}
 .rc.soon .rb{color:#A9B4CC;font-size:14px}
 .rc.none .rb{color:#A9B4CC;font-size:14px}
-.nd #rc-N,.nd [href="#rc-N"]{order:-3}.nd #rc-P,.nd [href="#rc-P"]{order:-2}.nd #rc-G,.nd [href="#rc-G"]{order:-1}
+.nd #rc-N,.nd [href="#rc-N"]{order:-2}.nd #rc-P,.nd [href="#rc-P"]{order:-1}.nd #rc-G,.nd [href="#rc-G"]{order:-3}
 .rc.wait .r3 button{cursor:default}.rc.wait .r3 .mono{background:linear-gradient(90deg,#3a5288 25%,#8fa3cc 50%,#3a5288 75%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shim 1.4s linear infinite}@keyframes shim{to{background-position:-200% 0}}
 .lv{display:flex;align-items:center;gap:10px;margin:14px 2px 2px;font-size:15px;font-weight:800;color:#F8F4E8;font-variant-numeric:tabular-nums}.lv i{width:10px;height:10px;border-radius:50%;background:#FF4D4F;flex:none;animation:lvp 1.6s infinite}@keyframes lvp{0%{box-shadow:0 0 0 0 rgba(255,77,79,.7)}70%,100%{box-shadow:0 0 0 10px rgba(255,77,79,0)}}
 .rc.fresh{animation:frs 1.4s ease-out}@keyframes frs{0%{box-shadow:0 0 0 0 var(--c)}35%{box-shadow:0 0 0 6px var(--c)}100%{box-shadow:0 0 0 0 transparent}}
@@ -682,7 +682,7 @@ let LV={},LVS="",LPT=0;
 function livePart(k,n){const key=k==="N"||k==="P"?"9":k,v=LV[key];if(!v||v.d!==n.ymd)return null;
   if(key==="9"){const o=LIVE.find(x=>x.k==="N"),done7=o&&o.D.length&&o.D[o.D.length-1].d===n.ymd;if((k==="N")===!!done7)return null;if(k==="P"&&n.m<1255)return null}
   return v}
-function lpoll(){if(document.hidden)return;fetch("/api/live?"+Math.floor(Date.now()/15000),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(!j||!j.ops)return;const s_=JSON.stringify(j.ops);if(s_===LVS)return;LVS=s_;LV=j.ops;
+function lpoll(){if(document.hidden)return;fetch("/api/live?"+Math.floor(Date.now()/10000),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(!j||!j.ops)return;const s_=JSON.stringify(j.ops);if(s_===LVS)return;LVS=s_;LV=j.ops;
   const L=liveNow();if(!L)return;let add=0;
   L.wait.forEach(k=>{const v=livePart(k,L.n);if(!v)return;const sp=v.sl.filter(Boolean);if(v.top.every(Boolean)&&sp.length===10&&v.co.length===10&&v.co.every(Boolean)){const o=LIVE.find(x=>x.k===k);if(!o)return;
     let no=v.no;if(!no&&o.D.length){const m=String(o.D[o.D.length-1].no).match(/^(\d+)\/(\d+)$/);if(m)no=(+m[1]+1)+"/"+L.n.ymd.slice(0,4)}
@@ -691,7 +691,7 @@ function lpoll(){if(document.hidden)return;fetch("/api/live?"+Math.floor(Date.no
   renderLatest()}).catch(()=>{})}
 function liveStop(){clearInterval(LT);clearInterval(PT);clearInterval(LPT);LT=PT=LPT=0}
 function liveTick(){const L=liveNow();if(!L||!L.wait.length){liveStop();if(document.querySelector(".rc.wait"))renderLatest();return}if([...document.querySelectorAll(".rc.wait:not(.live) .cd")].some(e=>L.n.m>=(DRAWM[e.dataset.k]||1140))){renderLatest();return}document.querySelectorAll(".rc.wait .cd").forEach(e=>e.textContent=liveMsg(L.n,e.dataset.k))}
-function armLive(){const L=liveNow();if(!L||!L.wait.length){liveStop();return}if(!LT)LT=setInterval(liveTick,1000);if(!PT){PT=setInterval(poll,45000);poll()}if(!LPT){LPT=setInterval(lpoll,20000);lpoll()}}
+function armLive(){const L=liveNow();if(!L||!L.wait.length){liveStop();return}if(!LT)LT=setInterval(liveTick,1000);if(!PT){PT=setInterval(poll,45000);poll()}if(!LPT){LPT=setInterval(lpoll,12000);lpoll()}}
 function poll(){if(document.hidden)return;fetch("live.json?"+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(!j)return;let add=0;if(j.X&&JSON.stringify(j.X)!==JSON.stringify(XT)){XT=j.X;add++}
   LIVE.forEach(o=>{const last=o.D.length?o.D[o.D.length-1].d:"";(j[o.k]||"").split("|").filter(Boolean).forEach(s=>{const a=s.split(",");if(a[0]>last&&a[2]&&a[2].length===92){const n=[];for(let i=0;i<92;i+=4)n.push(a[2].slice(i,i+4));o.D.push({d:a[0],no:a[1],n});add++}})});
   if(add){const old=MAX;DATES=[...new Set(LIVE.flatMap(o=>o.D.map(x=>x.d)))].sort();MAX=DATES[DATES.length-1];if(st.to===old)st.to=MAX;IX=null;renderLatest()}}).catch(()=>{})}
