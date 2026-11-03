@@ -25,7 +25,16 @@ LANG_META = {
 }
 HTML_LANG = {"en": "en", "ms": "ms", "zh": "zh-Hans", "ta": "ta"}
 
-CSS = """*{box-sizing:border-box}body{margin:0;background:#07142B;color:#F8F4E8;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans Tamil","PingFang SC","Microsoft YaHei",sans-serif}
+BN_ICONS = ['<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>', '<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>', '<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"></path><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"></path></svg>', '<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"></path><path d="M12 17h.01"></path></svg>']
+BN_LAB = {"ms": ("Keputusan", "Semak nombor", "Kamus", "Panduan"), "en": ("Results", "Check number", "Dictionary", "Guide"),
+          "zh-Hans": ("开彩成绩", "查号码", "万字字典", "攻略"), "ta": ("முடிவுகள்", "எண் சரிபார்ப்பு", "அகராதி", "வழிகாட்டி")}
+BN_CSS = (".bnav{position:fixed;left:0;right:0;bottom:0;z-index:6;background:rgba(10,24,50,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid #1A2C50;padding:6px 8px calc(8px + env(safe-area-inset-bottom))}"
+          ".bnav .bw{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}"
+          ".bnav a{text-decoration:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:54px;border-radius:14px;color:#9AA6C0;font-size:11px;font-weight:800;line-height:1.15;text-align:center;padding:4px}"
+          ".bnav a[aria-current]{color:#E9C46B;background:#13254A}body{padding-bottom:calc(80px + env(safe-area-inset-bottom))}")
+
+
+CSS = """*{box-sizing:border-box}""" + BN_CSS + """body{margin:0;background:#07142B;color:#F8F4E8;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans Tamil","PingFang SC","Microsoft YaHei",sans-serif}
 a{color:#E9C46B}a:hover{color:#F3D892}.lst{transform-box:view-box;transform-origin:432px 122px}.lsp{transform-box:fill-box;transform-origin:center;opacity:0}.lgl{opacity:0}@media (prefers-reduced-motion:no-preference){.lst{animation:ltw 3.6s ease-in-out infinite}.lsp{animation:lpop 3.6s ease-in-out infinite}.lsp.s2{animation-delay:1.2s}.lsp.s3{animation-delay:2.3s}.lgl{animation:lgl 3.6s ease-in-out infinite}}@keyframes ltw{0%,100%{transform:scale(1) rotate(0);opacity:1}45%{transform:scale(.72) rotate(-12deg);opacity:.75}55%{transform:scale(1.22) rotate(18deg);opacity:1;filter:drop-shadow(0 0 10px #FFE7A3)}70%{transform:scale(1) rotate(0)}}@keyframes lpop{0%,60%,100%{opacity:0;transform:scale(.2) rotate(0)}70%{opacity:1;transform:scale(1) rotate(45deg)}82%{opacity:0;transform:scale(.3) rotate(90deg)}}@keyframes lgl{0%,50%{stroke-dashoffset:40;opacity:0}55%{opacity:.95}85%{stroke-dashoffset:-360;opacity:.95}90%,100%{stroke-dashoffset:-380;opacity:0}}header svg{overflow:visible}:focus-visible{outline:2px solid #E9C46B;outline-offset:2px}
 .w{max-width:720px;margin:0 auto;padding:0 16px 48px}
 header{border-bottom:1px solid #1A2C50;background:#0A1832}header .w{display:flex;align-items:center;gap:10px;padding:10px 16px}
@@ -38,8 +47,7 @@ h2{font-size:18px;margin:28px 0 10px}
 .pic{display:block;width:100%;max-width:360px;aspect-ratio:1/1;border-radius:16px;overflow:hidden;background:#172A4D;margin:14px 0}
 .pic img{display:block;width:100%;height:100%;object-fit:cover}
 .pic .sp{display:block;width:100%;height:100%;background-size:500% 500%;background-repeat:no-repeat}
-.shr{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:12px}.shr .sb,.shr a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 6px;border-radius:12px;border:0;font:inherit;font-size:13px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}.shr .sb{background:#172A4D;border:1px solid #233862;color:#F8F4E8}.shr .wa{background:#177A45}.shr .tg2{background:#1877B8}.shr .fb{background:#1B5FC2}
-@media(max-width:420px){.shr{grid-template-columns:1fr 1fr}}
+.shr{display:grid;grid-template-columns:1fr 48px 48px 48px;gap:8px;margin-top:12px}.shr .sb,.shr a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 6px;border-radius:12px;border:0;font:inherit;font-size:13px;font-weight:800;color:#fff;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}.shr .sb{background:#172A4D;border:1px solid #233862;color:#F8F4E8}.shr .wa{background:#177A45}.shr .tg2{background:#1877B8}.shr .fb{background:#1B5FC2}
 dl{display:grid;grid-template-columns:130px 1fr;gap:8px 12px;margin:0}dt{color:#A9B4CC;font-size:13px;font-weight:700}dd{margin:0}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border-radius:14px;background:#E9C46B;color:#07142B;font-weight:800;text-decoration:none;margin-top:14px}
 .btn:hover{color:#07142B;background:#F3D892}
@@ -56,6 +64,7 @@ table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;p
 .list a{text-decoration:none;color:#F8F4E8}.list .mono{color:#E9C46B;margin-right:8px}
 footer{max-width:720px;margin:0 auto;padding:18px 16px 40px;font-size:12px;color:#A9B4CC;border-top:1px solid #1A2C50}.tgi{position:relative;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#fff;color:#1877B8;flex:none}.tgi::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #fff;animation:tgp 2s ease-out infinite}.tgi svg{margin-left:-2px;animation:tgf 3s ease-in-out infinite}@keyframes tgp{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.7);opacity:0}}@keyframes tgf{0%,55%,100%{transform:none;opacity:1}70%{transform:translate(9px,-9px) scale(.6);opacity:0}71%{transform:translate(-9px,9px) scale(.6);opacity:0}85%{transform:none;opacity:1}}@media (prefers-reduced-motion:reduce){.tgi::after,.tgi svg{animation:none}}.tg{display:inline-flex;align-items:center;gap:10px;padding-left:7px!important;margin-top:14px;min-height:44px;padding:0 16px;border-radius:999px;background:#1877B8;color:#fff!important;font-weight:800;font-size:14px;text-decoration:none}
 @media(max-width:520px){.list{columns:1}dl{grid-template-columns:110px 1fr}}"""
+
 
 
 def esc(s: str) -> str:
@@ -110,13 +119,21 @@ class Site:
 </head>
 <body><header><div class="w"><a href="{self.u('')}">{self.mark}<span>4D Malam Ini</span></a></div></header>
 <main class="w">{body}</main>
-{foot if foot is not None else DEFAULT_FOOT}</body></html>"""
+{foot if foot is not None else DEFAULT_FOOT}{self.bnav(path, lang)}</body></html>"""
         p = self.out / path.lstrip("/")
         if path.endswith("/"):
             p = p / "index.html"
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(doc, encoding="utf-8")
         self.urls.append((canon, lastmod))
+
+    def bnav(self, path: str, lang: str) -> str:
+        pre = {"en": "", "ms": "ms/", "zh-Hans": "zh/", "ta": "ta/"}.get(lang, "") if "guide/" in path else ""
+        lab = BN_LAB.get(lang, BN_LAB["ms"])
+        cur = 3 if "guide/" in path else 2 if path.startswith("4d/") else 0 if path.startswith("keputusan/") else -1
+        hrefs = [self.u(pre), self.u(pre + "?tab=check"), self.u(pre + "?tab=dict"), self.u(pre + "guide/" if pre or "guide/" in path else "guide/")]
+        return '<nav class="bnav" aria-label="Main"><div class="bw">' + "".join(
+            f'<a href="{h}"' + (' aria-current="page"' if i == cur else "") + f'>{BN_ICONS[i]}<span>{esc(lab[i])}</span></a>' for i, h in enumerate(hrefs)) + "</div></nav>"
 
     def crumbs(self, items: list) -> tuple[str, dict]:
         html = " › ".join(f'<a href="{self.u(p)}">{esc(n)}</a>' if p is not None else esc(n) for n, p in items)
@@ -207,9 +224,9 @@ class Site:
             su = self.site + f"4d/{n}/"
             stx = f"4D {n} = " + " ".join(x for x in (e["zh"], e["en"]) if x) + ". Pernah menang? Semak di sini:"
             share = (f'<div class="shr"><button type="button" class="sb" data-u="{su}" data-t="{esc(stx)}">Kongsi · Share</button>'
-                     f'<a class="wa" href="https://wa.me/?text={quote(stx + " " + su)}" target="_blank" rel="noopener">WhatsApp</a>'
-                     f'<a class="tg2" href="https://t.me/share/url?url={quote(su)}&amp;text={quote(stx)}" target="_blank" rel="noopener">Telegram</a>'
-                     f'<a class="fb" href="https://www.facebook.com/sharer/sharer.php?u={quote(su)}" target="_blank" rel="noopener">Facebook</a></div>'
+                     f'<a class="wa" href="https://api.whatsapp.com/send?text={quote(stx + " " + su)}" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.4 4.8 5-1.3A9.8 9.8 0 1 0 12 2.2z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M8.4 7.4c.3-.6.6-.6 1-.6h.6c.2 0 .4.1.5.4l.8 1.9c.1.3 0 .5-.1.7l-.6.7c-.1.2-.1.4 0 .6.5 1 1.6 2.1 2.6 2.6.2.1.4.1.6 0l.7-.6c.2-.2.4-.2.7-.1l1.9.8c.3.1.4.3.4.5v.6c0 .3 0 .7-.6 1-.6.4-1.6.6-2.5.3-3-1-5.4-3.4-6.4-6.4-.3-.9-.1-1.9.4-2.4z" fill="currentColor"/></svg></a>'
+                     f'<a class="tg2" href="https://t.me/share/url?url={quote(su)}&amp;text={quote(stx)}" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.6-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.1l-4.7-1.5c-1-.3-1-1 .2-1.5L20.5 3c.9-.3 1.6.2 1.4 1.3Z"/></svg></a>'
+                     f'<a class="fb" href="https://www.facebook.com/sharer/sharer.php?u={quote(su)}" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M13.6 21.5v-8h2.7l.4-3.2h-3.1V8.3c0-.9.3-1.5 1.6-1.5h1.7V4a22 22 0 0 0-2.5-.1c-2.4 0-4.1 1.5-4.1 4.2v2.3H7.6v3.2h2.7v8z"/></svg></a></div>'
                      '<script>document.querySelector(".shr .sb").onclick=function(){var b=this,d={title:document.title,text:b.dataset.t,url:b.dataset.u};'
                      'if(navigator.share)navigator.share(d).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(d.text+" "+d.url).then(function(){b.textContent="Pautan disalin · Copied"})}</script>')
             body = (f"{nav}<h1><span class=\"mono\">{n}</span> {esc(e['zh'])}<small>{esc(e['en'])}{' · ' + esc(e['ms']) if e['ms'] else ''}</small></h1>{pic}"
