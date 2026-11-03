@@ -233,9 +233,9 @@ footer{font-size:12px;color:#A9B4CC;margin-top:28px;padding-top:14px;border-top:
 .rc.slip{background:#fff;color:#1a1a1a;border:3px solid #fff;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.35);font-family:Roboto,"Segoe UI",Arial,"PingFang SC","Microsoft YaHei","Noto Sans Tamil",sans-serif}
 .slip .sh{display:flex;align-items:center;gap:12px;padding:8px 10px;background:var(--hb);color:#fff}
 .slip.k-M .sh{color:#111}.slip.k-G .sh{color:#FFE7A3}
-.slip .lgw{width:52px;height:40px;display:grid;place-items:center;background:#fff;border-radius:5px;flex:none}
+.slip .lgw{width:48px;height:40px;display:grid;place-items:center;background:none;flex:none}.slip .lgw img{filter:drop-shadow(0 1px 2px rgba(0,0,0,.25))}
 .slip .lgw img{width:44px;height:36px;object-fit:contain}
-.slip.k-N .lgw,.slip.k-P .lgw{width:auto;padding:0 8px;background:#0A1733}.slip.k-N .lgw img,.slip.k-P .lgw img{width:102px;height:22px}
+.slip.k-N .lgw,.slip.k-P .lgw{width:auto}.slip.k-N .lgw img,.slip.k-P .lgw img{width:102px;height:22px}
 .slip .sht{min-width:0;flex:1}.slip .sht b{display:block;font-size:17px;line-height:1.15;font-weight:800}.slip .sht b i{font-style:normal;font-weight:700}
 .slip .sht small{display:block;font-size:12.5px;font-weight:700;margin-top:2px;opacity:.95}
 .slip .lvp{flex:none;background:#000;color:#fff}
@@ -572,7 +572,7 @@ function renderLatest(){
   const zhn=o=>st.lang==="zh"||!o.zh||/lotto/i.test(o.zh)?"":`<i>${o.zh}</i>`,lab=k=>st.lang==="zh"?t(k):`${t(k)}<em>${["p1","p2","p3"].includes(k)?["首奖","二奖","三奖"][+k[1]-1]:k==="p4"?"特别奖":"安慰奖"}</em>`;
   const cd=d=>`(${fmt(d,{weekday:"short"})}) ${d.slice(6)}-${fmt(d,{month:"short"})}-${d.slice(0,4)}`;
   const nb=(n,dis)=>`<button type="button"${dis?" disabled":` data-n="${n}"`}${!dis&&mineHit(n).length?' class="me"':""}>${n}</button>`;
-  const head=(k,o,nm,sub,on)=>`<div class="sh"><span class="lgw">${k==="N"||k==="P"?`<img class="opl" src="img/op/n-w.webp" width="102" height="25" alt="9 Lotto">`:`<img class="opl" src="img/op/${k.toLowerCase()}.webp?v=2" width="40" height="40" alt="">`}</span><div class="sht"><b>${nm} ${o?zhn(o):""}</b><small>${sub}</small></div>${on?`<span class="lvp"><i></i>${t("liveTag")}</span>`:""}</div>`;
+  const head=(k,o,nm,sub,on)=>`<div class="sh"><span class="lgw">${k==="N"||k==="P"?`<img class="opl" src="img/op/n-w.webp" width="102" height="25" alt="9 Lotto">`:`<img class="opl" src="img/op/${k.toLowerCase()}${k==="D"||k==="T"?"-n":""}.webp?v=2" width="40" height="40" alt="">`}</span><div class="sht"><b>${nm} ${o?zhn(o):""}</b><small>${sub}</small></div>${on?`<span class="lvp"><i></i>${t("liveTag")}</span>`:""}</div>`;
   const body=(n,dis)=>`<div class="lbar">${["p1","p2","p3"].map(p=>`<span>${lab(p)}</span>`).join("")}</div><div class="s3">${n.slice(0,3).map(x=>nb(x,dis)).join("")}</div>`+
     `<div class="sec">${lab("p4")}</div><div class="s5">${n.slice(3,13).map(x=>nb(x,dis)).join("")}</div><div class="sec">${lab("p5")}</div><div class="s5">${n.slice(13).map(x=>nb(x,dis)).join("")}</div>`;
   const cards=BOARD.map(([k,c])=>{const o=LIVE.find(x=>x.k===k),nm=o?oname(o):OPS.find(x=>x.k===k).name,st_=`style="--c:${c};--hb:${HC[k]}"`;
