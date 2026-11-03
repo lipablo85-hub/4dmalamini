@@ -177,10 +177,11 @@ class Site:
             prev = f'<a href="{self.u(f"keputusan/{d8(self.dates[i - 1]).isoformat()}/")}">‹ {self.date_ms(self.dates[i - 1])}</a>' if i else "<span></span>"
             nxt = f'<a href="{self.u(f"keputusan/{d8(self.dates[i + 1]).isoformat()}/")}">{self.date_ms(self.dates[i + 1])} ›</a>' if i + 1 < len(self.dates) else "<span></span>"
             dd = d8(d)
-            title = f"Keputusan 4D {self.date_ms(d)} — {', '.join(titles)} | 4D Malam Ini"
+            title = f"Keputusan 4D {self.date_ms(d)} | 4D Malam Ini"
             desc = f"Keputusan penuh 4D {self.date_ms(d)}: " + "; ".join(
                 f"{name} {by[k][d][2][0]}, {by[k][d][2][1]}, {by[k][d][2][2]}" for k, name, _, _ in OPS if d in by[k]) + ". Hadiah istimewa dan saguhati."
-            body = (f"{nav}<h1>Keputusan 4D {self.date_ms(d)}<small>4D results {dd:%A, %-d %B %Y} · {dd.year}年{dd.month}月{dd.day}日万字成绩</small></h1>"
+            desc = desc if len(desc) <= 158 else desc[:155].rsplit(";", 1)[0] + "…"
+            body = (f"{nav}<h1>Keputusan 4D {self.date_ms(d)}<small><span lang='en'>4D results {dd:%A, %-d %B %Y}</span> · <span lang='zh-Hans'>{dd.year}年{dd.month}月{dd.day}日万字成绩</span></small></h1>"
                     + "".join(body_ops) + f'<div class="pn">{prev}{nxt}</div>')
             self.page(f"keputusan/{iso}/", title, desc, body, "ms", [ld], iso)
 
@@ -216,10 +217,16 @@ class Site:
             prev, nxt = f"{(i - 1) % 10000:04d}", f"{(i + 1) % 10000:04d}"
             pn = (f'<div class="pn"><a href="{self.u(f"4d/{prev}/")}">‹ {prev} {esc(self.dict.get(prev, {}).get("zh", ""))}</a>'
                   f'<a href="{self.u(f"4d/{nxt}/")}">{nxt} {esc(self.dict.get(nxt, {}).get("zh", ""))} ›</a></div>')
-            lastwin = f"Kali terakhir menang {self.date_ms(hits[0][0])} ({opn[hits[0][1]]})." if hits else "Belum menang dalam 5 tahun ini."
-            title = f"4D {n}" + (f" {e['zh']}" if e["zh"] else "") + (f" · {e['en']}" if e["en"] else "") + " — 万字图 & sejarah menang | 4D Malam Ini"
-            desc = (f"Nombor 4D {n} dalam 万字图: {e['zh']} ({e['en']} / {e['ms']} / {e['ta']}). "
-                    f"Menang {len(hits)} kali dalam Magnum, Sports Toto, Da Ma Cai, GD Lotto dan 9 Lotto sejak {span}. {lastwin}")
+            lastwin = f"Terakhir: {d8(hits[0][0]).day} {BULAN[d8(hits[0][0]).month - 1][:3]} {d8(hits[0][0]).year}, {opn[hits[0][1]]}." if hits else "Belum menang dalam 5 tahun ini."
+            title = f"4D {n}" + (f" {e['ms']}" if e["ms"] else "") + (f" {e['zh']}" if e["zh"] else "") + " – Sejarah Menang | 4D Malam Ini"
+            if len(title) > 65:
+                m_ = e["ms"] or e["zh"]
+                m_ = m_ if len(m_) <= 38 else m_[:37].rstrip() + "…"
+                title = f"4D {n} {m_} | 4D Malam Ini"
+            mean = ", ".join(x for x in (e["ms"], e["zh"]) if x)
+            desc = (f"Nombor 4D {n}" + (f" ({mean})" if mean else "") + f": menang {len(hits)} kali sejak {span}. {lastwin} Semak sejarah penuh dan maksud 万字图.")
+            if len(desc) > 158:
+                desc = f"Nombor 4D {n}: menang {len(hits)} kali sejak {span}. {lastwin}"
             from urllib.parse import quote
             su = self.site + f"4d/{n}/"
             stx = f"4D {n} = " + " ".join(x for x in (e["zh"], e["en"]) if x) + ". Pernah menang? Semak di sini:"

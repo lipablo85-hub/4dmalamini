@@ -4,13 +4,13 @@ import html as H
 import json
 
 META = {
-    "en": ("4D Result Today Malaysia — Magnum, Toto, Da Ma Cai, GD, 9 Lotto | 4D Malam Ini",
+    "en": ("4D Result Today: Magnum, Toto, DMC, GD | 4D Malam Ini",
            "Malaysia 4D results today: Magnum 4D, Sports Toto, Da Ma Cai 1+3D, GD Lotto and 9 Lotto, updated live from 7pm. Check any number against 5 years of draws."),
-    "ms": ("Keputusan 4D Hari Ini — Magnum, Toto, Da Ma Cai, GD, 9 Lotto | 4D Malam Ini",
+    "ms": ("Keputusan 4D Hari Ini: Magnum, Toto, DMC | 4D Malam Ini",
            "Keputusan 4D hari ini: Magnum 4D, Sports Toto, Da Ma Cai 1+3D, GD Lotto dan 9 Lotto, dikemas kini dari 7 malam. Semak nombor anda dengan rekod 5 tahun."),
-    "zh": ("今日万字成绩 — 万能、多多、大马彩、豪龙、9 Lotto | 4D Malam Ini",
+    "zh": ("今日万字成绩：万能、多多、大马彩、豪龙 | 4D Malam Ini",
            "今日马来西亚万字成绩：万能 Magnum 4D、多多 Sports Toto、大马彩 Da Ma Cai、豪龙 GD Lotto 与 9 Lotto，晚上7点起即时更新。查询号码5年中奖记录与万字图。"),
-    "ta": ("இன்றைய 4D முடிவுகள் — Magnum, Toto, Da Ma Cai, GD, 9 Lotto | 4D Malam Ini",
+    "ta": ("இன்றைய 4D முடிவுகள்: Magnum, Toto, DMC | 4D Malam Ini",
            "இன்றைய மலேசியா 4D முடிவுகள்: Magnum 4D, Sports Toto, Da Ma Cai 1+3D, GD Lotto, 9 Lotto — இரவு 7 மணி முதல் புதுப்பிக்கப்படும். உங்கள் எண்ணை 5 ஆண்டு பதிவுகளுடன் சரிபாருங்கள்."),
 }
 

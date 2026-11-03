@@ -70,7 +70,7 @@ body{font-family:"Jakarta",system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans"
 # ---------------- text per language ----------------
 T = {
 "en": dict(
-  home="Home", guide="4D Guide", title="How to Play 4D in Malaysia: Big, Small, Box & Prizes Explained",
+  home="Home", guide="4D Guide", title="How to Play 4D in Malaysia: Big, Small & Box",
   desc="Simple guide to playing 4D in Malaysia: Big vs Small, prize per RM1, Box, iBox and Roll bets, chances of winning, draw days and how to check results.",
   h1="How to play 4D in Malaysia", sub="Big and Small, prizes per RM1, Box and iBox, and your real chances — explained simply.",
   toc=[("pick", "Pick a number"), ("bigsmall", "Big or Small"), ("ways", "Box & iBox"), ("odds", "Chances"), ("days", "Draw days"), ("rules", "Rules")],
@@ -102,7 +102,7 @@ T = {
   checkbtn="Check a 4D number", back="← Back to 4D Guide", res="See the latest results", lnk="Official page",
 ),
 "ms": dict(
-  home="Utama", guide="Panduan 4D", title="Cara Main 4D di Malaysia: Big, Small, Box & Hadiah",
+  home="Utama", guide="Panduan 4D", title="Cara Main 4D: Big, Small, Box & Hadiah",
   desc="Panduan mudah cara main 4D di Malaysia: Big lawan Small, hadiah setiap RM1, Box, iBox dan Roll, peluang menang, hari cabutan dan cara semak keputusan.",
   h1="Cara main 4D di Malaysia", sub="Big dan Small, hadiah setiap RM1, Box dan iBox, serta peluang sebenar anda — diterangkan dengan mudah.",
   toc=[("pick", "Pilih nombor"), ("bigsmall", "Big atau Small"), ("ways", "Box & iBox"), ("odds", "Peluang"), ("days", "Hari cabutan"), ("rules", "Peraturan")],
@@ -166,7 +166,7 @@ T = {
   checkbtn="查询万字号码", back="← 返回万字攻略", res="查看最新成绩", lnk="官方网页",
 ),
 "ta": dict(
-  home="முகப்பு", guide="4D வழிகாட்டி", title="மலேசியாவில் 4D விளையாடுவது எப்படி: Big, Small, Box & பரிசுகள்",
+  home="முகப்பு", guide="4D வழிகாட்டி", title="4D விளையாடுவது எப்படி: Big, Small, Box",
   desc="மலேசியா 4D எளிய வழிகாட்டி: Big மற்றும் Small, ஒவ்வொரு RM1-க்கும் பரிசு, Box, iBox, Roll, வெல்லும் வாய்ப்பு, குலுக்கல் நாட்கள், முடிவுகளைச் சரிபார்ப்பது.",
   h1="மலேசியாவில் 4D விளையாடுவது எப்படி", sub="Big, Small, ஒவ்வொரு RM1-க்கான பரிசு, Box, iBox மற்றும் உண்மையான வாய்ப்புகள் — எளிமையாக.",
   toc=[("pick", "எண் தேர்வு"), ("bigsmall", "Big / Small"), ("ways", "Box & iBox"), ("odds", "வாய்ப்பு"), ("days", "குலுக்கல் நாட்கள்"), ("rules", "விதிகள்")],
