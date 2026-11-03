@@ -1,19 +1,11 @@
 name: Check sources (dry run)
 on: workflow_dispatch
-permissions:
-  contents: write
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 4
+    timeout-minutes: 3
     steps:
+      - uses: actions/checkout@v4
       - run: |
-          mkdir probe && cd probe
-          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"
-          K=e0a5d3fsdfdsghhg18b0c8bgfdgd7c06e
-          curl -sSL -A "$UA" -e https://superj3.net/ -o landing.json "https://superj3.net/data/data-api.php?op=get_landing_info&api_key=$K&ao=1"
-          for dt in 15 21; do curl -sSL -A "$UA" -e https://superj3.net/ -o last_$dt.json "https://superj3.net/data/data-api.php?op=get_last_result&dt=$dt&api_key=$K"; done
-          curl -sSL -A "$UA" -e https://superj3.net/ -o last.json "https://superj3.net/data/data-api.php?op=get_last_result&api_key=$K"
-          ls -la
-          git init -q -b probe && git add -A && git -c user.name=p -c user.email=p@l commit -qm probe
-          git push -fq "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe:probe-data
+          curl -sS -m 25 "https://www.4dmalamini.com/api/live?x=$RANDOM" | python3 -c "import sys,json;j=json.load(sys.stdin);[print('LIVE',k,v['d'],v['top'],len([x for x in v['sl'] if x]),len([x for x in v['co'] if x])) for k,v in j['ops'].items() if k in 'JK']"
+          python3 tools/fetch_results.py --csv malaysia_4d_draws_2021-2026.csv --dry-run --date 2026-11-03 2>&1 | grep -i "J3\|J9" || true
