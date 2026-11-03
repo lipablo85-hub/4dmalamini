@@ -1,0 +1,40 @@
+# Fetch tonight's 4D results from the official sites every 5 minutes, 6:55-9:55 pm Malaysia time,
+# plus catch-up runs at 9:30 pm and 11:30 pm. New complete draws are committed to the CSV,
+# and Netlify rebuilds and publishes the site automatically (about 1-2 minutes).
+name: Nightly 4D results
+on:
+  schedule:
+    - cron: "55 10 * * *"       # 18:55 MYT standby run (GitHub may start it a few minutes late)
+    - cron: "*/5 11-13 * * *"   # every 5 min, 19:00-21:55 MYT (UTC+8)
+    - cron: "30 13,15 * * *"    # 21:30 and 23:30 MYT
+  workflow_dispatch: {}
+permissions:
+  contents: write
+concurrency:
+  group: results
+  cancel-in-progress: false
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch tonight's results
+        run: python3 tools/fetch_results.py --csv malaysia_4d_draws_2021-2026.csv
+      - name: Commit new draws
+        id: commit
+        run: |
+          if git diff --quiet -- malaysia_4d_draws_2021-2026.csv; then echo "No new draws"; exit 0; fi
+          git config user.name "4d-results-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add malaysia_4d_draws_2021-2026.csv
+          git commit -m "Results $(TZ=Asia/Kuala_Lumpur date +%Y-%m-%d)"
+          git push
+          echo "changed=yes" >> "$GITHUB_OUTPUT"
+  deploy:
+    needs: fetch
+    if: needs.fetch.outputs.changed == 'yes'
+    uses: ./.github/workflows/deploy.yml
+    secrets: inherit

@@ -1,0 +1,5 @@
+dist/
+dist.new/
+*.lock
+fetch.log
+node_modules/
