@@ -410,6 +410,36 @@ def fetch_9lotto_7pm(day: dt.date) -> dict | None:
     return _fetch9(day, 7)
 
 
+# ---------- Singapore 4D (Singapore Pools): check4d.org, draws Wed/Sat/Sun 6:30pm ----------
+SG = "Singapore 4D"
+
+
+def parse_check4d_sg(text: str, day: dt.date) -> dict | None:
+    t = re.sub(r"\s+", " ", text)
+    m = re.search(r"Singapore 4D Date:\s*(\d{2})-(\d{2})-(\d{4})\s*\(\w+\)\s*Draw No:\s*(\d+)(.*?)(?:Singapore Toto|SABAH|Sandakan|Advertisements|$)", t)
+    if not m or dt.date(int(m.group(3)), int(m.group(2)), int(m.group(1))) != day:
+        return None
+    b = m.group(5)
+    p = re.search(r"1st Prize \S+ (\d{4}) 2nd Prize \S+ (\d{4}) 3rd Prize \S+ (\d{4})", b)
+    sp, co = re.search(r"Special(.*?)Consolation", b), re.search(r"Consolation(.*)$", b)
+    if not (p and sp and co):
+        return None
+    top, s_, c_ = list(p.groups()), re.findall(r"\b\d{4}\b", sp.group(1))[:10], re.findall(r"\b\d{4}\b", co.group(1))[:10]
+    if complete(top, s_, c_):
+        return {"operator": SG, "draw_no": m.group(4), "top": top, "sp": s_, "co": c_}
+    return None
+
+
+def fetch_sg(day: dt.date) -> dict | None:
+    now = dt.datetime.now(MYT)
+    if day.weekday() not in (2, 5, 6) or (day == now.date() and now.hour * 60 + now.minute < 1110):
+        return None
+    r = parse_check4d_sg(check4d_text(), day)
+    if r or day == now.date():
+        return r
+    return parse_check4d_sg(html_text(get(f"https://www.check4d.org/past-results/{day.isoformat()}", {"Referer": "https://www.check4d.org/"})), day)
+
+
 # ---------- Super J3 & J9: superj3.net JSON feed, two sessions a day (3pm = "J3", 9pm = "J9") ----------
 J3, J9 = "Super J3 3PM", "Super J9 9PM"
 J3KEY = "e0a5d3fsdfdsghhg18b0c8bgfdgd7c06e"   # public key embedded in superj3.net's own page
@@ -454,7 +484,7 @@ def fetch_j9(day: dt.date) -> dict | None:
     return _fetch_j(day, "21", J9)
 
 
-FETCHERS = [("Magnum 4D", fetch_magnum), ("Sports Toto 4D", fetch_toto), ("Da Ma Cai 1+3D", fetch_damacai), ("GD Lotto 4D", fetch_gd), (N7, fetch_9lotto_7pm), (J3, fetch_j3), (J9, fetch_j9)]
+FETCHERS = [("Magnum 4D", fetch_magnum), ("Sports Toto 4D", fetch_toto), ("Da Ma Cai 1+3D", fetch_damacai), ("GD Lotto 4D", fetch_gd), (N7, fetch_9lotto_7pm), (SG, fetch_sg), (J3, fetch_j3), (J9, fetch_j9)]
 
 
 def save_extras(path: Path, day: dt.date, dry: bool) -> None:
@@ -502,7 +532,7 @@ def main() -> int:
         have = {(r["operator"], r["date"]) for r in rows}
         now = dt.datetime.now(MYT)
         mins = (now.hour * 60 + now.minute) if day == now.date() else 24 * 60
-        due = ([J3] if mins >= 900 else []) + (["GD Lotto 4D", N7] if mins >= 1140 else []) + (["Magnum 4D", "Sports Toto 4D", "Da Ma Cai 1+3D"] if day.weekday() in (2, 5, 6) and mins >= 1140 else []) + ([J9] if mins >= 1260 else [])
+        due = ([J3] if mins >= 900 else []) + (["GD Lotto 4D", N7] if mins >= 1140 else []) + (["Magnum 4D", "Sports Toto 4D", "Da Ma Cai 1+3D"] if day.weekday() in (2, 5, 6) and mins >= 1140 else []) + ([SG] if day.weekday() in (2, 5, 6) and mins >= 1110 else []) + ([J9] if mins >= 1260 else [])
         for name in due:
             if (name, day.isoformat()) not in have:
                 print(name)

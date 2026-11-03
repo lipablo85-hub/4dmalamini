@@ -1,0 +1,14 @@
+name: Backfill Singapore 4D history
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/backfill_sg.py malaysia_4d_draws_2021-2026.csv
+      - run: |
+          git config user.name "4d-results-bot"; git config user.email "actions@users.noreply.github.com"
+          git add malaysia_4d_draws_2021-2026.csv && git commit -qm "Backfill Singapore 4D history" && git pull -q --rebase origin main && git push -q
