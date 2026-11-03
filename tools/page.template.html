@@ -402,8 +402,7 @@ header{background-color:rgba(7,20,43,.92);background-image:radial-gradient(1px 1
 .r5 button{height:42px;border:0;border-radius:10px;background:#172A4D;font-size:17px;color:#F8F4E8;padding:0}
 .rc.soon .rb{color:#A9B4CC;font-size:14px}
 .rc.none .rb{color:#A9B4CC;font-size:14px}
-.nd #rc-N,.nd [href="#rc-N"]{order:-2}.nd #rc-P,.nd [href="#rc-P"]{order:-1}.nd #rc-G,.nd [href="#rc-G"]{order:-3}
-.p9 #rc-P,.p9 [href="#rc-P"]{order:-9!important}
+.nd #rc-N,.nd [href="#rc-N"]{order:-2}.nd #rc-G,.nd [href="#rc-G"]{order:-3}
 .rc.wait .r3 button{cursor:default}.rc.wait .r3 .mono{background:linear-gradient(90deg,#3a5288 25%,#8fa3cc 50%,#3a5288 75%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shim 1.4s linear infinite}@keyframes shim{to{background-position:-200% 0}}
 .lv{display:flex;align-items:center;gap:10px;margin:14px 2px 2px;font-size:15px;font-weight:800;color:#F8F4E8;font-variant-numeric:tabular-nums}.lv i{width:10px;height:10px;border-radius:50%;background:#FF4D4F;flex:none;animation:lvp 1.6s infinite}@keyframes lvp{0%{box-shadow:0 0 0 0 rgba(255,77,79,.7)}70%,100%{box-shadow:0 0 0 10px rgba(255,77,79,0)}}
 .rc.fresh{animation:frs 1.4s ease-out}@keyframes frs{0%{box-shadow:0 0 0 0 var(--c)}35%{box-shadow:0 0 0 6px var(--c)}100%{box-shadow:0 0 0 0 transparent}}
@@ -533,7 +532,7 @@ const OPS=[
  {k:"M",name:"Magnum 4D",zh:"万能",c:"#E9C46B"},
  {k:"T",name:"Sports Toto",zh:"多多",c:"#FF5A5F"},
  {k:"D",name:"Da Ma Cai",zh:"大马彩",c:"#4C8DFF"},
- {k:"G",name:"GD Lotto",zh:"豪龙",c:"#F27BA5"},{k:"N",name:"9 Lotto 7pm",zh:"9 Lotto 7pm",c:"#2EC4B6"},{k:"P",name:"9 Lotto 9pm",zh:"9 Lotto 9pm",c:"#2EC4B6"},{name:"Sabah 88",zh:"沙巴88",c:"#7BD389"},{name:"STC 4D",zh:"山打根",c:"#FF9F43"},{name:"Cash Sweep",zh:"砂拉越",c:"#B38CFF"}];
+ {k:"G",name:"GD Lotto",zh:"豪龙",c:"#F27BA5"},{k:"N",name:"9 Lotto",zh:"9 Lotto",c:"#2EC4B6"},{name:"Sabah 88",zh:"沙巴88",c:"#7BD389"},{name:"STC 4D",zh:"山打根",c:"#FF9F43"},{name:"Cash Sweep",zh:"砂拉越",c:"#B38CFF"}];
 const LIVE=OPS.filter(o=>o.k);
 const $=s=>document.querySelector(s);
 
@@ -655,7 +654,7 @@ function renderCheck(){
   const hb=$("#hxn");
   if(hb&&hits.length>1&&matchMedia("(prefers-reduced-motion:no-preference)").matches){const N=hits.length,t0=performance.now();const step=now=>{const k=Math.min(1,(now-t0)/600);hb.textContent=Math.round(N*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(step)};hb.textContent="0";requestAnimationFrame(step)}
 }
-const BOARD=[["M","#E9C46B"],["D","#4C8DFF"],["T","#FF5A5F"],["G","#F27BA5"],["N","#2EC4B6"],["P","#2EC4B6"]];
+const BOARD=[["M","#E9C46B"],["D","#4C8DFF"],["T","#FF5A5F"],["G","#F27BA5"],["N","#2EC4B6"]];
 function boardDraw(k){const o=LIVE.find(x=>x.k===k);if(!o)return null;if(!st.rd)return o.D[o.D.length-1];return o.D.find(x=>x.d===st.rd)||null}
 const money=a=>"RM "+a;
 const wtag=x=>!x||!x.w?"":`<span class="w ${x.w==="Won"?"f":"p"}">${t(x.w==="Won"?"won":"pwon")}</span>`;
@@ -708,7 +707,6 @@ function renderLatest(){
   $("#rprev").disabled=i<=0;$("#rnext").disabled=!st.rd||i>=DATES.length-1;
   $("#rprev").setAttribute("aria-label",t("prevDraw"));$("#rnext").setAttribute("aria-label",t("nextDraw"));
   const ri=$("#rdate");ri.min=iso(MIN);ri.max=iso(MAX);ri.value=iso(st.rd||MAX);
-  {const n9=myt(),p9=!st.rd&&n9.m>=1255;$("#board").classList.toggle("p9",p9);$("#rjump").classList.toggle("p9",p9)}
   renderJx();armLive();renderMine();$("#tab-results").classList.toggle("lvn",!!(L&&L.wait.length&&L.n.m>=1135));
 }
 /* My numbers: saved on this phone, matched against the board; toast when tonight's results include them */
@@ -767,18 +765,16 @@ $("#mlist").addEventListener("click",e=>{const r=e.target.closest("[data-rm]");i
 if(location.hash==="#mine")mineOpen(true);
 $("#mtX").onclick=()=>$("#mtoast").classList.remove("on");
 /* live board: Wed/Sat/Sun (GD daily) from 6:55pm MYT, standby cards + countdown, polls live.json until every result is in */
-const LDAYS={M:[0,3,6],D:[0,3,6],T:[0,3,6],G:[0,1,2,3,4,5,6],N:[0,1,2,3,4,5,6],P:[0,1,2,3,4,5,6]};const DRAWM={P:1260};
+const LDAYS={M:[0,3,6],D:[0,3,6],T:[0,3,6],G:[0,1,2,3,4,5,6],N:[0,1,2,3,4,5,6]};const DRAWM={};
 function myt(){const d=new Date(Date.now()+288e5);return{ymd:d.toISOString().slice(0,10).replace(/-/g,""),wd:d.getUTCDay(),m:d.getUTCHours()*60+d.getUTCMinutes(),s:d.getUTCSeconds()}}
 function liveNow(){if(st.rd)return null;const n=myt();if(n.m<1135)return null;const ks=BOARD.map(b=>b[0]).filter(k=>LDAYS[k].includes(n.wd));
   return{n,ks,wait:ks.filter(k=>{const o=LIVE.find(x=>x.k===k);return!o||!o.D.length||o.D[o.D.length-1].d!==n.ymd})}}
 function liveMsg(n,k){const r=((DRAWM[k]||1140)-n.m)*60-n.s;const p=x=>String(x).padStart(2,"0");return r>0?t("startsIn").replace("{t}",r>=3600?Math.floor(r/3600)+":"+p(Math.floor(r/60)%60)+":"+p(r%60):Math.floor(r/60)+":"+p(r%60)):t("waiting")}
 let LT=0,PT=0;
 let LV={},LVS="",LPT=0,LCONF={};
-/* which board key the live "9" (9 Lotto) block belongs to: the 7pm draw until it is saved, then the 9pm one */
-function livePart(k,n){const key=k==="N"||k==="P"?"9":k,v=LV[key];if(!v||v.d!==n.ymd)return null;
-  if(key==="9"){const o=LIVE.find(x=>x.k==="N"),l7=o&&o.D.length?o.D[o.D.length-1]:null,done7=l7&&l7.d===n.ymd;if((k==="N")===!!done7)return null;
-    /* the 9pm slip only takes a newer draw than tonight's saved 7pm one */
-    if(k==="P"&&(n.m<1255||(l7&&l7.no===v.no)||(LCONF.N&&LCONF.N.indexOf(v.top.join())>=0)))return null}
+/* live "9" block = 9 Lotto (one draw a day at 7pm) */
+function livePart(k,n){const v=LV[k==="N"?"9":k];if(!v||v.d!==n.ymd)return null;
+  if(k==="N"){const o=LIVE.find(x=>x.k==="N"),l=o&&o.D.length?o.D[o.D.length-1]:null;if(l&&l.no===v.no)return null}
   return v}
 function lpoll(){if(document.hidden)return;{const L=liveNow();if(!L||!L.wait.some(k=>L.n.m>=(DRAWM[k]||1140)-2))return}fetch("/api/live?"+Math.floor(Date.now()/20000),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(!j||!j.ops)return;const s_=JSON.stringify(j.ops),same=s_===LVS;if(same&&!Object.keys(LCONF).length)return;LVS=s_;LV=j.ops;
   const L=liveNow();if(!L)return;let add=0;

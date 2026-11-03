@@ -9,10 +9,7 @@ on:
     - cron: "5 11 * * *"    # 19:05
     - cron: "20 11 * * *"   # 19:20
     - cron: "40 11 * * *"   # 19:40
-    - cron: "58 12 * * *"   # 20:58  (9 Lotto 9pm)
-    - cron: "6 13 * * *"    # 21:06
-    - cron: "15 13 * * *"   # 21:15
-    - cron: "30 13 * * *"   # 21:30
+    - cron: "10 12 * * *"   # 20:10 catch-up
   workflow_dispatch:
     inputs:
       minutes:
@@ -50,8 +47,6 @@ jobs:
             fi
             left=$(python3 tools/fetch_results.py --csv $CSV --pending)
             [ -z "$left" ] && { echo "all of today's draws are in"; break; }
-            m=$(( 10#$(TZ=Asia/Kuala_Lumpur date +%H) * 60 + 10#$(TZ=Asia/Kuala_Lumpur date +%M) ))
-            [ "$left" = "9 Lotto 4D 9PM" ] && [ $m -lt 1255 ] && { echo "only the 9pm draw is left; stopping until 8:58pm"; break; }
             [ $(date +%s) -ge $end ] && { echo "time limit; still waiting for: $left"; break; }
             sleep 60
           done

@@ -12,7 +12,7 @@ CO = [
     ("da-ma-cai-result", ["D"], {"en": "Da Ma Cai 1+3D", "ms": "Da Ma Cai 1+3D", "zh": "大马彩", "ta": "Da Ma Cai 1+3D"}, "#4C8DFF", "wss"),
     ("sports-toto-result", ["T"], {"en": "Sports Toto 4D", "ms": "Sports Toto 4D", "zh": "多多", "ta": "Sports Toto 4D"}, "#FF5A5F", "wss"),
     ("gd-lotto-result", ["G"], {"en": "GD Lotto 4D", "ms": "GD Lotto 4D", "zh": "豪龙", "ta": "GD Lotto 4D"}, "#F27BA5", "daily"),
-    ("9-lotto-result", ["P", "N"], {"en": "9 Lotto 4D", "ms": "9 Lotto 4D", "zh": "9 Lotto", "ta": "9 Lotto 4D"}, "#2EC4B6", "twice"),
+    ("9-lotto-result", ["N"], {"en": "9 Lotto 4D", "ms": "9 Lotto 4D", "zh": "9 Lotto", "ta": "9 Lotto 4D"}, "#2EC4B6", "daily"),
 ]
 MON = {"en": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
        "ms": ["Jan", "Feb", "Mac", "Apr", "Mei", "Jun", "Jul", "Ogo", "Sep", "Okt", "Nov", "Dis"]}
@@ -117,14 +117,14 @@ def build(site) -> None:
             d, no, n = latest
             path = f"{pre}{slug}/"
             sched = f(x["sched"][sk])
-            cards = card(lk, latest, lang, x, (x["latest"].replace("{n}", nm) + (f" · {x['t9'][1 if lk == 'P' else 0]}" if slug.startswith("9") else "")))
-            if slug.startswith("9"):
+            cards = card(lk, latest, lang, x, (x["latest"].replace("{n}", nm) + (f" · {x['t9'][1 if lk == 'P' else 0]}" if False else "")))
+            if False:
                 other = [k for k in keys if k != lk and rows[k]]
                 for k in other:
                     cards += card(k, rows[k][-1], lang, x, f"{nm} · {x['t9'][1 if k == 'P' else 0]}")
             hist = sorted((r + (k,) for k in keys for r in rows[k][-10:]), key=lambda r: (r[0], r[3] == "P"), reverse=True)[:10]
             trs = "".join(f'<tr><td><a href="{site.u(f"keputusan/{d8(r[0]).isoformat()}/")}">{fd(r[0], lang)}</a>'
-                          + (f' <small style="color:#A9B4CC">{x["t9"][1 if r[3] == "P" else 0]}</small>' if slug.startswith("9") else "")
+                          + (f' <small style="color:#A9B4CC">{x["t9"][1 if r[3] == "P" else 0]}</small>' if False else "")
                           + f'</td><td>{esc(r[1])}</td><td class="n">{" · ".join(r[2][:3])}</td></tr>' for r in hist)
             faq = [(f(q), f(a_).replace("{when}", f(x["when"][sk])) if "{when}" in a_ else f(a_)) for q, a_ in x["faq"]]
             faq = [(q, a_.replace("{when}", f(x["when"][sk]))) for q, a_ in faq]

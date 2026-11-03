@@ -17,7 +17,7 @@ Run it again after every draw (add the new rows to the results CSV) and upload t
 import argparse, csv, hashlib, html as H, json, re, shutil, subprocess
 from pathlib import Path
 
-OPS = {"Magnum 4D": "M", "Sports Toto 4D": "T", "Da Ma Cai 1+3D": "D", "GD Lotto 4D": "G", "9 Lotto 4D": "N", "9 Lotto 4D 9PM": "P"}
+OPS = {"Magnum 4D": "M", "Sports Toto 4D": "T", "Da Ma Cai 1+3D": "D", "GD Lotto 4D": "G", "9 Lotto 4D": "N", "9 Lotto 4D 9PM": "N"}
 
 
 def h8(b: bytes) -> str:
@@ -91,13 +91,13 @@ def prerender_lang(html: str, lang: str) -> str:
 def prerender_latest(html: str, data: dict) -> str:
     """Write the results board (classic result slips, official draw order) into the page; the page script redraws it in the visitor's language."""
     import datetime
-    board = [("M", "Magnum 4D", "#E9C46B"), ("D", "Da Ma Cai", "#4C8DFF"), ("T", "Sports Toto", "#FF5A5F"), ("G", "GD Lotto", "#F27BA5"), ("N", "9 Lotto 7pm", "#2EC4B6"), ("P", "9 Lotto 9pm", "#2EC4B6")]
-    zh = {"M": "万能", "D": "大马彩", "T": "多多", "G": "豪龙", "N": "", "P": ""}
-    hc = {"M": "#FFF200", "D": "#000080", "T": "#C00000", "G": "#B0121B", "N": "#0E8F86", "P": "#0E8F86"}
+    board = [("M", "Magnum 4D", "#E9C46B"), ("D", "Da Ma Cai", "#4C8DFF"), ("T", "Sports Toto", "#FF5A5F"), ("G", "GD Lotto", "#F27BA5"), ("N", "9 Lotto", "#2EC4B6")]
+    zh = {"M": "万能", "D": "大马彩", "T": "多多", "G": "豪龙", "N": ""}
+    hc = {"M": "#FFF200", "D": "#000080", "T": "#C00000", "G": "#B0121B", "N": "#0E8F86"}
     fd = lambda d: datetime.date(int(d[:4]), int(d[4:6]), int(d[6:])).strftime("%a, %-d %b %Y")
     cdf = lambda d: datetime.date(int(d[:4]), int(d[4:6]), int(d[6:])).strftime("(%a) %d-%b-%Y")
     nb = lambda n: f'<button type="button" data-n="{n}">{n}</button>'
-    head = lambda k, name, sub: (f'<div class="sh"><span class="lgw">{('<img class="opl" src="img/op/n-s.webp" width="46" height="46" alt="9 Lotto">' if k in "NP" else f'<img class="opl" src="img/op/{k.lower()}{"-n" if k in "DT" else ""}.webp?v=3" width="40" height="40" alt="">')}</span>'
+    head = lambda k, name, sub: (f'<div class="sh"><span class="lgw">{('<img class="opl" src="img/op/n-s.webp" width="46" height="46" alt="9 Lotto">' if k == "N" else f'<img class="opl" src="img/op/{k.lower()}{"-n" if k in "DT" else ""}.webp?v=3" width="40" height="40" alt="">')}</span>'
                                  f'<div class="sht"><b>{name} <i>{zh[k]}</i></b><small>{sub}</small></div></div>')
     lb = '<div class="lbar"><span>1st Prize<em>首奖</em></span><span>2nd Prize<em>二奖</em></span><span>3rd Prize<em>三奖</em></span></div>'
     cards, last = [], ""

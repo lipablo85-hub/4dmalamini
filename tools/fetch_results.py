@@ -337,7 +337,7 @@ def parse_9lotto(text: str) -> dict | None:
     return None
 
 
-N7, N9 = "9 Lotto 4D", "9 Lotto 4D 9PM"   # two draws a night: 7pm and 9pm
+N7, N9 = "9 Lotto 4D", "9 Lotto 4D 9PM"   # one draw a day at 7pm (N9: old label, no longer used)
 HIST9: list = []   # [(date, slot 7|9, (year, number))] of saved 9 Lotto draws, oldest first; filled by main()
 _PAGE9: dict = {}
 
@@ -382,7 +382,7 @@ def parse_loto4d_9(text: str, day: dt.date) -> dict | None:
 
 def _fetch9(day: dt.date, want: int) -> dict | None:
     now = dt.datetime.now(MYT)
-    if day != now.date() or now.hour < 19:
+    if day != now.date() or now.hour < 19:   # 9 Lotto draws once a day at 7pm
         return None
     if "r" not in _PAGE9:
         try:
@@ -398,20 +398,19 @@ def _fetch9(day: dt.date, want: int) -> dict | None:
             except Exception as e:
                 log(f"9 Lotto loto4d unavailable ({type(e).__name__})")
     r = _PAGE9["r"]
-    if not r or _slot9(_drawkey(r["draw_no"]), now) != want:
+    if not r:
         return None
-    return dict(r, operator=N7 if want == 7 else N9)
+    last = HIST9[-1][2] if HIST9 else (0, 0)
+    if _drawkey(r["draw_no"]) <= last:   # still showing a draw we already have
+        return None
+    return dict(r, operator=N7)
 
 
 def fetch_9lotto_7pm(day: dt.date) -> dict | None:
     return _fetch9(day, 7)
 
 
-def fetch_9lotto_9pm(day: dt.date) -> dict | None:
-    return _fetch9(day, 9)
-
-
-FETCHERS = [("Magnum 4D", fetch_magnum), ("Sports Toto 4D", fetch_toto), ("Da Ma Cai 1+3D", fetch_damacai), ("GD Lotto 4D", fetch_gd), (N7, fetch_9lotto_7pm), (N9, fetch_9lotto_9pm)]
+FETCHERS = [("Magnum 4D", fetch_magnum), ("Sports Toto 4D", fetch_toto), ("Da Ma Cai 1+3D", fetch_damacai), ("GD Lotto 4D", fetch_gd), (N7, fetch_9lotto_7pm)]
 
 
 def save_extras(path: Path, day: dt.date, dry: bool) -> None:
@@ -457,7 +456,7 @@ def main() -> int:
     if a.pending:
         rows = list(csv.DictReader(open(a.csv, encoding="utf-8-sig")))
         have = {(r["operator"], r["date"]) for r in rows}
-        due = ["GD Lotto 4D", N7, N9] + (["Magnum 4D", "Sports Toto 4D", "Da Ma Cai 1+3D"] if day.weekday() in (2, 5, 6) else [])
+        due = ["GD Lotto 4D", N7] + (["Magnum 4D", "Sports Toto 4D", "Da Ma Cai 1+3D"] if day.weekday() in (2, 5, 6) else [])
         for name in due:
             if (name, day.isoformat()) not in have:
                 print(name)
