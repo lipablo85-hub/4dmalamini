@@ -140,8 +140,9 @@ CSS = """.info{--mu:#9DB0D3;--ln:rgba(255,255,255,.09);--cd:#0F1F3D;--gold:#E9C4
 .info .itop{position:sticky;top:0;z-index:4;background:rgba(7,20,43,.93);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);margin:0 -16px;padding:8px 16px 0;border-bottom:1px solid var(--ln)}
 .info .crumb{font-size:12.5px;color:var(--mu)}.info .crumb a{color:var(--mu)}
 .info .lng{display:flex;gap:6px;float:right}.info .lng a{font-size:12px;font-weight:700;color:var(--mu);text-decoration:none;padding:2px 6px;border-radius:6px}.info .lng a[aria-current]{background:#13274A;color:#fff}
-.info .tabs{display:flex;gap:6px;overflow-x:auto;padding:10px 0;scrollbar-width:none}.info .tabs::-webkit-scrollbar{display:none}
-.info .tabs a{flex:none;text-decoration:none;font-size:13.5px;font-weight:700;padding:7px 14px;border-radius:999px;background:#13274A;color:var(--mu);border:1px solid var(--ln)}.info .tabs a.on{background:var(--gold);color:#1B1300;border-color:transparent}
+.info .tabs{clear:both;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding:10px 0}
+.info .tabs a{display:flex;align-items:center;justify-content:center;text-align:center;min-height:36px;text-decoration:none;font-size:12.5px;line-height:1.2;font-weight:700;padding:5px 4px;border-radius:12px;background:#13274A;color:var(--mu);border:1px solid var(--ln);overflow-wrap:anywhere}
+.info [lang=ta] .tabs a,.info .tabs a:lang(ta){font-size:11px}.info .tabs a.on{background:var(--gold);color:#1B1300;border-color:transparent}
 .info .hero{padding:20px 0 4px}.info h1{margin:0;font-size:28px;letter-spacing:-.02em}.info .hero p{margin:6px 0 0;color:var(--mu);max-width:640px}
 .info section{padding-top:26px;scroll-margin-top:110px}
 .info h2{font-size:20px;margin:0 0 4px;display:flex;align-items:center;gap:10px}.info h2 i{font-style:normal;display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:rgba(233,196,107,.15);color:var(--gold);font-size:14px}
