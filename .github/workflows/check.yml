@@ -1,0 +1,15 @@
+name: Check sources (dry run)
+on: workflow_dispatch
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python3 tools/fetch_results.py --csv malaysia_4d_draws_2021-2026.csv --dry-run || true
+          python3 - <<'PY'
+          import sys,re;sys.path.insert(0,'tools');import fetch_results as F
+          t=re.sub(r'\s+',' ',F.check4d_text());i=t.find('Grand Dragon');print('C4D GD:',t[i:i+420])
+          t9=re.sub(r'\s+',' ',F.html_text(F.get('https://9lotto.com/result',{'Referer':'https://9lotto.com/'})));i=t9.find('Result');print('9L:',t9[i:i+700])
+          PY
