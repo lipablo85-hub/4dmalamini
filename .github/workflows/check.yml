@@ -1,14 +1,24 @@
 name: Check sources (dry run)
 on: workflow_dispatch
+permissions:
+  contents: write
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 4
     steps:
-      - uses: actions/checkout@v4
       - run: |
-          curl -sS -m 25 "https://www.4dmalamini.com/api/live?x=$RANDOM" | python3 -c "import sys,json;j=json.load(sys.stdin);v=j['ops'].get('9');print('API9',v)"
-          python3 - <<'PY'
-          import sys,re;sys.path.insert(0,'tools');import fetch_results as F
-          t=re.sub(r'\s+',' ',F.html_text(F.get('https://9lotto.com/result',{'Referer':'https://9lotto.com/'})));i=t.find('DRAW NO');print('PAGE9',t[i:i+420])
-          PY
+          mkdir probe && cd probe
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"
+          f(){ curl -sSL -A "$UA" -e "$3" --max-time 30 -o "$1" "$2" || echo "fail $1"; }
+          f j3.html https://superj3.net/ https://superj3.net/
+          f today.html https://4d.today/super-j3-j9-jackpot/ https://4d.today/
+          f c4d.html https://www.check4d.org/ https://www.check4d.org/
+          f loto.html https://loto4d.com/ https://loto4d.com/
+          for u in $(grep -oE '(src|href)="[^"]+\.js[^"]*"' j3.html | sed -E 's/^(src|href)="//;s/"$//' | head -12); do
+            case "$u" in http*) url="$u";; //*) url="https:$u";; /*) url="https://superj3.net$u";; *) url="https://superj3.net/$u";; esac
+            n=$(echo "$url" | md5sum | cut -c1-8); f "js_$n.js" "$url" https://superj3.net/; echo "$url -> js_$n.js" >> jslist.txt
+          done
+          ls -la
+          git init -q -b probe && git add -A && git -c user.name=p -c user.email=p@l commit -qm probe
+          git push -fq "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe:probe-data
