@@ -3,3 +3,4 @@ dist.new/
 *.lock
 fetch.log
 node_modules/
+__pycache__/
