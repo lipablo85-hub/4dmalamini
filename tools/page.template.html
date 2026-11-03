@@ -230,6 +230,10 @@ footer{font-size:12px;color:#A9B4CC;margin-top:28px;padding-top:14px;border-top:
 .hx-box{display:flex;flex-wrap:wrap;gap:6px}.hx-box button{display:inline-flex;gap:6px;align-items:center;min-height:38px;padding:0 10px;border-radius:10px;border:0;background:#172A4D;color:#F8F4E8;font:inherit;font-size:14px}
 .hx-box b{font-size:11px;background:#E9C46B;color:#07142B;border-radius:999px;padding:1px 6px}.hx-box .z{opacity:.5}
 @media(max-width:370px){.hx-tiles b{width:40px;height:50px;font-size:26px}.hx-stats{grid-template-columns:1fr 1fr}.hx-stats .big{grid-column:1/-1}}
+.hx-hd{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px}.hx-hd .hx-l{margin:0;justify-content:flex-start}
+.hx-tg{display:inline-flex;gap:8px}.hx-tg button{display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:0 14px;border-radius:999px;border:1.5px solid #8796B5;background:#1A2747;color:#fff;font:inherit;font-size:13px;font-weight:800;cursor:pointer}
+.hx-tg button i{width:14px;height:14px;border-radius:4px;border:1.5px solid currentColor;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-style:normal;line-height:1}
+.hx-tg button:hover{border-color:#F5C542}.hx-tg button.on{background:#F5C542;border-color:#F5C542;color:#000}.hx-tg button.on i{background:#000;border-color:#000;color:#F5C542}.hx-tg button:focus-visible{outline:2px solid #fff;outline-offset:2px}
 @media (prefers-reduced-motion:reduce){.hx-co .hb i{animation:none}}
 .stage{position:relative;isolation:isolate;border-radius:26px;padding:16px 12px;margin:4px -4px 0;overflow:hidden;background:radial-gradient(60% 40% at 15% 0%,rgba(233,196,107,.26),transparent 70%),radial-gradient(55% 35% at 100% 25%,rgba(76,141,255,.2),transparent 70%),radial-gradient(70% 40% at 50% 105%,rgba(242,123,165,.13),transparent 70%),linear-gradient(180deg,#0E1E3D,#0A1733);box-shadow:inset 0 0 0 1px rgba(233,196,107,.33),0 24px 50px rgba(0,0,0,.3)}
 .stage::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:18px 18px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 80%);mask-image:linear-gradient(180deg,#000,transparent 80%)}
@@ -584,7 +588,8 @@ let MIN=DATES[0],MAX=DATES[DATES.length-1];
 let YEARS=[...new Set(DATES.map(d=>d.slice(0,4)))].reverse();
 const iso=s=>s.slice(0,4)+"-"+s.slice(4,6)+"-"+s.slice(6);
 
-const st={tab:"results",rd:null,lang:"en",q:"",mode:"exact",ops:new Set(LIVE.map(o=>o.k)),from:MIN,to:MAX,y:"all",m:"all",page:1,open:{}};
+const st={tab:"results",rd:null,lang:"en",q:"",mode:"exact",ops:new Set(LIVE.map(o=>o.k)),from:MIN,to:MAX,y:"all",m:"all",page:1,open:{},hxAll:false};
+try{st.hxAll=localStorage.getItem("4dhxall")==="1"}catch(e){}
 try{const l=localStorage.getItem("4dl");if(T[l])st.lang=l}catch(e){}
 const P=new URLSearchParams(location.search);
 if(T[P.get("lang")])st.lang=P.get("lang");
@@ -651,14 +656,16 @@ function renderCheck(){
   if(!hits.length){h+=`<section class="card"><p class="last" style="margin:0">${t("never")}</p></section>`}
   else{
     /* where it won */
-    const sel=LIVE.filter(o=>st.ops.has(o.k)),by=new Map();hits.forEach(x=>by.set(x.o,(by.get(x.o)||0)+1));
-    const won=sel.filter(o=>by.get(o)).sort((a,b)=>by.get(b)-by.get(a)),zero=sel.filter(o=>!by.get(o)),mx=Math.max(...won.map(o=>by.get(o)));
-    h+=`<section class="card"><p class="hx-l">${t("hxWhere")}<span>${t("hxOf",{a:won.length,b:sel.length})}</span></p><div class="hx-co">${won.map(o=>`<div class="r" style="--c:${o.c}"><img src="img/op/${o.k.toLowerCase()}${"TD".includes(o.k)?"-n":""}.webp?v=4" width="30" height="30" alt=""><div class="hb"><i style="width:${Math.max(30,by.get(o)/mx*100)}%"></i><span>${oname(o)}</span></div><b class="mono">${by.get(o)}</b></div>`).join("")}</div>${zero.length?`<p class="hx-none">${t("hxNone",{l:zero.map(oname).join(", ")})}</p>`:""}</section>`;
+    const base=LIVE.filter(o=>st.ops.has(o.k)),MKT="MTD",tg=base.some(o=>!MKT.includes(o.k))&&base.some(o=>MKT.includes(o.k)),all=st.hxAll||!tg,sel=all?base:base.filter(o=>MKT.includes(o.k)),by=new Map();hits.forEach(x=>by.set(x.o,(by.get(x.o)||0)+1));
+    const won=sel.filter(o=>by.get(o)).sort((a,b)=>by.get(b)-by.get(a)),zero=sel.filter(o=>!by.get(o)),mx=Math.max(1,...won.map(o=>by.get(o)));
+    const tb=(v,on,l)=>`<button type="button" role="radio" aria-checked="${on}" data-hxco="${v}"${on?' class="on"':""}><i aria-hidden="true">${on?"✓":""}</i>${l}</button>`;
+    h+=`<section class="card"><div class="hx-hd"><p class="hx-l">${t("hxWhere")}<span>${t("hxOf",{a:won.length,b:sel.length})}</span></p>${tg?`<div class="hx-tg" role="radiogroup" aria-label="${t("hxWhere")}">${tb("mkt",!all,"MKT")}${tb("all",all,t("all"))}</div>`:""}</div><div class="hx-co">${won.map(o=>`<div class="r" style="--c:${o.c}"><img src="img/op/${o.k.toLowerCase()}${"TD".includes(o.k)?"-n":""}.webp?v=4" width="30" height="30" alt=""><div class="hb"><i style="width:${Math.max(30,by.get(o)/mx*100)}%"></i><span>${oname(o)}</span></div><b class="mono">${by.get(o)}</b></div>`).join("")}</div>${zero.length?`<p class="hx-none">${t("hxNone",{l:zero.map(oname).join(", ")})}</p>`:!all?`<p class="hx-none">MKT = ${sel.map(oname).join(" · ")}</p>`:""}</section>`;
+    const wonT=base.filter(o=>by.get(o)).sort((a,b)=>by.get(b)-by.get(a));
     /* timeline */
     const span=Math.max(1,(dt(st.to)-dt(st.from))/864e5),pos=d=>Math.min(100,Math.max(0,(dt(d)-dt(st.from))/864e5/span*100));
     let tk="";for(let y=+st.from.slice(0,4)+1;y<=+st.to.slice(0,4);y++){const p=pos(y+"0101");tk+=`<i class="tk" style="left:${p}%"></i><span class="hy" style="left:${p}%">${y}</span>`}
     let prev=-9,alt=0;const dots=hits.map((x,i)=>[x,i]).reverse().map(([x,i])=>{const p=pos(x.dr.d);alt=p-prev<4?(alt+1)%3:0;prev=p;return`<button type="button" class="g${gz(x.j)} ${["","up","dn"][alt]}" style="left:${p}%;--c:${x.o.c}" data-go="hx${i}" aria-label="${fD(x.dr.d)} · ${oname(x.o)} · ${t("p"+tier(x.j))}"></button>`}).join("");
-    h+=`<section class="card"><p class="hx-l">${t("hxTime")}<span>${t("hxDot")}</span></p><div class="hx-strip"><i class="ax"></i>${tk}${dots}</div><div class="hx-leg">${won.map(o=>`<span><i style="background:${o.c}"></i>${oname(o)}</span>`).join("")}</div></section>`;
+    h+=`<section class="card"><p class="hx-l">${t("hxTime")}<span>${t("hxDot")}</span></p><div class="hx-strip"><i class="ax"></i>${tk}${dots}</div><div class="hx-leg">${wonT.map(o=>`<span><i style="background:${o.c}"></i>${oname(o)}</span>`).join("")}</div></section>`;
     /* every win */
     const yc={};hits.forEach(x=>{const y=x.dr.d.slice(0,4);yc[y]=(yc[y]||0)+1});let cy="",li="";
     const cell=(x,k,lab)=>{const v=x.dr.n[k];return`<button type="button" class="${k===x.j?"hm":""}" data-n="${v}">${lab?`<small>${lab}</small>`:""}${v}</button>`};
@@ -997,6 +1004,7 @@ $("#dq").addEventListener("input",e=>{const v=e.target.value;ds.q=v;ds.page=1;re
 $("#dmore").onclick=()=>{ds.page++;renderDict()};
 $("#tab-dict").onclick=()=>setTab("dict");
 document.addEventListener("click",e=>{const r=e.target.closest("[data-r]");if(r){ds.r=+r.dataset.r;ds.q="";$("#dq").value="";ds.page=1;renderDict();ensureDict(ds.r).then(renderDict);return}
+  const co=e.target.closest("[data-hxco]");if(co){st.hxAll=co.dataset.hxco==="all";try{localStorage.setItem("4dhxall",st.hxAll?"1":"0")}catch(e){}renderCheck();const f=document.querySelector(`[data-hxco="${co.dataset.hxco}"]`);if(f)f.focus({preventScroll:true});return}
   const hx=e.target.closest("[data-hx]");if(hx){const it=hx.parentElement;it.setAttribute("aria-expanded",it.getAttribute("aria-expanded")!=="true");return}
   const go=e.target.closest("[data-go]");if(go){const it=document.getElementById(go.dataset.go);if(it){it.setAttribute("aria-expanded","true");it.scrollIntoView({block:"center",behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"})}return}
   const sh=e.target.closest("[data-sh]");if(sh){const n=sh.dataset.sh,d=shareData(n),sp=sh.querySelector("span");
