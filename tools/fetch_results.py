@@ -129,10 +129,46 @@ def parse_toto(text: str, day: dt.date) -> dict | None:
     return None
 
 
+_C4D: dict = {}
+
+
+def check4d_text() -> str:
+    """check4d.org live page (all companies on one page). Fetched once per run."""
+    if "t" not in _C4D:
+        _C4D["t"] = html_text(get("https://www.check4d.org/", {"Referer": "https://www.check4d.org/"}))
+    return _C4D["t"]
+
+
+def parse_check4d_toto(text: str, day: dt.date) -> dict | None:
+    """Sports Toto 4D block of check4d.org. Blank prize slots show as ****; they are skipped (same as the official page)."""
+    m = re.search(r"SportsToto 4D.*?Date:\s*(\d{2})-(\d{2})-(\d{4}).*?Draw No:\s*(\d+/\d{2})(.*?)(?:4D Jackpot 1 Prize|SportsToto 5D)", text, re.S)
+    if not m or dt.date(int(m.group(3)), int(m.group(2)), int(m.group(1))) != day:
+        return None
+    body = m.group(5)
+    p = re.search(r"1st\D*?(\d{4}).*?2nd\D*?(\d{4}).*?3rd\D*?(\d{4})", body, re.S)
+    sp = re.search(r"Special(.*?)Consolation", body, re.S)
+    co = re.search(r"Consolation(.*)$", body, re.S)
+    if not (p and sp and co):
+        return None
+    top = list(p.groups())
+    s_ = re.findall(r"\b\d{4}\b", sp.group(1))[:10]
+    c_ = re.findall(r"\b\d{4}\b", co.group(1))[:10]
+    if complete(top, s_, c_):
+        return {"operator": "Sports Toto 4D", "draw_no": m.group(4), "top": top, "sp": s_, "co": c_}
+    return None
+
+
 def fetch_toto(day: dt.date) -> dict | None:
-    raw = get(f"https://www.sportstoto.com.my/results_past.asp?date={day.month}/15/{day.year}",
-              {"Referer": "https://www.sportstoto.com.my/"})
-    return parse_toto(html_text(raw), day)
+    """Official page first; it blocks most cloud servers (GitHub included), so fall back to check4d.org."""
+    try:
+        raw = get(f"https://www.sportstoto.com.my/results_past.asp?date={day.month}/15/{day.year}",
+                  {"Referer": "https://www.sportstoto.com.my/"})
+        r = parse_toto(html_text(raw), day)
+        if r:
+            return r
+    except Exception as e:
+        log(f"Sports Toto official page unavailable ({type(e).__name__}); using check4d.org")
+    return parse_check4d_toto(check4d_text(), day)
 
 
 # ---------- GD Lotto (Grand Dragon) 4D: official "today" page, daily draw ----------
@@ -162,9 +198,33 @@ def parse_gd(text: str, day: dt.date) -> dict | None:
     return None
 
 
+def parse_check4d_gd(text: str, day: dt.date) -> dict | None:
+    """Grand Dragon block of check4d.org (no draw number shown: continue our own GD numbering)."""
+    m = re.search(r"Grand Dragon 4D.*?Date:\s*(\d{2})-(\d{2})-(\d{4})(.*?)(?:Perdana|Lucky HariHari|\.container)", text, re.S)
+    if not m or dt.date(int(m.group(3)), int(m.group(2)), int(m.group(1))) != day:
+        return None
+    body = m.group(4)
+    p = re.search(r"1st\D*?(\d{4}).*?2nd\D*?(\d{4}).*?3rd\D*?(\d{4})", body, re.S)
+    sp = re.search(r"Special(.*?)Consolation", body, re.S)
+    co = re.search(r"Consolation(.*)$", body, re.S)
+    last = LAST_NO.get("GD Lotto 4D", "")
+    n = re.match(r"(\d+)/", last)
+    if not (p and sp and co and n):
+        return None
+    top, s_, c_ = list(p.groups()), re.findall(r"\b\d{4}\b", sp.group(1))[:10], re.findall(r"\b\d{4}\b", co.group(1))[:10]
+    if complete(top, s_, c_):
+        return {"operator": "GD Lotto 4D", "draw_no": f"{int(n.group(1)) + 1}/{day.year}", "top": top, "sp": s_, "co": c_}
+    return None
+
+
 def fetch_gd(day: dt.date) -> dict | None:
-    raw = get("https://gdlotto.net/results/today/", {"Referer": "https://gdlotto.net/"})
-    return parse_gd(html_text(raw), day)
+    try:
+        r = parse_gd(html_text(get("https://gdlotto.net/results/today/", {"Referer": "https://gdlotto.net/"})), day)
+        if r:
+            return r
+    except Exception as e:
+        log(f"GD Lotto official page unavailable ({type(e).__name__}); using check4d.org")
+    return parse_check4d_gd(check4d_text(), day)
 
 
 # ---------- 9 Lotto 4D: 9lotto.com/result, daily evening draw ----------
