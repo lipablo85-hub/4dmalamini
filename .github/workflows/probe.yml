@@ -1,5 +1,7 @@
 name: Probe result sources
 on: workflow_dispatch
+permissions:
+  contents: write
 jobs:
   probe:
     runs-on: ubuntu-latest
@@ -18,5 +20,6 @@ jobs:
           L=$(python3 -c "import json;print(json.load(open('dmc_link.json')).get('link',''))"); [ -n "$L" ] && f dmc.json "$L" https://www.damacai.com.my/
           f gd.html "https://gdlotto.net/results/today/" https://gdlotto.net/
           f 9lotto.html "https://9lotto.com/result" https://9lotto.com/
-      - uses: actions/upload-artifact@v4
-        with: {name: probe, path: probe}
+      - run: |
+          cd probe && git init -q -b probe && git add -A && git -c user.name=probe -c user.email=probe@local commit -qm probe
+          git push -fq "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe:probe-data
