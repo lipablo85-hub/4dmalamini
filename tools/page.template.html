@@ -263,8 +263,8 @@ footer{font-size:12px;color:#A9B4CC;margin-top:28px;padding-top:14px;border-top:
 @keyframes mring{0%,58%,100%{transform:rotate(0)}61%{transform:rotate(26deg)}64.5%{transform:rotate(-22deg)}68%{transform:rotate(16deg)}71.5%{transform:rotate(-11deg)}75%{transform:rotate(6deg)}78.5%{transform:rotate(-3deg)}82%{transform:rotate(1deg)}}
 @keyframes mwave{0%,59%{opacity:0;transform:scale(1)}62%{opacity:.8}84%,100%{opacity:0;transform:scale(1.6)}}
 .mtt{min-width:0;flex:1}.mtt b{display:block;font-size:16.5px;font-weight:900;letter-spacing:-.01em;line-height:1.15}.mtt small{display:block;font-size:11.5px;font-weight:700;opacity:.78;margin-top:1px}
-.msum{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}.msum:empty{display:none}.msum+*{display:none}
-.msum span{white-space:nowrap;font:800 10.5px/1 Roboto,Arial,sans-serif;padding:4px 7px;border-radius:999px;background:#1B1300;color:#FFD34D}.msum .lv{background:#C81E1E;color:#fff}.msum .wn{background:#fff;color:#1B1300}
+.msum{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin-top:4px}.msum:empty{display:none}.msum+*{display:none}
+.msum span{white-space:nowrap;font:800 10.5px/1 Roboto,Arial,sans-serif;padding:4px 7px;border-radius:999px;background:#1B1300;color:#FFD34D}.msum .mlv{background:#C81E1E;color:#fff}.msum .wn{background:#fff;color:#1B1300}
 .mine:not(.empty) .mtt small{display:none}.mine.open .mtt small{display:block}.mine.open .msum{display:none}
 .chev{width:30px;height:30px;border-radius:50%;background:rgba(27,19,0,.14);flex:none;position:relative;transition:transform .5s cubic-bezier(.34,1.3,.5,1)}
 .chev::before{content:"";position:absolute;left:50%;top:44%;width:8px;height:8px;border-right:2.5px solid #1B1300;border-bottom:2.5px solid #1B1300;transform:translate(-50%,-50%) rotate(45deg)}
@@ -723,7 +723,7 @@ function renderMine(){
   const ml=$("#mlive");
   if(live){ml.className="mlive on";ml.querySelector("span").textContent=t("mLiveW",{o:L.wait.filter(k=>L.n.m>=(DRAWM[k]||1140)-2).map(k=>oname(LIVE.find(x=>x.k===k)||{k,name:k})).join(", ")})}
   else{ml.className="mlive";ml.querySelector("span").textContent=L&&L.wait.length?t("mWait"):t("mChecked")}
-  $("#msum").innerHTML=MINE.length?(live?`<span class="lv">● ${t("liveTag")}</span>`:"")+`<span>${t("mN",{n:MINE.length})}</span>`+(won.size?`<span class="wn">🎉 ${t("mWonN",{n:won.size})}</span>`:""):"";
+  $("#msum").innerHTML=MINE.length?(live?`<span class="mlv">● ${t("liveTag")}</span>`:"")+`<span>${t("mN",{n:MINE.length})}</span>`+(won.size?`<span class="wn">🎉 ${t("mWonN",{n:won.size})}</span>`:""):"";
   $("#maddb").textContent=MINE.length?t("mAddMore"):t("mAddBig");
   mineToast();
 }
@@ -769,7 +769,9 @@ let LT=0,PT=0;
 let LV={},LVS="",LPT=0,LCONF={};
 /* which board key the live "9" (9 Lotto) block belongs to: the 7pm draw until it is saved, then the 9pm one */
 function livePart(k,n){const key=k==="N"||k==="P"?"9":k,v=LV[key];if(!v||v.d!==n.ymd)return null;
-  if(key==="9"){const o=LIVE.find(x=>x.k==="N"),done7=o&&o.D.length&&o.D[o.D.length-1].d===n.ymd;if((k==="N")===!!done7)return null;if(k==="P"&&n.m<1255)return null}
+  if(key==="9"){const o=LIVE.find(x=>x.k==="N"),l7=o&&o.D.length?o.D[o.D.length-1]:null,done7=l7&&l7.d===n.ymd;if((k==="N")===!!done7)return null;
+    /* the 9pm slip only takes a newer draw than tonight's saved 7pm one */
+    if(k==="P"&&(n.m<1255||(l7&&l7.no===v.no)||(LCONF.N&&LCONF.N.indexOf(v.top.join())>=0)))return null}
   return v}
 function lpoll(){if(document.hidden)return;{const L=liveNow();if(!L||!L.wait.some(k=>L.n.m>=(DRAWM[k]||1140)-2))return}fetch("/api/live?"+Math.floor(Date.now()/20000),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(!j||!j.ops)return;const s_=JSON.stringify(j.ops),same=s_===LVS;if(same&&!Object.keys(LCONF).length)return;LVS=s_;LV=j.ops;
   const L=liveNow();if(!L)return;let add=0;
