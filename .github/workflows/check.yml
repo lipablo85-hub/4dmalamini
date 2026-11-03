@@ -5,4 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
-      - run: curl -sS -m 25 "https://www.4dmalamini.com/api/live?x=$RANDOM" | python3 -c "import sys,json;j=json.load(sys.stdin);[print('LIVE',k,v['d'],v['no'],v['top'],len([x for x in v['sl'] if x]),len([x for x in v['co'] if x])) for k,v in j['ops'].items()]"
+      - uses: actions/checkout@v4
+      - run: |
+          python3 - <<'PY'
+          import sys,re;sys.path.insert(0,'tools');import fetch_results as F
+          t=re.sub(r'\s+',' ',F.html_text(F.get('https://9lotto.com/result',{'Referer':'https://9lotto.com/'})))
+          print('PARSE',F.parse_9lotto(t));i=t.find('DRAW NO');print('PAGE',t[i:i+900])
+          l=re.sub(r'\s+',' ',F.html_text(F.get('https://loto4d.com/',{'Referer':'https://loto4d.com/'})));i=l.find('Nine Lotto Date');print('LOTO',l[i:i+500])
+          PY
