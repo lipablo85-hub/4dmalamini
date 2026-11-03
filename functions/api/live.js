@@ -17,7 +17,7 @@ function parse(b) {
   if (!b) return null;
   const dm = b.match(/Date:\s*(\d{2})-(\d{2})-(\d{4})/); if (!dm) return null;
   const no = (b.match(/Draw No:\s*([\d/]+)/) || [])[1] || "";
-  const top = [1, 2, 3].map(i => { const m = b.match(new RegExp(["1st", "2nd", "3rd"][i - 1] + "[^\\d*-]*?(\\d{4}|-{4}|\\*{4})")); return m && /\d/.test(m[1]) ? m[1] : ""; });
+  const top = [1, 2, 3].map(i => { const m = b.match(new RegExp(["1st", "2nd", "3rd"][i - 1] + "(?: Prize)? \\S+ (\\d{4}|-{4}|\\*{4})")); return m && /\d/.test(m[1]) ? m[1] : ""; });
   const sp = b.match(/Special(.*?)Consolation/); const co = b.match(/Consolation(.*)$/);
   const sl = sp ? (sp[1].match(TOK) || []).map(x => /\d/.test(x) ? x : "") : [];
   const cn = co ? (co[1].match(TOK) || []).slice(0, 10).map(x => /\d/.test(x) ? x : "") : [];
@@ -37,7 +37,7 @@ async function grab(url, ctx) {
 export async function onRequestGet(ctx) {
   const out = { t: Date.now(), ops: {} };
   const [c, l] = await Promise.all([grab(SRC.c4d, ctx).catch(() => ""), grab(SRC.loto, ctx).catch(() => "")]);
-  const E = ["Advertisements", "Da Ma Cai 1+3D", "SportsToto 4D", "SportsToto 5D", "Da Ma Cai 3+3D", "Magnum Life", "Grand Dragon", "Perdana", "Lucky HariHari", "Nine Lotto", "SINGAPORE", "Sandakan", "4D Jackpot 1 Prize"];
+  const E = ["Advertisements", "Da Ma Cai 1+3D", "SportsToto 4D", "SportsToto 5D", "Da Ma Cai 3+3D", "Magnum Life", "Grand Dragon", "Perdana", "Lucky HariHari", "Nine Lotto", "Magnum 4D", "SINGAPORE", "Sandakan", "4D Jackpot 1 Prize", "-->"];
   const put = (k, v) => { if (v && (!out.ops[k] || v.d > out.ops[k].d)) out.ops[k] = v; };
   if (c) {
     put("M", parse(block(c, "Magnum 4D 萬能", E)));
