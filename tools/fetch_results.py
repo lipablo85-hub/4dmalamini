@@ -324,7 +324,8 @@ def _drawkey(no: str):
 def parse_9lotto(text: str) -> dict | None:
     t = re.sub(r"\s+", " ", text)
     no = re.search(r"DRAW\s*NO\.?\s*:?\s*(\d+\s*/\s*\d{4})", t, re.I)
-    top = re.search(r"\bI\s*\[?\s*(\d{4})\s*\]?\s*G\s*\[?\s*(\d{4})\s*\]?\s*C\s*\[?\s*(\d{4})\b", t)
+    # top three follow the draw number, each after a letter that changes per draw (e.g. "M 8079 K 4362 I 0424")
+    top = re.search(r"DRAW\s*NO\.?\s*:?\s*\d+\s*/\s*\d{4}\s+[A-W]\s*\[?\s*(\d{4})\s*\]?\s+[A-W]\s*\[?\s*(\d{4})\s*\]?\s+[A-W]\s*\[?\s*(\d{4})\b", t, re.I)
     grid = dict(re.findall(r"\b([A-W])\s*:\s*(\d{4}|-{4})", t))
     if not (no and top) or len(grid) < 23:
         return None
@@ -361,12 +362,41 @@ def _slot9(key, now) -> int | None:
     return 7 if now.hour < 21 else 9
 
 
+def parse_loto4d_9(text: str, day: dt.date) -> dict | None:
+    """Nine Lotto block of loto4d.com (newest 9 Lotto draw, any slot)."""
+    t = re.sub(r"\s+", " ", text)
+    m = re.search(r"Nine Lotto Date:\s*(\d{2})-(\d{2})-(\d{4}).*?Draw No:\s*(\d+/\d{4})(.*?)(?:Magnum 4D|SportsToto|Da Ma Cai|Grand Dragon|Perdana|$)", t)
+    if not m or dt.date(int(m.group(3)), int(m.group(2)), int(m.group(1))) != day:
+        return None
+    b = m.group(5)
+    p = re.search(r"1st Prize \S+ (\d{4}) 2nd Prize \S+ (\d{4}) 3rd Prize \S+ (\d{4})", b)
+    sp = re.search(r"Special(.*?)Consolation", b)
+    co = re.search(r"Consolation(.*)$", b)
+    if not (p and sp and co):
+        return None
+    top, s_, c_ = list(p.groups()), re.findall(r"\b\d{4}\b", sp.group(1))[:10], re.findall(r"\b\d{4}\b", co.group(1))[:10]
+    if complete(top, s_, c_):
+        return {"operator": "9 Lotto 4D", "draw_no": m.group(4), "top": top, "sp": s_, "co": c_}
+    return None
+
+
 def _fetch9(day: dt.date, want: int) -> dict | None:
     now = dt.datetime.now(MYT)
     if day != now.date() or now.hour < 19:
         return None
     if "r" not in _PAGE9:
-        _PAGE9["r"] = parse_9lotto(html_text(get("https://9lotto.com/result", {"Referer": "https://9lotto.com/"})))
+        try:
+            _PAGE9["r"] = parse_9lotto(html_text(get("https://9lotto.com/result", {"Referer": "https://9lotto.com/"})))
+        except Exception as e:
+            log(f"9 Lotto official page unavailable ({type(e).__name__})")
+            _PAGE9["r"] = None
+        if not _PAGE9["r"]:
+            try:
+                _PAGE9["r"] = parse_loto4d_9(html_text(get("https://loto4d.com/", {"Referer": "https://loto4d.com/"})), now.date())
+                if _PAGE9["r"]:
+                    log("9 Lotto: using loto4d.com")
+            except Exception as e:
+                log(f"9 Lotto loto4d unavailable ({type(e).__name__})")
     r = _PAGE9["r"]
     if not r or _slot9(_drawkey(r["draw_no"]), now) != want:
         return None

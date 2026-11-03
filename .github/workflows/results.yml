@@ -4,15 +4,20 @@
 # Jackpots, Toto 5D/6D/lotto and blank prize slots go to extras.json (from check4d.org).
 name: Nightly 4D results
 on:
-  schedule:
+  schedule:   # several starts per session, because GitHub sometimes skips a scheduled run; extra starts exit in seconds
     - cron: "55 10 * * *"   # 18:55 MYT
-    - cron: "40 11 * * *"   # 19:40 MYT backup start
-    - cron: "55 12 * * *"   # 20:55 MYT (9 Lotto 9pm)
+    - cron: "5 11 * * *"    # 19:05
+    - cron: "20 11 * * *"   # 19:20
+    - cron: "40 11 * * *"   # 19:40
+    - cron: "58 12 * * *"   # 20:58  (9 Lotto 9pm)
+    - cron: "6 13 * * *"    # 21:06
+    - cron: "15 13 * * *"   # 21:15
+    - cron: "30 13 * * *"   # 21:30
   workflow_dispatch:
     inputs:
       minutes:
         description: "Keep checking for this many minutes"
-        default: "150"
+        default: "60"
 permissions:
   contents: write
   actions: write
@@ -28,12 +33,14 @@ jobs:
       - name: Check every minute until tonight's draws are in
         env:
           GH_TOKEN: ${{ github.token }}
-          MINUTES: ${{ inputs.minutes || '150' }}
+          MINUTES: ${{ inputs.minutes || '60' }}
         run: |
           CSV=malaysia_4d_draws_2021-2026.csv
           git config user.name "4d-results-bot"
           git config user.email "actions@users.noreply.github.com"
           end=$(( $(date +%s) + MINUTES * 60 ))
+          left=$(python3 tools/fetch_results.py --csv $CSV --pending)
+          [ -z "$left" ] && { echo "nothing due right now"; exit 0; }
           while :; do
             python3 tools/fetch_results.py --csv $CSV || true
             if ! git diff --quiet -- $CSV extras.json || [ -n "$(git status --porcelain extras.json)" ]; then
@@ -43,6 +50,8 @@ jobs:
             fi
             left=$(python3 tools/fetch_results.py --csv $CSV --pending)
             [ -z "$left" ] && { echo "all of today's draws are in"; break; }
+            m=$(( 10#$(TZ=Asia/Kuala_Lumpur date +%H) * 60 + 10#$(TZ=Asia/Kuala_Lumpur date +%M) ))
+            [ "$left" = "9 Lotto 4D 9PM" ] && [ $m -lt 1255 ] && { echo "only the 9pm draw is left; stopping until 8:58pm"; break; }
             [ $(date +%s) -ge $end ] && { echo "time limit; still waiting for: $left"; break; }
             sleep 60
           done
