@@ -11,6 +11,7 @@ CO = [
     ("G", "GD Lotto", "豪龙", "#B0121B", "#F27BA5", "g", None, "https://gdlotto.com/aboutus/", ["4D", "Live"]),
     ("N", "9 Lotto", "", "#0E8F86", "#2EC4B6", "n-w", None, "https://9lotto.com/result", ["4D", "Daily 7pm"]),
     ("S", "Singapore 4D", "新加坡万字", "#B91C2C", "#38BDF8", "s", "1968", "https://www.singaporepools.com.sg/en/product/pages/4d_results.aspx", ["4D", "Big", "Small", "iBet"]),
+    ("C", "Cash Sweep", "砂拉越大万", "#0B7A3B", "#4ADE80", "c", "1992", "https://www.cashsweep.my/", ["1+3D", "3D", "1+3D Jackpot", "Sarawak"]),
     ("J", "Super J3 & J9", "", "#5B21B6", "#A78BFA", "j", None, "https://superj3.net/", ["J3 · 3pm", "J9 · 9pm", "4D", "6D Jackpot"]),
 ]
 PRIZES = [("RM2,500", "RM3,500"), ("RM1,000", "RM2,000"), ("RM500", "RM1,000"), ("RM180", "–"), ("RM60", "–")]
@@ -179,7 +180,22 @@ JS = ("<script>(function(){var t=[].slice.call(document.querySelectorAll('.info 
       "var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)t.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)})})},{rootMargin:'-120px 0px -60% 0px'});"
       "t.forEach(function(a){var s=document.querySelector(a.getAttribute('href'));if(s)io.observe(s)})})()</script>")
 
-OPSLUG = {"S": "singapore-4d-result/", "M": "magnum-4d-result/", "T": "sports-toto-result/", "D": "da-ma-cai-result/", "G": "gd-lotto-result/", "N": "9-lotto-result/", "J": "super-j3-j9-result/"}
+# Sarawak Cash Sweep (added Nov 2026)
+_CX = {
+ "en": ("Natural Avenue Sdn Bhd", "Sarawak's own 4D game, better known as Special Cash Sweep (大万). It is run by Natural Avenue Sdn Bhd in Kuching and draws on the same days as the big West Malaysia companies, with its own 1+3D jackpots.",
+        [("Based in", "Kuching, Sarawak"), ("Draws", "Wed, Sat, Sun · 7pm + special Tuesdays")], " Cash Sweep (Sarawak) draws Wednesday, Saturday and Sunday at 7pm."),
+ "ms": ("Natural Avenue Sdn Bhd", "Permainan 4D Sarawak sendiri, lebih dikenali sebagai Special Cash Sweep (大万). Dikendalikan oleh Natural Avenue Sdn Bhd di Kuching, ia membuat cabutan pada hari yang sama dengan syarikat besar Semenanjung, dengan jackpot 1+3D sendiri.",
+        [("Berpusat di", "Kuching, Sarawak"), ("Cabutan", "Rabu, Sabtu, Ahad · 7 mlm + Selasa khas")], " Cash Sweep (Sarawak) membuat cabutan setiap Rabu, Sabtu dan Ahad pada 7 malam."),
+ "zh": ("Natural Avenue Sdn Bhd", "砂拉越本地的万字，俗称“大万”（Special Cash Sweep），由古晋的 Natural Avenue Sdn Bhd 经营。开彩日和西马三大公司相同，并设有自己的 1+3D 积宝。",
+        [("总部", "砂拉越古晋"), ("开彩", "星期三、六、日 · 晚上7点 + 特别星期二")], "砂拉越大万逢星期三、六、日晚上7点开彩。"),
+ "ta": ("Natural Avenue Sdn Bhd", "சரவாக்கின் சொந்த 4D விளையாட்டு, Special Cash Sweep (大万) என அறியப்படுகிறது. கூச்சிங்கில் உள்ள Natural Avenue Sdn Bhd நடத்துகிறது; தீபகற்ப நிறுவனங்களின் அதே நாட்களில் குலுக்கல், தனி 1+3D ஜாக்பாட்டுடன்.",
+        [("தலைமையகம்", "கூச்சிங், சரவாக்"), ("குலுக்கல்", "புதன், சனி, ஞாயிறு · இரவு 7 + சிறப்பு செவ்வாய்")], " Cash Sweep (சரவாக்) புதன், சனி, ஞாயிறு இரவு 7 மணிக்கு குலுக்கல் நடத்துகிறது."),
+}
+for _lg, (_sub, _intro, _facts, _s2) in _CX.items():
+    T[_lg]["sub"]["C"], T[_lg]["intro"]["C"], T[_lg]["facts"]["C"] = _sub, _intro, _facts
+    T[_lg]["s2s"] = T[_lg]["s2s"].rstrip() + _s2
+
+OPSLUG = {"C": "cash-sweep-result/", "S": "singapore-4d-result/", "M": "magnum-4d-result/", "T": "sports-toto-result/", "D": "da-ma-cai-result/", "G": "gd-lotto-result/", "N": "9-lotto-result/", "J": "super-j3-j9-result/"}
 ABOUT = {"en": "About us", "ms": "Tentang kami", "zh": "关于我们", "ta": "எங்களைப் பற்றி"}
 SCHED = {"M": "s", "T": "s", "D": "s"}  # Wed/Sat/Sun + special Tue
 

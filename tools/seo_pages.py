@@ -8,7 +8,7 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
-OPS = [("M", "Magnum 4D", "万能", "#E9C46B"), ("D", "Da Ma Cai", "大马彩", "#4C8DFF"), ("T", "Sports Toto", "多多", "#FF5A5F"), ("G", "GD Lotto", "豪龙", "#F27BA5"), ("N", "9 Lotto", "9 Lotto", "#2EC4B6"), ("S", "Singapore 4D", "新加坡万字", "#38BDF8"), ("J", "Super J3 3pm", "J3 下午3点", "#A78BFA"), ("K", "Super J9 9pm", "J9 晚上9点", "#FB923C")]
+OPS = [("M", "Magnum 4D", "万能", "#E9C46B"), ("D", "Da Ma Cai", "大马彩", "#4C8DFF"), ("T", "Sports Toto", "多多", "#FF5A5F"), ("G", "GD Lotto", "豪龙", "#F27BA5"), ("N", "9 Lotto", "9 Lotto", "#2EC4B6"), ("S", "Singapore 4D", "新加坡万字", "#38BDF8"), ("C", "Cash Sweep", "砂拉越大万", "#4ADE80"), ("J", "Super J3 3pm", "J3 下午3点", "#A78BFA"), ("K", "Super J9 9pm", "J9 晚上9点", "#FB923C")]
 PRIZE = {1: ("Hadiah Pertama", "1st Prize", "头奖"), 2: ("Hadiah Kedua", "2nd Prize", "二奖"), 3: ("Hadiah Ketiga", "3rd Prize", "三奖"),
          4: ("Istimewa", "Special", "特别奖"), 5: ("Saguhati", "Consolation", "安慰奖")}
 HARI = ["Isnin", "Selasa", "Rabu", "Khamis", "Jumaat", "Sabtu", "Ahad"]

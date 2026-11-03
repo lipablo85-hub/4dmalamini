@@ -534,7 +534,7 @@ const OPS=[
  {k:"M",name:"Magnum 4D",zh:"万能",c:"#E9C46B"},
  {k:"T",name:"Sports Toto",zh:"多多",c:"#FF5A5F"},
  {k:"D",name:"Da Ma Cai",zh:"大马彩",c:"#4C8DFF"},
- {k:"G",name:"GD Lotto",zh:"豪龙",c:"#F27BA5"},{k:"N",name:"9 Lotto",zh:"9 Lotto",c:"#2EC4B6"},{k:"S",name:"Singapore 4D",zh:"新加坡万字",c:"#38BDF8"},{k:"J",name:"Super J3 3pm",zh:"J3 下午3点",c:"#A78BFA"},{k:"K",name:"Super J9 9pm",zh:"J9 晚上9点",c:"#FB923C"},{name:"Sabah 88",zh:"沙巴88",c:"#7BD389"},{name:"STC 4D",zh:"山打根",c:"#FF9F43"},{name:"Cash Sweep",zh:"砂拉越",c:"#B38CFF"}];
+ {k:"G",name:"GD Lotto",zh:"豪龙",c:"#F27BA5"},{k:"N",name:"9 Lotto",zh:"9 Lotto",c:"#2EC4B6"},{k:"S",name:"Singapore 4D",zh:"新加坡万字",c:"#38BDF8"},{k:"J",name:"Super J3 3pm",zh:"J3 下午3点",c:"#A78BFA"},{k:"K",name:"Super J9 9pm",zh:"J9 晚上9点",c:"#FB923C"},{name:"Sabah 88",zh:"沙巴88",c:"#7BD389"},{name:"STC 4D",zh:"山打根",c:"#FF9F43"},{k:"C",name:"Cash Sweep",zh:"砂拉越大万",c:"#4ADE80"}];
 const LIVE=OPS.filter(o=>o.k);
 const $=s=>document.querySelector(s);
 
@@ -656,7 +656,7 @@ function renderCheck(){
   const hb=$("#hxn");
   if(hb&&hits.length>1&&matchMedia("(prefers-reduced-motion:no-preference)").matches){const N=hits.length,t0=performance.now();const step=now=>{const k=Math.min(1,(now-t0)/600);hb.textContent=Math.round(N*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(step)};hb.textContent="0";requestAnimationFrame(step)}
 }
-const BOARD=[["M","#E9C46B"],["D","#4C8DFF"],["T","#FF5A5F"],["S","#38BDF8"],["G","#F27BA5"],["N","#2EC4B6"],["J","#A78BFA"],["K","#FB923C"]];
+const BOARD=[["M","#E9C46B"],["D","#4C8DFF"],["T","#FF5A5F"],["S","#38BDF8"],["C","#4ADE80"],["G","#F27BA5"],["N","#2EC4B6"],["J","#A78BFA"],["K","#FB923C"]];
 function boardDraw(k){const o=LIVE.find(x=>x.k===k);if(!o)return null;if(!st.rd)return o.D[o.D.length-1];return o.D.find(x=>x.d===st.rd)||null}
 const money=a=>"RM "+a;
 const six=t3=>t3.every(x=>/^\d{4}$/.test(x||""))?t3.map(x=>x.slice(2)).join(""):"";
@@ -686,7 +686,7 @@ function renderJx(){const el=$("#jx");if(!el)return;
   el.hidden=!h;el.innerHTML=h?`<h2>${t("jxT")}</h2><p>${t("jxS")}</p><div class="stage"><div class="board">${h}</div></div>`:""}
 function renderLatest(){
   /* classic result slip: company colours, brown label bars, bordered grids, official draw order */
-  const L=liveNow(),HC={M:"#FFF200",D:"#000080",T:"#C00000",G:"#B0121B",N:"#0E8F86",J:"#5B21B6",K:"#C2410C",S:"#B91C2C"};
+  const L=liveNow(),HC={M:"#FFF200",D:"#000080",T:"#C00000",G:"#B0121B",N:"#0E8F86",J:"#5B21B6",K:"#C2410C",S:"#B91C2C",C:"#0B7A3B"};
   const zhn=o=>st.lang==="zh"||!o.zh||/lotto/i.test(o.zh)?"":`<i>${o.zh}</i>`,lab=k=>st.lang==="zh"?t(k):`${t(k)}<em>${["p1","p2","p3"].includes(k)?["首奖","二奖","三奖"][+k[1]-1]:k==="p4"?"特别奖":"安慰奖"}</em>`;
   const cd=d=>`(${fmt(d,{weekday:"short"})}) ${d.slice(6)}-${fmt(d,{month:"short"})}-${d.slice(0,4)}`;
   const nb=(n,dis)=>`<button type="button"${dis?" disabled":` data-n="${n}"`}${!dis&&mineHit(n).length?' class="me"':""}>${n}</button>`;
@@ -770,7 +770,7 @@ $("#mlist").addEventListener("click",e=>{const r=e.target.closest("[data-rm]");i
 if(location.hash==="#mine")mineOpen(true);
 $("#mtX").onclick=()=>$("#mtoast").classList.remove("on");
 /* live board: Wed/Sat/Sun (GD daily) from 6:55pm MYT, standby cards + countdown, polls live.json until every result is in */
-const LDAYS={M:[0,3,6],D:[0,3,6],T:[0,3,6],G:[0,1,2,3,4,5,6],N:[0,1,2,3,4,5,6],J:[0,1,2,3,4,5,6],K:[0,1,2,3,4,5,6],S:[0,3,6]};const DRAWM={J:900,K:1260,S:1110};const dmin=k=>DRAWM[k]||1140;
+const LDAYS={M:[0,3,6],D:[0,3,6],T:[0,3,6],G:[0,1,2,3,4,5,6],N:[0,1,2,3,4,5,6],J:[0,1,2,3,4,5,6],K:[0,1,2,3,4,5,6],S:[0,3,6],C:[0,3,6]};const DRAWM={J:900,K:1260,S:1110};const dmin=k=>DRAWM[k]||1140;
 function myt(){const d=new Date(Date.now()+288e5);return{ymd:d.toISOString().slice(0,10).replace(/-/g,""),wd:d.getUTCDay(),m:d.getUTCHours()*60+d.getUTCMinutes(),s:d.getUTCSeconds()}}
 function liveNow(){if(st.rd)return null;const n=myt();const ks=BOARD.map(b=>b[0]).filter(k=>LDAYS[k].includes(n.wd)&&n.m>=dmin(k)-5);if(!ks.length)return null;
   return{n,ks,wait:ks.filter(k=>{const o=LIVE.find(x=>x.k===k);return!o||!o.D.length||o.D[o.D.length-1].d!==n.ymd})}}
