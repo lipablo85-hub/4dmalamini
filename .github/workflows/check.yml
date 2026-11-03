@@ -1,12 +1,22 @@
 name: Check sources (dry run)
 on: workflow_dispatch
 permissions:
-  contents: read
+  contents: write
 jobs:
   check:
     runs-on: ubuntu-latest
     timeout-minutes: 4
     steps:
-      - name: Auto-save self-test
-        run: |
-          echo "RESULT: $(curl -sS --max-time 30 'https://www.4dmalamini.com/api/live?selftest=1')"
+      - run: |
+          mkdir probe && cd probe
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"
+          f(){ curl -sSL -A "$UA" -e "$3" --max-time 30 -o "$1" -w "$1 %{http_code} %{size_download}\n" "$2" || echo "fail $1"; }
+          f cs.html "https://www.cashsweep.my/" https://www.cashsweep.my/
+          f cs_res.html "https://www.cashsweep.my/results" https://www.cashsweep.my/
+          f moon_ss.html "https://www.4dmoon.com/sabah-sarawak-4d-results/" https://www.4dmoon.com/
+          f c4d_ss.html "https://www.check4d.org/sabah-sarawak-4d-results" https://www.check4d.org/
+          f c4d.html "https://www.check4d.org/" https://www.check4d.org/
+          f c4d_past.html "https://www.check4d.org/sabah-sarawak-4d-results/past-results/2026-11-01" https://www.check4d.org/
+          f loto.html "https://loto4d.com/" https://loto4d.com/
+          git init -q -b probe && git add -A && git -c user.name=p -c user.email=p@l commit -qm probe
+          git push -fq "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe:probe-data
