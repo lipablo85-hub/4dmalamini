@@ -5,7 +5,4 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
-      - run: |
-          curl -sS -m 25 -A "Mozilla/5.0 Chrome/130" https://loto4d.com/ | python3 -c "
-          import sys,re,html;t=sys.stdin.read();t=re.sub(r'<script.*?</script>|<style.*?</style>',' ',t,flags=re.S);t=html.unescape(re.sub(r'<[^>]+>',' ',t));t=re.sub(r'\s+',' ',t)
-          i=t.find('Nine Lotto Date');print('NINE',t[i:i+900])"
+      - run: curl -sS -m 25 "https://www.4dmalamini.com/api/live?x=$RANDOM" | python3 -c "import sys,json;j=json.load(sys.stdin);[print('LIVE',k,v['d'],v['no'],v['top'],len([x for x in v['sl'] if x]),len([x for x in v['co'] if x])) for k,v in j['ops'].items()]"
