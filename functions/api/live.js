@@ -74,5 +74,28 @@ export async function onRequestGet(ctx) {
                sl: Object.values(v.SP || {}).map(cell), co: Object.values(v.CS || {}).map(cell) });
     }
   } catch (e) {}
+  ctx.waitUntil(autosave(ctx, out.ops).catch(() => {}));
   return new Response(JSON.stringify(out), { headers: { "Content-Type": "application/json", "Cache-Control": "public, max-age=15" } });
+}
+
+// Auto-save: when a draw is complete here but not yet in the published site, start the GitHub
+// "Nightly 4D results" workflow (needs the Pages secret GH_DISPATCH = a GitHub token with Actions: write).
+// At most one start per 10 minutes per edge location; the workflow itself loops until every draw is saved.
+const full = v => v && v.top.every(x => /^\d{4}$/.test(x)) && v.co.filter(x => /^\d{4}$/.test(x)).length >= 10;
+async function autosave(ctx, ops) {
+  const tok = ctx.env && ctx.env.GH_DISPATCH; if (!tok) return;
+  const done = Object.entries(ops).filter(([, v]) => full(v)); if (!done.length) return;
+  const cache = caches.default, gate = new Request("https://www.4dmalamini.com/__autosave_gate");
+  if (await cache.match(gate)) return;
+  const res = await ctx.env.ASSETS.fetch(new Request(new URL("/live.json", ctx.request.url)));
+  const saved = res.ok ? await res.json() : {};
+  const missing = done.filter(([k, v]) => !String(saved[k === "9" ? "N" : k] || "").includes(v.d)).map(([k]) => k);
+  if (!missing.length) return;
+  await cache.put(gate, new Response("1", { headers: { "Cache-Control": "max-age=600" } }));
+  await fetch("https://api.github.com/repos/lipablo85-hub/4dmalamini/actions/workflows/results.yml/dispatches", {
+    method: "POST",
+    headers: { Authorization: "Bearer " + tok, Accept: "application/vnd.github+json", "User-Agent": "4dmalamini-autosave",
+               "X-GitHub-Api-Version": "2022-11-28" },
+    body: JSON.stringify({ ref: "main", inputs: { minutes: "30" } })
+  });
 }
