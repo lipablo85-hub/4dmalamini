@@ -134,7 +134,7 @@ def _extra(lang: str) -> str:
     sch = (f'<h2>{H.escape(x["sh"])}</h2><div class="sch3">' + "".join(
         f'<div class="sl"><b class="tm">{H.escape(t)}</b><div class="bd"><span class="lg">' + "".join(f'<u style="background-position:{-i * 22}px 0"></u>' for i in ks)
         + f'</span><small>{H.escape(n)}</small><span class="wk">{week(k)}</span>' + (f'<em>{H.escape(nm[2])}</em>' if k == "wsssp" else "") + '</div></div>'
-        for t, ks, k, n in slots) + "</div>")
+        for t, ks, k, n in slots) + f'</div><p><a href="{pre}special-draw/">{H.escape({"en": "Special draw dates & results", "ms": "Tarikh & keputusan cabutan khas", "zh": "特别开彩日期与成绩", "ta": "சிறப்புக் குலுக்கல் தேதிகள் & முடிவுகள்"}[lang])} ›</a></p>')
     src = (f'<h2>{H.escape(x["oh"])}</h2><p>{H.escape(x["op"])}</p><ul class="byco">' + "".join(f'<li><a href="{u}" target="_blank" rel="noopener nofollow">{H.escape(n)} ↗</a></li>' for n, u in SRC)
            + f'</ul><p><a href="data-policy/">{H.escape(x["pol"])} ›</a></p>')
     rp = f'<div class="rp"><b>{H.escape(x["rh"])} · 21+</b><p>{H.escape(x["rp"])}</p></div>'

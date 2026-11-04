@@ -266,7 +266,7 @@ def build(site) -> None:
             f'<details{" open" if n == 0 else ""}><summary><i>{n + 1}</i>{esc(t_)}</summary><div class="bd">{h}{pz if n == 1 else ""}</div></details>' for n, (t_, h) in enumerate(x["steps"])) + "</div>"
         body = (f'<div class="info">{top}<div class="hero"><h1>{esc(x["h1"])}</h1><p>{esc(x["lead"])}</p></div>'
                 f'<section id="companies"><h2><i>1</i>{esc(x["s1"])}</h2><p class="sub">{esc(x["s1s"])}</p><div class="co">{cards}</div></section>'
-                f'<section id="schedule"><h2><i>2</i>{esc(x["s2"])}</h2><p class="sub">{esc(x["s2s"])}</p>{sched}<p class="note">{esc(x["spn"])}</p></section>'
+                f'<section id="schedule"><h2><i>2</i>{esc(x["s2"])}</h2><p class="sub">{esc(x["s2s"])}</p>{sched}<p class="note">{esc(x["spn"])} <a href="{site.u(pre + "special-draw/")}">{esc({"en": "Special draw dates", "ms": "Tarikh cabutan khas", "zh": "特别开彩日期", "ta": "சிறப்புக் குலுக்கல் தேதிகள்"}[lang])} ›</a></p></section>'
                 f'<section id="guide"><h2><i>3</i>{esc(x["s3"])}</h2><p class="sub">{esc(x["s3s"])}</p>{acc}<a class="more" href="{site.u(pre + "guide/")}">{esc(x["more"])}</a></section>'
                 f'<section id="responsible"><h2><i>4</i>{esc(x["s4"])}</h2><div class="rp"><b class="a">21+</b><div><p>{esc(x["r1"])}</p><p>{esc(x["r2"])}</p></div></div>'
                 f'<p class="src">{esc(x["src"])}</p></section></div>{JS}')
