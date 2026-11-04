@@ -216,7 +216,7 @@ def main() -> None:
 
     html = Path(a.template).read_text()
     html = (html.replace("__DATAURL__", res_name).replace("__SITEURL__", a.site)
-                .replace("__SPECIAL__", json.dumps([d.replace("-", "") for d in json.loads((Path(__file__).with_name("special_draws.json")).read_text())["dates"]])).replace("__DICTURL__", json.dumps(dict_urls)).replace("__DICTSTATS__", json.dumps(stats)).replace("__DICT__", '""').replace("__DICTIMG__", "{}"))
+                .replace("__UPDTXT__", "Updated " + __import__("datetime").datetime.now(__import__("datetime").timezone(__import__("datetime").timedelta(hours=8))).strftime("%-d %b %Y, %-I:%M%p").replace("AM", "am").replace("PM", "pm") + " MYT").replace("__SPECIAL__", json.dumps([d.replace("-", "") for d in json.loads((Path(__file__).with_name("special_draws.json")).read_text())["dates"]])).replace("__DICTURL__", json.dumps(dict_urls)).replace("__DICTSTATS__", json.dumps(stats)).replace("__DICT__", '""').replace("__DICTIMG__", "{}"))
     from urllib.parse import urlparse
     import sys
     sys.path.insert(0, str(Path(__file__).parent))
