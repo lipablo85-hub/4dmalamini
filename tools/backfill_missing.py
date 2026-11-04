@@ -30,7 +30,7 @@ STOP = r"(?:Magnum 4D|SportsToto|Da Ma Cai|Grand Dragon|Nine Lotto|Singapore|SIN
 
 
 def parse_op(text: str, op: str, day: dt.date) -> dict | None:
-    m = re.search(HEAD[op] + r"[^D]{0,24}Date:\s*(\d{2})-(\d{2})-(\d{4})[^D]{0,12}(?:Draw No:\s*([\w/]+))?(.*?)" + STOP, text, re.S)
+    m = re.search(HEAD[op] + r"[^:]{0,24}Date:\s*(\d{2})-(\d{2})-(\d{4})\s*(?:\([^)]*\))?\s*(?:Draw No:\s*([\w/]+))?(.*?)" + STOP, text, re.S)
     if not m or dt.date(int(m.group(3)), int(m.group(2)), int(m.group(1))) != day:
         return None
     b = m.group(5)
@@ -69,17 +69,23 @@ def main() -> int:
     print(f"{sum(len(v) for v in need.values())} missing results across {len(need)} dates", flush=True)
     new, nf = [], 0
     for i, d in enumerate(sorted(need)):
-        try:
-            t = re.sub(r"\s+", " ", F.html_text(F.get(f"https://loto4d.com/past-results/{d.isoformat()}", {"Referer": "https://loto4d.com/past-results/"})))
-        except Exception as e:
-            print("fetch error", d, e, flush=True)
-            continue
+        pages = []
+        for url, ref in (("https://loto4d.com/past-results/" + d.isoformat(), "https://loto4d.com/past-results/"),
+                         ("https://www.check4d.org/past-results/" + d.isoformat(), "https://www.check4d.org/")):
+            try:
+                pages.append(re.sub(r"\s+", " ", F.html_text(F.get(url, {"Referer": ref}))))
+            except Exception as e:
+                print("fetch error", d, url.split("//")[1][:12], e, flush=True)
         got = []
         for op in need[d]:
-            try:
-                r = parse_op(t, op, d)
-            except Exception:
-                r = None
+            r = None
+            for t in pages:
+                try:
+                    r = parse_op(t, op, d)
+                except Exception:
+                    r = None
+                if r:
+                    break
             if r:
                 new.append(F.row_of(r, d))
                 got.append(op)
