@@ -592,12 +592,14 @@ def main() -> int:
         have = {(r["operator"], r["date"]) for r in rows}
         now = dt.datetime.now(MYT)
         mins = (now.hour * 60 + now.minute) if day == now.date() else 24 * 60
-        due = ([J3] if mins >= 900 else []) + (["GD Lotto 4D", N7] if mins >= 1140 else []) + (["Magnum 4D", "Sports Toto 4D", "Da Ma Cai 1+3D"] if day.weekday() in (2, 5, 6) and mins >= 1140 else []) + ([SG] if day.weekday() in (2, 5, 6) and mins >= 1110 else []) + ([CS, STC] if day.weekday() in (2, 5, 6) and mins >= 1140 else []) + ([J9] if mins >= 1260 else [])
+        spd = set(json.loads((Path(__file__).with_name("special_draws.json")).read_text()).get("dates", []))
+        big = day.weekday() in (2, 5, 6) or day.isoformat() in spd
+        due = ([J3] if mins >= 900 else []) + (["GD Lotto 4D", N7] if mins >= 1140 else []) + (["Magnum 4D", "Sports Toto 4D", "Da Ma Cai 1+3D"] if big and mins >= 1140 else []) + ([SG] if day.weekday() in (2, 5, 6) and mins >= 1110 else []) + ([CS, STC] if big and mins >= 1140 else []) + ([J9] if mins >= 1260 else [])
         for name in due:
             if (name, day.isoformat()) not in have:
                 print(name)
         xf = Path(a.csv).with_name("extras.json")
-        if day.weekday() in (2, 5, 6):
+        if big:
             x = json.loads(xf.read_text(encoding="utf-8")).get(day.strftime("%Y%m%d"), {}) if xf.exists() else {}
             if not (x.get("T", {}).get("d6") and x.get("M", {}).get("jp") and x.get("D", {}).get("b33")):
                 print("extras")
