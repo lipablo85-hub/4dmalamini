@@ -8,13 +8,12 @@ jobs:
     timeout-minutes: 6
     steps:
       - run: |
-          npm i -s playwright@1 >/dev/null 2>&1 && npx -y playwright install --with-deps chromium >/dev/null 2>&1
-          cat > t.js <<'JS'
-          const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const errs=[];
-          for(const u of ['https://www.4dmalamini.com/?d=20260127','https://www.4dmalamini.com/zh/?d=20260127','https://www.4dmalamini.com/ta/?d=20260127']){
-          const p=await b.newPage();p.on('pageerror',e=>errs.push(e.message));
-          await p.goto(u);await p.waitForTimeout(1500);const l1=await p.$eval('#rdlabel',e=>e.textContent).catch(()=>'-');
-          await p.waitForTimeout(5000);console.log('RES',u,'| 1.5s:',l1,'| 6.5s:',await p.$eval('#rdlabel',e=>e.textContent),'| M 1st:',await p.$eval('#rc-M .t3 button,#rc-M .s3 button',e=>e.textContent).catch(()=>'-'));await p.close()}
-          console.log('ERRS',JSON.stringify(errs));await b.close()})();
-          JS
-          node t.js
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"
+          f(){ printf '%s %s ' "$1" "$(curl -sSL -A "$UA" -e "$3" --max-time 25 -o /tmp/$1 -w '%{http_code}' "$2")"; grep -oiE "nine ?lotto|9 ?lotto" /tmp/$1 | head -1; echo; }
+          f a.html "https://loto4d.com/past-results" https://loto4d.com/
+          f b.html "https://loto4d.com/9-lotto-4d-results" https://loto4d.com/
+          f c.html "https://loto4d.com/results/2026-10-27" https://loto4d.com/
+          f d.html "https://www.4dmoon.com/9-lotto-results/" https://www.4dmoon.com/
+          f e.html "https://9lotto.com/result" https://9lotto.com/
+          f g.html "https://loto4d.com/" https://loto4d.com/
+          echo "LOTO LINKS:"; grep -oE 'href="[^"]*(past|history|archive|result)[^"]*"' /tmp/g.html | sort -u | head -20

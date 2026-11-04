@@ -280,6 +280,8 @@ def main() -> None:
     OPP.build(sp)
     import special_pages as SDP
     SDP.build(sp)
+    import stats_pages as STP
+    STP.build(sp)
     n_urls = sp.sitemap(alts)
     print(f"  SEO pages: {len(sp.urls)} static pages, sitemap.xml with {n_urls} URLs, robots.txt, 404.html")
 
