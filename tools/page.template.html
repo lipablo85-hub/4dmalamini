@@ -1045,6 +1045,7 @@ $("#home").onclick=e=>{if(e.metaKey||e.ctrlKey||e.shiftKey)return;e.preventDefau
 $("#rprev").onclick=withFull(()=>{const i=st.rd?DATES.indexOf(st.rd):DATES.length-1;if(i>0){st.rd=DATES[i-1];renderLatest()}});
 $("#rnext").onclick=()=>{const i=DATES.indexOf(st.rd);if(i>=0&&i<DATES.length-1){st.rd=i+1===DATES.length-1?null:DATES[i+1];renderLatest()}};
 $("#rdbtn").onclick=()=>{if(!FULL){loadFull().then(calOpen,calOpen);return}calOpen()};
+document.addEventListener("click",e=>{const a=e.target.closest("a[data-cal]");if(!a||e.metaKey||e.ctrlKey||e.shiftKey)return;e.preventDefault();if(st.tab!=="results")setTab("results");scrollTo({top:0});if(!FULL){loadFull().then(calOpen,calOpen);return}calOpen()});
 $("#rjump").addEventListener("click",e=>{const a=e.target.closest("a");if(!a)return;e.preventDefault();const el=document.querySelector(a.getAttribute("href"));if(el)el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"start"})});$("#tab-check").onclick=()=>setTab("check");
 ["#q","#tab-check","#tab-browse","#rprev","#rdbtn"].forEach(s=>{const el=$(s);if(el)["pointerdown","focus"].forEach(ev=>el.addEventListener(ev,()=>loadFull().catch(()=>{}),{once:true,passive:true}))});
 $("#q").addEventListener("focus",e=>{paintCells();const q=e.target;setTimeout(()=>{try{q.select()}catch(err){}},0)});

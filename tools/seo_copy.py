@@ -27,7 +27,7 @@ COPY = {
  "h": "4D results Malaysia: every draw, one page",
  "p": [
   '<strong>4D Malam Ini</strong> shows tonight\'s <strong>Magnum 4D</strong>, <strong>Sports Toto 4D</strong>, <strong>Da Ma Cai 1+3D</strong>, <strong>GD Lotto</strong>, <strong>9 Lotto</strong>, <strong>Super J3 &amp; J9</strong>, <strong>Singapore 4D</strong>, <strong>Cash Sweep</strong> and <strong>Sandakan 4D</strong> results together, live as each number is drawn, so you never have to open ten websites.',
-  'Special and consolation prizes are sorted from smallest to biggest, which makes it quick to spot your number. Use the date buttons to go back to any past draw, or open the <a href="keputusan/">4D results archive</a> for every draw since 2021.',
+  'Special and consolation prizes are sorted from smallest to biggest, which makes it quick to spot your number. Use the date buttons to go back to any past draw, or open the <a href="keputusan/" data-cal>4D results archive</a> for every draw since 2021.',
   'Want to know if a number has ever won? <a href="?tab=check">Check a 4D number</a> against five years of draws, see which prize it won and when, or browse popular picks like <a href="4d/8888/">8888</a> and <a href="4d/1314/">1314</a>. The <a href="4d/">4D dictionary 万字图</a> explains what each number means, in English, Malay, Chinese and Tamil.',
  ],
  "fh": "Frequently asked questions",
@@ -43,7 +43,7 @@ COPY = {
  "h": "Keputusan 4D Malaysia: semua cabutan, satu halaman",
  "p": [
   '<strong>4D Malam Ini</strong> memaparkan keputusan <strong>Magnum 4D</strong>, <strong>Sports Toto 4D</strong>, <strong>Da Ma Cai 1+3D</strong>, <strong>GD Lotto</strong>, <strong>9 Lotto</strong>, <strong>Super J3 &amp; J9</strong>, <strong>Singapore 4D</strong>, <strong>Cash Sweep</strong> dan <strong>Sandakan 4D</strong> dalam satu tempat, secara langsung ketika setiap nombor dicabut.',
-  'Nombor hadiah istimewa (special) dan saguhati (consolation) disusun dari kecil ke besar supaya nombor anda mudah dijumpai. Guna butang tarikh untuk melihat cabutan lepas, atau buka <a href="keputusan/">arkib keputusan 4D</a> untuk semua cabutan sejak 2021.',
+  'Nombor hadiah istimewa (special) dan saguhati (consolation) disusun dari kecil ke besar supaya nombor anda mudah dijumpai. Guna butang tarikh untuk melihat cabutan lepas, atau buka <a href="keputusan/" data-cal>arkib keputusan 4D</a> untuk semua cabutan sejak 2021.',
   'Mahu tahu sama ada sesuatu nombor pernah menang? <a href="?tab=check">Semak nombor 4D</a> dengan rekod lima tahun, lihat hadiah dan tarikhnya, atau lihat nombor popular seperti <a href="4d/8888/">8888</a> dan <a href="4d/1314/">1314</a>. <a href="4d/">Kamus 4D 万字图</a> menerangkan maksud setiap nombor dalam bahasa Melayu, Inggeris, Cina dan Tamil.',
  ],
  "fh": "Soalan lazim",
@@ -59,7 +59,7 @@ COPY = {
  "h": "马来西亚万字成绩：所有开彩，一页看完",
  "p": [
   '<strong>4D Malam Ini</strong> 把今晚 <strong>万能</strong>、<strong>多多</strong>、<strong>大马彩</strong>、<strong>豪龙 GD Lotto</strong>、<strong>9 Lotto</strong>、<strong>Super J3 &amp; J9</strong>、<strong>新加坡万字</strong>、<strong>砂拉越大万</strong>和<strong>山打根万字</strong>的成绩放在同一页，开彩时逐个号码即时更新，不用再开十个网站。',
-  '特别奖（入围奖）和安慰奖号码由小到大排列，一眼就能找到你的号码。用日期按钮查看任何一期旧成绩，或打开<a href="keputusan/">万字成绩记录</a>，查看2021年以来的每一期。',
+  '特别奖（入围奖）和安慰奖号码由小到大排列，一眼就能找到你的号码。用日期按钮查看任何一期旧成绩，或打开<a href="keputusan/" data-cal>万字成绩记录</a>，查看2021年以来的每一期。',
   '想知道某个号码有没有中过？<a href="?tab=check">查询万字号码</a>，对照5年开彩记录，看中过什么奖、哪一天中；也可以看看热门号码如 <a href="4d/8888/">8888</a>、<a href="4d/1314/">1314</a>。<a href="4d/">万字图 4D 字典</a>以中文、英文、马来文和淡米尔文解释每个号码的含义。',
  ],
  "fh": "常见问题",
@@ -75,7 +75,7 @@ COPY = {
  "h": "மலேசியா 4D முடிவுகள்: எல்லா குலுக்கல்களும் ஒரே பக்கத்தில்",
  "p": [
   '<strong>4D Malam Ini</strong> இன்றிரவு <strong>Magnum 4D</strong>, <strong>Sports Toto 4D</strong>, <strong>Da Ma Cai 1+3D</strong>, <strong>GD Lotto 4D</strong>, <strong>9 Lotto 4D</strong> முடிவுகளை ஒரே இடத்தில் காட்டுகிறது; ஐந்து இணையதளங்களைத் திறக்க வேண்டியதில்லை. முடிவுகள் மலேசிய நேரம் இரவு சுமார் 7 மணிக்கு வரத் தொடங்கி, 8 மணிக்குள் முழுமையாகும்.',
-  'சிறப்பு (special) மற்றும் ஆறுதல் (consolation) பரிசு எண்கள் சிறியதிலிருந்து பெரியது வரை வரிசைப்படுத்தப்பட்டுள்ளன, எனவே உங்கள் எண்ணை விரைவாகக் கண்டுபிடிக்கலாம். தேதி பொத்தான்கள் மூலம் பழைய குலுக்கல்களைப் பாருங்கள், அல்லது 2021 முதல் உள்ள <a href="keputusan/">4D முடிவு காப்பகத்தைத்</a> திறக்கவும்.',
+  'சிறப்பு (special) மற்றும் ஆறுதல் (consolation) பரிசு எண்கள் சிறியதிலிருந்து பெரியது வரை வரிசைப்படுத்தப்பட்டுள்ளன, எனவே உங்கள் எண்ணை விரைவாகக் கண்டுபிடிக்கலாம். தேதி பொத்தான்கள் மூலம் பழைய குலுக்கல்களைப் பாருங்கள், அல்லது 2021 முதல் உள்ள <a href="keputusan/" data-cal>4D முடிவு காப்பகத்தைத்</a> திறக்கவும்.',
   'ஒரு எண் எப்போதாவது வென்றதா என்று அறிய வேண்டுமா? ஐந்து ஆண்டு குலுக்கல்களுடன் <a href="?tab=check">4D எண்ணைச் சரிபாருங்கள்</a>, அல்லது <a href="4d/8888/">8888</a>, <a href="4d/1314/">1314</a> போன்ற பிரபல எண்களைப் பாருங்கள். <a href="4d/">4D அகராதி 万字图</a> ஒவ்வொரு எண்ணின் பொருளையும் தமிழ், மலாய், ஆங்கிலம், சீனம் ஆகிய மொழிகளில் விளக்குகிறது.',
  ],
  "fh": "அடிக்கடி கேட்கப்படும் கேள்விகள்",

@@ -259,7 +259,7 @@ def main() -> None:
               "zh": ("最新成绩", "成绩记录", "万字图", "资讯", "特别开彩", "玩法指南", "数据政策"),
               "ta": ("சமீபத்திய முடிவுகள்", "முடிவுகள் காப்பகம்", "4D அகராதி", "தகவல்", "சிறப்புக் குலுக்கல்", "விளையாடும் முறை", "தரவுக் கொள்கை")}[lang]
         hrefs = [f"keputusan/{lastiso}/", "keputusan/", "4d/", pre_ + "info/", pre_ + "special-draw/", pre_ + "guide/", "data-policy/"]
-        page = page.replace("<!--FOOTLINKS-->", " · ".join(f'<a href="/{h}">{t}</a>' for h, t in zip(hrefs, FL))).replace('href="special-draw/"', f'href="/{pre_}special-draw/"')
+        page = page.replace("<!--FOOTLINKS-->", " · ".join(f'<a href="/{h}"{" data-cal" if i == 1 else ""}>{t}</a>' for i, (h, t) in enumerate(zip(hrefs, FL)))).replace('href="special-draw/"', f'href="/{pre_}special-draw/"')
         page = SP.localize(page, lang)
         f = out / ("index.html" if lang == "en" else f"{lang}/index.html")
         f.parent.mkdir(exist_ok=True)
@@ -282,6 +282,8 @@ def main() -> None:
     SDP.build(sp)
     import stats_pages as STP
     STP.build(sp)
+    import popular_pages as PPP
+    PPP.build(sp)
     n_urls = sp.sitemap(alts)
     print(f"  SEO pages: {len(sp.urls)} static pages, sitemap.xml with {n_urls} URLs, robots.txt, 404.html")
 
