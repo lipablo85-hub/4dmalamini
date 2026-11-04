@@ -11,7 +11,7 @@ jobs:
           mkdir probe && cd probe
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"
           f(){ curl -sSL -A "$UA" -e "$3" --max-time 30 -o "$1" -w "$1 %{http_code} %{size_download}\n" "$2" || echo "fail $1"; }
-          f today.html "https://4d.today/special-draw/" https://4d.today/
+          f c4dsp.html "https://www.check4d.org/4d-special-draw" https://www.check4d.org/
           f c4d_sp.html "https://www.check4d.org/special-draw-date" https://www.check4d.org/
           f c4d_sp2.html "https://www.check4d.org/special-draw-dates" https://www.check4d.org/
           f magnum.html "https://www.magnum4d.my/en/special-draw" https://www.magnum4d.my/
