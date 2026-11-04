@@ -43,5 +43,5 @@ def build(site) -> None:
                f'</head><body>{b}{site.bnav(path(lang), hl)}{js}</body></html>')
         out = site.out / path(lang) / "index.html"
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(doc, encoding="utf-8")
+        out.write_text(SP.localize(doc, hl), encoding="utf-8")
         site.urls.append((canon, None))

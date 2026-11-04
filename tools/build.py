@@ -253,6 +253,14 @@ def main() -> None:
         page = (prerender_lang(html, lang).replace("__HTMLLANG__", SP.HTML_LANG[lang]).replace("__CANON__", url[lang])
                 .replace("__TITLE__", H.escape(title)).replace("__DESC__", H.escape(desc)).replace("__OGLOCALE__", locale[lang])
                 .replace("__H1__", H.escape(h1[lang])).replace("<!--SEO-->", SC.block(lang) + SC.faq_ld(lang)).replace('id="nav-guide" href="info/"', f'id="nav-guide" href="{"" if lang == "en" else lang + "/"}info/"').replace('id="home" href="./"', f'id="home" href="{"./" if lang == "en" else lang + "/"}"'))
+        pre_ = "" if lang == "en" else lang + "/"
+        FL = {"en": ("Latest results", "Results archive", "4D dictionary", "Info", "Special draws", "How to play", "Data policy"),
+              "ms": ("Keputusan terkini", "Arkib keputusan", "Kamus 4D 万字图", "Info", "Cabutan khas", "Panduan 4D", "Dasar data"),
+              "zh": ("最新成绩", "成绩记录", "万字图", "资讯", "特别开彩", "玩法指南", "数据政策"),
+              "ta": ("சமீபத்திய முடிவுகள்", "முடிவுகள் காப்பகம்", "4D அகராதி", "தகவல்", "சிறப்புக் குலுக்கல்", "விளையாடும் முறை", "தரவுக் கொள்கை")}[lang]
+        hrefs = [f"keputusan/{lastiso}/", "keputusan/", "4d/", pre_ + "info/", pre_ + "special-draw/", pre_ + "guide/", "data-policy/"]
+        page = page.replace("<!--FOOTLINKS-->", " · ".join(f'<a href="/{h}">{t}</a>' for h, t in zip(hrefs, FL))).replace('href="special-draw/"', f'href="/{pre_}special-draw/"')
+        page = SP.localize(page, lang)
         f = out / ("index.html" if lang == "en" else f"{lang}/index.html")
         f.parent.mkdir(exist_ok=True)
         f.write_text(page)

@@ -12,6 +12,40 @@ OPS = [("M", "Magnum 4D", "万能", "#E9C46B"), ("D", "Da Ma Cai", "大马彩", 
 PRIZE = {1: ("Hadiah Pertama", "1st Prize", "头奖"), 2: ("Hadiah Kedua", "2nd Prize", "二奖"), 3: ("Hadiah Ketiga", "3rd Prize", "三奖"),
          4: ("Istimewa", "Special", "特别奖"), 5: ("Saguhati", "Consolation", "安慰奖")}
 HC = {"M": "#FFF200", "D": "#000080", "T": "#C00000", "G": "#B0121B", "N": "#0E8F86", "J": "#5B21B6", "K": "#C2410C", "S": "#B91C2C", "C": "#0B7A3B", "H": "#14532D"}
+LPRE = {"en": "", "zh-Hans": "zh/", "zh": "zh/", "ta": "ta/"}
+
+
+def localize(doc: str, lang: str) -> str:
+    """Pages in English, Chinese or Tamil link into the main results page in the same language
+    instead of the Malay-only date and number pages: keputusan/YYYY-MM-DD/ -> {pre}?d=YYYYMMDD, 4d/NNNN/ -> {pre}?n=NNNN."""
+    if lang not in LPRE and lang != "ms":
+        return doc
+    pre = "/" + LPRE.get(lang, "ms/")
+
+    def f(m):
+        h = re.sub(r"^(https://www\.4dmalamini\.com)?/", "", m.group(2))
+        if lang == "ms" and not (h == "" or h.startswith("?")):
+            return m.group(0)
+        x = re.fullmatch(r"keputusan/(\d{4})-(\d\d)-(\d\d)/", h)
+        if x:
+            return m.group(1) + pre + "?d=" + "".join(x.groups()) + m.group(3)
+        x = re.fullmatch(r"4d/(\d{4})/", h)
+        if x:
+            return m.group(1) + pre + "?n=" + x.group(1) + m.group(3)
+        if h == "" or h.startswith("?"):
+            return m.group(1) + pre + h + m.group(3)
+        if lang == "ms":
+            return m.group(0)
+        if h == "keputusan/":
+            return m.group(1) + pre + m.group(3)
+        if h == "4d/" or re.fullmatch(r"4d/\d{4}-\d{4}/", h):
+            return m.group(1) + pre + "?tab=dict" + m.group(3)
+        return m.group(0)
+    def tag(t):
+        return t.group(0) if "hreflang=" in t.group(0) else re.sub(r'(\bhref=")([^"]*)(")', f, t.group(0), count=1)
+    return re.sub(r"<a\b[^>]*>", tag, doc)
+
+
 OPSLUG = {"M": "magnum-4d-result", "D": "da-ma-cai-result", "T": "sports-toto-result", "G": "gd-lotto-result", "N": "9-lotto-result", "S": "singapore-4d-result",
           "C": "cash-sweep-result", "H": "sandakan-4d-result", "J": "super-j3-j9-result", "K": "super-j3-j9-result"}
 HARI = ["Isnin", "Selasa", "Rabu", "Khamis", "Jumaat", "Sabtu", "Ahad"]
@@ -74,12 +108,12 @@ table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;p
 .sl .gr{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:0 14px}.sl .gr a{padding:8px 0;text-align:center;border-radius:8px;background:#132648;font:600 15.5px/1.1 -apple-system,Roboto,"Segoe UI",Arial,sans-serif;color:#E4EAF6;text-decoration:none;letter-spacing:.02em}
 .sl .gr:last-of-type{padding-bottom:14px}.sl a:active{filter:brightness(1.3)}
 .sl .j6{display:flex;justify-content:space-between;align-items:center;margin:10px 14px 14px;padding:8px 12px;border-radius:10px;background:rgba(233,196,107,.1);border:1px solid rgba(233,196,107,.35)}.sl .j6 small{font-weight:800;color:#E9C46B;font-size:11.5px;letter-spacing:.06em}.sl .j6 b{font:800 20px/1 -apple-system,Roboto,Arial,sans-serif;letter-spacing:.12em;color:#FFE7A3}
-.arch{display:block;text-align:center;margin-top:10px}.top3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}
+.arch{display:flex;align-items:center;justify-content:center;gap:6px;height:46px;margin:10px 0 4px;border-radius:999px;border:1px solid rgba(233,196,107,.45);background:rgba(233,196,107,.08);text-decoration:none;font-weight:800;font-size:14px}.top3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}
 .top3 a,.g5 a{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:48px;border-radius:12px;background:#172A4D;text-decoration:none;color:#F8F4E8}
 .top3 a .mono{font-size:22px}.top3 small{font-size:11px;color:#A9B4CC}
 .g5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-top:6px}.g5 a{min-height:44px;font-size:15px}
 .lbl{font-size:12px;font-weight:800;color:#A9B4CC;margin-top:12px}
-.kf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:14px}.kf div{background:#0F1F3D;border:1px solid #233862;border-radius:14px;padding:10px 12px}.kf small{display:block;font-size:11.5px;color:#9FB0D3;font-weight:700}.kf b{display:block;font-size:17px;line-height:1.3;margin-top:2px}.kf a{text-decoration:none}.kf .wd{grid-column:1/-1}.bars{display:grid;gap:7px;margin:10px 0 4px}.bars a,.bars div{display:grid;grid-template-columns:96px 1fr 28px;align-items:center;gap:8px;font-size:13px;color:#C9D4EA;text-decoration:none}.bars i{display:block;height:12px;border-radius:6px;background:var(--c,#E9C46B);min-width:3px}.bars b{text-align:right;color:#F8F4E8}.bars .z i{background:#233862}.chips a small{margin-left:6px;color:#9FB0D3;font-weight:600}.chips a.hot{border:1px solid rgba(233,196,107,.5)}.note{font-size:12.5px;color:#9FB0D3;margin-top:18px}.pol h2{margin-top:26px}.pol li{margin:4px 0}.pol .card p{margin:6px 0}.pn{display:flex;justify-content:space-between;gap:10px;margin-top:24px}.pn a{min-height:44px;display:inline-flex;align-items:center}
+.kf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:14px}.kf div{background:#0F1F3D;border:1px solid #233862;border-radius:14px;padding:10px 12px}.kf small{display:block;font-size:11.5px;color:#9FB0D3;font-weight:700}.kf b{display:block;font-size:17px;line-height:1.3;margin-top:2px}.kf a{text-decoration:none}.kf .wd{grid-column:1/-1}.bars{display:grid;gap:7px;margin:10px 0 4px}.bars a,.bars div{display:grid;grid-template-columns:96px 1fr 28px;align-items:center;gap:8px;font-size:13px;color:#C9D4EA;text-decoration:none}.bars i{display:block;height:12px;border-radius:6px;background:var(--c,#E9C46B);min-width:3px}.bars b{text-align:right;color:#F8F4E8}.bars .z i{background:#233862}.chips a small{margin-left:6px;color:#9FB0D3;font-weight:600}.chips a.hot{border:1px solid rgba(233,196,107,.5)}.note{font-size:12.5px;color:#9FB0D3;margin-top:18px}.pol h2{margin-top:26px}.pol li{margin:4px 0}.pol .card p{margin:6px 0}.pn{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:22px}.pn a{min-height:56px;display:flex;flex-direction:column;justify-content:center;padding:8px 12px;border-radius:14px;background:#0F1F3D;border:1px solid #233862;text-decoration:none;color:#F8F4E8;font-size:13.5px;font-weight:700;line-height:1.3}.pn a::before{content:attr(data-l);font-size:11px;font-weight:700;color:#9FB0D3}.pn a:last-child:not(:first-child){text-align:right}.pn span{display:block}
 .list{columns:2;column-gap:18px;padding:0;list-style:none}.list li{break-inside:avoid;padding:5px 0;border-bottom:1px solid #1A2C50;font-size:14px}
 .list a{text-decoration:none;color:#F8F4E8}.list .mono{color:#E9C46B;margin-right:8px}
 footer{max-width:720px;margin:0 auto;padding:18px 16px 40px;font-size:12px;color:#A9B4CC;border-top:1px solid #1A2C50}.tgi{position:relative;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#fff;color:#1877B8;flex:none}.tgi::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #fff;animation:tgp 2s ease-out infinite}.tgi svg{margin-left:-2px;animation:tgf 3s ease-in-out infinite}@keyframes tgp{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.7);opacity:0}}@keyframes tgf{0%,55%,100%{transform:none;opacity:1}70%{transform:translate(9px,-9px) scale(.6);opacity:0}71%{transform:translate(-9px,9px) scale(.6);opacity:0}85%{transform:none;opacity:1}}@media (prefers-reduced-motion:reduce){.tgi::after,.tgi svg{animation:none}}.tg{display:inline-flex;align-items:center;gap:10px;padding-left:7px!important;margin-top:14px;min-height:44px;padding:0 16px;border-radius:999px;background:#1877B8;color:#fff!important;font-weight:800;font-size:14px;text-decoration:none}
@@ -152,6 +186,7 @@ class Site:
 <body><header><div class="w"><a href="{self.u('')}">{self.mark}<span>4D Malam Ini</span></a></div></header>
 <main class="w">{body}</main>
 {foot if foot is not None else DEFAULT_FOOT}{self.bnav(path, lang)}</body></html>"""
+        doc = localize(doc, lang)
         p = self.out / path.lstrip("/")
         if path.endswith("/"):
             p = p / "index.html"
@@ -189,6 +224,10 @@ class Site:
         self.hubs(last)
         self.not_found()
 
+    def date_sh(self, d: str) -> str:
+        x = d8(d)
+        return f"{HARI[x.weekday()][:3]}, {x.day} {BULAN[x.month - 1][:3]} {x.year}"
+
     def result_pages(self) -> None:
         by = {k: {} for k, _, _, _ in OPS}
         by.update({k: {r[0]: r for r in rows} for k, rows in self.draws.items()})
@@ -213,8 +252,8 @@ class Site:
                                 f'<div class="sb">Istimewa · Special<i>特别奖</i></div><div class="gr">{"".join(a(x) for x in sorted(n[3:13]))}</div>'
                                 f'<div class="sb">Saguhati · Consolation<i>安慰奖</i></div><div class="gr">{"".join(a(x) for x in sorted(n[13:]))}</div>{six}</section>')
             nav, ld = self.crumbs([("4D Malam Ini", ""), ("Keputusan", "keputusan/"), (self.date_ms(d), None)])
-            prev = f'<a href="{self.u(f"keputusan/{d8(self.dates[i - 1]).isoformat()}/")}">‹ {self.date_ms(self.dates[i - 1])}</a>' if i else "<span></span>"
-            nxt = f'<a href="{self.u(f"keputusan/{d8(self.dates[i + 1]).isoformat()}/")}">{self.date_ms(self.dates[i + 1])} ›</a>' if i + 1 < len(self.dates) else "<span></span>"
+            prev = f'<a data-l="‹ Sebelum · Previous" href="{self.u(f"keputusan/{d8(self.dates[i - 1]).isoformat()}/")}">{self.date_sh(self.dates[i - 1])}</a>' if i else "<span></span>"
+            nxt = f'<a data-l="Seterusnya · Next ›" href="{self.u(f"keputusan/{d8(self.dates[i + 1]).isoformat()}/")}">{self.date_sh(self.dates[i + 1])}</a>' if i + 1 < len(self.dates) else "<span></span>"
             dd = d8(d)
             title = f"4D Result {dd.day} {dd:%B %Y} ({dd:%A}) · Keputusan 4D | 4D Malam Ini"
             if len(title) > 70:
@@ -292,8 +331,8 @@ class Site:
                     + (f'<b style="font-size:13px;color:#9FB0D3;display:block;margin-top:12px">Ikut syarikat · By company</b><div class="bars">{obars}</div>' if obars else "")
                     + f'<p style="font-size:12.5px;color:#9FB0D3;margin:10px 0 0">Setiap nombor dijangka keluar sekitar {exp:.0f} kali dalam {self.ndraws:,} cabutan ({span}). Keputusan lepas tidak meramal cabutan akan datang.</p></div>')
             prev, nxt = f"{(i - 1) % 10000:04d}", f"{(i + 1) % 10000:04d}"
-            pn = (f'<div class="pn"><a href="{self.u(f"4d/{prev}/")}">‹ {prev} {esc(self.dict.get(prev, {}).get("zh", ""))}</a>'
-                  f'<a href="{self.u(f"4d/{nxt}/")}">{nxt} {esc(self.dict.get(nxt, {}).get("zh", ""))} ›</a></div>')
+            pn = (f'<div class="pn"><a data-l="‹ {prev}" href="{self.u(f"4d/{prev}/")}">{esc(self.dict.get(prev, {}).get("zh", "")) or prev}</a>'
+                  f'<a data-l="{nxt} ›" href="{self.u(f"4d/{nxt}/")}">{esc(self.dict.get(nxt, {}).get("zh", "")) or nxt}</a></div>')
             lastwin = f"Terakhir: {d8(hits[0][0]).day} {BULAN[d8(hits[0][0]).month - 1][:3]} {d8(hits[0][0]).year}, {opn[hits[0][1]]}." if hits else "Belum menang dalam 5 tahun ini."
             mn = " ".join(x for x in (e["en"], e["zh"]) if x)
             title = f"4D {n} Meaning: {mn} · Maksud & Sejarah | 4D Malam Ini" if mn else f"4D {n} Meaning · Maksud & Sejarah Menang | 4D Malam Ini"
