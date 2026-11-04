@@ -5,14 +5,17 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 6
+    timeout-minutes: 8
     steps:
       - run: |
           mkdir probe && cd probe
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"
           f(){ curl -sSL -A "$UA" -e "$3" --max-time 25 -o "$1" -w "$1 %{http_code} %{size_download}\n" "$2" || echo "fail $1"; }
-          f past.html "https://loto4d.com/past-results/" https://loto4d.com/
-          f past2.html "https://loto4d.com/past-results/?date=2026-10-27" https://loto4d.com/past-results/
-          f past3.html "https://loto4d.com/past-results/2026-10-27" https://loto4d.com/past-results/
+          f L2023.html "https://loto4d.com/past-results/2023-08-23" https://loto4d.com/past-results/
+          f L2021.html "https://loto4d.com/past-results/2021-11-02" https://loto4d.com/past-results/
+          f L2025.html "https://loto4d.com/past-results/2025-07-09" https://loto4d.com/past-results/
+          f L2024.html "https://loto4d.com/past-results/2024-03-20" https://loto4d.com/past-results/
+          f L2026.html "https://loto4d.com/past-results/2026-10-20" https://loto4d.com/past-results/
+          f M2026.html "https://www.4dmoon.com/past-results/?date=2026-10-20" https://www.4dmoon.com/
           git init -q -b probe && git add -A && git -c user.name=p -c user.email=p@l commit -qm probe
           git push -fq "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe:probe-data
