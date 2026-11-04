@@ -11,6 +11,8 @@ from pathlib import Path
 OPS = [("M", "Magnum 4D", "万能", "#E9C46B"), ("D", "Da Ma Cai", "大马彩", "#4C8DFF"), ("T", "Sports Toto", "多多", "#FF5A5F"), ("G", "GD Lotto", "豪龙", "#F27BA5"), ("N", "9 Lotto", "9 Lotto", "#2EC4B6"), ("S", "Singapore 4D", "新加坡万字", "#38BDF8"), ("C", "Cash Sweep", "砂拉越大万", "#4ADE80"), ("H", "Sandakan 4D", "山打根", "#FACC15"), ("J", "Super J3 3pm", "J3 下午3点", "#A78BFA"), ("K", "Super J9 9pm", "J9 晚上9点", "#FB923C")]
 PRIZE = {1: ("Hadiah Pertama", "1st Prize", "头奖"), 2: ("Hadiah Kedua", "2nd Prize", "二奖"), 3: ("Hadiah Ketiga", "3rd Prize", "三奖"),
          4: ("Istimewa", "Special", "特别奖"), 5: ("Saguhati", "Consolation", "安慰奖")}
+OPSLUG = {"M": "magnum-4d-result", "D": "da-ma-cai-result", "T": "sports-toto-result", "G": "gd-lotto-result", "N": "9-lotto-result", "S": "singapore-4d-result",
+          "C": "cash-sweep-result", "H": "sandakan-4d-result", "J": "super-j3-j9-result", "K": "super-j3-j9-result"}
 HARI = ["Isnin", "Selasa", "Rabu", "Khamis", "Jumaat", "Sabtu", "Ahad"]
 BULAN = ["Januari", "Februari", "Mac", "April", "Mei", "Jun", "Julai", "Ogos", "September", "Oktober", "November", "Disember"]
 LANG_META = {
@@ -61,7 +63,7 @@ table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;p
 .top3 a .mono{font-size:22px}.top3 small{font-size:11px;color:#A9B4CC}
 .g5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-top:6px}.g5 a{min-height:44px;font-size:15px}
 .lbl{font-size:12px;font-weight:800;color:#A9B4CC;margin-top:12px}
-.pn{display:flex;justify-content:space-between;gap:10px;margin-top:24px}.pn a{min-height:44px;display:inline-flex;align-items:center}
+.kf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:14px}.kf div{background:#0F1F3D;border:1px solid #233862;border-radius:14px;padding:10px 12px}.kf small{display:block;font-size:11.5px;color:#9FB0D3;font-weight:700}.kf b{display:block;font-size:17px;line-height:1.3;margin-top:2px}.kf a{text-decoration:none}.kf .wd{grid-column:1/-1}.bars{display:grid;gap:7px;margin:10px 0 4px}.bars a,.bars div{display:grid;grid-template-columns:96px 1fr 28px;align-items:center;gap:8px;font-size:13px;color:#C9D4EA;text-decoration:none}.bars i{display:block;height:12px;border-radius:6px;background:var(--c,#E9C46B);min-width:3px}.bars b{text-align:right;color:#F8F4E8}.bars .z i{background:#233862}.chips a small{margin-left:6px;color:#9FB0D3;font-weight:600}.chips a.hot{border:1px solid rgba(233,196,107,.5)}.note{font-size:12.5px;color:#9FB0D3;margin-top:18px}.pol h2{margin-top:26px}.pol li{margin:4px 0}.pol .card p{margin:6px 0}.pn{display:flex;justify-content:space-between;gap:10px;margin-top:24px}.pn a{min-height:44px;display:inline-flex;align-items:center}
 .list{columns:2;column-gap:18px;padding:0;list-style:none}.list li{break-inside:avoid;padding:5px 0;border-bottom:1px solid #1A2C50;font-size:14px}
 .list a{text-decoration:none;color:#F8F4E8}.list .mono{color:#E9C46B;margin-right:8px}
 footer{max-width:720px;margin:0 auto;padding:18px 16px 40px;font-size:12px;color:#A9B4CC;border-top:1px solid #1A2C50}.tgi{position:relative;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#fff;color:#1877B8;flex:none}.tgi::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #fff;animation:tgp 2s ease-out infinite}.tgi svg{margin-left:-2px;animation:tgf 3s ease-in-out infinite}@keyframes tgp{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.7);opacity:0}}@keyframes tgf{0%,55%,100%{transform:none;opacity:1}70%{transform:translate(9px,-9px) scale(.6);opacity:0}71%{transform:translate(-9px,9px) scale(.6);opacity:0}85%{transform:none;opacity:1}}@media (prefers-reduced-motion:reduce){.tgi::after,.tgi svg{animation:none}}.tg{display:inline-flex;align-items:center;gap:10px;padding-left:7px!important;margin-top:14px;min-height:44px;padding:0 16px;border-radius:999px;background:#1877B8;color:#fff!important;font-weight:800;font-size:14px;text-decoration:none}
@@ -94,6 +96,7 @@ class Site:
             self.draws[k] = rows
         self.dates = sorted({r[0] for rows in self.draws.values() for r in rows})
         self.hits = defaultdict(list)  # number -> [(date8, op, drawno, tier)]
+        self.ndraws = sum(len(rows) for rows in self.draws.values())
         for k, rows in self.draws.items():
             for d, no, nums in rows:
                 for j, n in enumerate(nums):
@@ -111,7 +114,7 @@ class Site:
     def page(self, path: str, title: str, desc: str, body: str, lang: str = "ms", ld: list | None = None, lastmod: str | None = None, head: str = "", foot: str | None = None) -> None:
         canon = self.site + path.lstrip("/")
         DEFAULT_FOOT = f"""<footer>Rekod tidak rasmi untuk rujukan. Sahkan dengan syarikat sebelum menuntut hadiah. 21+ · Bukan Islam sahaja · Main secara bertanggungjawab.<br>
-<a href="{self.u('')}">Semak nombor</a> · <a href="{self.u('keputusan/')}">Arkib keputusan</a> · <a href="{self.u('4d/')}">Kamus 4D 万字图</a> · <a href="{self.u('info/')}">Info 4D</a> · <a href="{self.u('guide/')}">Panduan 4D · Guide</a><br><a class="tg" href="https://t.me/ssgsales" target="_blank" rel="noopener"><i class="tgi" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.6-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.1l-4.7-1.5c-1-.3-1-1 .2-1.5L20.5 3c.9-.3 1.6.2 1.4 1.3Z"/></svg></i><span>Hubungi kami · Contact us · Telegram</span></a></footer>"""
+<a href="{self.u('')}">Semak nombor</a> · <a href="{self.u('keputusan/')}">Arkib keputusan</a> · <a href="{self.u('4d/')}">Kamus 4D 万字图</a> · <a href="{self.u('info/')}">Info 4D</a> · <a href="{self.u('data-policy/')}">Dasar data</a> · <a href="{self.u('guide/')}">Panduan 4D · Guide</a><br><a class="tg" href="https://t.me/ssgsales" target="_blank" rel="noopener"><i class="tgi" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.6-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.1l-4.7-1.5c-1-.3-1-1 .2-1.5L20.5 3c.9-.3 1.6.2 1.4 1.3Z"/></svg></i><span>Hubungi kami · Contact us · Telegram</span></a></footer>"""
         lds = "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False, separators=(",", ":"))}</script>' for x in (ld or []))
         doc = f"""<!DOCTYPE html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)}</title><meta name="description" content="{esc(desc)}"><link rel="canonical" href="{canon}">
@@ -155,6 +158,7 @@ class Site:
         last = self.dates[-1]
         self.result_pages()
         self.number_pages(last)
+        self.policy_page(last)
         self.hubs(last)
         self.not_found()
 
@@ -211,13 +215,44 @@ class Site:
             for h in hits:
                 cnt["top" if h[3] <= 3 else ("sp" if h[3] == 4 else "co")] += 1
             opn = {k: nm for k, nm, _, _ in OPS}
-            rows = "".join(f'<tr><td><a href="{self.u(f"keputusan/{d8(d).isoformat()}/")}">{self.date_ms(d)}</a></td><td>{opn[k]}</td><td>{PRIZE[t][0]} · {PRIZE[t][1]}</td></tr>' for d, k, no, t in hits)
+            opc = {k: c for k, _, _, c in OPS}
+            opa = lambda k: f'<a href="{self.u(OPSLUG[k] + "/")}">{opn[k]}</a>'
+            rows = "".join(f'<tr><td><a href="{self.u(f"keputusan/{d8(d).isoformat()}/")}">{self.date_ms(d)}</a></td><td>{opa(k)}</td><td>{PRIZE[t][0]} · {PRIZE[t][1]}</td></tr>' for d, k, no, t in hits)
             hist = (f'<div class="sum"><div><b>{len(hits)}</b><span>Jumlah menang</span></div><div><b>{cnt["top"]}</b><span>Hadiah 1–3</span></div>'
                     f'<div><b>{cnt["sp"]}</b><span>Istimewa</span></div><div><b>{cnt["co"]}</b><span>Saguhati</span></div></div>'
                     + (f'<div class="card" style="padding:4px 12px"><table><thead><tr><th>Tarikh</th><th>Syarikat</th><th>Hadiah</th></tr></thead><tbody>{rows}</tbody></table></div>'
-                       if hits else f'<p>{n} tidak menang dalam Magnum, Sports Toto atau Da Ma Cai sejak {span}.</p>'))
+                       if hits else f'<p>{n} tidak menang dalam mana-mana syarikat sejak {span}.</p>'))
             perms = sorted({"".join(p) for p in _perms(n)} - {n})
-            box = "".join(f'<a class="mono" href="{self.u(f"4d/{p}/")}">{p}</a>' for p in perms)
+            pc = {p: len(self.hits.get(p, [])) for p in perms}
+            box = "".join(f'<a class="mono{" hot" if pc[p] else ""}" href="{self.u(f"4d/{p}/")}">{p}<small>{pc[p]}×</small></a>' for p in perms)
+            fam = len(hits) + sum(pc.values())
+            exp = self.ndraws * 23 / 10000
+            # key facts
+            if hits:
+                h0 = hits[0]
+                kf = (f'<div class="kf"><div class="wd"><small>Menang terakhir · Last won</small><b><a href="{self.u(f"keputusan/{d8(h0[0]).isoformat()}/")}">{self.date_ms(h0[0])}</a> · {opa(h0[1])} · {PRIZE[h0[3]][0]}</b></div>'
+                      f'<div><small>Jumlah menang · Times won</small><b>{len(hits)}× <span style="font-size:12px;color:#9FB0D3">(purata ≈ {exp:.0f})</span></b></div>'
+                      f'<div><small>Kali pertama · First win</small><b><a href="{self.u(f"keputusan/{d8(hits[-1][0]).isoformat()}/")}">{d8(hits[-1][0]).day} {BULAN[d8(hits[-1][0]).month - 1][:3]} {d8(hits[-1][0]).year}</a></b></div>'
+                      f'<div class="wd"><small>Keluarga Box {n} (semua susunan) · Box family</small><b>{fam}× dalam {len(perms) + 1} susunan</b></div></div>')
+            else:
+                kf = (f'<div class="kf"><div class="wd"><small>Menang terakhir · Last won</small><b>Belum menang sejak {span}</b></div>'
+                      f'<div><small>Jumlah menang · Times won</small><b>0× <span style="font-size:12px;color:#9FB0D3">(purata ≈ {exp:.0f})</span></b></div>'
+                      f'<div><small>Keluarga Box · Box family</small><b>{fam}×</b></div></div>')
+            # frequency charts
+            yrs = defaultdict(int)
+            for h in hits:
+                yrs[h[0][:4]] += 1
+            ylist = [str(y) for y in range(int(self.dates[0][:4]), int(self.dates[-1][:4]) + 1)]
+            ym = max([yrs[y] for y in ylist] + [1])
+            ybars = "".join(f'<div class="{"" if yrs[y] else "z"}"><span>{y}</span><i style="width:{max(2, yrs[y] / ym * 100):.0f}%"></i><b>{yrs[y]}</b></div>' for y in ylist)
+            oc = defaultdict(int)
+            for h in hits:
+                oc[h[1]] += 1
+            om = max(list(oc.values()) + [1])
+            obars = "".join(f'<a href="{self.u(OPSLUG[k] + "/")}" style="--c:{opc[k]}"><span>{opn[k]}</span><i style="width:{oc[k] / om * 100:.0f}%"></i><b>{oc[k]}</b></a>' for k in sorted(oc, key=lambda k: -oc[k]))
+            freq = (f'<h2>Kekerapan {n} · Frequency</h2><div class="card"><b style="font-size:13px;color:#9FB0D3">Ikut tahun · By year</b><div class="bars">{ybars}</div>'
+                    + (f'<b style="font-size:13px;color:#9FB0D3;display:block;margin-top:12px">Ikut syarikat · By company</b><div class="bars">{obars}</div>' if obars else "")
+                    + f'<p style="font-size:12.5px;color:#9FB0D3;margin:10px 0 0">Setiap nombor dijangka keluar sekitar {exp:.0f} kali dalam {self.ndraws:,} cabutan ({span}). Keputusan lepas tidak meramal cabutan akan datang.</p></div>')
             prev, nxt = f"{(i - 1) % 10000:04d}", f"{(i + 1) % 10000:04d}"
             pn = (f'<div class="pn"><a href="{self.u(f"4d/{prev}/")}">‹ {prev} {esc(self.dict.get(prev, {}).get("zh", ""))}</a>'
                   f'<a href="{self.u(f"4d/{nxt}/")}">{nxt} {esc(self.dict.get(nxt, {}).get("zh", ""))} ›</a></div>')
@@ -253,10 +288,35 @@ class Site:
             body = (f"{nav}<h1><span class=\"mono\">{n}</span> {esc(e['zh'])}<small>4D {n} meaning: {esc(e['en'])}{' · maksud: ' + esc(e['ms']) if e['ms'] else ''}</small></h1>{pic}"
                     f'<div class="card"><dl>{dl}</dl></div>'
                     f'<a class="btn" href="{self.u("?n=" + n)}">Semak {n} dalam semua syarikat</a>{share}'
-                    f"<h2>Sejarah menang {n} ({span})</h2>{hist}"
-                    + (f"<h2>Susunan digit sama (Box) · {len(perms)}</h2><div class=\"chips\">{box}</div>" if perms else "") + pn)
+                    f"{kf}{freq}<h2>Sejarah menang {n} ({span})</h2>{hist}"
+                    + (f"<h2>Susunan digit sama (Box) · {len(perms)}</h2><div class=\"chips\">{box}</div>" if perms else "") + pn
+                    + f'<p class="note">Sumber: keputusan rasmi syarikat, disemak semula. <a href="{self.u("data-policy/")}">Dasar data · Data policy</a></p>')
             lastmod = d8(hits[0][0]).isoformat() if hits else None
             self.page(f"4d/{n}/", title, desc, body, "ms", [ld], lastmod)
+
+    def policy_page(self, last: str) -> None:
+        upd = d8(last)
+        nav, ld = self.crumbs([("4D Malam Ini", ""), ("Info", "info/"), ("Data policy", None)])
+        src = [("Magnum 4D", "magnum4d.my"), ("Sports Toto", "sportstoto.com.my"), ("Da Ma Cai", "damacai.com.my"), ("GD Lotto", "gdlotto.com"), ("9 Lotto", "9lotto.com"),
+               ("Super J3 & J9", "superj3.net"), ("Singapore 4D", "singaporepools.com.sg"), ("Cash Sweep", "cashsweep.my"), ("Sandakan 4D", "stc4d.com")]
+        body = (f"{nav}<div class=\"pol\"><h1>Data &amp; editorial policy<small>Dasar data &amp; editorial · 数据与编辑政策</small></h1>"
+                "<p>4D Malam Ini is an independent results site. This page explains where our numbers come from, how we check them and what to do if you spot a mistake.</p>"
+                "<h2>Where results come from</h2><p>Each operator publishes its own official results:</p><ul>" + "".join(f"<li><b>{a}</b>: {b}</li>" for a, b in src) + "</ul>"
+                "<p>We read results from the official site wherever it can be read automatically. For Singapore 4D, Cash Sweep and Sandakan, and whenever an official site is unreachable, we read the same draw from independent results publishers (check4d.org, loto4d.com).</p>"
+                "<h2>When results are checked</h2><ul><li>During each draw, the live board refreshes about every 25 seconds.</li>"
+                "<li>The live board treats a result as final only after the full set (top 3, Special and Consolation) has been seen twice in a row, unchanged. Results are saved to the history only when complete, usually within minutes of the draw.</li>"
+                "<li>Saved results are compared with the source again on later checks; any difference is flagged for a manual review.</li>"
+                "<li>Special draw dates are added when they are announced.</li></ul>"
+                "<h2>Who maintains the data</h2><p>The 4D Malam Ini team. The history covers November 2021 to today. A few past draws are missing because no source published them (for example 7 Singapore 4D draws in 2025, 16 Cash Sweep draws in Aug–Sep 2023 and 1 Sandakan draw in March 2024); they are not guessed or filled in.</p>"
+                "<h2>Corrections</h2><p>If a number on this site differs from the operator's official result, the official result is correct. Tell us through the contact button on the home page with the company, date and number; we check it against the operator and correct the record.</p>"
+                "<h2>What we are not</h2><ul><li>We do not sell tickets, take bets or hold money.</li><li>We are not affiliated with any operator, and we do not predict numbers. Past results do not change the odds of future draws.</li>"
+                "<li>4D is for non-Muslims aged 21 and above in Malaysia. Play responsibly: set a budget and never chase losses.</li></ul>"
+                "<div class=\"card\"><p><b>Ringkasan (BM):</b> Keputusan diambil daripada laman rasmi syarikat atau penerbit keputusan bebas, dan disemak semula. Kami tidak menjual tiket atau menerima pertaruhan. Jika ada perbezaan, keputusan rasmi syarikat adalah betul; hubungi kami untuk pembetulan.</p>"
+                "<p lang=\"zh-Hans\"><b>摘要（中文）：</b>成绩取自各公司官网或独立成绩网站，并会再次核对。本站不卖彩票、不接受投注。如有出入，以官方成绩为准，欢迎联系我们更正。</p></div>"
+                f"<p class=\"note\">Last updated {upd.day} {upd:%B %Y}.</p></div>")
+        self.page("data-policy/", "Data & Editorial Policy: Sources, Checks, Corrections | 4D Malam Ini",
+                  "Where 4D Malam Ini gets Malaysia 4D results, how they are checked, who maintains the data, how corrections work, and why we never sell tickets or take bets.",
+                  body, "en", [ld], upd.isoformat())
 
     def hubs(self, last: str) -> None:
         lastiso = d8(last).isoformat()
