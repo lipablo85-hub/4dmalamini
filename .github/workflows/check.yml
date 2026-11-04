@@ -1,19 +1,19 @@
 name: Check sources (dry run)
 on: workflow_dispatch
 permissions:
-  contents: write
+  contents: read
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 4
+    timeout-minutes: 6
     steps:
       - run: |
-          mkdir probe && cd probe
-          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"
-          f(){ curl -sSL -A "$UA" -e "$3" --max-time 30 -o "$1" -w "$1 %{http_code} %{size_download}\n" "$2" || echo "fail $1"; }
-          f c4dsp.html "https://www.check4d.org/4d-special-draw" https://www.check4d.org/
-          f c4d_sp.html "https://www.check4d.org/special-draw-date" https://www.check4d.org/
-          f c4d_sp2.html "https://www.check4d.org/special-draw-dates" https://www.check4d.org/
-          f magnum.html "https://www.magnum4d.my/en/special-draw" https://www.magnum4d.my/
-          git init -q -b probe && git add -A && git -c user.name=p -c user.email=p@l commit -qm probe
-          git push -fq "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe:probe-data
+          echo "SPECIAL: $(curl -sS 'https://www.4dmalamini.com/zh/special-draw/' | grep -o 'href="[^"]*d=2026[0-9]*"' | head -3 | tr '\n' ' ')"
+          echo "HOMEZH: $(curl -sS 'https://www.4dmalamini.com/zh/?d=20261027' | grep -o 'P.get("d")' | head -1)"
+          npm i -s playwright@1 >/dev/null 2>&1 && npx -y playwright install --with-deps chromium >/dev/null 2>&1
+          cat > t.js <<'JS'
+          const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1280,height:900}});const errs=[];p.on('pageerror',e=>errs.push(e.message));p.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
+          await p.goto('https://www.4dmalamini.com/zh/special-draw/');await p.click('a.ok >> nth=6');await p.waitForTimeout(6000);
+          console.log('URL',p.url());console.log('LABEL',await p.$eval('#rdlabel',e=>e.textContent).catch(e=>'ERR '+e.message));console.log('ERRS',JSON.stringify(errs));await b.close()})();
+          JS
+          node t.js
