@@ -461,6 +461,7 @@ header{background-color:rgba(7,20,43,.92);background-image:radial-gradient(1px 1
 .r5 button{height:42px;border:0;border-radius:10px;background:#172A4D;font-size:17px;color:#F8F4E8;padding:0}
 .rc.soon .rb{color:#A9B4CC;font-size:14px}
 .rc.none .rb{color:#A9B4CC;font-size:14px}
+#board .rc.none,#rjump .nn{order:50!important}#board .rc.none+.rc.none{margin-top:-6px}#rjump .nn{opacity:.5}
 .nd #rc-N,.nd [href="#rc-N"]{order:-2}.nd #rc-G,.nd [href="#rc-G"]{order:-3}.nd #rc-J,.nd [href="#rc-J"],.nd #rc-K,.nd [href="#rc-K"]{order:-1}
 .sJ #rc-J,.sJ [href="#rc-J"],.sK #rc-K,.sK [href="#rc-K"]{order:-9!important}
 .rc.wait .r3 button{cursor:default}.rc.wait .r3 .mono{background:linear-gradient(90deg,#3a5288 25%,#8fa3cc 50%,#3a5288 75%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shim 1.4s linear infinite}@keyframes shim{to{background-position:-200% 0}}
@@ -843,7 +844,7 @@ function renderLatest(){
     if(!dr)return`<article class="rc slip none k-${k}" id="rc-${k}" ${st_}>${head(k,o,nm,fD(st.rd))}<div class="rb">${t("noDraw")}</div></article>`;
     return`<article class="rc slip k-${k}${L&&dr.d===L.n.ymd?" fresh":""}" id="rc-${k}" ${st_}>${head(k,o,nm,cd(dr.d)+(dr.no?` #${dr.no}`:""),0,k+"|"+dr.d)}${body(dr.n,0,X_(k,dr.d))}${j6(k,dr.n.slice(0,3))}</article>`}).join("");
   if($("#board").innerHTML!==cards)$("#board").innerHTML=cards;
-  $("#rjump").innerHTML=BOARD.map(([k,c])=>{const o=LIVE.find(x=>x.k===k);return`<a href="#rc-${k}" style="--c:${c}"><i></i>${o?oname(o):OPS.find(x=>x.k===k).name}</a>`}).join("");
+  $("#rjump").innerHTML=BOARD.map(([k,c])=>{const o=LIVE.find(x=>x.k===k),nn=!(L&&L.wait.includes(k))&&o&&o.D.length&&!boardDraw(k);return`<a href="#rc-${k}" class="${nn?"nn":""}" style="--c:${c}"><i></i>${o?oname(o):OPS.find(x=>x.k===k).name}</a>`}).join("");
   const i=st.rd?DATES.indexOf(st.rd):DATES.length-1;
   $("#rdlabel").textContent=st.rd?fD(st.rd):L&&L.ks.length?`● ${t("tonight")} · ${fD(L.n.ymd)}`:`${t("latestTag")} · ${fD(MAX)}`;
   $("#rprev").disabled=i<=0;$("#rnext").disabled=!st.rd||i>=DATES.length-1;
