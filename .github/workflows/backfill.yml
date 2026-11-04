@@ -1,15 +1,22 @@
-name: Backfill GD Lotto history
-on: workflow_dispatch
+name: Backfill missing results
+on:
+  workflow_dispatch:
+    inputs:
+      since:
+        description: "Only dates from this ISO date onwards (blank = all history)"
+        default: ""
 permissions:
   contents: write
 jobs:
   backfill:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
-      - run: python3 tools/backfill_gd.py malaysia_4d_draws_2021-2026.csv
-      - run: |
+      - run: python3 tools/backfill_missing.py malaysia_4d_draws_2021-2026.csv ${{ inputs.since }}
+      - name: Save and tag a backup
+        run: |
           git config user.name "4d-results-bot"; git config user.email "actions@users.noreply.github.com"
-          git add malaysia_4d_draws_2021-2026.csv && git commit -qm "Backfill GD Lotto 4D history" || exit 0
+          git add malaysia_4d_draws_2021-2026.csv && git commit -qm "Backfill missing results from loto4d archive" || exit 0
           git pull -q --rebase origin main && git push -q
+          T="data-$(date -u +%Y%m%d-%H%M)"; git tag "$T" && git push -q origin "$T" && echo "backup tag $T"
