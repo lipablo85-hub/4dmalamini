@@ -1,19 +1,12 @@
 name: Check sources (dry run)
 on: workflow_dispatch
 permissions:
-  contents: write
+  contents: read
 jobs:
   check:
     runs-on: ubuntu-latest
     timeout-minutes: 4
     steps:
       - run: |
-          mkdir probe && cd probe
-          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"
-          f(){ curl -sSL -A "$UA" -e "$3" --max-time 30 -o "$1" -w "$1 %{http_code} %{size_download}\n" "$2" || echo "fail $1"; }
-          f rapp.js "https://www.cashsweep.my/assets/js/ResultsApp.js" https://www.cashsweep.my/results
-          f site.js "https://www.cashsweep.my/assets/js/SiteWide.js" https://www.cashsweep.my/
-          f c4d_p1.html "https://www.check4d.org/past-results/2026-11-01" https://www.check4d.org/
-          f c4d_p2.html "https://www.check4d.org/past-results/2022-03-06" https://www.check4d.org/
-          git init -q -b probe && git add -A && git -c user.name=p -c user.email=p@l commit -qm probe
-          git push -fq "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe:probe-data
+          echo "LIVE: $(curl -sS --max-time 30 'https://www.4dmalamini.com/api/live?x='$RANDOM | head -c 3000)"
+          echo "J3API: $(curl -sS --max-time 30 -A 'Mozilla/5.0' -e https://superj3.net/ 'https://superj3.net/data/data-api.php?op=get_landing_info&api_key=e0a5d3fsdfdsghhg18b0c8bgfdgd7c06e&ao=1' | head -c 1500)"
