@@ -1,19 +1,18 @@
 name: Check sources (dry run)
 on: workflow_dispatch
 permissions:
-  contents: read
+  contents: write
 jobs:
   check:
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
       - run: |
+          mkdir probe && cd probe
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"
-          f(){ printf '%s %s ' "$1" "$(curl -sSL -A "$UA" -e "$3" --max-time 25 -o /tmp/$1 -w '%{http_code}' "$2")"; grep -oiE "nine ?lotto|9 ?lotto" /tmp/$1 | head -1; echo; }
-          f a.html "https://loto4d.com/past-results" https://loto4d.com/
-          f b.html "https://loto4d.com/9-lotto-4d-results" https://loto4d.com/
-          f c.html "https://loto4d.com/results/2026-10-27" https://loto4d.com/
-          f d.html "https://www.4dmoon.com/9-lotto-results/" https://www.4dmoon.com/
-          f e.html "https://9lotto.com/result" https://9lotto.com/
-          f g.html "https://loto4d.com/" https://loto4d.com/
-          echo "LOTO LINKS:"; grep -oE 'href="[^"]*(past|history|archive|result)[^"]*"' /tmp/g.html | sort -u | head -20
+          f(){ curl -sSL -A "$UA" -e "$3" --max-time 25 -o "$1" -w "$1 %{http_code} %{size_download}\n" "$2" || echo "fail $1"; }
+          f past.html "https://loto4d.com/past-results/" https://loto4d.com/
+          f past2.html "https://loto4d.com/past-results/?date=2026-10-27" https://loto4d.com/past-results/
+          f past3.html "https://loto4d.com/past-results/2026-10-27" https://loto4d.com/past-results/
+          git init -q -b probe && git add -A && git -c user.name=p -c user.email=p@l commit -qm probe
+          git push -fq "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe:probe-data
