@@ -849,7 +849,7 @@ function renderLatest(){
   $("#rprev").disabled=i<=0;$("#rnext").disabled=!st.rd||i>=DATES.length-1;
   $("#rprev").setAttribute("aria-label",t("prevDraw"));$("#rnext").setAttribute("aria-label",t("nextDraw"));
   const ri=$("#rdate");ri.min=iso(MIN);ri.max=iso(MAX);ri.value=iso(st.rd||MAX);
-  {const n_=myt(),sj=!st.rd&&n_.m>=895&&n_.m<1135,sk=!st.rd&&n_.m>=1255;["board","rjump"].forEach(i=>{$("#"+i).classList.toggle("sJ",sj);$("#"+i).classList.toggle("sK",sk)})}
+  {const n_=myt(),big=LDAYS.M.includes(n_.wd)||isSp("M",n_.ymd),sj=!st.rd&&!big&&n_.m>=895&&n_.m<1135,sk=!st.rd&&!big&&n_.m>=1255;["board","rjump"].forEach(i=>{$("#"+i).classList.toggle("sJ",sj);$("#"+i).classList.toggle("sK",sk)})}
   rsArm();renderTicker();renderSpd();renderUpd();renderJx();armLive();renderMine();$("#tab-results").classList.toggle("lvn",!!(L&&L.wait.some(k=>L.n.m>=dmin(k)-5)));
 }
 /* My numbers: saved on this phone, matched against the board; toast when tonight's results include them */
