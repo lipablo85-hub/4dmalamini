@@ -441,8 +441,9 @@ header{background-color:rgba(7,20,43,.92);background-image:radial-gradient(1px 1
 .rbar{display:grid;grid-template-columns:48px 1fr 48px;gap:8px;align-items:center;margin-top:10px}
 .rnav{height:48px;border-radius:14px;border:1px solid #233862;background:#0F1F3D;font-size:24px;line-height:1;color:#F8F4E8}
 .rnav[disabled]{opacity:.35;cursor:default}
-.rdate{position:relative;display:flex;align-items:center;justify-content:center;height:48px;border-radius:14px;border:1px solid #233862;background:#0F1F3D;font-weight:800;font-size:15px;cursor:pointer}
-.rdate input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer}
+.rdate{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:48px;padding:0 12px;border-radius:14px;border:1px solid #233862;background:#0F1F3D;color:inherit;font-family:inherit;font-weight:800;font-size:15px;cursor:pointer}
+.rdate .cal{flex:none;color:#9FB0D3}.rdate:hover{border-color:#E9C46B}.rdate:hover .cal,.rdate:focus-visible .cal{color:#E9C46B}.rdate:active{transform:scale(.99)}
+.rdate input{position:absolute;left:12px;bottom:4px;width:1px;height:1px;opacity:0;pointer-events:none;border:0;padding:0}
 .jump{position:sticky;top:61px;z-index:4;display:flex;gap:6px;overflow-x:auto;padding:10px 0;margin:0 -16px;padding-left:16px;padding-right:16px;background:rgba(7,20,43,.94);scrollbar-width:none}
 .jump::-webkit-scrollbar{display:none}
 .jump a{flex:none;display:flex;align-items:center;gap:6px;min-height:40px;padding:0 12px;border-radius:999px;border:1px solid #233862;background:#0F1F3D;color:#F8F4E8;font-size:13px;font-weight:800;text-decoration:none}
@@ -498,7 +499,7 @@ footer a{color:#A9B4CC}
     <h2 class="sr" data-t="latest"></h2>
     <div class="rbar">
       <button type="button" id="rprev" class="rnav" data-t-aria="prevDraw" aria-label="Previous draw">‹</button>
-      <label class="rdate"><span id="rdlabel"></span><input type="date" id="rdate" aria-label="Pick a draw date"></label>
+      <button type="button" class="rdate" id="rdbtn" aria-label="Pick a draw date"><span id="rdlabel"></span><svg class="cal" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><input type="date" id="rdate" tabindex="-1" aria-hidden="true"></button>
       <button type="button" id="rnext" class="rnav" data-t-aria="nextDraw" aria-label="Next draw">›</button>
     </div>
     <p class="upd" id="upd"><i></i>__UPDTXT__</p>
@@ -1002,9 +1003,10 @@ $("#home").href=st.lang==="en"?"./":st.lang+"/";
 $("#home").onclick=e=>{if(e.metaKey||e.ctrlKey||e.shiftKey)return;e.preventDefault();st.rd=null;st.q="";$("#q").value="";paintCells();setTab("results");renderLatest();try{history.replaceState(null,"",$("#home").getAttribute("href"))}catch(err){}scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"})};
 $("#rprev").onclick=withFull(()=>{const i=st.rd?DATES.indexOf(st.rd):DATES.length-1;if(i>0){st.rd=DATES[i-1];renderLatest()}});
 $("#rnext").onclick=()=>{const i=DATES.indexOf(st.rd);if(i>=0&&i<DATES.length-1){st.rd=i+1===DATES.length-1?null:DATES[i+1];renderLatest()}};
+$("#rdbtn").onclick=()=>{const i=$("#rdate");loadFull().catch(()=>{});try{if(i.showPicker)return i.showPicker()}catch(e){}i.focus();i.click()};
 $("#rdate").onchange=e=>{const v=e.target.value.replace(/-/g,"");if(!FULL){loadFull().then(()=>{e.target.value=iso(v);$("#rdate").onchange(e)},()=>{});return}if(!v)return;const d=DATES.filter(x=>x<=v).pop()||DATES[0];st.rd=d===MAX?null:d;renderLatest()};
 $("#rjump").addEventListener("click",e=>{const a=e.target.closest("a");if(!a)return;e.preventDefault();const el=document.querySelector(a.getAttribute("href"));if(el)el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"start"})});$("#tab-check").onclick=()=>setTab("check");
-["#q","#tab-check","#tab-browse","#rprev","#rdate"].forEach(s=>{const el=$(s);if(el)["pointerdown","focus"].forEach(ev=>el.addEventListener(ev,()=>loadFull().catch(()=>{}),{once:true,passive:true}))});
+["#q","#tab-check","#tab-browse","#rprev","#rdbtn"].forEach(s=>{const el=$(s);if(el)["pointerdown","focus"].forEach(ev=>el.addEventListener(ev,()=>loadFull().catch(()=>{}),{once:true,passive:true}))});
 $("#q").addEventListener("focus",e=>{paintCells();const q=e.target;setTimeout(()=>{try{q.select()}catch(err){}},0)});
 /* typing a new digit into a full box starts a new number, so a second search needs no deleting */
 $("#q").addEventListener("beforeinput",e=>{const q=e.target;if(q.value.length>=4&&e.inputType&&e.inputType.startsWith("insert")&&q.selectionStart===q.selectionEnd){q.value="";paintCells()}});
