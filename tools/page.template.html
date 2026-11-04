@@ -897,14 +897,16 @@ function lpoll(){if(document.hidden)return;{const L=liveNow();if(!L||!L.wait.som
     let no=v.no;if(!no&&o.D.length){const m=String(o.D[o.D.length-1].no).match(/^(\d+)\/(\d+)$/);if(m)no=(+m[1]+1)+"/"+L.n.ymd.slice(0,4)}
     o.D.push({d:v.d,no,n:v.top.concat(sp,v.co)});add++}});
   if(add){const old=MAX;DATES=[...new Set(LIVE.flatMap(o=>o.D.map(x=>x.d)))].sort();MAX=DATES[DATES.length-1];if(st.to===old)st.to=MAX;IX=null}
-  renderLatest()}).catch(()=>{})}
+  if(L.wait.some(k=>!livePart(k,L.n)&&L.n.m>=dmin(k)+10))poll();
+  renderLatest()}).catch(()=>poll())}
 function liveStop(){clearInterval(LT);clearInterval(PT);clearInterval(LPT);LT=PT=LPT=0}
 function liveTick(){const L=liveNow();if(!L||!L.wait.length){liveStop();if(document.querySelector(".rc.wait"))renderLatest();return}if([...document.querySelectorAll(".rc.wait:not(.live) .cd")].some(e=>L.n.m>=(DRAWM[e.dataset.k]||1140))){renderLatest();return}document.querySelectorAll(".rc.wait .cd").forEach(e=>e.textContent=liveMsg(L.n,e.dataset.k))}
 function armLive(){const L=liveNow();if(!L||!L.wait.length){liveStop();return}if(!LT)LT=setInterval(liveTick,1000);if(!PT){PT=setInterval(poll,45000);poll()}if(!LPT){LPT=setInterval(lpoll,25000);lpoll()}}
 function poll(){if(document.hidden)return;fetch("live.json?"+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(!j)return;let add=0;if(j.X&&JSON.stringify(j.X)!==JSON.stringify(XT)){XT=j.X;add++}
   LIVE.forEach(o=>{const last=o.D.length?o.D[o.D.length-1].d:"";(j[o.k]||"").split("|").filter(Boolean).forEach(s=>{const a=s.split(",");if(a[0]>last&&a[2]&&a[2].length===92){const n=[];for(let i=0;i<92;i+=4)n.push(a[2].slice(i,i+4));o.D.push({d:a[0],no:a[1],n});add++}})});
   if(add){const old=MAX;DATES=[...new Set(LIVE.flatMap(o=>o.D.map(x=>x.d)))].sort();MAX=DATES[DATES.length-1];if(st.to===old)st.to=MAX;IX=null;renderLatest()}}).catch(()=>{})}
-document.addEventListener("visibilitychange",()=>{if(!document.hidden&&PT){poll();lpoll()}});
+document.addEventListener("visibilitychange",()=>{if(document.hidden)return;renderLatest();poll();lpoll()});
+addEventListener("pageshow",e=>{if(e.persisted){renderLatest();poll();lpoll()}});
 (function(){const n=myt();[895,1105,1135,1255].forEach(m=>{const ms=((m-n.m)*60-n.s)*1000;if(ms>0&&ms<864e5)setTimeout(()=>renderLatest(),ms+500)})})();
 function paintCells(){
   const v=$("#q").value,f=document.activeElement===$("#q");

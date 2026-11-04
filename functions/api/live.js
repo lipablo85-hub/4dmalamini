@@ -18,7 +18,7 @@ function parse(b) {
   const dm = b.match(/Date:\s*(\d{2})-(\d{2})-(\d{4})/); if (!dm) return null;
   const no = (b.match(/Draw No:\s*([\d/]+)/) || [])[1] || "";
   const top = [1, 2, 3].map(i => { const m = b.match(new RegExp(["1st", "2nd", "3rd"][i - 1] + "(?: Prize)? \\S+ (\\d{4}|-{4}|\\*{4})")); return m && /\d/.test(m[1]) ? m[1] : ""; });
-  const sp = b.match(/Special(.*?)Consolation/); const co = b.match(/Consolation(.*)$/);
+  const t3 = b.search(/3rd/), sp = (t3 > 0 ? b.slice(t3) : b).match(/Special(.*?)Consolation/); const co = b.match(/Consolation(.*)$/);
   const sl = sp ? (sp[1].match(TOK) || []).map(x => /\d/.test(x) ? x : "") : [];
   const cn = co ? (co[1].match(TOK) || []).slice(0, 10).map(x => /\d/.test(x) ? x : "") : [];
   return { d: dm[3] + dm[2] + dm[1], no, top, sl, co: cn };
@@ -40,8 +40,10 @@ async function jgrab(ctx) {
   let r = await cache.match(key);
   if (!r) {
     const up = await fetch(url, { headers: { "User-Agent": UA, Referer: "https://superj3.net/" } });
-    if (!up.ok) return null;
-    r = new Response(await up.text(), { headers: { "Cache-Control": "max-age=15" } });
+    if (!up.ok) throw new Error("http " + up.status);
+    const body = await up.text();
+    if (!/^\s*\{/.test(body)) throw new Error("not json");
+    r = new Response(body, { headers: { "Cache-Control": "max-age=15" } });
     ctx.waitUntil(cache.put(key, r.clone()));
   }
   return JSON.parse(await r.text());
@@ -67,7 +69,7 @@ export async function onRequestGet(ctx) {
   }
   // Super J3 (3pm) / J9 (9pm): superj3.net JSON feed (key is public, embedded in their page)
   try {
-    const r = await jgrab(ctx);
+    const r = await jgrab(ctx).catch(e => { out.err = "j3: " + e.message; return null; });
     const lr = (r && r.last_result) || {};
     for (const [id, v] of Object.entries(lr)) {
       if (!v || typeof v !== "object" || !v.DATE) continue;
