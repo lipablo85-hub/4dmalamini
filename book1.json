@@ -1,0 +1,10007 @@
+{
+"id": "1",
+"title": "",
+"items": [
+{
+"n": "000",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614447266.png",
+"lines": [
+"虾蟹/螃蟹/虾",
+"蝦蟹/蟹/蝦",
+"Prawn/Crab"
+],
+"img": "000.webp"
+},
+{
+"n": "001",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/001.png",
+"lines": [
+"天上",
+"天上",
+"Sky"
+],
+"img": "001.webp"
+},
+{
+"n": "002",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/002.png",
+"lines": [
+"地上",
+"地上",
+"Land"
+],
+"img": "002.webp"
+},
+{
+"n": "003",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/003.png",
+"lines": [
+"吃醋/妒忌",
+"吃醋/妒忌",
+"Jealous"
+],
+"img": "003.webp"
+},
+{
+"n": "004",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/004.png",
+"lines": [
+"糖",
+"糖",
+"Sugar"
+],
+"img": "004.webp"
+},
+{
+"n": "005",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/005.png",
+"lines": [
+"中药",
+"中藥",
+"Chinese Medicine",
+"Traditional Medicine"
+],
+"img": "005.webp"
+},
+{
+"n": "006",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/006.png",
+"lines": [
+"送物/礼物/礼品",
+"送物/禮物/禮品",
+"Present/Giff"
+],
+"img": "006.webp"
+},
+{
+"n": "007",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/007.png",
+"lines": [
+"大伯公",
+"大伯公",
+"Tua Pek Kong Temple"
+],
+"img": "007.webp"
+},
+{
+"n": "008",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/008.png",
+"lines": [
+"巫人墓碑/马来人墓碑",
+"巫人墓碑/馬來人墓碑",
+"Malay Tombstone"
+],
+"img": "008.webp"
+},
+{
+"n": "009",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/009.png",
+"lines": [
+"偷脚踏车",
+"偷腳踏車",
+"Steal Bicycle"
+],
+"img": "009.webp"
+},
+{
+"n": "010",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/010.png",
+"lines": [
+"凉茶摊",
+"涼茶攤",
+"Medicine Tea/Herba Tea"
+],
+"img": "010.webp"
+},
+{
+"n": "011",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/011.png",
+"lines": [
+"木耳/香菇/菌类",
+"木耳/香菇/菌類",
+"Fungus/Mushroom"
+],
+"img": "011.webp"
+},
+{
+"n": "012",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/012.png",
+"lines": [
+"鲍鱼菇/罐头鲍鱼菇",
+"鮑魚菇/罐頭鮑魚菇",
+"Abalone Mushroom/Canned Abalone Mushroom"
+],
+"img": "012.webp"
+},
+{
+"n": "013",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/013.png",
+"lines": [
+"修理脚车",
+"修理腳車",
+"Bicycle Repair"
+],
+"img": "013.webp"
+},
+{
+"n": "014",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/014.png",
+"lines": [
+"修理电线",
+"修理電線",
+"Electric Repair"
+],
+"img": "014.webp"
+},
+{
+"n": "015",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/015.png",
+"lines": [
+"金针冬粉",
+"金針冬粉",
+"Green Bean Noodle"
+],
+"img": "015.webp"
+},
+{
+"n": "016",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/016.png",
+"lines": [
+"汽车连接/车龙",
+"汽車連接/車龍",
+"Car Queue"
+],
+"img": "016.webp"
+},
+{
+"n": "017",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/017.png",
+"lines": [
+"飞机场",
+"飛機場",
+"Airport"
+],
+"img": "017.webp"
+},
+{
+"n": "018",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/018.png",
+"lines": [
+"飞机失事",
+"飛機失事",
+"Air Crash"
+],
+"img": "018.webp"
+},
+{
+"n": "019",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/019.png",
+"lines": [
+"时装女服/时尚女服",
+"時裝女服/時尚女服",
+"Fashion Clothes"
+],
+"img": "019.webp"
+},
+{
+"n": "020",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/020.png",
+"lines": [
+"军车载兵/军车",
+"軍車載兵/軍車",
+"Military Vehicles"
+],
+"img": "020.webp"
+},
+{
+"n": "021",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/021.png",
+"lines": [
+"载橡胶胶水",
+"載橡膠膠水",
+"Carry Rubber Glue"
+],
+"img": "021.webp"
+},
+{
+"n": "022",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/022.png",
+"lines": [
+"朱古力/巧克力",
+"朱古力/巧克力",
+"Chocolate"
+],
+"img": "022.webp"
+},
+{
+"n": "023",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/023.png",
+"lines": [
+"朱古力饼/巧克力饼",
+"朱古力餅/巧克力餅",
+"Chocolate Biscuits"
+],
+"img": "023.webp"
+},
+{
+"n": "024",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/024.png",
+"lines": [
+"律师",
+"律師",
+"Lawyer"
+],
+"img": "024.webp"
+},
+{
+"n": "025",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/025.png",
+"lines": [
+"夫妻相逢/夫妇",
+"夫妻相逢/夫婦",
+"Husband and Wife"
+],
+"img": "025.webp"
+},
+{
+"n": "026",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/026.png",
+"lines": [
+"娘惹衫/卡峇雅",
+"娘惹衫,卡峇雅",
+"Kebaya/Nyonya Clothes"
+],
+"img": "026.webp"
+},
+{
+"n": "027",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/027.png",
+"lines": [
+"照相馆/照相店",
+"照相館/照相店",
+"Photography Shop"
+],
+"img": "027.webp"
+},
+{
+"n": "028",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/028.png",
+"lines": [
+"洗菲林/照片冲印",
+"洗菲林/照片沖印",
+"Film Printing,Photo printing"
+],
+"img": "028.webp"
+},
+{
+"n": "029",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/029.png",
+"lines": [
+"做衣服/量身定做",
+"做衣服/量身定做",
+"Making Clothes/Tailor Made"
+],
+"img": "029.webp"
+},
+{
+"n": "030",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/030.png",
+"lines": [
+"杂货店",
+"雜貨店",
+"Grocery Store"
+],
+"img": "030.webp"
+},
+{
+"n": "031",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/031.png",
+"lines": [
+"买米",
+"買米",
+"Buy Rice"
+],
+"img": "031.webp"
+},
+{
+"n": "032",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/032.png",
+"lines": [
+"送货/快递",
+"送貨/快遞",
+"Delivery"
+],
+"img": "032.webp"
+},
+{
+"n": "033",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/033.png",
+"lines": [
+"铜元/钱币/硬币",
+"銅元/錢幣/硬幣",
+"Coin"
+],
+"img": "033.webp"
+},
+{
+"n": "034",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/034.png",
+"lines": [
+"西药房",
+"西藥房",
+"Pharmacy"
+],
+"img": "034.webp"
+},
+{
+"n": "035",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/035.png",
+"lines": [
+"粗纸/纸张/砂纸",
+"粗紙/紙張/砂紙",
+"Paper/Emery Paper"
+],
+"img": "035.webp"
+},
+{
+"n": "036",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/036.png",
+"lines": [
+"刀片",
+"刀片",
+"Blade"
+],
+"img": "036.webp"
+},
+{
+"n": "037",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/037.png",
+"lines": [
+"橡皮筋",
+"橡皮筋",
+"Rubber Band"
+],
+"img": "037.webp"
+},
+{
+"n": "038",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/038.png",
+"lines": [
+"锄草",
+"鋤草",
+"Weeding"
+],
+"img": "038.webp"
+},
+{
+"n": "039",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/039.png",
+"lines": [
+"白蚁",
+"白蟻",
+"White Ant/Termite"
+],
+"img": "039.webp"
+},
+{
+"n": "040",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/040.png",
+"lines": [
+"喝啤酒",
+"喝啤酒",
+"Drink Beer"
+],
+"img": "040.webp"
+},
+{
+"n": "041",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/041.png",
+"lines": [
+"彩票女郎/卖彩票",
+"彩票女郎/賣彩票",
+"Sell Lottery/Lottery Girl"
+],
+"img": "041.webp"
+},
+{
+"n": "042",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/042.png",
+"lines": [
+"咳嗽",
+"咳嗽",
+"Cough"
+],
+"img": "042.webp"
+},
+{
+"n": "043",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/043.png",
+"lines": [
+"兰撒果/芦菇",
+"蘭撒果/蘆菇",
+"Langsat"
+],
+"img": "043.webp"
+},
+{
+"n": "044",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/044.png",
+"lines": [
+"信局/邮局",
+"信局/郵局",
+"Post Office"
+],
+"img": "044.webp"
+},
+{
+"n": "045",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/045.png",
+"lines": [
+"咖啡店",
+"咖啡店",
+"Coffee Shop"
+],
+"img": "045.webp"
+},
+{
+"n": "046",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/046.png",
+"lines": [
+"咖啡摊/咖啡档口",
+"咖啡攤/咖啡檔口",
+"Coffee Stall"
+],
+"img": "046.webp"
+},
+{
+"n": "047",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/047.png",
+"lines": [
+"鸡寮/鸡棚",
+"鸡寮/鸡棚",
+"Chicken Shed/Coop"
+],
+"img": "047.webp"
+},
+{
+"n": "048",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/048.png",
+"lines": [
+"卖猪肉",
+"賣豬肉",
+"Sell Pork"
+],
+"img": "048.webp"
+},
+{
+"n": "049",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/049.png",
+"lines": [
+"拿督公",
+"拿督公",
+"Na Tuk Kong/Dato/Datuk"
+],
+"img": "049.webp"
+},
+{
+"n": "050",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/050.png",
+"lines": [
+"咖啡粉",
+"咖啡粉",
+"Coffee Powder"
+],
+"img": "050.webp"
+},
+{
+"n": "051",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/051.png",
+"lines": [
+"卖咖啡粉",
+"賣咖啡粉",
+"Sell Coffee Powder"
+],
+"img": "051.webp"
+},
+{
+"n": "052",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/052.png",
+"lines": [
+"滴露",
+"滴露",
+"Dettol"
+],
+"img": "052.webp"
+},
+{
+"n": "053",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/053.png",
+"lines": [
+"登记失掉/身份证丢失",
+"登記失掉/身份證丟失",
+"Identity Card Lost"
+],
+"img": "053.webp"
+},
+{
+"n": "054",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/054.png",
+"lines": [
+"华人会馆",
+"華人會館",
+"Chinese Club"
+],
+"img": "054.webp"
+},
+{
+"n": "055",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/055.png",
+"lines": [
+"水上房屋",
+"水上房屋",
+"Water House"
+],
+"img": "055.webp"
+},
+{
+"n": "056",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/056.png",
+"lines": [
+"卜卦",
+"卜卦",
+"Divination"
+],
+"img": "056.webp"
+},
+{
+"n": "057",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/057.png",
+"lines": [
+"卖吉灵面/卖爪哇面",
+"賣吉靈面/賣爪哇面",
+"Sell Jawa Mee/Sell Mee Rebus"
+],
+"img": "057.webp"
+},
+{
+"n": "058",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/058.png",
+"lines": [
+"看跑马/看赛马",
+"看跑馬/看賽馬",
+"Watch Horse Racing"
+],
+"img": "058.webp"
+},
+{
+"n": "059",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/059.png",
+"lines": [
+"宋谷帽",
+"宋谷帽",
+"Songkok"
+],
+"img": "059.webp"
+},
+{
+"n": "060",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/060.png",
+"lines": [
+"马吃草",
+"馬吃草",
+"Horse Grazing"
+],
+"img": "060.webp"
+},
+{
+"n": "061",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/061.png",
+"lines": [
+"渡轮",
+"渡輪",
+"Ferry"
+],
+"img": "061.webp"
+},
+{
+"n": "062",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/062.png",
+"lines": [
+"油漆舢舨",
+"油漆舢舨",
+"Paint Sampan"
+],
+"img": "062.webp"
+},
+{
+"n": "063",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/063.png",
+"lines": [
+"佬叶料/栳叶料",
+"佬葉料/栳葉料",
+"Sirih"
+],
+"img": "063.webp"
+},
+{
+"n": "064",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/064.png",
+"lines": [
+"小孩生病",
+"小孩生病",
+"Sick Child"
+],
+"img": "064.webp"
+},
+{
+"n": "065",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/065.png",
+"lines": [
+"铁铲",
+"鐵鏟",
+"Shovel"
+],
+"img": "065.webp"
+},
+{
+"n": "066",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/066.png",
+"lines": [
+"酿私酒/酿酒/酿三蒸酒",
+"釀私酒/釀酒/釀三蒸酒",
+"Vintage/Make Wine"
+],
+"img": "066.webp"
+},
+{
+"n": "067",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/067.png",
+"lines": [
+"送情人礼物",
+"送情人禮物",
+"Giving Valentines Gift"
+],
+"img": "067.webp"
+},
+{
+"n": "068",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/068.png",
+"lines": [
+"离婚",
+"離婚",
+"Divorce"
+],
+"img": "068.webp"
+},
+{
+"n": "069",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/069.png",
+"lines": [
+"敲椰子/手工刨椰丝",
+"敲椰子/手工刨椰絲",
+"Coconut Grater"
+],
+"img": "069.webp"
+},
+{
+"n": "070",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/070.png",
+"lines": [
+"种椰子/种椰树",
+"種椰子/種椰樹",
+"Plant Coconut Tree"
+],
+"img": "070.webp"
+},
+{
+"n": "071",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/071.png",
+"lines": [
+"玩具手枪",
+"玩具手槍",
+"Toy Gun"
+],
+"img": "071.webp"
+},
+{
+"n": "072",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/072.png",
+"lines": [
+"搅椰子",
+"攪椰子",
+"Mince Coconut"
+],
+"img": "072.webp"
+},
+{
+"n": "073",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/073.png",
+"lines": [
+"电影明星",
+"電影明星",
+"Movie Star/Actor"
+],
+"img": "073.webp"
+},
+{
+"n": "074",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/074.png",
+"lines": [
+"捉蟹/捕螃蟹",
+"捉蟹/捕螃蟹",
+"Catch Crabs"
+],
+"img": "074.webp"
+},
+{
+"n": "075",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/075.png",
+"lines": [
+"风景相片/风景照/风景图",
+"風景相片/風景照/風景圖",
+"Landscape Photo"
+],
+"img": "075.webp"
+},
+{
+"n": "076",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/076.png",
+"lines": [
+"订婚",
+"訂婚",
+"Engagement"
+],
+"img": "076.webp"
+},
+{
+"n": "077",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/077.png",
+"lines": [
+"歌女相片/歌星照片",
+"歌女相片/歌星照片",
+"Singer Photo/Singer Picture"
+],
+"img": "077.webp"
+},
+{
+"n": "078",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/078.png",
+"lines": [
+"卖膏药",
+"賣膏藥",
+"Sell Plaster"
+],
+"img": "078.webp"
+},
+{
+"n": "079",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/079.png",
+"lines": [
+"魔术表演",
+"魔術表演",
+"Magic"
+],
+"img": "079.webp"
+},
+{
+"n": "080",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/080.png",
+"lines": [
+"喝椰酒",
+"喝椰酒",
+"Drink Coconut Wine"
+],
+"img": "080.webp"
+},
+{
+"n": "081",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/081.png",
+"lines": [
+"卖美禄",
+"賣美祿",
+"Sell Milo"
+],
+"img": "081.webp"
+},
+{
+"n": "082",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/082.png",
+"lines": [
+"卖阿华田",
+"賣阿華田",
+"Sell Ovaltine"
+],
+"img": "082.webp"
+},
+{
+"n": "083",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/083.png",
+"lines": [
+"卖可可/卖可可粉/卖巧克力粉",
+"賣可可/賣可可粉/賣巧克力粉",
+"Sell Cocoa/Sell Chocolate Powder"
+],
+"img": "083.webp"
+},
+{
+"n": "084",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/084.png",
+"lines": [
+"择日馆",
+"擇日館",
+"Shop Of Chinese Day Choose"
+],
+"img": "084.webp"
+},
+{
+"n": "085",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/085.png",
+"lines": [
+"斩柴/劈柴",
+"斬柴/劈柴",
+"Chopping Wood"
+],
+"img": "085.webp"
+},
+{
+"n": "086",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/086.png",
+"lines": [
+"小孩相骂/小孩吵架",
+"小孩相罵/小孩吵架",
+"Kids Arguing"
+],
+"img": "086.webp"
+},
+{
+"n": "087",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/087.png",
+"lines": [
+"小孩相打/小孩打架",
+"小孩相打/小孩打架",
+"Kids Fighting"
+],
+"img": "087.webp"
+},
+{
+"n": "088",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/088.png",
+"lines": [
+"卖鸡油饭",
+"賣雞油飯",
+"Sell Oil Rice"
+],
+"img": "088.webp"
+},
+{
+"n": "089",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/089.png",
+"lines": [
+"收旧瓶/回收空酒瓶",
+"收舊瓶/回收空酒瓶",
+"Collect Old Bottle"
+],
+"img": "089.webp"
+},
+{
+"n": "090",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/090.png",
+"lines": [
+"高脚屋柱/高脚屋水泥柱",
+"高腳屋柱/高腳屋水泥柱",
+"Foot Pole"
+],
+"img": "090.webp"
+},
+{
+"n": "091",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/091.png",
+"lines": [
+"卖咸鱼",
+"賣鹹魚",
+"Sell Salt Fish"
+],
+"img": "091.webp"
+},
+{
+"n": "092",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/092.png",
+"lines": [
+"邮局储金/储蓄存款",
+"郵局儲金/儲蓄存款",
+"Save Money"
+],
+"img": "092.webp"
+},
+{
+"n": "093",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/093.png",
+"lines": [
+"邮政局",
+"郵政局",
+"Post Office"
+],
+"img": "093.webp"
+},
+{
+"n": "094",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/094.png",
+"lines": [
+"买邮票",
+"買郵票",
+"Buy Stamp"
+],
+"img": "094.webp"
+},
+{
+"n": "095",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/095.png",
+"lines": [
+"邮票",
+"郵票",
+"Stamp"
+],
+"img": "095.webp"
+},
+{
+"n": "096",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/096.png",
+"lines": [
+"牛肉汁",
+"牛肉汁",
+"Bovril"
+],
+"img": "096.webp"
+},
+{
+"n": "097",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/097.png",
+"lines": [
+"燕窝",
+"燕窩",
+"Birds Nest"
+],
+"img": "097.webp"
+},
+{
+"n": "098",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/098.png",
+"lines": [
+"高丽参/人参",
+"高麗參/人參",
+"Ginseng"
+],
+"img": "098.webp"
+},
+{
+"n": "099",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/099.png",
+"lines": [
+"蛇药水/肥仔水/驱风剂",
+"蛇藥水/肥仔水/驅風劑",
+"Gripe Water"
+],
+"img": "099.webp"
+},
+{
+"n": "100",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/100.png",
+"lines": [
+"味素粉/味精",
+"味素粉/味精",
+"MSG Powder"
+],
+"img": "100.webp"
+},
+{
+"n": "101",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/101.png",
+"lines": [
+"老虎",
+"老虎",
+"Tiger"
+],
+"img": "101.webp"
+},
+{
+"n": "102",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/102.png",
+"lines": [
+"交通警察",
+"交通警察",
+"Traffic Police"
+],
+"img": "102.webp"
+},
+{
+"n": "103",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/103.png",
+"lines": [
+"兜风",
+"兜風",
+"Go For A Spin"
+],
+"img": "103.webp"
+},
+{
+"n": "104",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/104.png",
+"lines": [
+"查驾驶执照",
+"查駕駛執照",
+"Check Driving License"
+],
+"img": "104.webp"
+},
+{
+"n": "105",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/105.png",
+"lines": [
+"补鞋",
+"補鞋",
+"Shoe Repair"
+],
+"img": "105.webp"
+},
+{
+"n": "106",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/106.png",
+"lines": [
+"载冷饭/载隔夜饭/载剩饭",
+"載冷飯/載隔夜飯/載剩飯",
+"Carry Left Rice"
+],
+"img": "106.webp"
+},
+{
+"n": "107",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/107.png",
+"lines": [
+"买臭鱼/买腌制鱼",
+"買臭魚,買醃製魚",
+"Buy Marinated Fish"
+],
+"img": "107.webp"
+},
+{
+"n": "108",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/108.png",
+"lines": [
+"捉猪仔",
+"捉豬仔",
+"Catch Piglets"
+],
+"img": "108.webp"
+},
+{
+"n": "109",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/109.png",
+"lines": [
+"玩烟花",
+"玩煙花",
+"Play With Fireworks"
+],
+"img": "109.webp"
+},
+{
+"n": "110",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/110.png",
+"lines": [
+"垃圾车",
+"垃圾車",
+"Garbage Truck"
+],
+"img": "110.webp"
+},
+{
+"n": "111",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/111.png",
+"lines": [
+"鹿茸",
+"鹿茸",
+"Deer Antler"
+],
+"img": "111.webp"
+},
+{
+"n": "112",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/112.png",
+"lines": [
+"母鸡及鸡仔",
+"母雞及雞仔",
+"Chicken And Chicks"
+],
+"img": "112.webp"
+},
+{
+"n": "113",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/113.png",
+"lines": [
+"木板店",
+"木板店",
+"Wood Shop"
+],
+"img": "113.webp"
+},
+{
+"n": "114",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/114.png",
+"lines": [
+"电池灯泡",
+"電池燈泡",
+"Battery And Bulb"
+],
+"img": "114.webp"
+},
+{
+"n": "115",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/115.png",
+"lines": [
+"医院",
+"醫院",
+"Hospital"
+],
+"img": "115.webp"
+},
+{
+"n": "116",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/116.png",
+"lines": [
+"探病人",
+"探病人",
+"Visiting"
+],
+"img": "116.webp"
+},
+{
+"n": "117",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/117.png",
+"lines": [
+"牵走/牵",
+"牽走/牽",
+"Lead Away"
+],
+"img": "117.webp"
+},
+{
+"n": "118",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/118.png",
+"lines": [
+"喂牛奶/给孩子喂奶",
+"餵牛奶/給孩子餵奶",
+"Feed Milk/Baby Feeding"
+],
+"img": "118.webp"
+},
+{
+"n": "119",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/119.png",
+"lines": [
+"补牙",
+"補牙",
+"Teeth Filling"
+],
+"img": "119.webp"
+},
+{
+"n": "120",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/120.png",
+"lines": [
+"死人/葬礼/丧礼",
+"死人/葬禮/喪禮",
+"Dead Man/Funeral"
+],
+"img": "120.webp"
+},
+{
+"n": "121",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/121.png",
+"lines": [
+"送死人/出席葬礼",
+"送死人/出席葬禮",
+"Go Funeral"
+],
+"img": "121.webp"
+},
+{
+"n": "122",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/122.png",
+"lines": [
+"轮船卸货/船下货",
+"輪船卸貨/船下貨",
+"Ships Cargo Unload"
+],
+"img": "122.webp"
+},
+{
+"n": "123",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/123.png",
+"lines": [
+"留产院",
+"留產院",
+"Maternity Home"
+],
+"img": "123.webp"
+},
+{
+"n": "124",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/124.png",
+"lines": [
+"关子角",
+"關子角",
+"Padang KotaLlama"
+],
+"img": "124.webp"
+},
+{
+"n": "125",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/125.png",
+"lines": [
+"狗打架",
+"狗打架",
+"Dogfight"
+],
+"img": "125.webp"
+},
+{
+"n": "126",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/126.png",
+"lines": [
+"太平湖",
+"太平湖",
+"Taiping Lake Gardens"
+],
+"img": "126.webp"
+},
+{
+"n": "127",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/127.png",
+"lines": [
+"接生婆/助產婆",
+"接生婆/助產婆",
+"Midwife"
+],
+"img": "127.webp"
+},
+{
+"n": "128",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/128.png",
+"lines": [
+"鱼跳/鱼跃",
+"魚跳/魚躍",
+"Fish Diving"
+],
+"img": "128.webp"
+},
+{
+"n": "129",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/129.png",
+"lines": [
+"大舢舨/大船/游艇",
+"大舢舨/大船/遊艇",
+"Big Sampan/Ship"
+],
+"img": "129.webp"
+},
+{
+"n": "130",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/130.png",
+"lines": [
+"捉蚝/捉蚵仔/收集蚝",
+"捉蠔/捉蚵仔/收集蠔",
+"Catch Oysters"
+],
+"img": "130.webp"
+},
+{
+"n": "131",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/131.png",
+"lines": [
+"捉蚬/收集蚬子",
+"捉蜆/收集蜆子",
+"Catch Clams"
+],
+"img": "131.webp"
+},
+{
+"n": "132",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/132.png",
+"lines": [
+"捉蛤/捉蛤蜊/收集蛤",
+"捉蛤/捉蛤蜊/收集蛤",
+"Catch Clams"
+],
+"img": "132.webp"
+},
+{
+"n": "133",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/133.png",
+"lines": [
+"柴皮/木皮/废柴",
+"柴皮/木皮/廢柴",
+"Veneer/Scrap Wood"
+],
+"img": "133.webp"
+},
+{
+"n": "134",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/134.png",
+"lines": [
+"量布/量布匹",
+"量布/量布匹",
+"Measure Cloth"
+],
+"img": "134.webp"
+},
+{
+"n": "135",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/135.png",
+"lines": [
+"极乐寺",
+"極樂寺",
+"Kek Lok Si Temple"
+],
+"img": "135.webp"
+},
+{
+"n": "136",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/136.png",
+"lines": [
+"典当物品/抵押",
+"典當物品/抵押",
+"Pawn Goods"
+],
+"img": "136.webp"
+},
+{
+"n": "137",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/137.png",
+"lines": [
+"砍菜头/偷瞄/好色",
+"砍菜頭/偷瞄/好色",
+"Peeping,Ogle"
+],
+"img": "137.webp"
+},
+{
+"n": "138",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/138.png",
+"lines": [
+"暹罗庙/泰庙",
+"暹羅廟/泰廟",
+"Thai Temple"
+],
+"img": "138.webp"
+},
+{
+"n": "139",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/139.png",
+"lines": [
+"支票",
+"支票",
+"Cheque"
+],
+"img": "139.webp"
+},
+{
+"n": "140",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/140.png",
+"lines": [
+"女招待",
+"女招待",
+"Waitress"
+],
+"img": "140.webp"
+},
+{
+"n": "141",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/141.png",
+"lines": [
+"粮食检查",
+"糧食檢查",
+"Food Checks"
+],
+"img": "141.webp"
+},
+{
+"n": "142",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/142.png",
+"lines": [
+"巡逻",
+"巡邏",
+"Patrol"
+],
+"img": "142.webp"
+},
+{
+"n": "143",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/143.png",
+"lines": [
+"轰炸",
+"轟炸",
+"Bombing"
+],
+"img": "143.webp"
+},
+{
+"n": "144",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/144.png",
+"lines": [
+"学骑脚车",
+"學騎腳車",
+"Learning To Ride Bicycle"
+],
+"img": "144.webp"
+},
+{
+"n": "145",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/145.png",
+"lines": [
+"小孩骑脚车",
+"小孩騎腳車",
+"Kid Rides Bicycle"
+],
+"img": "145.webp"
+},
+{
+"n": "146",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/146.png",
+"lines": [
+"银行",
+"銀行",
+"Bank"
+],
+"img": "146.webp"
+},
+{
+"n": "147",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/147.png",
+"lines": [
+"书摊/报摊",
+"書攤/報攤",
+"Book Stall/Newsstand"
+],
+"img": "147.webp"
+},
+{
+"n": "148",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/148.png",
+"lines": [
+"卖书",
+"賣書",
+"Sell Book"
+],
+"img": "148.webp"
+},
+{
+"n": "149",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/149.png",
+"lines": [
+"洗车",
+"洗車",
+"Wash Car"
+],
+"img": "149.webp"
+},
+{
+"n": "150",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/150.png",
+"lines": [
+"洗脚车",
+"洗腳車",
+"Wash Bicycle"
+],
+"img": "150.webp"
+},
+{
+"n": "151",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/151.png",
+"lines": [
+"印刷/复印",
+"印刷/複印",
+"Photostat/Print/Copy"
+],
+"img": "151.webp"
+},
+{
+"n": "152",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/152.png",
+"lines": [
+"去学校/上学",
+"去學校/上學",
+"Go To School"
+],
+"img": "152.webp"
+},
+{
+"n": "153",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/153.png",
+"lines": [
+"插奎郎/传统捕鱼器",
+"插奎郎/傳統捕魚器",
+"Belat"
+],
+"img": "153.webp"
+},
+{
+"n": "154",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/154.png",
+"lines": [
+"摘红毛丹/采红毛丹/採红毛丹",
+"摘紅毛丹/採紅毛丹/採紅毛丹",
+"Abstract Rambutan"
+],
+"img": "154.webp"
+},
+{
+"n": "155",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/155.png",
+"lines": [
+"媒人/媒婆/红娘",
+"媒人/媒婆/紅娘",
+"Matchmaker"
+],
+"img": "155.webp"
+},
+{
+"n": "156",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/156.png",
+"lines": [
+"晒物品/晒东西",
+"曬物品/曬東西",
+"Drying Things"
+],
+"img": "156.webp"
+},
+{
+"n": "157",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/157.png",
+"lines": [
+"月亮",
+"月亮",
+"Moon"
+],
+"img": "157.webp"
+},
+{
+"n": "158",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/158.png",
+"lines": [
+"灶/厨房",
+"灶/廚房",
+"Kitchen"
+],
+"img": "158.webp"
+},
+{
+"n": "159",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/159.png",
+"lines": [
+"研磨咖喱粉/研磨参峇",
+"研磨咖哩粉/研磨參峇",
+"Mill Sambal"
+],
+"img": "159.webp"
+},
+{
+"n": "160",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/160.png",
+"lines": [
+"给红包",
+"給紅包",
+"Give Ang Pow/Give Red Packet"
+],
+"img": "160.webp"
+},
+{
+"n": "161",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/161.png",
+"lines": [
+"面包牛油",
+"麵包牛油",
+"Butter Bread"
+],
+"img": "161.webp"
+},
+{
+"n": "162",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/162.png",
+"lines": [
+"打锣/敲锣",
+"打鑼/敲鑼",
+"Beats The Gong"
+],
+"img": "162.webp"
+},
+{
+"n": "163",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/163.png",
+"lines": [
+"换屋顶/换瓦片",
+"換屋頂/換瓦片",
+"Change Roof Tile"
+],
+"img": "163.webp"
+},
+{
+"n": "164",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/164.png",
+"lines": [
+"敲钟/钟响/摇铃",
+"敲鐘/鐘響/搖鈴",
+"Ring The Bell"
+],
+"img": "164.webp"
+},
+{
+"n": "165",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/165.png",
+"lines": [
+"打鼓",
+"打鼓",
+"Beat A Drum"
+],
+"img": "165.webp"
+},
+{
+"n": "166",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/166.png",
+"lines": [
+"挖番薯",
+"挖番薯",
+"Dig Potato"
+],
+"img": "166.webp"
+},
+{
+"n": "167",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/167.png",
+"lines": [
+"收保护费",
+"收保護費",
+"Collect Protection Fees"
+],
+"img": "167.webp"
+},
+{
+"n": "168",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/168.png",
+"lines": [
+"肥皂",
+"肥皂",
+"Soap"
+],
+"img": "168.webp"
+},
+{
+"n": "169",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/169.png",
+"lines": [
+"修理时钟/修理手表",
+"修理時鐘/修理手錶",
+"Repair Clock/Repair Watch"
+],
+"img": "169.webp"
+},
+{
+"n": "170",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/170.png",
+"lines": [
+"修理钢笔",
+"修理鋼筆",
+"Repair Fountain Pen"
+],
+"img": "170.webp"
+},
+{
+"n": "171",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614447032.png",
+"lines": [
+"修理针车",
+"修理針車",
+"Repair Sewing Machine"
+],
+"img": "171.webp"
+},
+{
+"n": "172",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614446997.png",
+"lines": [
+"手环/手镯",
+"手環/手鐲",
+"Bracelet"
+],
+"img": "172.webp"
+},
+{
+"n": "173",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614447056.png",
+"lines": [
+"黏锡/锡焊接",
+"黏錫/錫焊接",
+"Weld Stannum/Stick Tin"
+],
+"img": "173.webp"
+},
+{
+"n": "174",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/174.png",
+"lines": [
+"金店/珠寶金行",
+"金店/珠寶金行",
+"Jewellery Shop"
+],
+"img": "174.webp"
+},
+{
+"n": "175",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/175.png",
+"lines": [
+"山水画",
+"山水畫",
+"Landscape Picture"
+],
+"img": "175.webp"
+},
+{
+"n": "176",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/176.png",
+"lines": [
+"剪布",
+"剪布",
+"Cutting Cloth"
+],
+"img": "176.webp"
+},
+{
+"n": "177",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/177.png",
+"lines": [
+"狗亲密/狗交配",
+"狗親密/狗交配",
+"Dog Mating"
+],
+"img": "177.webp"
+},
+{
+"n": "178",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/178.png",
+"lines": [
+"捉赌/扫赌/抓赌",
+"捉賭/掃賭/抓賭",
+"Arrest Gamblers"
+],
+"img": "178.webp"
+},
+{
+"n": "179",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/179.png",
+"lines": [
+"蚊帐",
+"蚊帳",
+"Mosquito Net"
+],
+"img": "179.webp"
+},
+{
+"n": "180",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/180.png",
+"lines": [
+"火水/火油/煤油/土油",
+"火水/火油/煤油/土油",
+"Kerosene"
+],
+"img": "180.webp"
+},
+{
+"n": "181",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/181.png",
+"lines": [
+"锡块",
+"錫塊",
+"Tin Block"
+],
+"img": "181.webp"
+},
+{
+"n": "182",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/182.png",
+"lines": [
+"盤尼西林/青霉素/抗生素",
+"盤尼西林/青黴素/抗生素",
+"Penicillin"
+],
+"img": "182.webp"
+},
+{
+"n": "183",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/183.png",
+"lines": [
+"丹绒武雅",
+"丹絨武雅",
+"Tanjung bungah"
+],
+"img": "183.webp"
+},
+{
+"n": "184",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/184.png",
+"lines": [
+"槟榔树",
+"檳榔樹",
+"Areca Nut Palm/Pinang Tree"
+],
+"img": "184.webp"
+},
+{
+"n": "185",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/185.png",
+"lines": [
+"拍拖/约会",
+"拍拖/約會",
+"Dating/Date"
+],
+"img": "185.webp"
+},
+{
+"n": "186",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/186.png",
+"lines": [
+"谈心/谈心事/交心",
+"談心/談心事/交心",
+"Heart-To-Heart Talk"
+],
+"img": "186.webp"
+},
+{
+"n": "187",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/187.png",
+"lines": [
+"游乐场/同乐会",
+"遊樂場/同樂會",
+"Playground/Fun Fair"
+],
+"img": "187.webp"
+},
+{
+"n": "188",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/188.png",
+"lines": [
+"玩陀螺",
+"玩陀螺",
+"Play Peg-Top/Play Spinning Top"
+],
+"img": "188.webp"
+},
+{
+"n": "189",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/189.png",
+"lines": [
+"人力车/黃包車",
+"人力車/黃包車",
+"Rickshaw"
+],
+"img": "189.webp"
+},
+{
+"n": "190",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/190.png",
+"lines": [
+"赌大小/骰宝",
+"賭大小/骰寶",
+"Sic Bo,Bet Big And Small"
+],
+"img": "190.webp"
+},
+{
+"n": "191",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/191.png",
+"lines": [
+"酒店/卖酒的店/酒专卖店",
+"酒店/賣酒的店/酒專賣店",
+"Wine Shop/Wine Store"
+],
+"img": "191.webp"
+},
+{
+"n": "192",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/192.png",
+"lines": [
+"钥匙/锁匙",
+"鑰匙/鎖匙",
+"Key"
+],
+"img": "192.webp"
+},
+{
+"n": "193",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/193.png",
+"lines": [
+"风炉",
+"風爐",
+"Stove"
+],
+"img": "193.webp"
+},
+{
+"n": "194",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/194.png",
+"lines": [
+"铜烫斗/木炭烫斗",
+"铜烫斗/木炭烫斗",
+"Charcoal Iron"
+],
+"img": "194.webp"
+},
+{
+"n": "195",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/195.png",
+"lines": [
+"电热水煲/电热水壶",
+"電熱水煲/電熱水壺",
+"Electric Kettle"
+],
+"img": "195.webp"
+},
+{
+"n": "196",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/196.png",
+"lines": [
+"棋子/下棋",
+"棋子/下棋",
+"Chess Piece/Play Chess"
+],
+"img": "196.webp"
+},
+{
+"n": "197",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/197.png",
+"lines": [
+"喝椰水",
+"喝椰水",
+"Drink Coconut Water"
+],
+"img": "197.webp"
+},
+{
+"n": "198",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/198.png",
+"lines": [
+"印色/印章颜料",
+"印色/印章顏料",
+"Stamp Ink"
+],
+"img": "198.webp"
+},
+{
+"n": "199",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/199.png",
+"lines": [
+"印章/橡皮图章",
+"印章/橡皮圖章",
+"Chop/Seal/Stamp/Rubber Stamp"
+],
+"img": "199.webp"
+},
+{
+"n": "200",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/200.png",
+"lines": [
+"冷藏房/冷冻房/保鲜库",
+"冷藏房/冷凍房/保鮮庫",
+"Freezing Room"
+],
+"img": "200.webp"
+},
+{
+"n": "201",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/201.png",
+"lines": [
+"卖鱼/鱼档",
+"賣魚/魚檔",
+"Selling Fish"
+],
+"img": "201.webp"
+},
+{
+"n": "202",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/202.png",
+"lines": [
+"看大戏/看电视节目/看电影",
+"看大戲/看電視節目/看電影",
+"Match Movie/Watch TV"
+],
+"img": "202.webp"
+},
+{
+"n": "203",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/203.png",
+"lines": [
+"美禄",
+"美祿",
+"Milo"
+],
+"img": "203.webp"
+},
+{
+"n": "204",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/204.png",
+"lines": [
+"送信/邮差送信",
+"送信/郵差送信",
+"Send Mail/Send Letter"
+],
+"img": "204.webp"
+},
+{
+"n": "205",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/205.png",
+"lines": [
+"蚌",
+"蚌",
+"Mussel"
+],
+"img": "205.webp"
+},
+{
+"n": "206",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/206.png",
+"lines": [
+"扫墓/清明",
+"掃墓/清明",
+"Sweep Grave"
+],
+"img": "206.webp"
+},
+{
+"n": "207",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/207.png",
+"lines": [
+"採锡铁船/采矿船",
+"採錫鐵船/採礦船",
+"Mining Ship"
+],
+"img": "207.webp"
+},
+{
+"n": "208",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/208.png",
+"lines": [
+"淘洗锡米/洗琉琅",
+"淘洗錫米/洗琉瑯",
+"Filter Tin"
+],
+"img": "208.webp"
+},
+{
+"n": "209",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/209.png",
+"lines": [
+"琉琅妇/琉琅女",
+"琉瑯婦/琉瑯女",
+"Female Of Tin Filter"
+],
+"img": "209.webp"
+},
+{
+"n": "210",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/210.png",
+"lines": [
+"港湾/码头/港口",
+"港灣/碼頭/港口",
+"Harbour/Port"
+],
+"img": "210.webp"
+},
+{
+"n": "211",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/211.png",
+"lines": [
+"饼干",
+"餅乾",
+"Biscuit/Cookies"
+],
+"img": "211.webp"
+},
+{
+"n": "212",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/212.png",
+"lines": [
+"电头发/烫发",
+"電頭髮/燙髮",
+"Permanent/Perm Hair"
+],
+"img": "212.webp"
+},
+{
+"n": "213",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/213.png",
+"lines": [
+"鸟巢/鸟窝",
+"鳥巢/鳥窩",
+"Birds Net"
+],
+"img": "213.webp"
+},
+{
+"n": "214",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/214.png",
+"lines": [
+"新村",
+"新村",
+"New Village"
+],
+"img": "214.webp"
+},
+{
+"n": "215",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/215.png",
+"lines": [
+"梳头发",
+"梳頭髮",
+"Comb Hair"
+],
+"img": "215.webp"
+},
+{
+"n": "216",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/216.png",
+"lines": [
+"割稻",
+"割稻",
+"Cutting Rice"
+],
+"img": "216.webp"
+},
+{
+"n": "217",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/217.png",
+"lines": [
+"载物品/载东西/载货物",
+"載物品/載東西/載貨物",
+"Loading Goods/Carry Items"
+],
+"img": "217.webp"
+},
+{
+"n": "218",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/218.png",
+"lines": [
+"黄梨/菠萝/凤梨",
+"黃梨/菠蘿/鳳梨",
+"Pineapple"
+],
+"img": "218.webp"
+},
+{
+"n": "219",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/219.png",
+"lines": [
+"结婚/娶妻/嫁人",
+"結婚/娶妻/嫁人",
+"Marry/Get Married"
+],
+"img": "219.webp"
+},
+{
+"n": "220",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/220.png",
+"lines": [
+"运动会",
+"運動會",
+"Sports Game"
+],
+"img": "220.webp"
+},
+{
+"n": "221",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/221.png",
+"lines": [
+"头巾/披肩/围巾",
+"頭巾/披肩/圍巾",
+"Scarf/Kerchief/Shawl"
+],
+"img": "221.webp"
+},
+{
+"n": "222",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/222.png",
+"lines": [
+"面线",
+"麵線",
+"Misua/Noodles"
+],
+"img": "222.webp"
+},
+{
+"n": "223",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614447231.png",
+"lines": [
+"棕刷/刷子",
+"棕刷/刷子",
+"Brush"
+],
+"img": "223.webp"
+},
+{
+"n": "224",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614447283.png",
+"lines": [
+"牙膏",
+"牙膏",
+"Toothpaste"
+],
+"img": "224.webp"
+},
+{
+"n": "225",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/225.png",
+"lines": [
+"牙皂",
+"牙皂",
+"Tooth Soap"
+],
+"img": "225.webp"
+},
+{
+"n": "226",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/226.png",
+"lines": [
+"旗袍",
+"旗袍",
+"Cheongsam"
+],
+"img": "226.webp"
+},
+{
+"n": "227",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/227.png",
+"lines": [
+"烫衣服",
+"燙衣服",
+"Ironing"
+],
+"img": "227.webp"
+},
+{
+"n": "228",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/228.png",
+"lines": [
+"缝衣服/缝织",
+"縫衣服/縫織",
+"Sewing Clothes"
+],
+"img": "228.webp"
+},
+{
+"n": "229",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/229.png",
+"lines": [
+"枕头",
+"枕頭",
+"Pillow"
+],
+"img": "229.webp"
+},
+{
+"n": "230",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/230.png",
+"lines": [
+"衣橱/衣柜衣服",
+"衣櫥/衣櫃衣服",
+"Closet"
+],
+"img": "230.webp"
+},
+{
+"n": "231",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/231.png",
+"lines": [
+"雨衣",
+"雨衣",
+"Raincoat"
+],
+"img": "231.webp"
+},
+{
+"n": "232",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/232.png",
+"lines": [
+"打电话/讲电话",
+"打電話/講電話",
+"Phone Call"
+],
+"img": "232.webp"
+},
+{
+"n": "233",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/233.png",
+"lines": [
+"臼",
+"臼",
+"Mortar"
+],
+"img": "233.webp"
+},
+{
+"n": "234",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/234.png",
+"lines": [
+"毡帽/帽子",
+"氈帽/帽子",
+"Cap/Hat"
+],
+"img": "234.webp"
+},
+{
+"n": "235",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/235.png",
+"lines": [
+"载人",
+"載人",
+"Carry People"
+],
+"img": "235.webp"
+},
+{
+"n": "236",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/236.png",
+"lines": [
+"割树胶",
+"割樹膠",
+"Tapping Rubber Trees"
+],
+"img": "236.webp"
+},
+{
+"n": "237",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/237.png",
+"lines": [
+"砍树/伐木",
+"砍樹/伐木",
+"Cutting Down Trees"
+],
+"img": "237.webp"
+},
+{
+"n": "238",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/238.png",
+"lines": [
+"木梳/梳子",
+"木梳/梳子",
+"Comb"
+],
+"img": "238.webp"
+},
+{
+"n": "239",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/239.png",
+"lines": [
+"战舰/航空母艦",
+"战舰/航空母艦",
+"Battleship"
+],
+"img": "239.webp"
+},
+{
+"n": "240",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/240.png",
+"lines": [
+"阿华田",
+"阿華田",
+"Ovaltine"
+],
+"img": "240.webp"
+},
+{
+"n": "241",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/241.png",
+"lines": [
+"苏丹/最高元首",
+"蘇丹/最高元首",
+"Sultan"
+],
+"img": "241.webp"
+},
+{
+"n": "242",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/242.png",
+"lines": [
+"清洗地上/清洗地板",
+"清洗地上/清洗地板",
+"Washing Floor"
+],
+"img": "242.webp"
+},
+{
+"n": "243",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/243.png",
+"lines": [
+"拜寿",
+"拜壽",
+"Offer Birthday Felicitations"
+],
+"img": "243.webp"
+},
+{
+"n": "244",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/244.png",
+"lines": [
+"账簿",
+"賬簿",
+"Account Book"
+],
+"img": "244.webp"
+},
+{
+"n": "245",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/245.png",
+"lines": [
+"豆油/酱油/豉油",
+"豆油/醬油/豉油",
+"Soy Sauce"
+],
+"img": "245.webp"
+},
+{
+"n": "246",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/246.png",
+"lines": [
+"出殡/出山",
+"出殯/出山",
+"Funeral"
+],
+"img": "246.webp"
+},
+{
+"n": "247",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/247.png",
+"lines": [
+"马戏团",
+"馬戲團",
+"Circus"
+],
+"img": "247.webp"
+},
+{
+"n": "248",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/248.png",
+"lines": [
+"秤磅/手杆秤/秤砣",
+"秤磅/手桿秤/秤砣",
+"Steelyard"
+],
+"img": "248.webp"
+},
+{
+"n": "249",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/249.png",
+"lines": [
+"生产/产子/生孩子/坐产",
+"生產/產子/生孩子/坐產",
+"Child Born"
+],
+"img": "249.webp"
+},
+{
+"n": "250",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/250.png",
+"lines": [
+"学驾车/学开车/学驾驶",
+"學駕車/學開車/學駕駛",
+"Learn To Drive"
+],
+"img": "250.webp"
+},
+{
+"n": "251",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/251.png",
+"lines": [
+"赌博",
+"賭博",
+"Gamble"
+],
+"img": "251.webp"
+},
+{
+"n": "252",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/252.png",
+"lines": [
+"皮鞋",
+"皮鞋",
+"Leather Shoe"
+],
+"img": "252.webp"
+},
+{
+"n": "253",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/253.png",
+"lines": [
+"卖东西",
+"賣東西",
+"Selling Things"
+],
+"img": "253.webp"
+},
+{
+"n": "254",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/254.png",
+"lines": [
+"割蕉叶",
+"割蕉葉",
+"Cut Banana Leaf"
+],
+"img": "254.webp"
+},
+{
+"n": "255",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/255.png",
+"lines": [
+"采果子/摘果子/采水果",
+"採果子/摘果子/採水果",
+"Mining Fruit"
+],
+"img": "255.webp"
+},
+{
+"n": "256",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/256.png",
+"lines": [
+"皮带/腰带/裤带",
+"皮帶/腰帶/褲帶",
+"Belt"
+],
+"img": "256.webp"
+},
+{
+"n": "257",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/257.png",
+"lines": [
+"桌子",
+"桌子",
+"Table"
+],
+"img": "257.webp"
+},
+{
+"n": "258",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/258.png",
+"lines": [
+"梳妆/梳洗打扮",
+"梳妝/梳洗打扮",
+"Dressing"
+],
+"img": "258.webp"
+},
+{
+"n": "259",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/259.png",
+"lines": [
+"砖头/砖块",
+"磚頭/磚塊",
+"Brick"
+],
+"img": "259.webp"
+},
+{
+"n": "260",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/260.png",
+"lines": [
+"小偷/贼/匪徒/强盗",
+"小偷/賊/匪徒/強盜",
+"Thief/Bandit/Robber"
+],
+"img": "260.webp"
+},
+{
+"n": "261",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/261.png",
+"lines": [
+"吸烟/抽烟",
+"吸煙/抽煙",
+"Smoking"
+],
+"img": "261.webp"
+},
+{
+"n": "262",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/262.png",
+"lines": [
+"雨伞",
+"雨傘",
+"Umbrella"
+],
+"img": "262.webp"
+},
+{
+"n": "263",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/263.png",
+"lines": [
+"步枪/来福枪",
+"步槍/來福槍",
+"Rifle"
+],
+"img": "263.webp"
+},
+{
+"n": "264",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/264.png",
+"lines": [
+"划船/划艇/划舢板",
+"划船/划艇/劃舢板",
+"Rowing Boat/Boating"
+],
+"img": "264.webp"
+},
+{
+"n": "265",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/265.png",
+"lines": [
+"手袋/肩袋式手提包",
+"手袋/肩袋式手提包",
+"Handbag"
+],
+"img": "265.webp"
+},
+{
+"n": "266",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/266.png",
+"lines": [
+"门户",
+"門戶",
+"Door"
+],
+"img": "266.webp"
+},
+{
+"n": "267",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/267.png",
+"lines": [
+"苹果",
+"蘋果",
+"Apple"
+],
+"img": "267.webp"
+},
+{
+"n": "268",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/268.png",
+"lines": [
+"厕所",
+"廁所",
+"Toilet/Wash Room"
+],
+"img": "268.webp"
+},
+{
+"n": "269",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/269.png",
+"lines": [
+"帆船",
+"帆船",
+"Sailboat"
+],
+"img": "269.webp"
+},
+{
+"n": "270",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/270.png",
+"lines": [
+"电船捕鱼/捕鱼船捕鱼",
+"電船捕魚/捕魚船捕魚",
+"Fishing By Boat"
+],
+"img": "270.webp"
+},
+{
+"n": "271",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/271.png",
+"lines": [
+"鱼网/渔网",
+"魚網/漁網",
+"Fishing Net"
+],
+"img": "271.webp"
+},
+{
+"n": "272",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/272.png",
+"lines": [
+"酒/威士忌/香槟/红酒",
+"酒/威士忌/香檳/紅酒",
+"Liquor/Whiskey/Champagne/Red Wine"
+],
+"img": "272.webp"
+},
+{
+"n": "273",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/273.png",
+"lines": [
+"蚂蚁",
+"螞蟻",
+"Ant"
+],
+"img": "273.webp"
+},
+{
+"n": "274",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/274.png",
+"lines": [
+"做满月/婴儿满月",
+"做滿月/嬰兒滿月",
+"Ceremony For A One Month Birthday"
+],
+"img": "274.webp"
+},
+{
+"n": "275",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/275.png",
+"lines": [
+"跌倒",
+"跌倒",
+"Fall"
+],
+"img": "275.webp"
+},
+{
+"n": "276",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/276.png",
+"lines": [
+"青菜/蔬菜",
+"青菜/蔬菜",
+"Vegetable"
+],
+"img": "276.webp"
+},
+{
+"n": "277",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/277.png",
+"lines": [
+"小孩吸奶/婴儿吸母乳",
+"小孩吸奶/嬰兒吸母乳",
+"Baby Sucking/Baby Sucking Breast Milk"
+],
+"img": "277.webp"
+},
+{
+"n": "278",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/278.png",
+"lines": [
+"布鞋/便鞋",
+"布鞋/便鞋",
+"Cloth Shoes"
+],
+"img": "278.webp"
+},
+{
+"n": "279",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/279.png",
+"lines": [
+"玩耍/游玩",
+"玩耍/遊玩",
+"Play/Have Fun"
+],
+"img": "279.webp"
+},
+{
+"n": "280",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/280.png",
+"lines": [
+"鲜花",
+"鮮花",
+"Flowers"
+],
+"img": "280.webp"
+},
+{
+"n": "281",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/281.png",
+"lines": [
+"撞车/车辆相撞/车祸",
+"撞車/車輛相撞/車禍",
+"Car Accident/Car Crash"
+],
+"img": "281.webp"
+},
+{
+"n": "282",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/282.png",
+"lines": [
+"锅/镬",
+"鍋/鑊",
+"Pot/Pan/Boiler"
+],
+"img": "282.webp"
+},
+{
+"n": "283",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/283.png",
+"lines": [
+"花园/公园",
+"花園/公園",
+"Garden/Park"
+],
+"img": "283.webp"
+},
+{
+"n": "284",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/284.png",
+"lines": [
+"袜子/长袜/短袜",
+"襪子/長襪/短襪",
+"Sock/Hose"
+],
+"img": "284.webp"
+},
+{
+"n": "285",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/285.png",
+"lines": [
+"砚",
+"硯",
+"Ink Stone"
+],
+"img": "285.webp"
+},
+{
+"n": "286",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/286.png",
+"lines": [
+"打架/斗殴",
+"打架/鬥毆",
+"Fight/Scuffle/Brawl"
+],
+"img": "286.webp"
+},
+{
+"n": "287",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/287.png",
+"lines": [
+"面粉/小麦粉",
+"麵粉/小麥粉",
+"Wheat Flour"
+],
+"img": "287.webp"
+},
+{
+"n": "288",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/288.png",
+"lines": [
+"可可/可可粉/巧克力粉",
+"可可/可可粉/巧克力粉",
+"Cocoa/Koko/Chocolate Powder"
+],
+"img": "288.webp"
+},
+{
+"n": "289",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/289.png",
+"lines": [
+"尺",
+"尺",
+"Ruler"
+],
+"img": "289.webp"
+},
+{
+"n": "290",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/290.png",
+"lines": [
+"取水",
+"取水",
+"Take Water"
+],
+"img": "290.webp"
+},
+{
+"n": "291",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/291.png",
+"lines": [
+"时钟",
+"時鐘",
+"Clock"
+],
+"img": "291.webp"
+},
+{
+"n": "292",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/292.png",
+"lines": [
+"香皂",
+"香皂",
+"Perfumed Soap/Toilet Soap"
+],
+"img": "292.webp"
+},
+{
+"n": "293",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/293.png",
+"lines": [
+"茅屋/草屋/茅舍/棚屋",
+"茅屋/草屋/茅舍/棚屋",
+"Cottage/Hut"
+],
+"img": "293.webp"
+},
+{
+"n": "294",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/294.png",
+"lines": [
+"修补衣裤",
+"修補衣褲",
+"Repairing Clothes"
+],
+"img": "294.webp"
+},
+{
+"n": "295",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/295.png",
+"lines": [
+"蚬子/蜊仔",
+"蜆子/蜊仔",
+"Clams"
+],
+"img": "295.webp"
+},
+{
+"n": "296",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/296.png",
+"lines": [
+"打破碗碟",
+"打破碗碟",
+"Break Dishes"
+],
+"img": "296.webp"
+},
+{
+"n": "297",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/297.png",
+"lines": [
+"拾椰子/捡椰/收集椰",
+"拾椰子/撿椰/收集椰",
+"Pick Coconut"
+],
+"img": "297.webp"
+},
+{
+"n": "298",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/298.png",
+"lines": [
+"汽水",
+"汽水",
+"Soft Drink/Soda Water"
+],
+"img": "298.webp"
+},
+{
+"n": "299",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/299.png",
+"lines": [
+"刀/刀子/小刀",
+"刀/刀子/小刀",
+"Knife"
+],
+"img": "299.webp"
+},
+{
+"n": "300",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/300.png",
+"lines": [
+"椰树",
+"椰樹",
+"Coconut Tree"
+],
+"img": "300.webp"
+},
+{
+"n": "301",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/301.png",
+"lines": [
+"状元/冠军",
+"狀元/冠軍",
+"Champion"
+],
+"img": "301.webp"
+},
+{
+"n": "302",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/302.png",
+"lines": [
+"吕线/电线",
+"呂線/電線",
+"Wire"
+],
+"img": "302.webp"
+},
+{
+"n": "303",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/303.png",
+"lines": [
+"拾椰叶/捡椰叶",
+"拾椰葉/撿椰葉",
+"Collect Coconut Leaf"
+],
+"img": "303.webp"
+},
+{
+"n": "304",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/304.png",
+"lines": [
+"收音机",
+"收音機",
+"Radio"
+],
+"img": "304.webp"
+},
+{
+"n": "305",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/305.png",
+"lines": [
+"晾晒衣服",
+"晾曬衣服",
+"Dry The Clothes"
+],
+"img": "305.webp"
+},
+{
+"n": "306",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/306.png",
+"lines": [
+"影星/艺员/演员/艺人",
+"影星/藝員/演員/藝人",
+"Actor/Actress"
+],
+"img": "306.webp"
+},
+{
+"n": "307",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/307.png",
+"lines": [
+"金牌",
+"金牌",
+"Gold Medal/Gold Tablet"
+],
+"img": "307.webp"
+},
+{
+"n": "308",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/308.png",
+"lines": [
+"拉船",
+"拉船",
+"Pulling Boat"
+],
+"img": "308.webp"
+},
+{
+"n": "309",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/309.png",
+"lines": [
+"纸扇/扇子",
+"紙扇/風扇",
+"Paper Fan"
+],
+"img": "309.webp"
+},
+{
+"n": "310",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/310.png",
+"lines": [
+"爬树",
+"爬樹",
+"Climb Tree"
+],
+"img": "310.webp"
+},
+{
+"n": "311",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/311.png",
+"lines": [
+"赛跑/竞赛/比赛",
+"賽跑/競賽/比賽",
+"Race"
+],
+"img": "311.webp"
+},
+{
+"n": "312",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/312.png",
+"lines": [
+"火烧屋/火灾",
+"火燒屋/火災",
+"Fire Disaster/House Burning"
+],
+"img": "312.webp"
+},
+{
+"n": "313",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/313.png",
+"lines": [
+"玉蜀黍/玉米",
+"玉蜀黍/玉米",
+"Maize/Corn"
+],
+"img": "313.webp"
+},
+{
+"n": "314",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/314.png",
+"lines": [
+"煎椰油/煮椰漿",
+"煎椰油/煮椰漿",
+"Make Coconut Oil/Make Coconut Milk"
+],
+"img": "314.webp"
+},
+{
+"n": "315",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/315.png",
+"lines": [
+"壁虎",
+"壁虎",
+"Lizard/Gecko"
+],
+"img": "315.webp"
+},
+{
+"n": "316",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/316.png",
+"lines": [
+"红烛/红蜡烛",
+"紅燭/紅蠟燭",
+"Red Candle"
+],
+"img": "316.webp"
+},
+{
+"n": "317",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/317.png",
+"lines": [
+"手电筒",
+"手電筒",
+"Torch Light/Flashlight"
+],
+"img": "317.webp"
+},
+{
+"n": "318",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/318.png",
+"lines": [
+"楼梯/梯子/台阶",
+"梯级/阶梯/楼梯",
+"Stairs/Ladder/Step"
+],
+"img": "318.webp"
+},
+{
+"n": "319",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/319.png",
+"lines": [
+"彩票/大彩",
+"彩票/大彩",
+"Lottery Ticket/4D Ticket"
+],
+"img": "319.webp"
+},
+{
+"n": "320",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614446786.png",
+"lines": [
+"椰酒店",
+"椰酒店",
+"Palm Wine Shop/Tuak Shop"
+],
+"img": "320.webp"
+},
+{
+"n": "321",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614521232.png",
+"lines": [
+"拜神/拜神祈福",
+"拜神/拜神祈福",
+"Pray To God"
+],
+"img": "321.webp"
+},
+{
+"n": "322",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614521294.png",
+"lines": [
+"洗面/洗脸",
+"洗面/洗臉",
+"Face Washing"
+],
+"img": "322.webp"
+},
+{
+"n": "323",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614521395.png",
+"lines": [
+"杀鸡鸭/宰鸡鸭/杀鸡/宰鸡/杀鸭/宰鸭",
+"殺雞鴨/宰雞鴨/殺雞/宰雞/殺鴨/宰鴨",
+"Killing Chicken/Killing Duck"
+],
+"img": "323.webp"
+},
+{
+"n": "324",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614521478.png",
+"lines": [
+"抱小孩/抱婴儿",
+"抱小孩/抱嬰兒",
+"Carrying A Child/Carrying Baby"
+],
+"img": "324.webp"
+},
+{
+"n": "325",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614521517.png",
+"lines": [
+"炒食物/煎食物",
+"炒食物/煎食物",
+"Frying Food"
+],
+"img": "325.webp"
+},
+{
+"n": "326",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614521550.png",
+"lines": [
+"回教堂/清真寺",
+"回教堂/清真寺",
+"Mosque"
+],
+"img": "326.webp"
+},
+{
+"n": "327",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614521611.png",
+"lines": [
+"裙/连身裙/长裙/长袍",
+"裙/連身裙/長裙/長袍",
+"Dress/Gown"
+],
+"img": "327.webp"
+},
+{
+"n": "328",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614521651.png",
+"lines": [
+"线/丝",
+"線/絲",
+"Thread"
+],
+"img": "328.webp"
+},
+{
+"n": "329",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614521694.png",
+"lines": [
+"大银/银币",
+"大銀/銀幣",
+"Silver Coin"
+],
+"img": "329.webp"
+},
+{
+"n": "330",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614521725.png",
+"lines": [
+"手提包",
+"手提包",
+"Handbag"
+],
+"img": "330.webp"
+},
+{
+"n": "331",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614521765.png",
+"lines": [
+"椰肉/椰子",
+"椰肉/椰子",
+"Coconut Meat"
+],
+"img": "331.webp"
+},
+{
+"n": "332",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614521809.png",
+"lines": [
+"蜜蜂巢/蜜蜂蜂窝",
+"蜜蜂巢/蜜蜂蜂窩",
+"Honeycomb/Comb/Hive"
+],
+"img": "332.webp"
+},
+{
+"n": "333",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614521849.png",
+"lines": [
+"跳绳",
+"跳繩",
+"Rope Skipping/Rope Jumping"
+],
+"img": "333.webp"
+},
+{
+"n": "334",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614521991.png",
+"lines": [
+"椰干",
+"椰乾",
+"Copra"
+],
+"img": "334.webp"
+},
+{
+"n": "335",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614522019.png",
+"lines": [
+"煮食物",
+"煮食物",
+"Cooking"
+],
+"img": "335.webp"
+},
+{
+"n": "336",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614522070.png",
+"lines": [
+"罗里/货车/卡车",
+"羅里/貨車/卡車",
+"Lorry/Truck"
+],
+"img": "336.webp"
+},
+{
+"n": "337",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614522103.png",
+"lines": [
+"镜子",
+"鏡子",
+"Mirror"
+],
+"img": "337.webp"
+},
+{
+"n": "338",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614522144.png",
+"lines": [
+"压橡胶/橡胶加工",
+"壓橡膠/橡膠加工",
+"Process Rubber"
+],
+"img": "338.webp"
+},
+{
+"n": "339",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614522190.png",
+"lines": [
+"黄豆/大豆/青豆",
+"黃豆/大豆/青豆",
+"Soybean"
+],
+"img": "339.webp"
+},
+{
+"n": "340",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614522229.png",
+"lines": [
+"歌谱/曲谱/乐谱",
+"歌譜/曲譜/樂譜",
+"Song Sheet/Sheet Music"
+],
+"img": "340.webp"
+},
+{
+"n": "341",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614522265.png",
+"lines": [
+"歌星/歌手/歌女",
+"歌星/歌手/歌女",
+"Singer"
+],
+"img": "341.webp"
+},
+{
+"n": "342",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614522302.png",
+"lines": [
+"消防车",
+"消防車",
+"Fire Truck"
+],
+"img": "342.webp"
+},
+{
+"n": "343",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614522335.png",
+"lines": [
+"救伤车/救护车",
+"救傷車/救護車",
+"Ambulance"
+],
+"img": "343.webp"
+},
+{
+"n": "344",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614522358.png",
+"lines": [
+"游泳",
+"游泳",
+"Swim"
+],
+"img": "344.webp"
+},
+{
+"n": "345",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614522383.png",
+"lines": [
+"警察",
+"警察",
+"Police"
+],
+"img": "345.webp"
+},
+{
+"n": "346",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614522408.png",
+"lines": [
+"麻将",
+"麻將",
+"Mahjong"
+],
+"img": "346.webp"
+},
+{
+"n": "347",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614522436.png",
+"lines": [
+"针车",
+"針車",
+"Sewing Machine"
+],
+"img": "347.webp"
+},
+{
+"n": "348",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614522513.png",
+"lines": [
+"香水/身体乳液/润肤露",
+"香水/身體乳液/潤膚露",
+"Body Lotion"
+],
+"img": "348.webp"
+},
+{
+"n": "349",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614522545.png",
+"lines": [
+"溺死/淹死",
+"溺死/淹死",
+"Drowned"
+],
+"img": "349.webp"
+},
+{
+"n": "350",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614522600.png",
+"lines": [
+"佬叶/栳叶/槟榔叶",
+"佬葉/栳葉/檳榔葉",
+"Betel Leaf"
+],
+"img": "350.webp"
+},
+{
+"n": "351",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1614522654.png",
+"lines": [
+"缢死/吊死/绞刑",
+"縊死/吊死/絞刑",
+"Hanging"
+],
+"img": "351.webp"
+},
+{
+"n": "352",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615001287.png",
+"lines": [
+"香烟",
+"香煙",
+"Cigarette"
+],
+"img": "352.webp"
+},
+{
+"n": "353",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615001348.png",
+"lines": [
+"服毒自杀",
+"服毒自殺",
+"Commit Suicide By Taking Poison"
+],
+"img": "353.webp"
+},
+{
+"n": "354",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615001428.png",
+"lines": [
+"书店",
+"書店",
+"Bookshop/Bookstore/Book Shop/Book Store"
+],
+"img": "354.webp"
+},
+{
+"n": "355",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615001461.png",
+"lines": [
+"割烟草",
+"割煙草",
+"Cut Tobacco"
+],
+"img": "355.webp"
+},
+{
+"n": "356",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615001640.png",
+"lines": [
+"大光灯/汽灯/煤油汽灯",
+"大光燈/汽燈/煤油汽燈",
+"Pressure Kerosene Lantern/Gas Lamp"
+],
+"img": "356.webp"
+},
+{
+"n": "357",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615001763.png",
+"lines": [
+"警察车",
+"警察車",
+"Police Car"
+],
+"img": "357.webp"
+},
+{
+"n": "358",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615001804.png",
+"lines": [
+"法庭",
+"法庭",
+"Court/Tribunal"
+],
+"img": "358.webp"
+},
+{
+"n": "359",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615001861.png",
+"lines": [
+"监狱/监牢",
+"監獄/監牢",
+"Prison/Jail"
+],
+"img": "359.webp"
+},
+{
+"n": "360",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615001906.png",
+"lines": [
+"麻袋/麻布袋/麻包",
+"麻袋/麻布袋/麻包",
+"Sack/Gunny Bag"
+],
+"img": "360.webp"
+},
+{
+"n": "361",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615001960.png",
+"lines": [
+"铁柜/保险柜/保险箱",
+"鐵櫃/保險櫃/保險箱",
+"Strongbox/Safety Deposit Box"
+],
+"img": "361.webp"
+},
+{
+"n": "362",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615001999.png",
+"lines": [
+"观音菩萨",
+"觀音菩薩",
+"Guanyin/Goddess of Mercy"
+],
+"img": "362.webp"
+},
+{
+"n": "363",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615002088.png",
+"lines": [
+"香烟盒",
+"香煙盒",
+"Cigarette Case"
+],
+"img": "363.webp"
+},
+{
+"n": "364",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615002158.png",
+"lines": [
+"浪迎舞/弄迎舞/马来传统舞",
+"浪迎舞/弄迎舞/馬來傳統舞",
+"Joget Dance/Rongge"
+],
+"img": "364.webp"
+},
+{
+"n": "365",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615002233.png",
+"lines": [
+"跳乩/通灵/神明上身/乩童",
+"跳乩/通靈/神明上身/乩童",
+"Psychic/Shaman"
+],
+"img": "365.webp"
+},
+{
+"n": "366",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615002278.png",
+"lines": [
+"斗鱼/鱼打斗",
+"鬥魚/魚打鬥",
+"Fish Battle/Fish Fighting"
+],
+"img": "366.webp"
+},
+{
+"n": "367",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615002490.png",
+"lines": [
+"衬衣/衬衫",
+"襯衣/襯衫",
+"Shirt"
+],
+"img": "367.webp"
+},
+{
+"n": "368",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615002544.png",
+"lines": [
+"番薯/地瓜",
+"番薯/地瓜",
+"Sweet Potato"
+],
+"img": "368.webp"
+},
+{
+"n": "369",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615002684.png",
+"lines": [
+"电单车/摩托/机车",
+"電單車/摩托/機車",
+"Motorcycle"
+],
+"img": "369.webp"
+},
+{
+"n": "370",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615002738.png",
+"lines": [
+"建造房屋/盖房子/起屋",
+"建造房屋/蓋房子/起屋",
+"Build Houses"
+],
+"img": "370.webp"
+},
+{
+"n": "371",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615002780.png",
+"lines": [
+"通往麦加/麦加朝圣",
+"通往麥加/麥加朝聖",
+"Pilgrimage to Mecca"
+],
+"img": "371.webp"
+},
+{
+"n": "372",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615002816.png",
+"lines": [
+"油漆",
+"油漆",
+"Paint"
+],
+"img": "372.webp"
+},
+{
+"n": "373",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615002857.png",
+"lines": [
+"毛扫",
+"毛掃",
+"Feather Brush"
+],
+"img": "373.webp"
+},
+{
+"n": "374",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615002893.png",
+"lines": [
+"皮包/钱包",
+"皮包/錢包",
+"Money Bag/Wallet"
+],
+"img": "374.webp"
+},
+{
+"n": "375",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615002937.png",
+"lines": [
+"刷灰水/刷水泥/刷石灰",
+"刷灰水/刷水泥/刷石灰",
+"Brush Cement"
+],
+"img": "375.webp"
+},
+{
+"n": "376",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615002981.png",
+"lines": [
+"抱孙子",
+"抱孫子",
+"Carry Grandchildren/Carry Grandson"
+],
+"img": "376.webp"
+},
+{
+"n": "377",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615003014.png",
+"lines": [
+"牵牛",
+"牽牛",
+"Leading Cow"
+],
+"img": "377.webp"
+},
+{
+"n": "378",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615003048.png",
+"lines": [
+"斗牛",
+"鬥牛",
+"Bullfighting/Cow Fighting"
+],
+"img": "378.webp"
+},
+{
+"n": "379",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615003094.png",
+"lines": [
+"老人/老人走路",
+"老人/老人走路",
+"Old People/Old People Walking"
+],
+"img": "379.webp"
+},
+{
+"n": "380",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615003125.png",
+"lines": [
+"鸭游泳",
+"鴨游泳",
+"Duck Swimming"
+],
+"img": "380.webp"
+},
+{
+"n": "381",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615003156.png",
+"lines": [
+"花蛇",
+"花蛇",
+"Flower Snake"
+],
+"img": "381.webp"
+},
+{
+"n": "382",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615003190.png",
+"lines": [
+"打死老虎",
+"打死老虎",
+"Killing The Tiger"
+],
+"img": "382.webp"
+},
+{
+"n": "383",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615003228.png",
+"lines": [
+"象载物/大象搬运货物",
+"象載物/大象搬運貨物",
+"Cargo Load by Element"
+],
+"img": "383.webp"
+},
+{
+"n": "384",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615003580.png",
+"lines": [
+"骂架/相骂/吵架/争论",
+"罵架/相罵/吵架/爭論",
+"Quarrel/Argue/Debate"
+],
+"img": "384.webp"
+},
+{
+"n": "385",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615003709.png",
+"lines": [
+"探病",
+"探病",
+"Visit Sick Man"
+],
+"img": "385.webp"
+},
+{
+"n": "386",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615003761.png",
+"lines": [
+"信筒/信箱",
+"信筒/信箱",
+"Mailbox/Letter box"
+],
+"img": "386.webp"
+},
+{
+"n": "387",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615003807.png",
+"lines": [
+"撒网捕鱼",
+"撒網捕魚",
+"Out Fishing"
+],
+"img": "387.webp"
+},
+{
+"n": "388",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615003991.png",
+"lines": [
+"打拳/拳击比赛",
+"打拳/拳擊比賽",
+"Boxing Match"
+],
+"img": "388.webp"
+},
+{
+"n": "389",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615004381.png",
+"lines": [
+"吃饭",
+"吃飯",
+"Eat/Eating Rice"
+],
+"img": "389.webp"
+},
+{
+"n": "390",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615004489.png",
+"lines": [
+"走路/步行",
+"走路/步行",
+"Walk/Walking/Foot"
+],
+"img": "390.webp"
+},
+{
+"n": "391",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615004799.png",
+"lines": [
+"母鸭孵蛋",
+"母鴨孵蛋",
+"Duck Hatching"
+],
+"img": "391.webp"
+},
+{
+"n": "392",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615004841.png",
+"lines": [
+"布匹/布疋/布",
+"布匹/布疋/布",
+"Cloth/Fabric"
+],
+"img": "392.webp"
+},
+{
+"n": "393",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615017296.png",
+"lines": [
+"拾蛋/收蛋",
+"拾蛋/收蛋",
+"Collect Eggs"
+],
+"img": "393.webp"
+},
+{
+"n": "394",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615017335.png",
+"lines": [
+"神父/牧师",
+"神父/牧師",
+"Priest/Father"
+],
+"img": "394.webp"
+},
+{
+"n": "395",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615017368.png",
+"lines": [
+"虾米",
+"蝦米",
+"Shrimp"
+],
+"img": "395.webp"
+},
+{
+"n": "396",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615017422.png",
+"lines": [
+"养猪",
+"養豬",
+"Pig Breeding/Pannage"
+],
+"img": "396.webp"
+},
+{
+"n": "397",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615017447.png",
+"lines": [
+"电锯",
+"電鋸",
+"Chainsaw"
+],
+"img": "397.webp"
+},
+{
+"n": "398",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615017493.png",
+"lines": [
+"尖必打/菠萝蜜/尖不辣",
+"尖必打/菠蘿蜜/尖不辣",
+"Jackfruit/Cempedak"
+],
+"img": "398.webp"
+},
+{
+"n": "399",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615017690.png",
+"lines": [
+"舞女/伴舞女郎/舞蹈员",
+"舞女/伴舞女郎/舞蹈員",
+"Dance Girl/Dancer/Taxi Dancer"
+],
+"img": "399.webp"
+},
+{
+"n": "400",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615017763.png",
+"lines": [
+"姜子牙/姜太公",
+"姜子牙/姜太公",
+"Jiang Ziya/Jiang Shang"
+],
+"img": "400.webp"
+},
+{
+"n": "401",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615018065.png",
+"lines": [
+"哭/啼哭/哭闹",
+"哭/啼哭/哭鬧",
+"Cry/Crying"
+],
+"img": "401.webp"
+},
+{
+"n": "402",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615018108.png",
+"lines": [
+"米粉",
+"米粉",
+"Mihun/Rice Noodles"
+],
+"img": "402.webp"
+},
+{
+"n": "403",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615018345.png",
+"lines": [
+"信件",
+"信件",
+"Letter/Mail"
+],
+"img": "403.webp"
+},
+{
+"n": "404",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615018379.png",
+"lines": [
+"凳子",
+"凳子",
+"Bench"
+],
+"img": "404.webp"
+},
+{
+"n": "405",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615018686.png",
+"lines": [
+"饲养鸡鸭",
+"飼養雞鴨",
+"Feeds Chickens/Feeds Ducks"
+],
+"img": "405.webp"
+},
+{
+"n": "406",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615018784.png",
+"lines": [
+"香炉",
+"香爐",
+"Censer/Incense Burner"
+],
+"img": "406.webp"
+},
+{
+"n": "407",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615018833.png",
+"lines": [
+"尸体/死尸",
+"屍體/死屍",
+"Corpes/Dead Body"
+],
+"img": "407.webp"
+},
+{
+"n": "408",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615018878.png",
+"lines": [
+"被车撞死",
+"被車撞死",
+"Killed by Car Accident"
+],
+"img": "408.webp"
+},
+{
+"n": "409",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615018909.png",
+"lines": [
+"槟榔",
+"檳榔",
+"Areca/Areca Nut"
+],
+"img": "409.webp"
+},
+{
+"n": "410",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615018940.png",
+"lines": [
+"蝙蝠",
+"蝙蝠",
+"Bat"
+],
+"img": "410.webp"
+},
+{
+"n": "411",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615018985.png",
+"lines": [
+"跳楼/跳楼自杀",
+"跳樓/跳樓自殺",
+"Suicide by Jump Down From Upstair"
+],
+"img": "411.webp"
+},
+{
+"n": "412",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615019018.png",
+"lines": [
+"煲水/烧开水/煮水",
+"煲水/燒開水/煮水",
+"Boil Water"
+],
+"img": "412.webp"
+},
+{
+"n": "413",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615019049.png",
+"lines": [
+"挑水/担水",
+"挑水/擔水",
+"Fetching Water"
+],
+"img": "413.webp"
+},
+{
+"n": "414",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615019082.png",
+"lines": [
+"扛东西/搬物品",
+"扛東西/搬物品",
+"Carry Things"
+],
+"img": "414.webp"
+},
+{
+"n": "415",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615019119.png",
+"lines": [
+"灭火器/灭火筒",
+"滅火器/滅火筒",
+"Fire Extinguisher"
+],
+"img": "415.webp"
+},
+{
+"n": "416",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615089576.png",
+"lines": [
+"芭蕉/芭蕉树/香蕉/香蕉树",
+"芭蕉/芭蕉樹/香蕉/香蕉樹",
+"Banana/Banana Tree"
+],
+"img": "416.webp"
+},
+{
+"n": "417",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615089619.png",
+"lines": [
+"火",
+"火",
+"Fire"
+],
+"img": "417.webp"
+},
+{
+"n": "418",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615089652.png",
+"lines": [
+"香",
+"香",
+"Incense"
+],
+"img": "418.webp"
+},
+{
+"n": "419",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615089904.png",
+"lines": [
+"烟丝/斗烟丝",
+"菸絲/斗烟絲",
+"Pipe Tobacco"
+],
+"img": "419.webp"
+},
+{
+"n": "420",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615089957.png",
+"lines": [
+"公市/市集/巴剎/市場",
+"公市/市集/巴剎/市場",
+"Market/Pasar"
+],
+"img": "420.webp"
+},
+{
+"n": "421",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615090097.png",
+"lines": [
+"茨粉/淀粉/太白粉/生粉/木薯粉",
+"茨粉/澱粉/太白粉/生粉/木薯粉",
+"Mainz Powder/Starch"
+],
+"img": "421.webp"
+},
+{
+"n": "422",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615090202.png",
+"lines": [
+"枣",
+"棗",
+"Jujube"
+],
+"img": "422.webp"
+},
+{
+"n": "423",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615090281.png",
+"lines": [
+"香粉/爽身粉",
+"香粉/爽身粉",
+"Powder"
+],
+"img": "423.webp"
+},
+{
+"n": "424",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615090325.png",
+"lines": [
+"米筛",
+"米篩",
+"Rice Sieve"
+],
+"img": "424.webp"
+},
+{
+"n": "425",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615090380.png",
+"lines": [
+"盗物/偷窃/盗窃",
+"盜物/偷竊/盜竊",
+"Steal/Theft"
+],
+"img": "425.webp"
+},
+{
+"n": "426",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615090414.png",
+"lines": [
+"针",
+"針",
+"Needle"
+],
+"img": "426.webp"
+},
+{
+"n": "427",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615090449.png",
+"lines": [
+"甲虫/独角仙",
+"甲蟲/獨角仙",
+"Beetle"
+],
+"img": "427.webp"
+},
+{
+"n": "428",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615090495.png",
+"lines": [
+"抢劫/打劫/打枪",
+"搶劫/打劫/打槍",
+"Robbery/Rob"
+],
+"img": "428.webp"
+},
+{
+"n": "429",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615090595.png",
+"lines": [
+"追盗/追捕/捉贼/缉捕",
+"追盜/追捕/捉賊/緝捕",
+"Catch Thief/Hunt/Capture"
+],
+"img": "429.webp"
+},
+{
+"n": "430",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615090647.png",
+"lines": [
+"刺伤/刺杀/杀人",
+"刺傷/刺殺/殺人",
+"Murder/Assassinate/Kill People"
+],
+"img": "430.webp"
+},
+{
+"n": "431",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615090680.png",
+"lines": [
+"米醋",
+"米醋",
+"Vinegar"
+],
+"img": "431.webp"
+},
+{
+"n": "432",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615090730.png",
+"lines": [
+"吹警笛,吹哨子",
+"吹警笛,吹哨子",
+"Blow Whistle"
+],
+"img": "432.webp"
+},
+{
+"n": "433",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615090778.png",
+"lines": [
+"豆干/豆腐干",
+"豆干/豆腐乾",
+"Dried Bean Curd/Dried Tofu"
+],
+"img": "433.webp"
+},
+{
+"n": "434",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615090813.png",
+"lines": [
+"下雨",
+"下雨",
+"Raining/Rain"
+],
+"img": "434.webp"
+},
+{
+"n": "435",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615090864.png",
+"lines": [
+"打急电/打紧急电话/报警/打电话求救",
+"打急電/打緊急電話/報警/打電話求救",
+"Emergency Call/Call for Help/Call the Police"
+],
+"img": "435.webp"
+},
+{
+"n": "436",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615090905.png",
+"lines": [
+"沉船/海难",
+"沉船/海難",
+"Ship Sunk/Shipwreck"
+],
+"img": "436.webp"
+},
+{
+"n": "437",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615090946.png",
+"lines": [
+"翻车",
+"翻車",
+"Car Roll Over"
+],
+"img": "437.webp"
+},
+{
+"n": "438",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615090999.png",
+"lines": [
+"盆",
+"盆",
+"Basin"
+],
+"img": "438.webp"
+},
+{
+"n": "439",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615091035.png",
+"lines": [
+"柚子",
+"柚子",
+"Grapefruit/Pomelo"
+],
+"img": "439.webp"
+},
+{
+"n": "440",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615091074.png",
+"lines": [
+"船失火",
+"船失火",
+"Boat on Fire/Ship on Fire"
+],
+"img": "440.webp"
+},
+{
+"n": "441",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615091103.png",
+"lines": [
+"痰盂",
+"痰盂",
+"Spittoon"
+],
+"img": "441.webp"
+},
+{
+"n": "442",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615091151.png",
+"lines": [
+"念经/诵经/念诵经文",
+"念經/誦經/念誦經文",
+"Recite or Chant Scriptures"
+],
+"img": "442.webp"
+},
+{
+"n": "443",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615091178.png",
+"lines": [
+"碗",
+"碗",
+"Bowl"
+],
+"img": "443.webp"
+},
+{
+"n": "444",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615091220.png",
+"lines": [
+"瓜子",
+"瓜子",
+"Sunflower Seeds/Melon Seeds/Chinese Snack"
+],
+"img": "444.webp"
+},
+{
+"n": "445",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615091261.png",
+"lines": [
+"蒜/蒜头/大蒜",
+"蒜/蒜頭/大蒜",
+"Garlic"
+],
+"img": "445.webp"
+},
+{
+"n": "446",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615091429.png",
+"lines": [
+"皮箱/行李箱/旅行箱",
+"皮箱/行李箱/旅行箱",
+"Leather Suitcase"
+],
+"img": "446.webp"
+},
+{
+"n": "447",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615091474.png",
+"lines": [
+"婴孩/宝宝/婴儿",
+"嬰孩/寶寶/嬰兒",
+"Baby/Child"
+],
+"img": "447.webp"
+},
+{
+"n": "448",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615645315.png",
+"lines": [
+"床",
+"床",
+"Bed"
+],
+"img": "448.webp"
+},
+{
+"n": "449",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615645356.png",
+"lines": [
+"水牛",
+"水牛",
+"Buffalo"
+],
+"img": "449.webp"
+},
+{
+"n": "450",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615645416.png",
+"lines": [
+"棕索/绳子/绳索",
+"棕索/繩子/繩索",
+"Rope/String"
+],
+"img": "450.webp"
+},
+{
+"n": "451",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615645474.png",
+"lines": [
+"做功德/超度亡魂",
+"做功德/超度亡魂",
+"Merit Rituals for The Dead"
+],
+"img": "451.webp"
+},
+{
+"n": "452",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615645556.png",
+"lines": [
+"道士",
+"道士",
+"Taoist Priest"
+],
+"img": "452.webp"
+},
+{
+"n": "453",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615645663.png",
+"lines": [
+"酒瓶/三蒸酒酒瓶",
+"酒瓶/三蒸酒酒瓶",
+"Bottle/Samsu Bottle"
+],
+"img": "453.webp"
+},
+{
+"n": "454",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615646129.png",
+"lines": [
+"折银纸/折金纸/折冥钞/折纸钱",
+"折銀紙/折金紙/折冥鈔/摺紙錢",
+"Fold Papar Money"
+],
+"img": "454.webp"
+},
+{
+"n": "455",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615646219.png",
+"lines": [
+"谢神/酬神",
+"謝神/酬神",
+"Thank To God"
+],
+"img": "455.webp"
+},
+{
+"n": "456",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615646284.png",
+"lines": [
+"葡萄",
+"葡萄",
+"Grape"
+],
+"img": "456.webp"
+},
+{
+"n": "457",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615646384.png",
+"lines": [
+"登记/身份证/护照",
+"登記/身份證/護照",
+"IC/Identity Card/Passport"
+],
+"img": "457.webp"
+},
+{
+"n": "458",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615646738.png",
+"lines": [
+"鬼哭/鬼",
+"鬼哭/鬼",
+"Ghost Crying/Ghost"
+],
+"img": "458.webp"
+},
+{
+"n": "459",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615646900.png",
+"lines": [
+"奶嘴",
+"奶嘴",
+"Pacifier"
+],
+"img": "459.webp"
+},
+{
+"n": "460",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615647036.png",
+"lines": [
+"谢愿/还愿",
+"謝願/還願",
+"Votive/Redeem vow to God"
+],
+"img": "460.webp"
+},
+{
+"n": "461",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615647142.png",
+"lines": [
+"枪/鸣枪/开枪",
+"槍/鳴槍/開槍",
+"Pistol Shooting/Pistol/Handgun"
+],
+"img": "461.webp"
+},
+{
+"n": "462",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615647219.png",
+"lines": [
+"大炮/火砲",
+"大砲/火炮",
+"Cannon"
+],
+"img": "462.webp"
+},
+{
+"n": "463",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615647285.png",
+"lines": [
+"手榴弹",
+"手榴彈",
+"Grenade"
+],
+"img": "463.webp"
+},
+{
+"n": "464",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615647334.png",
+"lines": [
+"被单",
+"被單",
+"Bed Sheet/Blanket"
+],
+"img": "464.webp"
+},
+{
+"n": "465",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615647378.png",
+"lines": [
+"苍蝇",
+"蒼蠅",
+"Fly/Housefly"
+],
+"img": "465.webp"
+},
+{
+"n": "466",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615647419.png",
+"lines": [
+"炸弹",
+"炸彈",
+"Bomb"
+],
+"img": "466.webp"
+},
+{
+"n": "467",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615647502.png",
+"lines": [
+"发膏/发胶/发蜡",
+"發膏/髮膠/髮蠟",
+"Hair Spray/Fixature/Pomade/Hair Wax"
+],
+"img": "467.webp"
+},
+{
+"n": "468",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615647546.png",
+"lines": [
+"机关枪/自動步槍",
+"機關槍/自動步槍",
+"Machine Gun"
+],
+"img": "468.webp"
+},
+{
+"n": "469",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615647598.png",
+"lines": [
+"搜查/路检/路障",
+"搜查/路檢/路障",
+"Roadblock/Search"
+],
+"img": "469.webp"
+},
+{
+"n": "470",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615647642.png",
+"lines": [
+"筷筒/筷子占卜",
+"筷筒/筷子占卜",
+"Fortune Stick"
+],
+"img": "470.webp"
+},
+{
+"n": "471",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615647688.png",
+"lines": [
+"查登记/查身份证",
+"查登記/查身份證",
+"Check IC/Check Identity Card"
+],
+"img": "471.webp"
+},
+{
+"n": "472",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615647738.png",
+"lines": [
+"金纸/纸钱/银纸/冥紙",
+"金紙/紙錢/銀紙/冥紙",
+"Paper Money"
+],
+"img": "472.webp"
+},
+{
+"n": "473",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615647786.png",
+"lines": [
+"大便/拉屎/大解",
+"大便/拉屎/大解",
+"Poo/Defecate/Shit"
+],
+"img": "473.webp"
+},
+{
+"n": "474",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615647827.png",
+"lines": [
+"鸟笼",
+"鳥籠",
+"Birdcage"
+],
+"img": "474.webp"
+},
+{
+"n": "475",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615647865.png",
+"lines": [
+"留声机/电唱机",
+"留聲機/電唱機",
+"Phonograph/Gramophone"
+],
+"img": "475.webp"
+},
+{
+"n": "476",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615647897.png",
+"lines": [
+"床褥",
+"床褥",
+"Mattress"
+],
+"img": "476.webp"
+},
+{
+"n": "477",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615647956.png",
+"lines": [
+"木偶/傀儡/木偶戲/人偶劇",
+"木偶/傀儡/木偶戲/人偶劇",
+"Puppet Show/Puppet"
+],
+"img": "477.webp"
+},
+{
+"n": "478",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615648008.png",
+"lines": [
+"柑/年柑/柑橘/柑桔",
+"柑/年柑/柑橘/柑桔",
+"Mandarin/Mandarine"
+],
+"img": "478.webp"
+},
+{
+"n": "479",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615648044.png",
+"lines": [
+"饭盏",
+"飯盞",
+"Rice Lamp"
+],
+"img": "479.webp"
+},
+{
+"n": "480",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615648477.png",
+"lines": [
+"明星相片/明星照片/偶像图片/演员照/艺人照",
+"明星相片/明星照片/偶像圖片/演員照/藝人照",
+"Star Photo/Celebrity Picture"
+],
+"img": "480.webp"
+},
+{
+"n": "481",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615648638.png",
+"lines": [
+"牵猪",
+"牽豬",
+"Pull The Pig/Lead The Pig"
+],
+"img": "481.webp"
+},
+{
+"n": "482",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615648710.png",
+"lines": [
+"寄信",
+"寄信",
+"Post Letter/Mail Letter"
+],
+"img": "482.webp"
+},
+{
+"n": "483",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615648827.png",
+"lines": [
+"洗衣服/洗衣裤",
+"洗衣服/洗衣褲",
+"Washing Clothes"
+],
+"img": "483.webp"
+},
+{
+"n": "484",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615648895.png",
+"lines": [
+"葱/香葱/青葱",
+"蔥/香蔥/青蔥",
+"Scallion"
+],
+"img": "484.webp"
+},
+{
+"n": "485",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615649018.png",
+"lines": [
+"蚊子",
+"蚊子",
+"Mosquito"
+],
+"img": "485.webp"
+},
+{
+"n": "486",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615649084.png",
+"lines": [
+"盘碗/碗碟",
+"盤碗/碗碟",
+"Dishes/Plate"
+],
+"img": "486.webp"
+},
+{
+"n": "487",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615649317.png",
+"lines": [
+"唱片/黑胶唱片",
+"唱片/黑膠唱片",
+"Record/SP/Disc/Disk"
+],
+"img": "487.webp"
+},
+{
+"n": "488",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615649508.png",
+"lines": [
+"耕田/牛耕田/耕种/耕作/耕耘/犁田",
+"耕田/牛耕田/耕種/耕作/耕耘/犁田",
+"Farming/Plow"
+],
+"img": "488.webp"
+},
+{
+"n": "489",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615649611.png",
+"lines": [
+"演戏/戏剧/节目",
+"演戲/戲劇/節目",
+"Acting/Drama/Show/Play The Role"
+],
+"img": "489.webp"
+},
+{
+"n": "490",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615649699.png",
+"lines": [
+"相士/相师/算命先生/相面先生",
+"相士/相師/算命先生/相面先生",
+"Physiognomist/Fortune Teller"
+],
+"img": "490.webp"
+},
+{
+"n": "491",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615649768.png",
+"lines": [
+"插秧/种稻/插秧苗",
+"插秧/種稻/插秧苗",
+"Transplanting Rice Seedlings"
+],
+"img": "491.webp"
+},
+{
+"n": "492",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615649852.png",
+"lines": [
+"烧草/火烧枯草/烧草堆",
+"燒草/火燒枯草/燒草堆",
+"Burn The Grass"
+],
+"img": "492.webp"
+},
+{
+"n": "493",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615649895.png",
+"lines": [
+"雪茄/雪茄烟",
+"雪茄/雪茄煙",
+"Cigar"
+],
+"img": "493.webp"
+},
+{
+"n": "494",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615649952.png",
+"lines": [
+"睡觉/睡眠",
+"睡覺/睡眠",
+"Sleep/Rest"
+],
+"img": "494.webp"
+},
+{
+"n": "495",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615650022.png",
+"lines": [
+"筛谷/筛米/虑米",
+"篩谷/篩米/慮米",
+"Sieve Rice"
+],
+"img": "495.webp"
+},
+{
+"n": "496",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615650175.png",
+"lines": [
+"收谷/收稻米/收栗",
+"收谷/收稻米/收栗",
+"Collect Rice/Keep Rice"
+],
+"img": "496.webp"
+},
+{
+"n": "497",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615650295.png",
+"lines": [
+"气球",
+"氣球",
+"Balloon"
+],
+"img": "497.webp"
+},
+{
+"n": "498",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615650386.png",
+"lines": [
+"木瓜",
+"木瓜",
+"Papaya"
+],
+"img": "498.webp"
+},
+{
+"n": "499",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615650497.png",
+"lines": [
+"浇尿/浇水/浇灌/施肥",
+"澆尿/澆水/澆灌/施肥",
+"Watering"
+],
+"img": "499.webp"
+},
+{
+"n": "500",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615650542.png",
+"lines": [
+"铅笔",
+"鉛筆",
+"Pencil"
+],
+"img": "500.webp"
+},
+{
+"n": "501",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615650599.png",
+"lines": [
+"赛跑比赛",
+"賽跑比賽",
+"Running Race"
+],
+"img": "501.webp"
+},
+{
+"n": "502",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615650648.png",
+"lines": [
+"船锚",
+"船錨",
+"Anchor"
+],
+"img": "502.webp"
+},
+{
+"n": "503",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615650699.png",
+"lines": [
+"洋娃娃/玩具娃娃/玩偶",
+"洋娃娃/玩具娃娃/玩偶",
+"Doll"
+],
+"img": "503.webp"
+},
+{
+"n": "504",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615650745.png",
+"lines": [
+"吃点心",
+"吃點心",
+"Eat Dim Sum"
+],
+"img": "504.webp"
+},
+{
+"n": "505",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615650783.png",
+"lines": [
+"斗鸡",
+"鬥雞",
+"Cockfighting"
+],
+"img": "505.webp"
+},
+{
+"n": "506",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615650925.png",
+"lines": [
+"牛车",
+"牛車",
+"Oxcart/Bullock Cart"
+],
+"img": "506.webp"
+},
+{
+"n": "507",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615650996.png",
+"lines": [
+"图书/画集/漫画书/杂志",
+"圖書/畫集/漫畫書/雜誌",
+"Book/Comic/Magazine"
+],
+"img": "507.webp"
+},
+{
+"n": "508",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615651064.png",
+"lines": [
+"毛笔",
+"毛筆",
+"Writing Brush"
+],
+"img": "508.webp"
+},
+{
+"n": "509",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615651103.png",
+"lines": [
+"山猪",
+"山豬",
+"Wild Boar"
+],
+"img": "509.webp"
+},
+{
+"n": "510",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615651145.png",
+"lines": [
+"铁门/大门",
+"鐵門/大門",
+"Gate/Doorway"
+],
+"img": "510.webp"
+},
+{
+"n": "511",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615651176.png",
+"lines": [
+"玩具",
+"玩具",
+"Toy"
+],
+"img": "511.webp"
+},
+{
+"n": "512",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615651456.png",
+"lines": [
+"高跟鞋",
+"高跟鞋",
+"High-Heeled Shoes"
+],
+"img": "512.webp"
+},
+{
+"n": "513",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615651489.png",
+"lines": [
+"胶鞋",
+"膠鞋",
+"Galosh"
+],
+"img": "513.webp"
+},
+{
+"n": "514",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615651570.png",
+"lines": [
+"龙凤烛",
+"龍鳳燭",
+"Dragon And Phoenix Candle"
+],
+"img": "514.webp"
+},
+{
+"n": "515",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615651648.png",
+"lines": [
+"做礼拜",
+"做禮拜",
+"Go To Church/Worship/Religious Service"
+],
+"img": "515.webp"
+},
+{
+"n": "516",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615651693.png",
+"lines": [
+"飞鸟/小鸟/鸟",
+"飛鳥/小鳥/鳥",
+"Birds"
+],
+"img": "516.webp"
+},
+{
+"n": "517",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615651735.png",
+"lines": [
+"算盘",
+"算盤",
+"Abacus"
+],
+"img": "517.webp"
+},
+{
+"n": "518",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615651911.png",
+"lines": [
+"眼镜",
+"眼鏡",
+"Glasses/Spectacles"
+],
+"img": "518.webp"
+},
+{
+"n": "519",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615651968.png",
+"lines": [
+"驼子/驼背",
+"駝子/駝背",
+"Hunchback/Humpback"
+],
+"img": "519.webp"
+},
+{
+"n": "520",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615652013.png",
+"lines": [
+"打火机",
+"打火機",
+"Lighter"
+],
+"img": "520.webp"
+},
+{
+"n": "521",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615652057.png",
+"lines": [
+"竹/竹子",
+"竹/竹子",
+"Bamboo"
+],
+"img": "521.webp"
+},
+{
+"n": "522",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615652094.png",
+"lines": [
+"打字机",
+"打字機",
+"Typewriter"
+],
+"img": "522.webp"
+},
+{
+"n": "523",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615652161.png",
+"lines": [
+"螺蛳/螺贝/方田螺",
+"螺螄/螺貝/方田螺",
+"River Snails/Belitung/Balitong"
+],
+"img": "523.webp"
+},
+{
+"n": "524",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615652207.png",
+"lines": [
+"梨子",
+"梨子",
+"Pear"
+],
+"img": "524.webp"
+},
+{
+"n": "525",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615652254.png",
+"lines": [
+"沙笼",
+"沙籠",
+"Sarong/Sarung/Batik Cloth"
+],
+"img": "525.webp"
+},
+{
+"n": "526",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1618075056.png",
+"lines": [
+"河猪/箭猪/刺猬",
+"河豬/箭豬/刺猬",
+"Hedgehog"
+],
+"img": "526.webp"
+},
+{
+"n": "527",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615652362.png",
+"lines": [
+"砍柴/砍树枝",
+"砍柴/砍樹枝",
+"Correct Firewood"
+],
+"img": "527.webp"
+},
+{
+"n": "528",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615652405.png",
+"lines": [
+"买山猪肉",
+"買山豬肉",
+"Buy Boar Meat"
+],
+"img": "528.webp"
+},
+{
+"n": "529",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615652441.png",
+"lines": [
+"猴子",
+"猴子",
+"Monkey"
+],
+"img": "529.webp"
+},
+{
+"n": "530",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615652498.png",
+"lines": [
+"水喉/水龙头",
+"水喉/水龍頭",
+"Faucet/Water Tap"
+],
+"img": "530.webp"
+},
+{
+"n": "531",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615652538.png",
+"lines": [
+"哑巴",
+"啞巴",
+"Dumb"
+],
+"img": "531.webp"
+},
+{
+"n": "532",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615652579.png",
+"lines": [
+"化妆/上妆",
+"化妝/上妝",
+"Makeup"
+],
+"img": "532.webp"
+},
+{
+"n": "533",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615652621.png",
+"lines": [
+"石磨",
+"石磨",
+"Stone Mill"
+],
+"img": "533.webp"
+},
+{
+"n": "534",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615652666.png",
+"lines": [
+"橱柜",
+"櫥櫃",
+"Cabinet/Closet/Wardrobe"
+],
+"img": "534.webp"
+},
+{
+"n": "535",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615652699.png",
+"lines": [
+"拖鞋",
+"拖鞋",
+"Slipper"
+],
+"img": "535.webp"
+},
+{
+"n": "536",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615652747.png",
+"lines": [
+"黑眼镜/太阳眼镜/墨镜",
+"黑眼鏡/太陽眼鏡/墨鏡",
+"Black Glasses/Sunglasses"
+],
+"img": "536.webp"
+},
+{
+"n": "537",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615652801.png",
+"lines": [
+"脚车汽车相撞",
+"腳車汽車相撞",
+"Bicycle Car Accident"
+],
+"img": "537.webp"
+},
+{
+"n": "538",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615652857.png",
+"lines": [
+"学校/学院/大学",
+"學校/學校/大學",
+"School/College/University"
+],
+"img": "538.webp"
+},
+{
+"n": "539",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615652899.png",
+"lines": [
+"捉猪",
+"捉豬",
+"Catch Pig"
+],
+"img": "539.webp"
+},
+{
+"n": "540",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615652956.png",
+"lines": [
+"远足/行山/健行",
+"遠足/行山/健行",
+"Hike/Hiking"
+],
+"img": "540.webp"
+},
+{
+"n": "541",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615653040.png",
+"lines": [
+"拍照/拍相片/拍摄",
+"拍照/拍相片/拍攝",
+"Photograph/Photo Shooting"
+],
+"img": "541.webp"
+},
+{
+"n": "542",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615653126.png",
+"lines": [
+"木屐",
+"木屐",
+"Giek/Clog Shoes"
+],
+"img": "542.webp"
+},
+{
+"n": "543",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1615653226.png",
+"lines": [
+"拍风景照",
+"拍風景照",
+"Take Photos of Scenery/Shooting Landscape Picture"
+],
+"img": "543.webp"
+},
+{
+"n": "544",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616212856.png",
+"lines": [
+"兵营/军营",
+"兵營/軍營",
+"Military Camp/Barrack"
+],
+"img": "544.webp"
+},
+{
+"n": "545",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616212922.png",
+"lines": [
+"舢舨/舟/小船/小艇",
+"舢舨/舟/小船/小艇",
+"Boat/Sampan"
+],
+"img": "545.webp"
+},
+{
+"n": "546",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616212980.png",
+"lines": [
+"钢笔",
+"鋼筆",
+"Fountain Pen"
+],
+"img": "546.webp"
+},
+{
+"n": "547",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616213035.png",
+"lines": [
+"写信",
+"寫信",
+"Writing Letter"
+],
+"img": "547.webp"
+},
+{
+"n": "548",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616213130.png",
+"lines": [
+"火柴",
+"火柴",
+"Matches"
+],
+"img": "548.webp"
+},
+{
+"n": "549",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616213187.png",
+"lines": [
+"打篮球/拍球",
+"打籃球/拍球",
+"Play Basketball"
+],
+"img": "549.webp"
+},
+{
+"n": "550",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616213270.png",
+"lines": [
+"足球/踢足球",
+"足球/踢足球",
+"Play Football/Play Soccer"
+],
+"img": "550.webp"
+},
+{
+"n": "551",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616213362.png",
+"lines": [
+"做糕/做粿/做蛋糕/制作糕点",
+"做糕/做粿/做蛋糕/製作糕點",
+"Making Cakes/Make Kuih/Make a Cake"
+],
+"img": "551.webp"
+},
+{
+"n": "552",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616213431.png",
+"lines": [
+"口琴",
+"口琴",
+"Harmonica"
+],
+"img": "552.webp"
+},
+{
+"n": "553",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616213524.png",
+"lines": [
+"雪柜/冰箱/冰橱/电冰箱",
+"雪櫃/冰箱/冰櫥/電冰箱",
+"Refrigerator/Fridge/Freezer/Icebox"
+],
+"img": "553.webp"
+},
+{
+"n": "554",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616213571.png",
+"lines": [
+"布椅/布凳",
+"布椅/布凳",
+"Cloth Chair/Cloth Bench"
+],
+"img": "554.webp"
+},
+{
+"n": "555",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616213741.png",
+"lines": [
+"麦片/燕麦/奎克麦片",
+"麥片/燕麥/奎克麥片",
+"Oats/Quaker Oats"
+],
+"img": "555.webp"
+},
+{
+"n": "556",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616213788.png",
+"lines": [
+"吃榴莲",
+"吃榴蓮",
+"Eat Durian"
+],
+"img": "556.webp"
+},
+{
+"n": "557",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616213836.png",
+"lines": [
+"水沟/沟渠",
+"水溝/溝渠",
+"Ditch"
+],
+"img": "557.webp"
+},
+{
+"n": "558",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616214100.png",
+"lines": [
+"电话/手机",
+"電話/手機",
+"Phone/Telephone/Handphone"
+],
+"img": "558.webp"
+},
+{
+"n": "559",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616214160.png",
+"lines": [
+"梦/托梦/做梦",
+"夢/託夢/做夢",
+"Dream/Dreaming"
+],
+"img": "559.webp"
+},
+{
+"n": "560",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616214230.png",
+"lines": [
+"恋爱/谈恋爱/情侣",
+"戀愛/談戀愛/情侶",
+"Love/Be In Love/Lovers"
+],
+"img": "560.webp"
+},
+{
+"n": "561",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616214305.png",
+"lines": [
+"马来人出殡/马来人葬礼/回教葬礼",
+"馬來人出殯/馬來人葬禮/回教葬禮",
+"Malay Funeral/Muslim Funerals"
+],
+"img": "561.webp"
+},
+{
+"n": "562",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616214390.png",
+"lines": [
+"玩风筝/放风筝",
+"玩風箏/放風箏",
+"Fly A Kite"
+],
+"img": "562.webp"
+},
+{
+"n": "563",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616214455.png",
+"lines": [
+"牙痛/牙齿疼痛",
+"牙痛/牙齒疼痛",
+"Toothache"
+],
+"img": "563.webp"
+},
+{
+"n": "564",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616764919.png",
+"lines": [
+"草袋",
+"草袋",
+"Straw Bags"
+],
+"img": "564.webp"
+},
+{
+"n": "565",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616214608.png",
+"lines": [
+"吸鸦片/吸毒",
+"吸鴉片/吸毒",
+"Opium Smoking/Drug"
+],
+"img": "565.webp"
+},
+{
+"n": "566",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616214669.png",
+"lines": [
+"亚答/亚答叶屋顶/亚塔屋顶",
+"亞答/亞答葉屋頂/亞塔屋頂",
+"Atap/Roof"
+],
+"img": "566.webp"
+},
+{
+"n": "567",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616214731.png",
+"lines": [
+"铃/钟",
+"鈴/鐘",
+"Bell"
+],
+"img": "567.webp"
+},
+{
+"n": "568",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616214801.png",
+"lines": [
+"老烟稿",
+"老煙稿",
+"Leaves Cigarette/Rokok Daun"
+],
+"img": "568.webp"
+},
+{
+"n": "569",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616214848.png",
+"lines": [
+"棺材",
+"棺材",
+"Coffin"
+],
+"img": "569.webp"
+},
+{
+"n": "570",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616214893.png",
+"lines": [
+"榴莲/榴梿",
+"榴蓮/榴槤",
+"Durian"
+],
+"img": "570.webp"
+},
+{
+"n": "571",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616214969.png",
+"lines": [
+"石碑/石刻",
+"石碑/石刻",
+"Stele/Sign Stone"
+],
+"img": "571.webp"
+},
+{
+"n": "572",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616215012.png",
+"lines": [
+"纪念碑",
+"紀念碑",
+"Monument"
+],
+"img": "572.webp"
+},
+{
+"n": "573",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616215043.png",
+"lines": [
+"椅子",
+"椅子",
+"Chair"
+],
+"img": "573.webp"
+},
+{
+"n": "574",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616215096.png",
+"lines": [
+"旗/旗子/旗帜/国旗",
+"旗/旗子/旗幟/國旗",
+"Flag/Banner"
+],
+"img": "574.webp"
+},
+{
+"n": "575",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616215142.png",
+"lines": [
+"剪彩",
+"剪彩",
+"Cut The Ribbon"
+],
+"img": "575.webp"
+},
+{
+"n": "576",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616765826.png",
+"lines": [
+"跑马/赛马",
+"跑馬/賽馬",
+"Horse Racing/Horserace"
+],
+"img": "576.webp"
+},
+{
+"n": "577",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616765901.png",
+"lines": [
+"挂孝/戴孝/带孝",
+"挂孝/戴孝/帶孝",
+"Mourning/Mourning for Relative"
+],
+"img": "577.webp"
+},
+{
+"n": "578",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616765942.png",
+"lines": [
+"杯子",
+"杯子",
+"Cup/Tumbler"
+],
+"img": "578.webp"
+},
+{
+"n": "579",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616765990.png",
+"lines": [
+"头发雪花膏/摩丝",
+"頭髮雪花膏/摩絲",
+"Hair Mousse"
+],
+"img": "579.webp"
+},
+{
+"n": "580",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616766283.png",
+"lines": [
+"饼/包装饼",
+"餅/包裝餅",
+"Biscuit"
+],
+"img": "580.webp"
+},
+{
+"n": "581",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616766330.png",
+"lines": [
+"老鼠笼/老鼠陷阱",
+"老鼠籠/老鼠陷阱",
+"Mouse Trap"
+],
+"img": "581.webp"
+},
+{
+"n": "582",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616766370.png",
+"lines": [
+"汤匙/匙羹",
+"湯匙/匙羹",
+"Spoon"
+],
+"img": "582.webp"
+},
+{
+"n": "583",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616766409.png",
+"lines": [
+"乘坐火车/搭火车",
+"乘坐火車/搭火車",
+"Travel by Train"
+],
+"img": "583.webp"
+},
+{
+"n": "584",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616766452.png",
+"lines": [
+"坐巴士/搭巴士",
+"坐巴士/搭巴士",
+"Travel by Bus"
+],
+"img": "584.webp"
+},
+{
+"n": "585",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616766497.png",
+"lines": [
+"坐船",
+"坐船",
+"Travel by Sea/By Ship/By Boat"
+],
+"img": "585.webp"
+},
+{
+"n": "586",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616766613.png",
+"lines": [
+"车/汽车/轿车/车辆",
+"車/汽車/轎車/車輛",
+"Car/Vehicle"
+],
+"img": "586.webp"
+},
+{
+"n": "587",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616766651.png",
+"lines": [
+"乘坐飞机/搭飞机",
+"乘坐飞机/搭飞机",
+"Travel by Plane"
+],
+"img": "587.webp"
+},
+{
+"n": "588",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616766693.png",
+"lines": [
+"冰淇淋/雪糕",
+"冰淇淋/雪糕",
+"Ice Cream"
+],
+"img": "588.webp"
+},
+{
+"n": "589",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616767499.png",
+"lines": [
+"漆",
+"漆",
+"Paint"
+],
+"img": "589.webp"
+},
+{
+"n": "590",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616767567.png",
+"lines": [
+"去巴刹/去菜市场",
+"去巴剎/去菜市場",
+"Go To Pasar/Go To Market"
+],
+"img": "590.webp"
+},
+{
+"n": "591",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616767608.png",
+"lines": [
+"桌屉/抽屉",
+"桌屜/抽屜",
+"Drawer"
+],
+"img": "591.webp"
+},
+{
+"n": "592",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616767658.png",
+"lines": [
+"眼镜蛇",
+"眼鏡蛇",
+"Cobra"
+],
+"img": "592.webp"
+},
+{
+"n": "593",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616767696.png",
+"lines": [
+"猴戏",
+"猴戲",
+"Monkey Show"
+],
+"img": "593.webp"
+},
+{
+"n": "594",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616767731.png",
+"lines": [
+"斗火鸡",
+"鬥火雞",
+"Turkey Fighting"
+],
+"img": "594.webp"
+},
+{
+"n": "595",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616767767.png",
+"lines": [
+"鹅",
+"鵝",
+"Goose"
+],
+"img": "595.webp"
+},
+{
+"n": "596",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616767803.png",
+"lines": [
+"母鸡",
+"母雞",
+"Hen/Female Chicken"
+],
+"img": "596.webp"
+},
+{
+"n": "597",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616767841.png",
+"lines": [
+"聋子/耳聋",
+"聾子/耳聾",
+"Deaf Person/Deaf"
+],
+"img": "597.webp"
+},
+{
+"n": "598",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616767892.png",
+"lines": [
+"雄鸡/公鸡",
+"雄雞/公雞",
+"Cock/Rooster/Male Chicken"
+],
+"img": "598.webp"
+},
+{
+"n": "599",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616767923.png",
+"lines": [
+"猫",
+"貓",
+"Cat"
+],
+"img": "599.webp"
+},
+{
+"n": "600",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616767965.png",
+"lines": [
+"军犬/警犬",
+"軍犬/警犬",
+"Army Dog/Police Dog"
+],
+"img": "600.webp"
+},
+{
+"n": "601",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616768034.png",
+"lines": [
+"狗/家犬/看家狗",
+"狗/家犬/看家狗",
+"Dogs,house dog"
+],
+"img": "601.webp"
+},
+{
+"n": "602",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616768091.png",
+"lines": [
+"牛",
+"牛",
+"Cow/Bull/Ox"
+],
+"img": "602.webp"
+},
+{
+"n": "603",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616768173.png",
+"lines": [
+"卖面/卖炒面",
+"賣麵/賣炒麵",
+"Selling Mee/Selling Fried Noodle"
+],
+"img": "603.webp"
+},
+{
+"n": "604",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616768574.png",
+"lines": [
+"菜刀",
+"菜刀",
+"Kitchen Knife"
+],
+"img": "604.webp"
+},
+{
+"n": "605",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616768606.png",
+"lines": [
+"卖炸香蕉糕",
+"賣炸香蕉糕",
+"Selling Fried Banana"
+],
+"img": "605.webp"
+},
+{
+"n": "606",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616768648.png",
+"lines": [
+"蟒蛇",
+"蟒蛇",
+"Python"
+],
+"img": "606.webp"
+},
+{
+"n": "607",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616768692.png",
+"lines": [
+"倒尿车/倒屎车",
+"倒尿車/倒屎車",
+"Feces Car"
+],
+"img": "607.webp"
+},
+{
+"n": "608",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616768997.png",
+"lines": [
+"天山麻油/麻油/香油/芝麻油",
+"天山麻油/麻油/香油/芝麻油",
+"Sesame Oil"
+],
+"img": "608.webp"
+},
+{
+"n": "609",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616769030.png",
+"lines": [
+"饭店/餐厅",
+"飯店/餐廳",
+"Restaurant"
+],
+"img": "609.webp"
+},
+{
+"n": "610",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616769069.png",
+"lines": [
+"茶楼/酒楼/酒家",
+"茶樓/酒樓/酒家",
+"Restaurant"
+],
+"img": "610.webp"
+},
+{
+"n": "611",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616769110.png",
+"lines": [
+"中秋月饼",
+"中秋月餅",
+"Moon Cake"
+],
+"img": "611.webp"
+},
+{
+"n": "612",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616769154.png",
+"lines": [
+"卖冰水/卖饮料",
+"賣冰水/賣飲料",
+"Selling Drinks"
+],
+"img": "612.webp"
+},
+{
+"n": "613",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616769194.png",
+"lines": [
+"风筝",
+"風箏",
+"Kite/Wau"
+],
+"img": "613.webp"
+},
+{
+"n": "614",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616769243.png",
+"lines": [
+"干冬薯/馬鈴薯/土豆/洋芋",
+"干冬薯/馬鈴薯/土豆/洋芋",
+"Potato"
+],
+"img": "614.webp"
+},
+{
+"n": "615",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616769284.png",
+"lines": [
+"挖耳/掏耳朵",
+"挖耳/掏耳朵",
+"Ear Picking"
+],
+"img": "615.webp"
+},
+{
+"n": "616",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616769325.png",
+"lines": [
+"干辣椒",
+"乾辣椒",
+"Dried Chili"
+],
+"img": "616.webp"
+},
+{
+"n": "617",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616769364.png",
+"lines": [
+"面包",
+"麵包",
+"Bread"
+],
+"img": "617.webp"
+},
+{
+"n": "618",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616769404.png",
+"lines": [
+"巴冷刀/砍刀",
+"巴冷刀/砍刀",
+"Parang Knife"
+],
+"img": "618.webp"
+},
+{
+"n": "619",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616771255.png",
+"lines": [
+"大葱/洋葱",
+"大蔥/洋蔥",
+"Onion"
+],
+"img": "619.webp"
+},
+{
+"n": "620",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616769488.png",
+"lines": [
+"巴拉煎/峇拉煎",
+"巴拉煎/峇拉煎",
+"Belacan"
+],
+"img": "620.webp"
+},
+{
+"n": "621",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616769520.png",
+"lines": [
+"斧头",
+"斧頭",
+"Axe"
+],
+"img": "621.webp"
+},
+{
+"n": "622",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616769566.png",
+"lines": [
+"锯木/据木",
+"鋸木/據木",
+"Saw Timber/Cut Wood"
+],
+"img": "622.webp"
+},
+{
+"n": "623",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616769598.png",
+"lines": [
+"钻石",
+"鑽石",
+"Diamond"
+],
+"img": "623.webp"
+},
+{
+"n": "624",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616769649.png",
+"lines": [
+"炭/黑炭/火炭/木炭",
+"炭/黑炭/火炭/木炭",
+"Wood Charcoal"
+],
+"img": "624.webp"
+},
+{
+"n": "625",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616769688.png",
+"lines": [
+"四色牌",
+"四色牌",
+"Four-Color Cards"
+],
+"img": "625.webp"
+},
+{
+"n": "626",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616769752.png",
+"lines": [
+"扑克牌/啤牌",
+"撲克牌/啤牌",
+"Playing Cards/Poker"
+],
+"img": "626.webp"
+},
+{
+"n": "627",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616769824.png",
+"lines": [
+"报纸/刊物/新闻报章",
+"報紙/刊物/新聞報章",
+"Newspaper/Publication"
+],
+"img": "627.webp"
+},
+{
+"n": "628",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616769889.png",
+"lines": [
+"玻璃",
+"玻璃",
+"Glass"
+],
+"img": "628.webp"
+},
+{
+"n": "629",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616769969.png",
+"lines": [
+"罗里载货物/货车载运货物/卡车载货",
+"羅里載貨物/貨車載運貨物/卡車載貨",
+"Trucks Convey Goods/Transport Goods by Lorry"
+],
+"img": "629.webp"
+},
+{
+"n": "630",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616770032.png",
+"lines": [
+"担土/担沙土",
+"擔土/擔沙土",
+"Carry Sand"
+],
+"img": "630.webp"
+},
+{
+"n": "631",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616770091.png",
+"lines": [
+"修屋/装修房子/翻新房子",
+"修屋/裝修房子/翻新房子",
+"House Decoration/House Repair"
+],
+"img": "631.webp"
+},
+{
+"n": "632",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616770134.png",
+"lines": [
+"山竹",
+"山竹",
+"Mangosteen"
+],
+"img": "632.webp"
+},
+{
+"n": "633",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616770170.png",
+"lines": [
+"唱歌",
+"唱歌",
+"Singing"
+],
+"img": "633.webp"
+},
+{
+"n": "634",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616770217.png",
+"lines": [
+"手/手掌",
+"手/手掌",
+"Hand/Palm"
+],
+"img": "634.webp"
+},
+{
+"n": "635",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616770264.png",
+"lines": [
+"石头/岩石",
+"石頭/岩石",
+"Stone/Rock"
+],
+"img": "635.webp"
+},
+{
+"n": "636",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616770327.png",
+"lines": [
+"耳环/耳坠/耳饰",
+"耳環/耳墜/耳飾",
+"Earring/Eardrop/Dangler"
+],
+"img": "636.webp"
+},
+{
+"n": "637",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616770357.png",
+"lines": [
+"咖啡",
+"咖啡",
+"Coffee"
+],
+"img": "637.webp"
+},
+{
+"n": "638",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616770393.png",
+"lines": [
+"电灯",
+"電燈",
+"Electric Lamp"
+],
+"img": "638.webp"
+},
+{
+"n": "639",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616770435.png",
+"lines": [
+"松鼠",
+"松鼠",
+"Squirrel"
+],
+"img": "639.webp"
+},
+{
+"n": "640",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616771432.png",
+"lines": [
+"卖罗惹",
+"賣羅惹",
+"Selling Rojak"
+],
+"img": "640.webp"
+},
+{
+"n": "641",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616771478.png",
+"lines": [
+"卖鱿鱼",
+"賣魷魚",
+"Selling Squid"
+],
+"img": "641.webp"
+},
+{
+"n": "642",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616771539.png",
+"lines": [
+"救伤/急救/救人/抢救",
+"救傷/急救/救人/搶救",
+"Rescue/First Aid/Help"
+],
+"img": "642.webp"
+},
+{
+"n": "643",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616771586.png",
+"lines": [
+"骑马",
+"騎馬",
+"Riding Horse"
+],
+"img": "643.webp"
+},
+{
+"n": "644",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616771625.png",
+"lines": [
+"骑象",
+"騎象",
+"Riding Elephant"
+],
+"img": "644.webp"
+},
+{
+"n": "645",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616771678.png",
+"lines": [
+"粽子/肉粽",
+"粽子/肉粽",
+"Rice Dumplings/Zongzi/Bakcang"
+],
+"img": "645.webp"
+},
+{
+"n": "646",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616771724.png",
+"lines": [
+"女皇/皇后/女王/王后",
+"女皇/皇后/女王/王后",
+"Empress/Queen"
+],
+"img": "646.webp"
+},
+{
+"n": "647",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616771766.png",
+"lines": [
+"情书/情信",
+"情書/情信",
+"Love Letter"
+],
+"img": "647.webp"
+},
+{
+"n": "648",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616771803.png",
+"lines": [
+"香水",
+"香水",
+"Perfume"
+],
+"img": "648.webp"
+},
+{
+"n": "649",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616771854.png",
+"lines": [
+"胭脂/腮紅",
+"胭脂,腮紅",
+"Rouge/Blush"
+],
+"img": "649.webp"
+},
+{
+"n": "650",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616771899.png",
+"lines": [
+"啤酒/麥酒",
+"啤酒/麥酒",
+"Beer"
+],
+"img": "650.webp"
+},
+{
+"n": "651",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616771938.png",
+"lines": [
+"酒吧/酒廊",
+"酒吧/酒廊",
+"Bar/Pub/Tavern"
+],
+"img": "651.webp"
+},
+{
+"n": "652",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616771981.png",
+"lines": [
+"项链/项鍊",
+"项链/项鍊",
+"Necklace"
+],
+"img": "652.webp"
+},
+{
+"n": "653",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616772018.png",
+"lines": [
+"看运动/观看运动比赛",
+"看運動/觀看運動比賽",
+"Watch Sports Game"
+],
+"img": "653.webp"
+},
+{
+"n": "654",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616772060.png",
+"lines": [
+"赏奖杯/颁奖",
+"賞獎杯​​/頒獎",
+"Award/Present Prizes/Award Medal"
+],
+"img": "654.webp"
+},
+{
+"n": "655",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616772124.png",
+"lines": [
+"饲养金鱼/喂鱼/养鱼",
+"飼養金魚/餵魚/養魚",
+"Fish Feeding/Raise Fish"
+],
+"img": "655.webp"
+},
+{
+"n": "656",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616772182.png",
+"lines": [
+"自卫团/自卫队",
+"自衛團/自衛隊",
+"Home Guard/Self-Defense Group"
+],
+"img": "656.webp"
+},
+{
+"n": "657",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616772215.png",
+"lines": [
+"牛乳/牛奶",
+"牛乳/牛奶",
+"Milk"
+],
+"img": "657.webp"
+},
+{
+"n": "658",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616772254.png",
+"lines": [
+"蚊油机/蚊雾机",
+"蚊油機/蚊霧機",
+"Mosquito Fogging Machine"
+],
+"img": "658.webp"
+},
+{
+"n": "659",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616772289.png",
+"lines": [
+"喷蚊油/喷蚊雾",
+"噴蚊油/噴蚊霧",
+"Fogging Mosquito"
+],
+"img": "659.webp"
+},
+{
+"n": "660",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616772375.png",
+"lines": [
+"推婴儿车",
+"推嬰兒車",
+"Push Stroller"
+],
+"img": "660.webp"
+},
+{
+"n": "661",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616772412.png",
+"lines": [
+"火鸡",
+"火雞",
+"Turkey"
+],
+"img": "661.webp"
+},
+{
+"n": "662",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616772452.png",
+"lines": [
+"摇小孩/摇孩子入睡",
+"搖小孩/搖孩子入睡",
+"Cradling Baby"
+],
+"img": "662.webp"
+},
+{
+"n": "663",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616772508.png",
+"lines": [
+"背小孩/背孩子/背婴儿",
+"背小孩/背孩子/背嬰兒",
+"Carry Child on Back"
+],
+"img": "663.webp"
+},
+{
+"n": "664",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616772550.png",
+"lines": [
+"卖娘惹糕/卖糕点",
+"賣娘惹糕/賣糕點",
+"Selling Nyonya Cakes/Selling Kuih"
+],
+"img": "664.webp"
+},
+{
+"n": "665",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616772584.png",
+"lines": [
+"卖叻沙",
+"賣叻沙",
+"Selling Laksa"
+],
+"img": "665.webp"
+},
+{
+"n": "666",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616772664.png",
+"lines": [
+"羊角豆/秋葵",
+"羊角豆/秋葵",
+"Okra"
+],
+"img": "666.webp"
+},
+{
+"n": "667",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616772699.png",
+"lines": [
+"救火/灭火",
+"救火/滅火",
+"Firefighting/Extinguishing"
+],
+"img": "667.webp"
+},
+{
+"n": "668",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616772731.png",
+"lines": [
+"巴刹",
+"巴剎",
+"Pasar"
+],
+"img": "668.webp"
+},
+{
+"n": "669",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616772756.png",
+"lines": [
+"糖果",
+"糖果",
+"Candy"
+],
+"img": "669.webp"
+},
+{
+"n": "670",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616772788.png",
+"lines": [
+"花圈/花环",
+"花圈/花環",
+"Wreath"
+],
+"img": "670.webp"
+},
+{
+"n": "671",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616772820.png",
+"lines": [
+"羽毛球",
+"羽毛球",
+"Badminton"
+],
+"img": "671.webp"
+},
+{
+"n": "672",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616773466.png",
+"lines": [
+"挑榴莲/担榴莲",
+"挑榴蓮/擔榴蓮",
+"Carry Durians"
+],
+"img": "672.webp"
+},
+{
+"n": "673",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616773978.png",
+"lines": [
+"开榴莲",
+"開榴蓮",
+"Open Durian"
+],
+"img": "673.webp"
+},
+{
+"n": "674",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616774095.png",
+"lines": [
+"山伯英台/梁山伯与祝英台",
+"山伯英台/梁山伯與祝英台",
+"The Butterfly Lovers"
+],
+"img": "674.webp"
+},
+{
+"n": "675",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616774139.png",
+"lines": [
+"点秋香/唐伯虎点秋香",
+"點秋香/唐伯虎點秋香",
+"Flirting Scholar"
+],
+"img": "675.webp"
+},
+{
+"n": "676",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616774201.png",
+"lines": [
+"钮线/扣",
+"鈕線/扣",
+"Button and Thread"
+],
+"img": "676.webp"
+},
+{
+"n": "677",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616774257.png",
+"lines": [
+"嫖妓/嫖娼/招妓/召妓",
+"嫖妓/嫖娼/招妓/召妓",
+"Soliciting Prostitutes/Go Whoring"
+],
+"img": "677.webp"
+},
+{
+"n": "678",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616774310.png",
+"lines": [
+"吃咖喱饭",
+"吃咖哩飯",
+"Eat Curry Rice"
+],
+"img": "678.webp"
+},
+{
+"n": "679",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616774349.png",
+"lines": [
+"卖面粉糕/卖印度煎饼",
+"賣麵粉糕/賣印度煎餅",
+"Selling Roti Canai"
+],
+"img": "679.webp"
+},
+{
+"n": "680",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616774496.png",
+"lines": [
+"羽球拍",
+"羽球拍",
+"Badminton Racket"
+],
+"img": "680.webp"
+},
+{
+"n": "681",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616774533.png",
+"lines": [
+"草席",
+"草蓆",
+"Straw Mat/Grassmat"
+],
+"img": "681.webp"
+},
+{
+"n": "682",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616774986.png",
+"lines": [
+"公共水喉管/公共水龙头",
+"公共水喉管/公共水龍頭",
+"Public Faucet/Public Water Tap"
+],
+"img": "682.webp"
+},
+{
+"n": "683",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616775048.png",
+"lines": [
+"较索/搅绳子/制作绳子",
+"較索/攪繩子/製作繩子",
+"Stir Rope/Make Rope"
+],
+"img": "683.webp"
+},
+{
+"n": "684",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616775114.png",
+"lines": [
+"舢板载人/坐舢板/小船载人",
+"舢板載人/坐舢板/小船載人",
+"Load People by Sampan/Load People by Boat"
+],
+"img": "684.webp"
+},
+{
+"n": "685",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616775177.png",
+"lines": [
+"吃冰淇淋/吃雪糕",
+"吃冰淇淋/吃雪糕",
+"Eat Ice Cream"
+],
+"img": "685.webp"
+},
+{
+"n": "686",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616775874.png",
+"lines": [
+"赏勋章/颁发勋章/给勋章",
+"賞勳章/頒發勳章/給勳章",
+"Medal Award"
+],
+"img": "686.webp"
+},
+{
+"n": "687",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616775916.png",
+"lines": [
+"洗碗盘/洗碗碟",
+"洗碗盤/洗碗碟",
+"Washing Dishes"
+],
+"img": "687.webp"
+},
+{
+"n": "688",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616775955.png",
+"lines": [
+"万金油/萬用药膏/虎标万金油",
+"万金油/萬用药膏/虎标万金油",
+"Tiger Balm"
+],
+"img": "688.webp"
+},
+{
+"n": "689",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616776830.png",
+"lines": [
+"头痛粉/虎标永安堂头痛粉",
+"頭痛粉/虎標永安堂頭痛粉",
+"Tiger Powder/Headache Powder"
+],
+"img": "689.webp"
+},
+{
+"n": "690",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616776861.png",
+"lines": [
+"药丸/药片",
+"藥丸/藥片",
+"Pills"
+],
+"img": "690.webp"
+},
+{
+"n": "691",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616777152.png",
+"lines": [
+"煲药/煎中药/熬中药",
+"煲藥/煎中藥/熬中藥",
+"Boil Medicine"
+],
+"img": "691.webp"
+},
+{
+"n": "692",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616777196.png",
+"lines": [
+"冲凉/洗澡/沐浴",
+"冲凉/洗澡/沐浴",
+"Bath"
+],
+"img": "692.webp"
+},
+{
+"n": "693",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616777239.png",
+"lines": [
+"沙丁鱼/沙丁鱼罐头",
+"沙丁魚/沙丁魚罐頭",
+"Sardine Can"
+],
+"img": "693.webp"
+},
+{
+"n": "694",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616777277.png",
+"lines": [
+"豆腐",
+"豆腐",
+"Tofu/Bean Curd"
+],
+"img": "694.webp"
+},
+{
+"n": "695",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616777317.png",
+"lines": [
+"小便/小解/尿尿/撒尿",
+"小便/小解/尿尿/撒尿",
+"Pee/Piss"
+],
+"img": "695.webp"
+},
+{
+"n": "696",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616777356.png",
+"lines": [
+"休息",
+"休息",
+"Rest/Break"
+],
+"img": "696.webp"
+},
+{
+"n": "697",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616777392.png",
+"lines": [
+"陀螺/旋轉陀螺",
+"陀螺/旋轉陀螺",
+"Spinning Top/Top"
+],
+"img": "697.webp"
+},
+{
+"n": "698",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616777425.png",
+"lines": [
+"婴孩车/婴儿车",
+"嬰孩車/嬰兒車",
+"Stroller"
+],
+"img": "698.webp"
+},
+{
+"n": "699",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616777463.png",
+"lines": [
+"喝酒",
+"喝酒",
+"Drink Liquor/Drink Wine"
+],
+"img": "699.webp"
+},
+{
+"n": "700",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616777506.png",
+"lines": [
+"马来人搬屋/巫裔搬屋子",
+"馬來人搬屋/巫裔搬屋子",
+"Malay Moving House"
+],
+"img": "700.webp"
+},
+{
+"n": "701",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616777547.png",
+"lines": [
+"醉/醉酒/喝醉酒/醉汉/酗酒",
+"醉/醉酒/喝醉酒/醉漢/酗酒",
+"Drunk/Drunken"
+],
+"img": "701.webp"
+},
+{
+"n": "702",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616778046.png",
+"lines": [
+"喝咖啡",
+"喝咖啡",
+"Drink Coffee"
+],
+"img": "702.webp"
+},
+{
+"n": "703",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616778086.png",
+"lines": [
+"验孕/孕期检查/产前检查",
+"驗孕/孕期檢查/產前檢查",
+"Pregnancy Test/Prenatal Care"
+],
+"img": "703.webp"
+},
+{
+"n": "704",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616849983.png",
+"lines": [
+"读书/阅读/看书",
+"讀書/閱讀/看書",
+"Reading/Study/Read/Learn"
+],
+"img": "704.webp"
+},
+{
+"n": "705",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616851703.png",
+"lines": [
+"卖沙爹",
+"賣沙爹",
+"Selling Satay"
+],
+"img": "705.webp"
+},
+{
+"n": "706",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616851869.png",
+"lines": [
+"茶叶/茶/西郎茶",
+"茶葉/茶/西郎茶",
+"Tea Leaf/Tea"
+],
+"img": "706.webp"
+},
+{
+"n": "707",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616852151.png",
+"lines": [
+"交通圈休息/在路旁休息",
+"交通圈休息/在路旁休息",
+"Rest in Traffic Circle"
+],
+"img": "707.webp"
+},
+{
+"n": "708",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616852571.png",
+"lines": [
+"乘搭电车",
+"乘搭電車",
+"Travel by Tram/Travel by Trolley/Travel by Streetcar"
+],
+"img": "708.webp"
+},
+{
+"n": "709",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616852724.png",
+"lines": [
+"愁闷/懊恼/忧愁/烦乱",
+"愁悶/懊惱/憂愁/煩亂",
+"Upset/Depress"
+],
+"img": "709.webp"
+},
+{
+"n": "710",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616852761.png",
+"lines": [
+"写字/书写",
+"寫字/書寫",
+"Write/Writing"
+],
+"img": "710.webp"
+},
+{
+"n": "711",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616852794.png",
+"lines": [
+"子弹/枪弹",
+"子彈/槍彈",
+"Bullet"
+],
+"img": "711.webp"
+},
+{
+"n": "712",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616852832.png",
+"lines": [
+"交通灯/红绿灯",
+"交通燈/紅綠燈",
+"Traffic Lights"
+],
+"img": "712.webp"
+},
+{
+"n": "713",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616852958.png",
+"lines": [
+"洗头发",
+"洗頭髮",
+"Washing Hair"
+],
+"img": "713.webp"
+},
+{
+"n": "714",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616853148.png",
+"lines": [
+"米",
+"米",
+"Rice"
+],
+"img": "714.webp"
+},
+{
+"n": "715",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616853210.png",
+"lines": [
+"蒸衣",
+"蒸衣",
+"Stream Clothes"
+],
+"img": "715.webp"
+},
+{
+"n": "716",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616853280.png",
+"lines": [
+"电单车相撞/摩托相撞",
+"電單車相撞/摩托相撞",
+"Motorcycles Crashed/Motorcycles Accident"
+],
+"img": "716.webp"
+},
+{
+"n": "717",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616853316.png",
+"lines": [
+"相片/照片",
+"相片/照片",
+"Photo/Photograph"
+],
+"img": "717.webp"
+},
+{
+"n": "718",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616853376.png",
+"lines": [
+"甘蔗",
+"甘蔗",
+"Cane/Sugarcane"
+],
+"img": "718.webp"
+},
+{
+"n": "719",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616853574.png",
+"lines": [
+"卖粟子",
+"賣粟子",
+"Selling Chestnuts"
+],
+"img": "719.webp"
+},
+{
+"n": "720",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616853635.png",
+"lines": [
+"男女亲密/上床/发生性关系",
+"男女親密/上床/發生性關係",
+"Having Sex"
+],
+"img": "720.webp"
+},
+{
+"n": "721",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616853680.png",
+"lines": [
+"电单车汽车相撞/摩托汽车相撞",
+"電單車汽車相撞/摩托汽車相撞",
+"Motorcycle Car Crash Accident"
+],
+"img": "721.webp"
+},
+{
+"n": "722",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616853720.png",
+"lines": [
+"犯人/囚犯",
+"犯人/囚犯",
+"Prisoner/Convict/Criminal"
+],
+"img": "722.webp"
+},
+{
+"n": "723",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616853768.png",
+"lines": [
+"探望犯人/探望囚犯",
+"探望犯人/探望囚犯",
+"Visit Prisoners"
+],
+"img": "723.webp"
+},
+{
+"n": "724",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616854898.png",
+"lines": [
+"弄头发/理发/饰发/整理头发",
+"弄頭髮/理髮/飾發/整理頭髮",
+"Hairdressing"
+],
+"img": "724.webp"
+},
+{
+"n": "725",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616854951.png",
+"lines": [
+"油/食油",
+"油/食油",
+"Oil/Cooking Oil"
+],
+"img": "725.webp"
+},
+{
+"n": "726",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616854991.png",
+"lines": [
+"铜币/硬币/钱币",
+"銅幣/硬幣/錢幣",
+"Coin/Syiling"
+],
+"img": "726.webp"
+},
+{
+"n": "727",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616855019.png",
+"lines": [
+"油灯",
+"油燈",
+"Oil Lamp"
+],
+"img": "727.webp"
+},
+{
+"n": "728",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616855044.png",
+"lines": [
+"化妆品",
+"化妝品",
+"Cosmetic"
+],
+"img": "728.webp"
+},
+{
+"n": "729",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616855088.png",
+"lines": [
+"爆胎/轮胎破裂",
+"爆胎/輪胎破裂",
+"Tire Puncture/Flat Tire"
+],
+"img": "729.webp"
+},
+{
+"n": "730",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616855117.png",
+"lines": [
+"指挥交通",
+"指揮交通",
+"Directing Traffic"
+],
+"img": "730.webp"
+},
+{
+"n": "731",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616855171.png",
+"lines": [
+"裁缝",
+"裁縫",
+"Tailor"
+],
+"img": "731.webp"
+},
+{
+"n": "732",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616855205.png",
+"lines": [
+"砍椰树",
+"砍椰樹",
+"Cut Coconut Trees"
+],
+"img": "732.webp"
+},
+{
+"n": "733",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616855265.png",
+"lines": [
+"吸烟斗/抽烟斗",
+"吸煙斗/抽煙斗",
+"Smoke a Pipe"
+],
+"img": "733.webp"
+},
+{
+"n": "734",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616855552.png",
+"lines": [
+"卖烧肉",
+"賣燒肉",
+"Selling Roasted Pork"
+],
+"img": "734.webp"
+},
+{
+"n": "735",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616855592.png",
+"lines": [
+"保温瓶/熱水瓶/保温杯",
+"保温瓶/熱水瓶/保温杯",
+"Thermos/Insulated Cup"
+],
+"img": "735.webp"
+},
+{
+"n": "736",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616856375.png",
+"lines": [
+"小鹅吃草",
+"小鵝吃草",
+"Gosling Eat Grass"
+],
+"img": "736.webp"
+},
+{
+"n": "737",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616856409.png",
+"lines": [
+"卖蔬菜",
+"賣蔬菜",
+"Selling Vegetables"
+],
+"img": "737.webp"
+},
+{
+"n": "738",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616857458.png",
+"lines": [
+"捉鸦片/扫毒/捉毒贩/捉瘾君子",
+"捉鴉片/掃毒/捉毒販/捉癮君子",
+"Catch Opium/Arrest Drug Driminals/Drug Elimination"
+],
+"img": "738.webp"
+},
+{
+"n": "739",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616857510.png",
+"lines": [
+"招牌/店标",
+"招牌/店標",
+"Sign/Shop Sign/Signboard"
+],
+"img": "739.webp"
+},
+{
+"n": "740",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616857564.png",
+"lines": [
+"鱼贩",
+"魚販",
+"Fishmonger/Fish Seller"
+],
+"img": "740.webp"
+},
+{
+"n": "741",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616857595.png",
+"lines": [
+"手推车",
+"手推車",
+"Trolley"
+],
+"img": "741.webp"
+},
+{
+"n": "742",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616857632.png",
+"lines": [
+"地毯",
+"地毯",
+"Carpet"
+],
+"img": "742.webp"
+},
+{
+"n": "743",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616857683.png",
+"lines": [
+"卖水果",
+"賣水果",
+"Selling Fruits"
+],
+"img": "743.webp"
+},
+{
+"n": "744",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616857725.png",
+"lines": [
+"卖冰/卖冰块",
+"賣冰/賣冰塊",
+"Selling Ice"
+],
+"img": "744.webp"
+},
+{
+"n": "745",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616857799.png",
+"lines": [
+"拔牙",
+"拔牙",
+"Dental Extraction/To Extract Teeth"
+],
+"img": "745.webp"
+},
+{
+"n": "746",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616857895.png",
+"lines": [
+"卖饭/扁担饭/经济饭",
+"賣飯/扁擔飯/經濟飯",
+"Sell Rice"
+],
+"img": "746.webp"
+},
+{
+"n": "747",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616858154.png",
+"lines": [
+"搽口红/涂口红",
+"搽口紅/塗口紅",
+"Lipstick/Put Lipstick/Wear Lipstick"
+],
+"img": "747.webp"
+},
+{
+"n": "748",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616858585.png",
+"lines": [
+"裙子/短裙",
+"裙子/短裙",
+"Skirt/Dress"
+],
+"img": "748.webp"
+},
+{
+"n": "749",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616858621.png",
+"lines": [
+"卖福建面",
+"賣福建面",
+"Selling Hokkien Mee"
+],
+"img": "749.webp"
+},
+{
+"n": "750",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616858668.png",
+"lines": [
+"炒果条/炒粿条",
+"炒果条/炒粿條",
+"Char Koey Teow/Char Kuay Teow/Char Kway Teow"
+],
+"img": "750.webp"
+},
+{
+"n": "751",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616858797.png",
+"lines": [
+"铁路/火车路",
+"鐵路/火車路",
+"Railway"
+],
+"img": "751.webp"
+},
+{
+"n": "752",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616858843.png",
+"lines": [
+"捉鱼/传统捕鱼",
+"捉魚/傳統捕魚",
+"Traditional Fishing"
+],
+"img": "752.webp"
+},
+{
+"n": "753",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616858872.png",
+"lines": [
+"盐",
+"鹽",
+"Salt"
+],
+"img": "753.webp"
+},
+{
+"n": "754",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616858899.png",
+"lines": [
+"锄头",
+"鋤頭",
+"Hoe"
+],
+"img": "754.webp"
+},
+{
+"n": "755",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616858932.png",
+"lines": [
+"挤牛奶",
+"擠牛奶",
+"Milk The Cows"
+],
+"img": "755.webp"
+},
+{
+"n": "756",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616858975.png",
+"lines": [
+"大光灯网心/汽灯灯芯",
+"大光燈網心/汽燈燈芯",
+"Gas Lamp Wick"
+],
+"img": "756.webp"
+},
+{
+"n": "757",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616859002.png",
+"lines": [
+"眼睛/眼",
+"眼睛/眼",
+"Eyes"
+],
+"img": "757.webp"
+},
+{
+"n": "758",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616859023.png",
+"lines": [
+"偷东西",
+"偷東西",
+"Stealing"
+],
+"img": "758.webp"
+},
+{
+"n": "759",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616859066.png",
+"lines": [
+"烟薰房/芳房/橡胶加工厂",
+"煙薰房/芳房/橡膠加工廠",
+"Plastic Factory/Rubber Factory"
+],
+"img": "759.webp"
+},
+{
+"n": "760",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616859098.png",
+"lines": [
+"花盆/花钵",
+"花盆/花缽",
+"Flowerpot"
+],
+"img": "760.webp"
+},
+{
+"n": "761",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616859200.png",
+"lines": [
+"牛羊过路",
+"牛羊過路",
+"Cow and Goat Cross the Road"
+],
+"img": "761.webp"
+},
+{
+"n": "762",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616859241.png",
+"lines": [
+"鸡鸭过路",
+"雞鴨過路",
+"Chicken and Ducks Cross the Road"
+],
+"img": "762.webp"
+},
+{
+"n": "763",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616859301.png",
+"lines": [
+"老鹰/鸢",
+"老鷹/鳶",
+"Eagle/Hawk"
+],
+"img": "763.webp"
+},
+{
+"n": "764",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616859331.png",
+"lines": [
+"鳖/甲鱼/龟鳖",
+"鱉/甲魚/龜鱉",
+"Turtle"
+],
+"img": "764.webp"
+},
+{
+"n": "765",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616859357.png",
+"lines": [
+"羊吃草",
+"羊吃草",
+"Sheep Grazing"
+],
+"img": "765.webp"
+},
+{
+"n": "766",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616859396.png",
+"lines": [
+"牛吃草",
+"牛吃草",
+"Cow Grazing"
+],
+"img": "766.webp"
+},
+{
+"n": "767",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616859444.png",
+"lines": [
+"马来人行礼/回教徒行握手礼",
+"馬來人行禮/回教徒行握手禮",
+"Muslim Greeting/Malays Greeting/Islamic Greeting/Salaam"
+],
+"img": "767.webp"
+},
+{
+"n": "768",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616861664.png",
+"lines": [
+"马来人祈祷/回教徒祷告/穆斯林祷告",
+"馬來人祈禱/回教徒禱告/穆斯林禱告",
+"Muslims Pray/Sembahyang"
+],
+"img": "768.webp"
+},
+{
+"n": "769",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616861710.png",
+"lines": [
+"钳子",
+"鉗子",
+"Pliers"
+],
+"img": "769.webp"
+},
+{
+"n": "770",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616861800.png",
+"lines": [
+"菲林/相机胶片/底片",
+"菲林/相機膠片/底片",
+"Camera Film/Negative"
+],
+"img": "770.webp"
+},
+{
+"n": "771",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616861832.png",
+"lines": [
+"钓鱼",
+"釣魚",
+"Fishing"
+],
+"img": "771.webp"
+},
+{
+"n": "772",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616861871.png",
+"lines": [
+"打鸟/弹弓打鸟",
+"打鳥/彈弓打鳥",
+"Shot Birds"
+],
+"img": "772.webp"
+},
+{
+"n": "773",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616861908.png",
+"lines": [
+"鸡罩/鸡鸭笼",
+"雞罩/雞鴨籠",
+"Chicken Hood"
+],
+"img": "773.webp"
+},
+{
+"n": "774",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616861950.png",
+"lines": [
+"三轮车",
+"三輪車",
+"Pedicab"
+],
+"img": "774.webp"
+},
+{
+"n": "775",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616862134.png",
+"lines": [
+"桅/桅杆/船桅",
+"桅/桅杆/船桅",
+"Mast/Sail Ship Masts"
+],
+"img": "775.webp"
+},
+{
+"n": "776",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616862170.png",
+"lines": [
+"见面/会见/会面/会晤",
+"見面/會見/會面/會晤",
+"Meet"
+],
+"img": "776.webp"
+},
+{
+"n": "777",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616862210.png",
+"lines": [
+"腌制鱼",
+"醃製魚",
+"Marinate Fish"
+],
+"img": "777.webp"
+},
+{
+"n": "778",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616862297.png",
+"lines": [
+"纸袋/购物袋",
+"紙袋/購物袋",
+"Paper Bag/Shopping Bag"
+],
+"img": "778.webp"
+},
+{
+"n": "779",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616862345.png",
+"lines": [
+"菜篮/篮子",
+"菜籃/籃子",
+"Basket"
+],
+"img": "779.webp"
+},
+{
+"n": "780",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616862384.png",
+"lines": [
+"鱼丸",
+"魚丸",
+"Fish Ball"
+],
+"img": "780.webp"
+},
+{
+"n": "781",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616862421.png",
+"lines": [
+"刺绣/针织",
+"刺繡/針織",
+"Embroidery/Knitting"
+],
+"img": "781.webp"
+},
+{
+"n": "782",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616862458.png",
+"lines": [
+"徽章",
+"徽章",
+"Badge"
+],
+"img": "782.webp"
+},
+{
+"n": "783",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616862502.png",
+"lines": [
+"担鱼",
+"擔魚",
+"Shouldering Fishes"
+],
+"img": "783.webp"
+},
+{
+"n": "784",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616862574.png",
+"lines": [
+"冰鱼/冷冻鱼",
+"冰魚/冷凍魚",
+"Freezing Fish"
+],
+"img": "784.webp"
+},
+{
+"n": "785",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616862606.png",
+"lines": [
+"晒鱼干",
+"曬魚乾",
+"Drying Fish"
+],
+"img": "785.webp"
+},
+{
+"n": "786",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616862644.png",
+"lines": [
+"载猪",
+"載豬",
+"Carrying Pig"
+],
+"img": "786.webp"
+},
+{
+"n": "787",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616862683.png",
+"lines": [
+"猪生病",
+"豬生病",
+"Pigs Sick"
+],
+"img": "787.webp"
+},
+{
+"n": "788",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616862712.png",
+"lines": [
+"鹦鹉",
+"鸚鵡",
+"Parrot"
+],
+"img": "788.webp"
+},
+{
+"n": "789",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616862744.png",
+"lines": [
+"接吻/亲嘴",
+"接吻/親嘴",
+"Kiss"
+],
+"img": "789.webp"
+},
+{
+"n": "790",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616862788.png",
+"lines": [
+"扛鱼",
+"扛魚",
+"Carrying Fish"
+],
+"img": "790.webp"
+},
+{
+"n": "791",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616862836.png",
+"lines": [
+"切鱼",
+"切魚",
+"Cutting Fish"
+],
+"img": "791.webp"
+},
+{
+"n": "792",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616862902.png",
+"lines": [
+"红香烟/云烟",
+"紅香煙/雲煙",
+"Chinese Cigarette"
+],
+"img": "792.webp"
+},
+{
+"n": "793",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616862934.png",
+"lines": [
+"银盾",
+"銀盾",
+"Badge"
+],
+"img": "793.webp"
+},
+{
+"n": "794",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616862967.png",
+"lines": [
+"签筒/签",
+"籤筒/簽",
+"Chinese Fortune Stick"
+],
+"img": "794.webp"
+},
+{
+"n": "795",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616862998.png",
+"lines": [
+"信纸",
+"信紙",
+"Paper/Letter Paper"
+],
+"img": "795.webp"
+},
+{
+"n": "796",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616863026.png",
+"lines": [
+"卖红毛丹",
+"賣紅毛丹",
+"Selling Rambutan"
+],
+"img": "796.webp"
+},
+{
+"n": "797",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616863056.png",
+"lines": [
+"大减价/大平价",
+"大減價/大平價",
+"Clearance/Grand Sale"
+],
+"img": "797.webp"
+},
+{
+"n": "798",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616863085.png",
+"lines": [
+"剥椰子壳",
+"剝椰子殼",
+"Peel Coconut Shell"
+],
+"img": "798.webp"
+},
+{
+"n": "799",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616863115.png",
+"lines": [
+"跌椰/椰子掉落",
+"跌椰/椰子掉落",
+"Coconut Drop"
+],
+"img": "799.webp"
+},
+{
+"n": "800",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616863353.png",
+"lines": [
+"打电报/发送电报",
+"打電報/發送電報",
+"Send a Telegram"
+],
+"img": "800.webp"
+},
+{
+"n": "801",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616863500.png",
+"lines": [
+"听收音机",
+"聽收音機",
+"Listen to Radio"
+],
+"img": "801.webp"
+},
+{
+"n": "802",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616863540.png",
+"lines": [
+"添油灯",
+"添油燈",
+"Fill Oil Lamp"
+],
+"img": "802.webp"
+},
+{
+"n": "803",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616863585.png",
+"lines": [
+"亚答树",
+"亞答樹",
+"Atap Tree"
+],
+"img": "803.webp"
+},
+{
+"n": "804",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616863651.png",
+"lines": [
+"球/篮球/足球/排球",
+"球/籃球/足球/排球",
+"Ball"
+],
+"img": "804.webp"
+},
+{
+"n": "805",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616863699.png",
+"lines": [
+"载树桐/运送树桐",
+"載樹桐/運送樹桐",
+"Load Trees by Lorry/Load Woods"
+],
+"img": "805.webp"
+},
+{
+"n": "806",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616863737.png",
+"lines": [
+"道士",
+"道士",
+"Taoist Priest"
+],
+"img": "806.webp"
+},
+{
+"n": "807",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616863780.png",
+"lines": [
+"炸石/把岩石炸碎/岩石爆破",
+"炸石/把岩石炸碎/岩石爆破",
+"Rock Blasting"
+],
+"img": "807.webp"
+},
+{
+"n": "808",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616863820.png",
+"lines": [
+"敲碎石头",
+"敲碎石頭",
+"Break Stones"
+],
+"img": "808.webp"
+},
+{
+"n": "809",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616863876.png",
+"lines": [
+"内裤/三角裤/平角裤",
+"內褲/三角褲/平角褲",
+"Underpants/Underwear/Briefs/Boxer Shorts"
+],
+"img": "809.webp"
+},
+{
+"n": "810",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616863973.png",
+"lines": [
+"卖玉蜀黍/卖玉米",
+"賣玉蜀黍/賣玉米",
+"Selling Corn/Selling Jagung"
+],
+"img": "810.webp"
+},
+{
+"n": "811",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616864017.png",
+"lines": [
+"病人/患者/病者/病患",
+"病人/患者/病者/病患",
+"Patient/Sick Person"
+],
+"img": "811.webp"
+},
+{
+"n": "812",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616864056.png",
+"lines": [
+"犁",
+"犁",
+"Plow/Plough"
+],
+"img": "812.webp"
+},
+{
+"n": "813",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616864438.png",
+"lines": [
+"指甲剪",
+"指甲剪",
+"Nail Scissors"
+],
+"img": "813.webp"
+},
+{
+"n": "814",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616864468.png",
+"lines": [
+"牙刷",
+"牙刷",
+"Toothbrush"
+],
+"img": "814.webp"
+},
+{
+"n": "815",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616864505.png",
+"lines": [
+"送礼/送礼物",
+"送禮/送禮物",
+"Give Present/Send Gifts"
+],
+"img": "815.webp"
+},
+{
+"n": "816",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616864575.png",
+"lines": [
+"面巾/毛巾",
+"面巾/毛巾",
+"Towel"
+],
+"img": "816.webp"
+},
+{
+"n": "817",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616864616.png",
+"lines": [
+"几/茶几/桌几",
+"幾/茶几/桌幾",
+"Side Table/Tea Table/Stool"
+],
+"img": "817.webp"
+},
+{
+"n": "818",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616864646.png",
+"lines": [
+"卖面包",
+"賣麵包",
+"Selling Bread"
+],
+"img": "818.webp"
+},
+{
+"n": "819",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616864676.png",
+"lines": [
+"和尚/僧侣",
+"和尚/僧侶",
+"Monk"
+],
+"img": "819.webp"
+},
+{
+"n": "820",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616864720.png",
+"lines": [
+"电灯泡",
+"電燈泡",
+"Bulb"
+],
+"img": "820.webp"
+},
+{
+"n": "821",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616864754.png",
+"lines": [
+"日历/万年历/月历",
+"日曆/萬年曆/月曆",
+"Calendar"
+],
+"img": "821.webp"
+},
+{
+"n": "822",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616864805.png",
+"lines": [
+"铁桥/桥",
+"鐵橋/橋",
+"Iron Bridge/Bridge"
+],
+"img": "822.webp"
+},
+{
+"n": "823",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616864866.png",
+"lines": [
+"簸箕/畚箕/垃圾铲",
+"簸箕/畚箕/垃圾鏟",
+"Dustpan"
+],
+"img": "823.webp"
+},
+{
+"n": "824",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616864914.png",
+"lines": [
+"墓碑/坟墓/墓石",
+"墓碑/墳墓/墓石",
+"Tomb/Gravestone/Tombstone"
+],
+"img": "824.webp"
+},
+{
+"n": "825",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616864938.png",
+"lines": [
+"新娘",
+"新娘",
+"Bride"
+],
+"img": "825.webp"
+},
+{
+"n": "826",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616864966.png",
+"lines": [
+"青菜/蔬菜",
+"青菜/蔬菜",
+"Vegetables"
+],
+"img": "826.webp"
+},
+{
+"n": "827",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616865013.png",
+"lines": [
+"添汽油/加油",
+"添汽油/加油",
+"Refuel/Car Refuel/Fill Petrol"
+],
+"img": "827.webp"
+},
+{
+"n": "828",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616865055.png",
+"lines": [
+"修理汽车/汽车维修",
+"修理汽車/汽車維修",
+"Repairing Car/Car Maintenance"
+],
+"img": "828.webp"
+},
+{
+"n": "829",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616865076.png",
+"lines": [
+"西瓜",
+"西瓜",
+"Watermelon"
+],
+"img": "829.webp"
+},
+{
+"n": "830",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1618075039.png",
+"lines": [
+"理发/剪头发",
+"理髮/剪頭髮",
+"Haircut/Cut Hair"
+],
+"img": "830.webp"
+},
+{
+"n": "831",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616865138.png",
+"lines": [
+"飞机",
+"飛機",
+"Airplane/Aeroplane"
+],
+"img": "831.webp"
+},
+{
+"n": "832",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616938548.png",
+"lines": [
+"请帖/请柬",
+"請帖/請柬",
+"Invitation Card"
+],
+"img": "832.webp"
+},
+{
+"n": "833",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616938658.png",
+"lines": [
+"妓女/娼妓/卖淫女/青楼女子/婊子",
+"妓女/娼妓/賣婬女/青樓女子/婊子",
+"Prostitute/Whore"
+],
+"img": "833.webp"
+},
+{
+"n": "834",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616938698.png",
+"lines": [
+"脚车",
+"腳車",
+"Bicycle/Bike"
+],
+"img": "834.webp"
+},
+{
+"n": "835",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616938739.png",
+"lines": [
+"火钳",
+"火鉗",
+"Fire Tongs"
+],
+"img": "835.webp"
+},
+{
+"n": "836",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616938831.png",
+"lines": [
+"结婚车/新郎车/新娘车",
+"結婚車/新郎車/新娘車",
+"Married Car"
+],
+"img": "836.webp"
+},
+{
+"n": "837",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616938893.png",
+"lines": [
+"乳罩/胸罩/奶罩/内衣/女性内衣",
+"乳罩/胸罩/奶罩/內衣/女性內衣",
+"Bra/Underwear/Brassiere"
+],
+"img": "837.webp"
+},
+{
+"n": "838",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616938947.png",
+"lines": [
+"艳舞",
+"艷舞",
+"Pole Dance/Hot Dance"
+],
+"img": "838.webp"
+},
+{
+"n": "839",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616938984.png",
+"lines": [
+"吃香蕉",
+"吃香蕉",
+"Eat Banana"
+],
+"img": "839.webp"
+},
+{
+"n": "840",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939022.png",
+"lines": [
+"天九牌",
+"天九牌",
+"Tin Kau Tiles/Tien Gow"
+],
+"img": "840.webp"
+},
+{
+"n": "841",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939051.png",
+"lines": [
+"蝎子蜈蚣",
+"蝎子蜈蚣",
+"Scorpion and Centipede"
+],
+"img": "841.webp"
+},
+{
+"n": "842",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939081.png",
+"lines": [
+"闹钟",
+"鬧鐘",
+"Alarm Clock"
+],
+"img": "842.webp"
+},
+{
+"n": "843",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939113.png",
+"lines": [
+"玩扑克牌",
+"玩撲克牌",
+"Playing Poker"
+],
+"img": "843.webp"
+},
+{
+"n": "844",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939151.png",
+"lines": [
+"罐装炼奶/红字牛奶/炼乳",
+"罐裝煉奶/紅字牛奶/煉乳",
+"Condensed Milk"
+],
+"img": "844.webp"
+},
+{
+"n": "845",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939194.png",
+"lines": [
+"小孩冲凉/给孩子洗澡/给婴儿洗澡",
+"小孩沖涼/給孩子洗澡/給嬰兒洗澡",
+"Bathe Baby/Bathe Child/Infant Bathing"
+],
+"img": "845.webp"
+},
+{
+"n": "846",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939217.png",
+"lines": [
+"风扇",
+"風扇",
+"Fan"
+],
+"img": "846.webp"
+},
+{
+"n": "847",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939244.png",
+"lines": [
+"芋头",
+"芋頭",
+"Taro"
+],
+"img": "847.webp"
+},
+{
+"n": "848",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939289.png",
+"lines": [
+"鸭交配",
+"鴨交配",
+"Duck Mating"
+],
+"img": "848.webp"
+},
+{
+"n": "849",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939340.png",
+"lines": [
+"鸡交配",
+"雞交配",
+"Chicken Mating"
+],
+"img": "849.webp"
+},
+{
+"n": "850",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939392.png",
+"lines": [
+"路灯/街灯",
+"路燈/街燈",
+"Road Lamp/Street Light/Lamp Post"
+],
+"img": "850.webp"
+},
+{
+"n": "851",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939426.png",
+"lines": [
+"深山/山",
+"深山/山",
+"Mountain/Hill"
+],
+"img": "851.webp"
+},
+{
+"n": "852",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939459.png",
+"lines": [
+"尼姑/道姑/比丘尼",
+"尼姑/道姑/比丘尼",
+"Nun"
+],
+"img": "852.webp"
+},
+{
+"n": "853",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939502.png",
+"lines": [
+"喝柑水/喝橙汽水",
+"喝柑水/喝橙汽水",
+"Drink Orange Soft Drink/Drink Orange Juice"
+],
+"img": "853.webp"
+},
+{
+"n": "854",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939528.png",
+"lines": [
+"铁钉",
+"鐵釘",
+"Nails"
+],
+"img": "854.webp"
+},
+{
+"n": "855",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939555.png",
+"lines": [
+"升旗山",
+"升旗山",
+"Penang Hill"
+],
+"img": "855.webp"
+},
+{
+"n": "856",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939600.png",
+"lines": [
+"衣架",
+"衣架",
+"Hanger/Clothes Stand"
+],
+"img": "856.webp"
+},
+{
+"n": "857",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939644.png",
+"lines": [
+"播音机/扩音器/扬声器",
+"播音機/擴音器/揚聲器",
+"Broadcasting Machine/Amplifier/Speaker"
+],
+"img": "857.webp"
+},
+{
+"n": "858",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939707.png",
+"lines": [
+"轮船/货船/邮轮",
+"輪船/貨船/郵輪",
+"Steamship/Cruises/Cargo Ship"
+],
+"img": "858.webp"
+},
+{
+"n": "859",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939749.png",
+"lines": [
+"挂钟",
+"掛鐘",
+"Wall Clock"
+],
+"img": "859.webp"
+},
+{
+"n": "860",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939789.png",
+"lines": [
+"偷鸡鸭",
+"偷雞鴨",
+"Steal Chicken and Duck"
+],
+"img": "860.webp"
+},
+{
+"n": "861",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939845.png",
+"lines": [
+"阿士保罗/阿斯匹林/特效止痛药",
+"阿士保羅/阿斯匹林/特效止痛藥",
+"Aspirin/Paracetamol/Panadol"
+],
+"img": "861.webp"
+},
+{
+"n": "862",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939905.png",
+"lines": [
+"发油/头油",
+"髮油/頭油",
+"Hair Oil/Pomade/Brylcreem"
+],
+"img": "862.webp"
+},
+{
+"n": "863",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939938.png",
+"lines": [
+"驱蚊香",
+"驅蚊香",
+"Mosquito Coil"
+],
+"img": "863.webp"
+},
+{
+"n": "864",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616940630.png",
+"lines": [
+"豆芽",
+"豆芽",
+"Bean Sprouts"
+],
+"img": "864.webp"
+},
+{
+"n": "865",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616940668.png",
+"lines": [
+"黏纸袋/糊纸袋/制作纸袋",
+"黏紙袋/糊紙袋/製作紙袋",
+"Make Paper Bag"
+],
+"img": "865.webp"
+},
+{
+"n": "866",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616940703.png",
+"lines": [
+"香烟盒",
+"香煙盒",
+"Cigarette Case"
+],
+"img": "866.webp"
+},
+{
+"n": "867",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616940730.png",
+"lines": [
+"鱼钩",
+"魚鉤",
+"Fishhook"
+],
+"img": "867.webp"
+},
+{
+"n": "868",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616940756.png",
+"lines": [
+"电烫斗",
+"電燙斗",
+"Iron"
+],
+"img": "868.webp"
+},
+{
+"n": "869",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616940791.png",
+"lines": [
+"短裤",
+"短褲",
+"Short Pants"
+],
+"img": "869.webp"
+},
+{
+"n": "870",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616940824.png",
+"lines": [
+"吹口琴",
+"吹口琴",
+"Play Harmonica"
+],
+"img": "870.webp"
+},
+{
+"n": "871",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616941028.png",
+"lines": [
+"刮脸/刮胡须/剃胡须",
+"刮臉/刮鬍須/剃鬍鬚",
+"Shaving Beard"
+],
+"img": "871.webp"
+},
+{
+"n": "872",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616941055.png",
+"lines": [
+"花生",
+"花生",
+"Peanut/Nut"
+],
+"img": "872.webp"
+},
+{
+"n": "873",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616941160.png",
+"lines": [
+"茄子/茄/矮瓜",
+"茄子/茄/矮瓜",
+"Eggplant"
+],
+"img": "873.webp"
+},
+{
+"n": "874",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616941397.png",
+"lines": [
+"蚝/蚵仔",
+"蠔/蚵仔",
+"Oyster"
+],
+"img": "874.webp"
+},
+{
+"n": "875",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616941429.png",
+"lines": [
+"四脚蛇/蜥蜴",
+"四腳蛇/蜥蜴",
+"Lizard"
+],
+"img": "875.webp"
+},
+{
+"n": "876",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616941467.png",
+"lines": [
+"猫咬老鼠/猫捉老鼠",
+"貓咬老鼠/貓捉老鼠",
+"Cat Catch Mouse"
+],
+"img": "876.webp"
+},
+{
+"n": "877",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616941501.png",
+"lines": [
+"狗吠",
+"狗吠",
+"Dog Yelping/Dogs Bark"
+],
+"img": "877.webp"
+},
+{
+"n": "878",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616941534.png",
+"lines": [
+"剃刀",
+"剃刀",
+"Razor"
+],
+"img": "878.webp"
+},
+{
+"n": "879",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616941570.png",
+"lines": [
+"狗咬人/狗咬伤人",
+"狗咬人/狗咬傷人",
+"Dogs Bite/Dog Bites Man"
+],
+"img": "879.webp"
+},
+{
+"n": "880",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616941604.png",
+"lines": [
+"公鸡啼鸣",
+"公雞啼鳴",
+"Rooster Crowing/Male Chicken Crowing"
+],
+"img": "880.webp"
+},
+{
+"n": "881",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616941712.png",
+"lines": [
+"鱼油/鱼肝油",
+"魚油/魚肝油",
+"Cod Liver Oil"
+],
+"img": "881.webp"
+},
+{
+"n": "882",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616941769.png",
+"lines": [
+"手表/腕表",
+"手錶/腕錶",
+"Wristwatch/Watch"
+],
+"img": "882.webp"
+},
+{
+"n": "883",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616941797.png",
+"lines": [
+"浴巾",
+"浴巾",
+"Bath Towel"
+],
+"img": "883.webp"
+},
+{
+"n": "884",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616941826.png",
+"lines": [
+"铜锁/锁头",
+"銅鎖/鎖頭",
+"Lock"
+],
+"img": "884.webp"
+},
+{
+"n": "885",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616941925.png",
+"lines": [
+"磅/弹簧磅/指针磅/体重秤/量重器",
+"磅/彈簧磅/指針​​磅/體重秤/量重器",
+"Weight Scale"
+],
+"img": "885.webp"
+},
+{
+"n": "886",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616941974.png",
+"lines": [
+"士兵/军人/战士/卒",
+"士兵/軍人/戰士/卒",
+"Soldier/Army"
+],
+"img": "886.webp"
+},
+{
+"n": "887",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616942012.png",
+"lines": [
+"警察署/警察局",
+"警察署/警察局",
+"Police Station"
+],
+"img": "887.webp"
+},
+{
+"n": "888",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1618075017.png",
+"lines": [
+"爽身粉",
+"爽身粉",
+"Talcum Powder"
+],
+"img": "888.webp"
+},
+{
+"n": "889",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616942070.png",
+"lines": [
+"补轮胎",
+"補輪胎",
+"Flat Tire Repairs/Fix Tire"
+],
+"img": "889.webp"
+},
+{
+"n": "890",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616942116.png",
+"lines": [
+"腊肠/香肠",
+"臘腸/香腸",
+"Chinese Sausage/Sausage"
+],
+"img": "890.webp"
+},
+{
+"n": "891",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616942141.png",
+"lines": [
+"打羽毛球",
+"打羽毛球",
+"Play Badminton"
+],
+"img": "891.webp"
+},
+{
+"n": "892",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616942241.png",
+"lines": [
+"蝴蝶领结",
+"蝴蝶領結",
+"Bow Tie"
+],
+"img": "892.webp"
+},
+{
+"n": "893",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616942269.png",
+"lines": [
+"领带",
+"領帶",
+"Necktie"
+],
+"img": "893.webp"
+},
+{
+"n": "894",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616942315.png",
+"lines": [
+"旅行袋/行李袋",
+"旅行袋/行李袋",
+"Travel Bag/Duffel Bag"
+],
+"img": "894.webp"
+},
+{
+"n": "895",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616942363.png",
+"lines": [
+"手镜",
+"手鏡",
+"Hand Mirror"
+],
+"img": "895.webp"
+},
+{
+"n": "896",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616942550.png",
+"lines": [
+"金裤带/金腰带/冠军腰带",
+"金褲帶/金腰帶/冠軍腰帶",
+"Gold Belt/Championship Belt"
+],
+"img": "896.webp"
+},
+{
+"n": "897",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616942579.png",
+"lines": [
+"骰子/色子",
+"骰子/色子",
+"Dice"
+],
+"img": "897.webp"
+},
+{
+"n": "898",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616942616.png",
+"lines": [
+"水鸟/海鸟",
+"水鳥/海鳥",
+"Seabirds/Waterfowl"
+],
+"img": "898.webp"
+},
+{
+"n": "899",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616942649.png",
+"lines": [
+"纺织/纺纱/织布",
+"紡織/紡紗/織布",
+"Spinning/Spin"
+],
+"img": "899.webp"
+},
+{
+"n": "900",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1618075362.png",
+"lines": [
+"瞎子/盲人",
+"瞎子/盲人",
+"Blind/Blindman"
+],
+"img": "900.webp"
+},
+{
+"n": "901",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1618108038.png",
+"lines": [
+"乒乓/乒乓球",
+"乒乓/乒乓球",
+"Ping Pong/Ping Pong Ball/Table Tennis"
+],
+"img": "901.webp"
+},
+{
+"n": "902",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1618108113.png",
+"lines": [
+"粿条",
+"粿條",
+"Kuay Teow/Kway Teow"
+],
+"img": "902.webp"
+},
+{
+"n": "903",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1618108189.png",
+"lines": [
+"金戒指/戒指/钻石戒指",
+"金戒指/戒指/鑽石戒指",
+"Ring/Gold Ring/Diamond Ring"
+],
+"img": "903.webp"
+},
+{
+"n": "904",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1618108393.png",
+"lines": [
+"老鼠偷吃",
+"老鼠偷吃",
+"Rats Eating/Mouse Eating"
+],
+"img": "904.webp"
+},
+{
+"n": "905",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1618108460.png",
+"lines": [
+"猫吃食物/猫吃东西/猫吃饲料",
+"貓吃食物/貓吃東西/貓吃飼料",
+"Cat Eating"
+],
+"img": "905.webp"
+},
+{
+"n": "906",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1618108539.png",
+"lines": [
+"筏/筏子/竹筏/木筏",
+"筏/筏子/竹筏/木筏",
+"Raft",
+"Raft"
+],
+"img": "906.webp"
+},
+{
+"n": "907",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1618108592.png",
+"lines": [
+"护士/看护",
+"護士/看護",
+"Nurse"
+],
+"img": "907.webp"
+},
+{
+"n": "908",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1618108672.png",
+"lines": [
+"塔/宝塔/佛骨堂",
+"塔/寶塔/佛骨堂",
+"Pagoda"
+],
+"img": "908.webp"
+},
+{
+"n": "909",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1618108762.png",
+"lines": [
+"塚/公冢",
+"塚/公塚",
+"Burial Mound/Grave Mound/Burial Hill"
+],
+"img": "909.webp"
+},
+{
+"n": "910",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619265067.png",
+"lines": [
+"面/面条",
+"麵/麵條",
+"Noodle"
+],
+"img": "910.webp"
+},
+{
+"n": "911",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619265506.png",
+"lines": [
+"加令鸟/八哥鸟/鹦鹆",
+"加令鳥/八哥鳥/鸚鵒",
+"Crested Myna/Starling Bird"
+],
+"img": "911.webp"
+},
+{
+"n": "912",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619268736.png",
+"lines": [
+"摇篮",
+"搖籃",
+"Cradle"
+],
+"img": "912.webp"
+},
+{
+"n": "913",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619268779.png",
+"lines": [
+"乞丐/叫化子",
+"乞丐/叫化子",
+"Beggar"
+],
+"img": "913.webp"
+},
+{
+"n": "914",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619268822.png",
+"lines": [
+"蛋糕/鸡蛋糕/糕点",
+"蛋糕/雞蛋糕/糕點",
+"Cake/Bahulu"
+],
+"img": "914.webp"
+},
+{
+"n": "915",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619268858.png",
+"lines": [
+"修理电单车",
+"修理電單車",
+"Repairing Motorcycle"
+],
+"img": "915.webp"
+},
+{
+"n": "916",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619268890.png",
+"lines": [
+"姜",
+"姜",
+"Ginger"
+],
+"img": "916.webp"
+},
+{
+"n": "917",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619268957.png",
+"lines": [
+"修理卡车/罗里维修",
+"修理卡車/罗里维修",
+"Truck Repair/Lorry Repair"
+],
+"img": "917.webp"
+},
+{
+"n": "918",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619269007.png",
+"lines": [
+"布床",
+"布床",
+"Cloth Bed"
+],
+"img": "918.webp"
+},
+{
+"n": "919",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619269043.png",
+"lines": [
+"鸡精",
+"雞精",
+"Chicken Essence"
+],
+"img": "919.webp"
+},
+{
+"n": "920",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619269073.png",
+"lines": [
+"好立克",
+"好立克",
+"Horlicks"
+],
+"img": "920.webp"
+},
+{
+"n": "921",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619269109.png",
+"lines": [
+"奶粉",
+"奶粉",
+"Milk Powder"
+],
+"img": "921.webp"
+},
+{
+"n": "922",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619269151.png",
+"lines": [
+"小猪吸奶/小猪吸母乳",
+"小豬吸奶/小豬吸母乳",
+"Piglets Sucking Milk"
+],
+"img": "922.webp"
+},
+{
+"n": "923",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619269200.png",
+"lines": [
+"冬菜/腌菜",
+"冬菜/醃菜",
+"Preserved Vegetable/Dried Cabbage"
+],
+"img": "923.webp"
+},
+{
+"n": "924",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619269237.png",
+"lines": [
+"菜头/萝卜",
+"菜頭/蘿蔔",
+"Carrot"
+],
+"img": "924.webp"
+},
+{
+"n": "925",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619269285.png",
+"lines": [
+"小牛吸奶/小牛吸母乳",
+"小牛吸奶/小牛吸母乳",
+"Calf Sucking Milk/Cow Sucking Milk"
+],
+"img": "925.webp"
+},
+{
+"n": "926",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619271236.png",
+"lines": [
+"小羊吸奶/小羊吸母乳",
+"小羊吸奶/小羊吸母乳",
+"Goat Sucking Milk"
+],
+"img": "926.webp"
+},
+{
+"n": "927",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619271274.png",
+"lines": [
+"哭墓",
+"哭墓",
+"Cry In Front Grave"
+],
+"img": "927.webp"
+},
+{
+"n": "928",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619354130.png",
+"lines": [
+"巴士",
+"巴士",
+"Bus"
+],
+"img": "928.webp"
+},
+{
+"n": "929",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619354252.png",
+"lines": [
+"小孩喝药/喂孩子喝药/给婴儿服药",
+"小孩喝葯/餵孩子喝葯/給嬰兒服葯",
+"Give Medicine To Child/Give Baby Medicine"
+],
+"img": "929.webp"
+},
+{
+"n": "930",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619354329.png",
+"lines": [
+"雪藏水果/水果存放冰箱/冷藏水果",
+"雪藏水果/水果存放冰箱/冷藏水果",
+"Freeze Fruit/Keep Fruits in Fridge"
+],
+"img": "930.webp"
+},
+{
+"n": "931",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619354430.png",
+"lines": [
+"小孩剃头发",
+"小孩剃頭髮",
+"Shave Kids Hair"
+],
+"img": "931.webp"
+},
+{
+"n": "932",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619354513.png",
+"lines": [
+"钞票/纸钞/纸币",
+"鈔票/紙鈔/紙幣",
+"Note/Banknote/Paper Money"
+],
+"img": "932.webp"
+},
+{
+"n": "933",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619354589.png",
+"lines": [
+"桶/铝桶/铁桶",
+"桶/鋁桶/鐵桶",
+"Aluminum Pail/Steel Pail/Bucket"
+],
+"img": "933.webp"
+},
+{
+"n": "934",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619354657.png",
+"lines": [
+"帆/风帆/船帆/帆布",
+"帆/風帆/船帆/帆布",
+"Sail"
+],
+"img": "934.webp"
+},
+{
+"n": "935",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619354702.png",
+"lines": [
+"墨水",
+"墨水",
+"Ink"
+],
+"img": "935.webp"
+},
+{
+"n": "936",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619354771.png",
+"lines": [
+"轮胎",
+"輪胎",
+"Tire/Tyre"
+],
+"img": "936.webp"
+},
+{
+"n": "937",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619354822.png",
+"lines": [
+"红毛丹",
+"紅毛丹",
+"Rambutan"
+],
+"img": "937.webp"
+},
+{
+"n": "938",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619354887.png",
+"lines": [
+"农夫/农人/农民",
+"農夫/農人/農民",
+"Farmer/Peasant"
+],
+"img": "938.webp"
+},
+{
+"n": "939",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619354951.png",
+"lines": [
+"卖鸡鸭仔/卖小鸡/卖小鸭",
+"賣雞鴨仔/賣小雞/賣小鴨",
+"Selling Chicks and Ducklings"
+],
+"img": "939.webp"
+},
+{
+"n": "940",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619355009.png",
+"lines": [
+"打石/刻石碑/墓碑雕刻",
+"打石/刻石碑/墓碑雕刻",
+"Tombstone Engraving"
+],
+"img": "940.webp"
+},
+{
+"n": "941",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619355072.png",
+"lines": [
+"脚车灯",
+"腳車燈",
+"Bike Light/Bicycle Light"
+],
+"img": "941.webp"
+},
+{
+"n": "942",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619355131.png",
+"lines": [
+"脚车熄灯",
+"脚车熄灯",
+"Off Bicycle Light"
+],
+"img": "942.webp"
+},
+{
+"n": "943",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619355201.png",
+"lines": [
+"骑脚车载小孩",
+"騎腳車載小孩",
+"Carrying Children On Bicycle"
+],
+"img": "943.webp"
+},
+{
+"n": "944",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619355253.png",
+"lines": [
+"竹扫/扫把/扫帚",
+"竹掃/掃把/掃帚",
+"Broom"
+],
+"img": "944.webp"
+},
+{
+"n": "945",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619355383.png",
+"lines": [
+"骑脚车载人",
+"騎腳車載人",
+"Carry People With Bicycle"
+],
+"img": "945.webp"
+},
+{
+"n": "946",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619355418.png",
+"lines": [
+"更换轮胎",
+"更換輪胎",
+"Replace Tire"
+],
+"img": "946.webp"
+},
+{
+"n": "947",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619355626.png",
+"lines": [
+"轮胎打风/轮胎充气",
+"輪胎打風/輪胎充氣",
+"Inflate Tire"
+],
+"img": "947.webp"
+},
+{
+"n": "948",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619355660.png",
+"lines": [
+"书本/册/簿",
+"書本/冊/簿",
+"Book"
+],
+"img": "948.webp"
+},
+{
+"n": "949",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619355712.png",
+"lines": [
+"胡须刀/剃须刀",
+"鬍鬚刀/剃須刀",
+"Beard Knife"
+],
+"img": "949.webp"
+},
+{
+"n": "950",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619355746.png",
+"lines": [
+"书报/画报/杂志",
+"書報/畫報/雜誌",
+"Magazine"
+],
+"img": "950.webp"
+},
+{
+"n": "951",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619355796.png",
+"lines": [
+"纳税/缴所得税",
+"納稅/繳所得稅",
+"Pay Taxes/Pay Income Tax"
+],
+"img": "951.webp"
+},
+{
+"n": "952",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619355828.png",
+"lines": [
+"牌九",
+"牌九",
+"Pai Gow"
+],
+"img": "952.webp"
+},
+{
+"n": "953",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619355865.png",
+"lines": [
+"工匠",
+"工匠",
+"Craftsman/Smith"
+],
+"img": "953.webp"
+},
+{
+"n": "954",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619355903.png",
+"lines": [
+"倒油",
+"倒油",
+"Pour Oil"
+],
+"img": "954.webp"
+},
+{
+"n": "955",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619355953.png",
+"lines": [
+"载油卡车/运油卡车/油箱车",
+"載油卡車/運油卡車/油箱車",
+"Fuel Tank Truck"
+],
+"img": "955.webp"
+},
+{
+"n": "956",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619356009.png",
+"lines": [
+"舵/掌舵",
+"舵/掌舵",
+"Rudder"
+],
+"img": "956.webp"
+},
+{
+"n": "957",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619356040.png",
+"lines": [
+"火车/列车",
+"火車/列車",
+"Train"
+],
+"img": "957.webp"
+},
+{
+"n": "958",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619356076.png",
+"lines": [
+"秤物品/秤东西/秤重",
+"秤物品/秤東西/秤重",
+"Weighing with Steelyard"
+],
+"img": "958.webp"
+},
+{
+"n": "959",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619356114.png",
+"lines": [
+"磅物品/量重/秤重量",
+"磅物品/量重/秤重量",
+"Weighing with Scale"
+],
+"img": "959.webp"
+},
+{
+"n": "960",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619700666.png",
+"lines": [
+"绑橡胶",
+"綁橡膠",
+"Tie Rubber"
+],
+"img": "960.webp"
+},
+{
+"n": "961",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619700700.png",
+"lines": [
+"拆橡胶",
+"拆橡膠",
+"Rubber Disassemble"
+],
+"img": "961.webp"
+},
+{
+"n": "962",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619700736.png",
+"lines": [
+"剪橡胶",
+"剪橡膠",
+"Cut Rubber"
+],
+"img": "962.webp"
+},
+{
+"n": "963",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619700775.png",
+"lines": [
+"洗橡胶",
+"洗橡膠",
+"Wash Rubber"
+],
+"img": "963.webp"
+},
+{
+"n": "964",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619700812.png",
+"lines": [
+"烟熏橡胶",
+"烟熏橡胶",
+"Smoke Rubber"
+],
+"img": "964.webp"
+},
+{
+"n": "965",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619700846.png",
+"lines": [
+"胶醋/硫酸",
+"膠醋/硫酸",
+"Acid"
+],
+"img": "965.webp"
+},
+{
+"n": "966",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619700886.png",
+"lines": [
+"采番石榴/摘番石榴/採番石榴",
+"採番石榴/摘番石榴/採番石榴",
+"Mining Guava"
+],
+"img": "966.webp"
+},
+{
+"n": "967",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619700932.png",
+"lines": [
+"菜豆/四季豆/二季豆",
+"菜豆/四季豆/二季豆",
+"Kidney Bean/Snap Bean"
+],
+"img": "967.webp"
+},
+{
+"n": "968",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619700971.png",
+"lines": [
+"晒茨粉/晒淀粉",
+"曬茨粉/曬澱粉",
+"Drying Starch"
+],
+"img": "968.webp"
+},
+{
+"n": "969",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619701018.png",
+"lines": [
+"卖洋货/卖外国进口货物/行商/流动商人",
+"賣洋貨/賣外國進口貨物/行商/流動商人",
+"Pedlar/Peddler/Kelontong"
+],
+"img": "969.webp"
+},
+{
+"n": "970",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619701055.png",
+"lines": [
+"木薯",
+"木薯",
+"Cassava"
+],
+"img": "970.webp"
+},
+{
+"n": "971",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619701110.png",
+"lines": [
+"诊病/应诊/看病/医治/治疗",
+"診病/應診/看病/醫治/治療",
+"See a Patient/Medical Treatment/Therapy"
+],
+"img": "971.webp"
+},
+{
+"n": "972",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619701150.png",
+"lines": [
+"打架/斗殴",
+"打架/鬥毆",
+"Fight/Scuffle/Brawl"
+],
+"img": "972.webp"
+},
+{
+"n": "973",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619701188.png",
+"lines": [
+"原子笔/圆珠笔",
+"原子筆/圓珠筆",
+"Ballpoint Pen"
+],
+"img": "973.webp"
+},
+{
+"n": "974",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619701232.png",
+"lines": [
+"摄影机/照相机",
+"攝影機/照相機",
+"Camera/Video Recorder/Camcorder"
+],
+"img": "974.webp"
+},
+{
+"n": "975",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619701267.png",
+"lines": [
+"龟/乌龟",
+"龜,烏龜",
+"Tortoise"
+],
+"img": "975.webp"
+},
+{
+"n": "976",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619701310.png",
+"lines": [
+"药店/中药店/药行",
+"藥店/中藥店/藥行",
+"Chinese Medicinal Herbs Shop"
+],
+"img": "976.webp"
+},
+{
+"n": "977",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619701347.png",
+"lines": [
+"手巾",
+"手巾",
+"Hand Towel"
+],
+"img": "977.webp"
+},
+{
+"n": "978",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619701395.png",
+"lines": [
+"修路/道路建设/修补道路/铺路",
+"修路/道路建設/修補道路/鋪路",
+"Road Construction/Mending the Road/Repair the Road"
+],
+"img": "978.webp"
+},
+{
+"n": "979",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619701445.png",
+"lines": [
+"修桥/大桥建设",
+"修橋/大橋建設",
+"Repair the Bridge/Building the Bridge/Bridge Construction"
+],
+"img": "979.webp"
+},
+{
+"n": "980",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619701480.png",
+"lines": [
+"十字路口/交叉路",
+"十字路口/交叉路",
+"Crossroads"
+],
+"img": "980.webp"
+},
+{
+"n": "981",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619701518.png",
+"lines": [
+"德士/出租车/计程车",
+"德士/出租車/計程車",
+"Taxi/Cab"
+],
+"img": "981.webp"
+},
+{
+"n": "982",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619701567.png",
+"lines": [
+"修轮胎/更换轮胎",
+"修輪胎/更換輪胎",
+"Reparing Tires/Fixing Tire/Making Tire"
+],
+"img": "982.webp"
+},
+{
+"n": "983",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619701608.png",
+"lines": [
+"服药/吃药/喝药",
+"服藥/吃藥/喝藥",
+"Take Medicine"
+],
+"img": "983.webp"
+},
+{
+"n": "984",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619701646.png",
+"lines": [
+"引擎/马达/发动机",
+"引擎/馬達/發動機",
+"Engine/Motor"
+],
+"img": "984.webp"
+},
+{
+"n": "985",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1619701681.png",
+"lines": [
+"藤/藤蔓",
+"藤/藤蔓",
+"Vine/Rattan"
+],
+"img": "985.webp"
+},
+{
+"n": "986",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939933.png",
+"lines": [
+"修补渔网",
+"修補漁網",
+"repair fishing net"
+],
+"img": "986.webp"
+},
+{
+"n": "987",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939890.png",
+"lines": [
+"胡椒/胡椒粉/胡椒粒",
+"胡椒/胡椒粉/胡椒粒",
+"pepper"
+],
+"img": "987.webp"
+},
+{
+"n": "988",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939804.png",
+"lines": [
+"晒渔网",
+"曬漁網",
+"drying fishing net"
+],
+"img": "988.webp"
+},
+{
+"n": "989",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939753.png",
+"lines": [
+"晒帆布",
+"曬帆布",
+"drying canvas/drying sail"
+],
+"img": "989.webp"
+},
+{
+"n": "990",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939627.png",
+"lines": [
+"卖鸡毛扫",
+"賣雞毛掃",
+"selling feather brush"
+],
+"img": "990.webp"
+},
+{
+"n": "991",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939590.png",
+"lines": [
+"建造舢板/建造船只",
+"建造舢板/建造船隻",
+"sampan onstruction/build sampans"
+],
+"img": "991.webp"
+},
+{
+"n": "992",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939390.png",
+"lines": [
+"当铺",
+"當舖",
+"Pawn Shop"
+],
+"img": "992.webp"
+},
+{
+"n": "993",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939327.png",
+"lines": [
+"卖布/卖布匹",
+"賣布/賣布匹"
+],
+"img": "993.webp"
+},
+{
+"n": "994",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939284.png",
+"lines": [
+"拜香/上香/烧香",
+"拜香/上香/燒香",
+"burn incense"
+],
+"img": "994.webp"
+},
+{
+"n": "995",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939224.png",
+"lines": [
+"上庙烧金纸/去庙拜拜",
+"上廟燒金紙/去廟拜拜",
+"burn paper moneny in temple/pray in temple"
+],
+"img": "995.webp"
+},
+{
+"n": "996",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939162.png",
+"lines": [
+"渔翁/渔夫/捕鱼人",
+"漁翁/漁夫/捕魚人",
+"fisherman"
+],
+"img": "996.webp"
+},
+{
+"n": "997",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616939109.png",
+"lines": [
+"切菜",
+"切菜",
+"cut vegetable/chop vegetable"
+],
+"img": "997.webp"
+},
+{
+"n": "998",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616938894.png",
+"lines": [
+"点大光灯/点燃汽灯",
+"點大光燈/點燃汽燈",
+"light the gas lamp"
+],
+"img": "998.webp"
+},
+{
+"n": "999",
+"src": "http://4dluckybook.com/resource/home/bookitem/1/1616938703.png",
+"lines": [
+"菜橱/碗柜",
+"菜櫥/碗櫃",
+"food cupboard/dish cabinet"
+],
+"img": "999.webp"
+}
+]
+}
