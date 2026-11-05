@@ -7,15 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
-      - name: Map 4dluckybook
+      - name: Map 4dluckybook (2)
         run: |
           UA="Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 Chrome/130 Mobile Safari/537.36"
           B=https://4dluckybook.com
-          curl -s -A "$UA" "$B/home/?menu=bookitem&id=1" -o p1.html; wc -c p1.html
-          echo "== links/menus"; grep -o 'href="[^"]*"' p1.html | sort -u | head -40
-          echo "== scripts"; grep -o '<script[^>]*src="[^"]*"' p1.html | head; grep -o 'ajax\|\.load(\|fetch(\|\$\.get\|\$\.post\|url:[^,]*\|page=[^"&]*\|more[^"]\{0,60\}' p1.html | sort | uniq -c | head -40
-          echo "== first 2 entries raw"; grep -o '<img[^>]*bookitem[^>]*>' p1.html | head -3
-          echo "== tail of html"; tail -c 3000 p1.html
-          for id in 1 2 3 4 5; do printf 'id=%s ' $id; curl -s -A "$UA" "$B/home/?menu=bookitem&id=$id" | grep -o '<title>[^<]*\|bookitem/[0-9]*/' | sort -u | tr '\n' ' '; echo; done
-          for q in "page=2" "p=2" "page=1&size=2000" "start=20"; do printf '%s: ' "$q"; curl -s -A "$UA" "$B/home/?menu=bookitem&id=1&$q" | grep -o 'alt="[0-9]\{3,4\}' | head -2 | tr '\n' ' '; echo; done
-          for f in 999.png 0999.png 100.png 1000.png; do printf '%s %s\n' $f "$(curl -s -o /dev/null -w '%{http_code} %{size_download} %{content_type}' $B/resource/home/bookitem/1/$f)"; done
+          echo "== bookitemlist.js"; curl -s -A "$UA" "$B/scripts/home/bookitemlist.js" | head -c 4000; echo
+          echo "== index.js (grep)"; curl -s -A "$UA" "$B/scripts/home/index.js" | grep -o '.\{0,120\}\(menu\|ajax\|\.php\|url\).\{0,120\}' | head -20
+          echo "== home menu"; curl -s -A "$UA" "$B/home/" | grep -o 'menu=[a-z]*[^"]\{0,30\}"[^<]\{0,200\}' | sort -u | head -30
+          echo "== book 3 first"; curl -s -A "$UA" "$B/home/?menu=bookitem&id=3" | grep -o 'alt="[^"]*"' | head -4
+          echo "== book 1 entry 000/020 names"; curl -s -A "$UA" "$B/home/?menu=bookitem&id=1" | grep -o "src='[^']*bookitem[^']*'" | head -3
