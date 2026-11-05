@@ -7,32 +7,32 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
-      - name: New number-search hub
+      - name: Trust pages live in four languages
         run: |
           S=https://www.4dmalamini.com
-          for u in check-4d-number ms/check-4d-number zh/check-4d-number ta/check-4d-number; do
-            printf "%-28s %s  " "/$u/" "$(curl -s -o /tmp/p -w '%{http_code}' $S/$u/)"
-            grep -o '<title>[^<]*' /tmp/p | head -1 | cut -c8-72; echo
+          for u in privacy terms contact ms/privacy ms/terms ms/contact zh/privacy zh/terms zh/contact ta/privacy ta/terms ta/contact; do
+            printf "%-16s %s  " "/$u/" "$(curl -s -o /tmp/p -w '%{http_code}' $S/$u/)"
+            grep -o '<title>[^<]*' /tmp/p | head -1 | cut -c8-60; echo
           done
-      - name: Footer translations shipped to the client
+      - name: IndexNow key file
         run: |
-          curl -s https://www.4dmalamini.com/ -o /tmp/h
-          echo "FLINKS present: $(grep -c 'const FLINKS=' /tmp/h)"
-          for w in 成绩 号码 关于 各公司成绩 Keputusan Maklumat முடிவுகள் எண்கள்; do
-            printf "%-14s %s\n" "$w" "$(grep -c "$w" /tmp/h)"
+          KEY=$(curl -s https://www.4dmalamini.com/7f4b3a3244116bcf1b830ea88d5bb236.txt)
+          echo "served: $KEY"
+          test "$KEY" = "7f4b3a3244116bcf1b830ea88d5bb236" && echo "matches the key we submit" || echo "MISMATCH"
+      - name: Re-submit to IndexNow now that the key file is definitely live
+        run: |
+          B='{"host":"www.4dmalamini.com","key":"7f4b3a3244116bcf1b830ea88d5bb236","keyLocation":"https://www.4dmalamini.com/7f4b3a3244116bcf1b830ea88d5bb236.txt","urlList":["https://www.4dmalamini.com/privacy/","https://www.4dmalamini.com/terms/","https://www.4dmalamini.com/contact/","https://www.4dmalamini.com/check-4d-number/","https://www.4dmalamini.com/ms/check-4d-number/"]}'
+          for EP in https://api.indexnow.org/indexnow https://www.bing.com/indexnow; do
+            printf '%-40s -> %s\n' "$EP" "$(curl -s -o /dev/null -w '%{http_code}' -X POST "$EP" -H 'Content-Type: application/json' -d "$B")"
           done
-      - name: Sitemap index
+      - name: Schema on the contact page
+        run: |
+          curl -s https://www.4dmalamini.com/contact/ -o /tmp/c
+          grep -o '"@type":"[A-Za-z]*"' /tmp/c | sort | uniq -c
+          echo "publishingPrinciples: $(grep -c publishingPrinciples /tmp/c)"
+      - name: Sitemap totals
         run: |
           curl -s https://www.4dmalamini.com/sitemap.xml -o /tmp/s
-          echo "root is index: $(grep -c sitemapindex /tmp/s)"
           for f in $(grep -o 'sitemap-[a-z]*\.xml' /tmp/s | sort -u); do
-            printf "  %-26s %s urls\n" "$f" "$(curl -s https://www.4dmalamini.com/$f | grep -c '<loc>')"
+            printf '  %-26s %s urls\n' "$f" "$(curl -s https://www.4dmalamini.com/$f | grep -c '<loc>')"
           done
-          echo "robots:"; curl -s https://www.4dmalamini.com/robots.txt | tail -2
-      - name: Freshness line and dateModified
-        run: |
-          curl -s https://www.4dmalamini.com/keputusan/2026-11-04/ -o /tmp/d
-          grep -o '<p class="vfy">.*\?</p>' /tmp/d | sed 's/<[^>]*>//g' | head -c 200; echo
-          echo "dateModified: $(grep -o '"dateModified":"[^"]*"' /tmp/d | head -1)"
-          curl -s https://www.4dmalamini.com/4d/8888/ -o /tmp/n
-          grep -o '<p class="vfy">.*\?</p>' /tmp/n | sed 's/<[^>]*>//g' | head -c 200; echo
