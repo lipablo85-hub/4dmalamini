@@ -7,12 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
-      - name: Map 4dluckybook (2)
+      - name: Map 4dluckybook (3)
         run: |
           UA="Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 Chrome/130 Mobile Safari/537.36"
           B=https://4dluckybook.com
-          echo "== bookitemlist.js"; curl -s -A "$UA" "$B/scripts/home/bookitemlist.js" | head -c 4000; echo
-          echo "== index.js (grep)"; curl -s -A "$UA" "$B/scripts/home/index.js" | grep -o '.\{0,120\}\(menu\|ajax\|\.php\|url\).\{0,120\}' | head -20
-          echo "== home menu"; curl -s -A "$UA" "$B/home/" | grep -o 'menu=[a-z]*[^"]\{0,30\}"[^<]\{0,200\}' | sort -u | head -30
-          echo "== book 3 first"; curl -s -A "$UA" "$B/home/?menu=bookitem&id=3" | grep -o 'alt="[^"]*"' | head -4
-          echo "== book 1 entry 000/020 names"; curl -s -A "$UA" "$B/home/?menu=bookitem&id=1" | grep -o "src='[^']*bookitem[^']*'" | head -3
+          echo "== fragment id=1 offset=20 (raw head)"; curl -s -A "$UA" -e "$B/home/?menu=bookitem&id=1" "$B/home/bookitemlist?id=1&offset=20" | head -c 1500; echo
+          echo "== fragment id=3 offset=9980"; curl -s -A "$UA" -e "$B/home/" "$B/home/bookitemlist?id=3&offset=9980" | grep -o "alt=\"[0-9]*" | tail -3
+          echo "== fragment id=1 offset=980/1000"; for o in 980 1000; do curl -s -A "$UA" "$B/home/bookitemlist?id=1&offset=$o" | grep -o "alt=\"[0-9]*" | tr '\n' ' '; echo; done
+          for id in 1 2 3; do echo "== titles id=$id"; curl -s -A "$UA" "$B/home/?menu=bookitem&id=$id" | grep -o '<div id="bookitem[a-z]*title[^>]*>[^<]*\|<h[12][^>]*>[^<]*' | head -4; done
+          echo "== home index book cards"; curl -s -A "$UA" "$B/home/" | grep -o 'id="bookitem"[^>]*>.\{0,400\}' | sed 's/<[^>]*>/ /g' | tr -s ' ' | head -8
+          echo "== search menu sample"; curl -s -A "$UA" "$B/home/?menu=search&search=%E6%A2%A6" | grep -o 'alt="[^"]*"' | head -5
