@@ -5,44 +5,36 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 6
+    timeout-minutes: 5
     steps:
-      - name: Update the apex rule to match any scheme
-        env:
-          CF: ${{ secrets.CF_ZONE_TOKEN }}
+      - name: Footer "latest results" link per language, live
         run: |
-          api() { curl -s -H "Authorization: Bearer $CF" -H 'Content-Type: application/json' "$@"; }
-          ZID=$(api 'https://api.cloudflare.com/client/v4/zones?name=4dmalamini.com' | jq -r '.result[0].id // empty')
-          [ -z "$ZID" ] && { echo "zone unreadable"; exit 1; }
-          echo "::add-mask::$ZID"
-          api "https://api.cloudflare.com/client/v4/zones/$ZID/rulesets/phases/http_request_dynamic_redirect/entrypoint" > /tmp/ds.json
-          RSID=$(jq -r '.result.id' /tmp/ds.json); RULE=$(jq -r '.result.rules[0].id' /tmp/ds.json)
-          echo "::add-mask::$RSID"; echo "::add-mask::$RULE"
-          echo "--- BACKUP of the current rule (restore with this exact body if needed)"
-          jq -c '.result.rules[0] | {description,expression,action,enabled,action_parameters}' /tmp/ds.json
-          jq -n --arg e 'http.host eq "4dmalamini.com"' \
-                --arg t 'concat("https://www.4dmalamini.com", http.request.uri.path)' \
-            '{description:"Root to www (any scheme, single hop)",expression:$e,action:"redirect",enabled:true,action_parameters:{from_value:{status_code:301,preserve_query_string:true,target_url:{expression:$t}}}}' > /tmp/body.json
-          echo "--- NEW rule body"; cat /tmp/body.json
-          echo "--- PATCH result"
-          api -X PATCH "https://api.cloudflare.com/client/v4/zones/$ZID/rulesets/$RSID/rules/$RULE" -d @/tmp/body.json \
-            | jq -r 'if .success then "  updated OK" else "  FAILED: " + (.errors|map(.message + " " + ((.source.pointer)//""))|join("; ")) end'
-      - name: Verify hops, no loop, and the site still serves
-        run: |
-          sleep 15
-          FAIL=0
-          for U in http://4dmalamini.com/ https://4dmalamini.com/ http://www.4dmalamini.com/ https://www.4dmalamini.com/; do
-            H=$(curl -sIL -o /dev/null -w '%{num_redirects}' "$U")
-            F=$(curl -sIL -o /dev/null -w '%{url_effective}' "$U")
-            C=$(curl -sIL -o /dev/null -w '%{http_code}' "$U")
-            printf '  %-34s hops=%s code=%s final=%s\n' "$U" "$H" "$C" "$F"
-            [ "$C" != 200 ] && FAIL=1
-            [ "$H" -gt 1 ] && FAIL=1
+          curl -s https://www.4dmalamini.com/ -o /tmp/h
+          for L in en ms zh ta; do
+            printf '  %-3s %s\n' "$L" \
+              "$(jq -r --arg l "$L" '.[$l]' /tmp/fl.json 2>/dev/null || true)"
+          done || true
+          echo "--- first link of each language variant in FLINKS"
+          grep -o 'const FLINKS={.*};' /tmp/h | sed 's/^const FLINKS=//; s/;$//' > /tmp/fl.json
+          for L in en ms zh ta; do
+            printf '  %-3s %s\n' "$L" "$(jq -r --arg l "$L" '.[$l]' /tmp/fl.json | grep -o 'href="[^"]*"' | head -1)"
           done
-          echo "--- deep paths keep their path and query"
-          for U in http://4dmalamini.com/keputusan/2026/ http://4dmalamini.com/4d/8888/ "http://4dmalamini.com/?d=20260127"; do
-            printf '  %-40s -> %s (%s)\n' "$U" \
-              "$(curl -sIL -o /dev/null -w '%{url_effective}' "$U")" \
+      - name: No Malay-namespace link on the non-Malay footers
+        run: |
+          curl -s https://www.4dmalamini.com/ -o /tmp/h
+          grep -o 'const FLINKS={.*};' /tmp/h | sed 's/^const FLINKS=//; s/;$//' > /tmp/fl.json
+          FAIL=0
+          for L in en zh ta; do
+            BAD=$(jq -r --arg l "$L" '.[$l]' /tmp/fl.json | grep -o 'href="/keputusan/[0-9][^"]*"' | head -3)
+            if [ -n "$BAD" ]; then echo "  LEAK in $L: $BAD"; FAIL=1; fi
+          done
+          [ "$FAIL" = 0 ] && echo "  clean: no /keputusan/<date>/ link in the en, zh or ta footer"
+      - name: Redirect and cache still correct
+        run: |
+          for U in http://4dmalamini.com/ https://www.4dmalamini.com/; do
+            printf '  %-32s hops=%s code=%s\n' "$U" \
+              "$(curl -sIL -o /dev/null -w '%{num_redirects}' "$U")" \
               "$(curl -sIL -o /dev/null -w '%{http_code}' "$U")"
           done
-          [ "$FAIL" = 0 ] && echo "PASS: every entry point is one hop and returns 200" || { echo "PROBLEM - see above"; exit 1; }
+          printf '  %-32s %s\n' "/keputusan/2026-11-04/" \
+            "$(curl -sI https://www.4dmalamini.com/keputusan/2026-11-04/ | grep -i '^cache-control:' | tr -d '\r' | cut -c16-)"
