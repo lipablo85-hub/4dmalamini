@@ -7,27 +7,26 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Redirect hops from each entry point
-        run: |
-          for U in http://4dmalamini.com/ https://4dmalamini.com/ http://www.4dmalamini.com/ https://www.4dmalamini.com/; do
-            printf '%-34s hops=%s  final=%s\n' "$U" \
-              "$(curl -sIL -o /dev/null -w '%{num_redirects}' "$U")" \
-              "$(curl -sIL -o /dev/null -w '%{url_effective}' "$U")"
-          done
-      - name: Cache-Control by page type
-        run: |
-          S=https://www.4dmalamini.com
-          for U in / /keputusan/2026-11-04/ /4d/8888/ /magnum-4d-result/ /magnum-4d-result/2025/ /privacy/ /live.json; do
-            printf '%-30s %s\n' "$U" "$(curl -sI "$S$U" | grep -i '^cache-control:' | tr -d '\r' | cut -c16-)"
-          done
-      - name: Zone settings relevant to the above (read-only)
+      - name: Read the existing redirect configuration (no writes)
         env:
-          CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF: ${{ secrets.CF_ZONE_TOKEN }}
         run: |
+          if [ -z "$CF" ]; then echo "CF_ZONE_TOKEN is not set on this repo"; exit 1; fi
           api() { curl -s -H "Authorization: Bearer $CF" -H 'Content-Type: application/json' "$@"; }
           ZID=$(api 'https://api.cloudflare.com/client/v4/zones?name=4dmalamini.com' | jq -r '.result[0].id // empty')
-          [ -z "$ZID" ] && { echo "  zone not readable"; exit 0; }
-          for S in always_use_https ssl security_header; do
-            api "https://api.cloudflare.com/client/v4/zones/$ZID/settings/$S" \
-              | jq -r --arg s "$S" 'if .success then "  \($s) = \(.result.value|tostring)" else "  \($s): unreadable" end'
+          if [ -z "$ZID" ]; then echo "cannot read the zone - check Zone:Zone:Read on the token"; exit 1; fi
+          echo "zone readable"
+          echo "::add-mask::$ZID"
+          echo "--- dynamic redirect entrypoint ruleset"
+          api "https://api.cloudflare.com/client/v4/zones/$ZID/rulesets/phases/http_request_dynamic_redirect/entrypoint" > /tmp/ds.json
+          jq -r 'if .success then "  ruleset exists, id captured, rules: \(.result.rules // [] | length)" else "  no entrypoint ruleset yet or unreadable: " + (.errors|map(.message)|join("; ")) end' /tmp/ds.json
+          jq -r '(.result.rules // [])[] | "  * \(.description // "(no description)")\n      enabled: \(.enabled)\n      when:    \(.expression)\n      then:    \(.action) \(.action_parameters|tostring)"' /tmp/ds.json
+          echo "--- page rules (may be unreadable; that is fine)"
+          api "https://api.cloudflare.com/client/v4/zones/$ZID/pagerules" \
+            | jq -r 'if .success then ((.result|length|tostring) + " page rule(s)"), (.result[] | "  * \([.targets[].constraint.value]|join(","))  ->  \(.actions|tostring)  [\(.status)]") else "  unreadable: " + (.errors|map(.message)|join("; ")) end'
+          echo "--- current hop counts"
+          for U in http://4dmalamini.com/ https://4dmalamini.com/ http://www.4dmalamini.com/; do
+            printf '  %-32s hops=%s final=%s\n' "$U" \
+              "$(curl -sIL -o /dev/null -w '%{num_redirects}' "$U")" \
+              "$(curl -sIL -o /dev/null -w '%{url_effective}' "$U")"
           done
