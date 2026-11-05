@@ -5,10 +5,52 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 4
+    timeout-minutes: 5
     steps:
-      - name: Real fingerprinted assets
+      - name: What can the deploy token see? (no secret is printed)
+        env:
+          CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
-          for A in assets/a.2530e22f.css img/op/m.webp; do
-            printf '%-34s %s\n' "/$A" "$(curl -sI https://www.4dmalamini.com/$A | grep -i '^cache-control:' | tr -d '\r' | cut -c16-)"
+          api() { curl -s -H "Authorization: Bearer $CF" -H 'Content-Type: application/json' "$@"; }
+          echo "--- token verify"
+          api https://api.cloudflare.com/client/v4/user/tokens/verify | python3 -c "
+import sys,json;d=json.load(sys.stdin)
+print('  success:',d.get('success'),'|',[e.get('message') for e in d.get('messages',[])] or d.get('errors'))"
+          echo "--- zones visible"
+          api 'https://api.cloudflare.com/client/v4/zones?per_page=50' | python3 -c "
+import sys,json;d=json.load(sys.stdin)
+if not d.get('success'):
+    print('  NO ZONE READ:', [e.get('message') for e in d.get('errors',[])]); raise SystemExit
+for z in d['result']: print('  ', z['name'], 'status=', z['status'])"
+      - name: Existing redirect configuration
+        env:
+          CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          api() { curl -s -H "Authorization: Bearer $CF" -H 'Content-Type: application/json' "$@"; }
+          ZID=$(api 'https://api.cloudflare.com/client/v4/zones?name=4dmalamini.com' | python3 -c "
+import sys,json;d=json.load(sys.stdin);print(d['result'][0]['id'] if d.get('success') and d.get('result') else '')")
+          if [ -z "$ZID" ]; then echo "  zone not readable with this token - nothing else to probe"; exit 0; fi
+          echo "  zone readable"
+          for PHASE in http_request_dynamic_redirect; do
+            echo "--- ruleset $PHASE"
+            api "https://api.cloudflare.com/client/v4/zones/$ZID/rulesets/phases/$PHASE/entrypoint" | python3 -c "
+import sys,json;d=json.load(sys.stdin)
+if not d.get('success'):
+    print('   ', [e.get('message') for e in d.get('errors',[])]); raise SystemExit
+for r in d['result'].get('rules',[]):
+    print('   ', r.get('description') or '(none)', '|', r.get('expression'))
+    print('        ->', json.dumps(r.get('action_parameters',{}))[:200])"
+          done
+          echo "--- page rules"
+          api "https://api.cloudflare.com/client/v4/zones/$ZID/pagerules" | python3 -c "
+import sys,json;d=json.load(sys.stdin)
+if not d.get('success'):
+    print('   ', [e.get('message') for e in d.get('errors',[])]); raise SystemExit
+for r in d['result']:
+    print('   ', [t['constraint']['value'] for t in r['targets']], '->', json.dumps(r['actions'])[:150], r['status'])"
+          echo "--- settings"
+          for S in always_use_https ssl security_header; do
+            api "https://api.cloudflare.com/client/v4/zones/$ZID/settings/$S" | python3 -c "
+import sys,json;d=json.load(sys.stdin)
+print('    $S =', json.dumps(d['result'].get('value')) if d.get('success') else [e.get('message') for e in d.get('errors',[])])"
           done
