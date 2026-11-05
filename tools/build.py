@@ -215,6 +215,11 @@ def main() -> None:
                     dict_urls.append(None)
 
     html = Path(a.template).read_text()
+    jkd = Path(__file__).with_name("brand") / "fonts" / "jakarta-digits.woff2"   # 4 KB digits-only cut for the header strip
+    jkd_name = "assets/jkd." + h8(jkd.read_bytes()) + ".woff2"
+    (out / "assets").mkdir(exist_ok=True)
+    (out / jkd_name).write_bytes(jkd.read_bytes())
+    html = html.replace("__JKD__", jkd_name)
     html = (html.replace("__DATAURL__", res_name).replace("__SITEURL__", a.site)
                 .replace("__UPDTXT__", "Updated " + __import__("datetime").datetime.now(__import__("datetime").timezone(__import__("datetime").timedelta(hours=8))).strftime("%-d %b %Y, %-I:%M%p").replace("AM", "am").replace("PM", "pm") + " MYT").replace("__SPECIAL__", json.dumps([d.replace("-", "") for d in json.loads((Path(__file__).with_name("special_draws.json")).read_text())["dates"]])).replace("__DICTURL__", json.dumps(dict_urls)).replace("__DICTSTATS__", json.dumps(stats)).replace("__DICT__", '""').replace("__DICTIMG__", "{}"))
     from urllib.parse import urlparse
