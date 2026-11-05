@@ -7,13 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Heat map caption live in four languages
+      - name: Logo intro live on the home page in four languages
         run: |
           S=https://www.4dmalamini.com
-          for u in 4d-statistics ms/4d-statistics zh/4d-statistics ta/4d-statistics; do
-            curl -s "$S/$u/?v=$RANDOM" -o /tmp/p
-            printf '%-20s %s  ' "/$u/" "$(curl -s -o /dev/null -w '%{http_code}' $S/$u/)"
-            grep -o '<p class="hcap">[^<]*' /tmp/p | cut -c17-80 || echo "NO CAPTION"
-            A=$(grep -o '/assets/stf-[a-z]*\.[a-z0-9]*\.js' /tmp/p | head -1)
-            printf '     asset %s hcap-in-js=%s\n' "$A" "$(curl -s $S$A | grep -c hcap)"
+          for u in "" ms/ zh/ ta/; do
+            curl -s "$S/$u?v=$RANDOM" -o /tmp/p
+            printf '%-5s %s  mD=%s  mask=%s  cdr=%s  gz=%sB\n' "/$u" \
+              "$(curl -s -o /dev/null -w '%{http_code}' $S/$u)" \
+              "$(grep -c 'class="mark mk mD"' /tmp/p)" \
+              "$(grep -o '<mask id="cm"' /tmp/p | wc -l)" \
+              "$(grep -o 'class="cdr"' /tmp/p | wc -l)" \
+              "$(curl -s -H 'Accept-Encoding: gzip' -o /dev/null -w '%{size_download}' "$S/$u?v=$RANDOM")"
           done
