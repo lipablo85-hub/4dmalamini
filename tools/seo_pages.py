@@ -81,24 +81,6 @@ BN_CSS = (".bnav{position:fixed;left:0;right:0;bottom:0;z-index:6;background:rgb
           ".bnav a[aria-current]{color:#E9C46B;background:#13254A}.bnav .lvn{color:#FF6B6B!important}.bnav .lvn svg{display:none}.bnav .lvn::before{content:\"LIVE\";display:grid;place-items:center;height:22px;padding:0 7px;border-radius:6px;background:#FF3B3B;color:#fff;font:800 11px/1 system-ui,sans-serif;letter-spacing:.06em;box-shadow:0 0 0 0 rgba(255,59,59,.6);animation:lvb 1.2s ease-in-out infinite}@keyframes lvb{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(255,59,59,.55)}50%{opacity:.45;box-shadow:0 0 0 6px rgba(255,59,59,0)}}@media (prefers-reduced-motion:reduce){.bnav .lvn::before{animation:none}}body{padding-bottom:calc(80px + env(safe-area-inset-bottom))}")
 
 
-TK_LAB = {"en": ("1st Prize", "2nd Prize", "3rd Prize"), "ms": ("Pertama", "Kedua", "Ketiga"), "zh-Hans": ("头奖", "二奖", "三奖"), "ta": ("1வது பரிசு", "2வது பரிசு", "3வது பரிசு")}
-TK_NAME = {"x": {"M": "Magnum 4D", "D": "Da Ma Cai", "T": "Sports Toto", "aria": "Magnum, Da Ma Cai, Sports Toto: latest 1st, 2nd and 3rd prizes"},
-           "zh": {"M": "万能", "D": "大马彩", "T": "多多", "aria": "万能、大马彩、多多最新头奖、二奖、三奖"}}
-TK_SPR = {"M": 0, "T": 1, "D": 2}
-TK_CSS = """@font-face{font-family:"JkD";src:url(__JKD__) format("woff2");font-weight:200 800;font-display:swap}
-header .tkr{height:44px;border-top:1px solid #1A2C50;background:#050E22}
-.tk{max-width:720px;margin:0 auto;display:grid;grid-template-columns:auto repeat(3,minmax(0,1fr));align-items:center;height:44px;padding:0 8px 0 14px;gap:2px}
-.tk .pz{position:relative;width:66px;height:20px}
-.tk .pz em{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 6px;border-radius:999px;background:var(--m);color:#07142B;font:800 11px/1 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei","Noto Sans Tamil",sans-serif;letter-spacing:.01em;white-space:nowrap;opacity:0;font-style:normal}
-.tk .pz em:first-child{opacity:1}
-header .tk a.it{display:flex;align-items:center;justify-content:center;gap:6px;min-width:0;height:28px;border-left:1px solid rgba(255,255,255,.07);color:inherit;text-decoration:none;font-weight:400}
-.tk .it i{display:block;width:24px;height:24px;border-radius:7px;background:url(/img/op/tk11.webp) 0 0/264px 24px no-repeat;flex:none}
-.tk .v{position:relative;width:3.15em;height:24px;perspective:160px;font:800 18px/1 "JkD",-apple-system,BlinkMacSystemFont,Roboto,"Segoe UI",Arial,sans-serif;font-variant-numeric:tabular-nums lining-nums;letter-spacing:.02em}
-.tk .v b{position:absolute;inset:0;display:flex;align-items:center;color:var(--m);opacity:0;backface-visibility:hidden}
-.tk .v b:first-child{opacity:1}
-@media (prefers-reduced-motion:no-preference){.tk .v b,.tk .v b:first-child{opacity:0;animation:tkf 9s infinite;animation-delay:var(--d)}.tk .pz em,.tk .pz em:first-child{opacity:0;animation:tkz 9s infinite;animation-delay:var(--d)}}
-@keyframes tkf{0%{opacity:0;transform:rotateX(-90deg)}3%{opacity:1;transform:rotateX(10deg)}5%,30%{opacity:1;transform:none}33%,100%{opacity:0;transform:rotateX(90deg)}}
-@keyframes tkz{0%{opacity:0;transform:translateY(5px)}3%,30%{opacity:1;transform:none}33%,100%{opacity:0;transform:translateY(-5px)}}"""
 CSS = """*{box-sizing:border-box}""" + BN_CSS + """body{margin:0;background:#07142B;color:#F8F4E8;font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans Tamil","PingFang SC","Microsoft YaHei",sans-serif}
 a{color:#E9C46B}a:hover{color:#F3D892}.lst{transform-box:view-box;transform-origin:432px 122px}.lsp{transform-box:fill-box;transform-origin:center;opacity:0}.lgl{opacity:0}@media (prefers-reduced-motion:no-preference){.lst{animation:ltw 3.6s ease-in-out infinite}.lsp{animation:lpop 3.6s ease-in-out infinite}.lsp.s2{animation-delay:1.2s}.lsp.s3{animation-delay:2.3s}.lgl{animation:lgl 3.6s ease-in-out infinite}}@keyframes ltw{0%,100%{transform:scale(1) rotate(0);opacity:1}45%{transform:scale(.72) rotate(-12deg);opacity:.75}55%{transform:scale(1.22) rotate(18deg);opacity:1;filter:drop-shadow(0 0 10px #FFE7A3)}70%{transform:scale(1) rotate(0)}}@keyframes lpop{0%,60%,100%{opacity:0;transform:scale(.2) rotate(0)}70%{opacity:1;transform:scale(1) rotate(45deg)}82%{opacity:0;transform:scale(.3) rotate(90deg)}}@keyframes lgl{0%,50%{stroke-dashoffset:40;opacity:0}55%{opacity:.95}85%{stroke-dashoffset:-360;opacity:.95}90%,100%{stroke-dashoffset:-380;opacity:0}}header svg{overflow:visible}:focus-visible{outline:2px solid #E9C46B;outline-offset:2px}
 .w{max-width:720px;margin:0 auto;padding:0 16px 48px}
@@ -209,7 +191,7 @@ class Site:
 <link rel="stylesheet" href="{self.u(self.css)}">
 <meta property="og:type" content="website"><meta property="og:site_name" content="4D Malam Ini"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{canon}"><meta property="og:image" content="{self.site}og-image.jpg"><meta name="twitter:card" content="summary_large_image">{head}{lds}<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag("js",new Date());gtag("config","G-VMHF911ZT1");(function(){{var l=0,go=function(){{if(l)return;l=1;var s=document.createElement("script");s.async=1;s.src="https://www.googletagmanager.com/gtag/js?id=G-VMHF911ZT1";document.head.appendChild(s)}};addEventListener("load",function(){{(window.requestIdleCallback||function(f){{setTimeout(f,1500)}})(go,{{timeout:4000}})}});["pointerdown","keydown","scroll"].forEach(function(e){{addEventListener(e,go,{{once:true,passive:true}})}})}})();</script>
 </head>
-<body><header><div class="w"><a href="{self.u('')}">{self.mark}<span>4D Malam Ini</span></a></div>{self.strip(lang)}</header>
+<body><header><div class="w"><a href="{self.u('')}">{self.mark}<span>4D Malam Ini</span></a></div></header>
 <main class="w">{body}</main>
 {foot if foot is not None else DEFAULT_FOOT}{self.bnav(path, lang)}</body></html>"""
         doc = localize(doc, lang)
@@ -238,43 +220,11 @@ class Site:
         d = d8(d8s)
         return f"{HARI[d.weekday()]}, {d.day} {BULAN[d.month - 1]} {d.year}"
 
-    def strip(self, lang: str) -> str:
-        """Header results strip (same as the home page): Magnum, Da Ma Cai, Sports Toto latest 1st/2nd/3rd,
-        flipping together under a gold/silver/bronze prize label. Prerendered; tk.json refreshes it on cached pages."""
-        if not hasattr(self, "_tk"):
-            self._tk = {}
-        if lang in self._tk:
-            return self._tk[lang]
-        lab = TK_LAB.get(lang, TK_LAB["en"])
-        home = self.u({"en": "", "ms": "ms/", "zh-Hans": "zh/", "ta": "ta/"}.get(lang, ""))
-        nm = TK_NAME["zh" if lang == "zh-Hans" else "x"]
-        md = ("#FFD36A", "#DCE4F2", "#E9A877")
-        its = ""
-        for k in ("M", "D", "T"):
-            rows = self.draws.get(k) or []
-            if not rows:
-                continue
-            top = rows[-1][2][:3]
-            its += (f'<a class="it" href="{home}#rc-{k}" aria-label="{esc(nm[k])}: {", ".join(top)}"><i style="background-position:{-TK_SPR[k] * 24}px 0"></i>'
-                    f'<span class="v" data-k="{k}">' + "".join(f'<b style="--m:{md[j]};--d:{j * 3}s">{v}</b>' for j, v in enumerate(top)) + "</span></a>")
-        h = ""
-        if its:
-            pz = "".join(f'<em style="--m:{md[j]};--d:{j * 3}s">{esc(lab[j])}</em>' for j in range(3))
-            h = (f'<div class="tkr" aria-label="{esc(nm["aria"])}"><div class="tk"><span class="pz" aria-hidden="true">{pz}</span>{its}</div></div>'
-                 f'<script>fetch("{self.u("tk.json")}").then(r=>r.ok?r.json():0).then(j=>{{if(j)document.querySelectorAll(".tk .v").forEach(v=>{{const n=j[v.dataset.k];if(n)v.querySelectorAll("b").forEach((b,i)=>{{if(n[i])b.textContent=n[i]}})}})}}).catch(()=>{{}})</script>')
-        self._tk[lang] = h
-        return h
-
     # ---------- pages ----------
     def build(self) -> None:
-        import hashlib
+        self.css = "assets/s." + __import__("hashlib").sha256(CSS.encode()).hexdigest()[:8] + ".css"
         (self.out / "assets").mkdir(exist_ok=True)
-        jk = (Path(__file__).with_name("brand") / "fonts" / "jakarta-digits.woff2").read_bytes()
-        jkd = "assets/jkd." + hashlib.sha256(jk).hexdigest()[:8] + ".woff2"   # same file the home page uses
-        (self.out / jkd).write_bytes(jk)
-        css = CSS + TK_CSS.replace("__JKD__", self.u(jkd))
-        self.css = "assets/s." + hashlib.sha256(css.encode()).hexdigest()[:8] + ".css"
-        (self.out / self.css).write_text(css)
+        (self.out / self.css).write_text(CSS)
         last = self.dates[-1]
         self.result_pages()
         self.number_pages(last)

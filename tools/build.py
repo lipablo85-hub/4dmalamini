@@ -354,8 +354,6 @@ def main() -> None:
         xj = json.loads(xf.read_text(encoding="utf-8"))
         live["X"] = {d: xj[d] for d in sorted(xj)[-4:]}
     (out / "live.json").write_text(json.dumps(live, separators=(",", ":")))
-    # header strip on the static pages: latest Magnum / Da Ma Cai / Toto top 3 (~100 bytes, cached 60 s)
-    (out / "tk.json").write_text(json.dumps({k: [data[k].split("|")[-1].split(",")[2][i:i + 4] for i in (0, 4, 8)] for k in "MDT" if k in data}, separators=(",", ":")))
     opyear = "\n".join(
         f"/{pf}{sl}/20*\n  Cache-Control: public, max-age=86400, stale-while-revalidate=604800"
         for pf in ("", "ms/", "zh/", "ta/")
@@ -456,9 +454,6 @@ HEADERS = """# Cloudflare Pages header rules.
 __OPYEAR__
 
 # The live surfaces. Never hold these.
-/tk.json
-  Cache-Control: public, max-age=60
-  CDN-Cache-Control: public, max-age=60
 /live.json
   Cache-Control: no-store
   CDN-Cache-Control: no-store
