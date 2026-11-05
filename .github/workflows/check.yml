@@ -7,34 +7,26 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Footer "latest results" link per language, live
+      - name: Statistics page in four languages
         run: |
-          curl -s https://www.4dmalamini.com/ -o /tmp/h
-          for L in en ms zh ta; do
-            printf '  %-3s %s\n' "$L" \
-              "$(jq -r --arg l "$L" '.[$l]' /tmp/fl.json 2>/dev/null || true)"
-          done || true
-          echo "--- first link of each language variant in FLINKS"
-          grep -o 'const FLINKS={.*};' /tmp/h | sed 's/^const FLINKS=//; s/;$//' > /tmp/fl.json
-          for L in en ms zh ta; do
-            printf '  %-3s %s\n' "$L" "$(jq -r --arg l "$L" '.[$l]' /tmp/fl.json | grep -o 'href="[^"]*"' | head -1)"
+          S=https://www.4dmalamini.com
+          for u in 4d-statistics ms/4d-statistics zh/4d-statistics ta/4d-statistics; do
+            curl -s "$S/$u/" -o /tmp/p
+            printf '%-22s %s  tiles=%s  html=%sB gz\n' "/$u/" \
+              "$(curl -s -o /dev/null -w '%{http_code}' $S/$u/)" \
+              "$(grep -o 'class="fchip' /tmp/p | wc -l)" \
+              "$(curl -s -H 'Accept-Encoding: gzip' -o /dev/null -w '%{size_download}' $S/$u/)"
+            grep -o 'Showing[^<]*<b>[^<]*' /tmp/p | head -1 | sed 's/^/     default: /'
+            grep -o '显示 <b>[^<]*' /tmp/p | head -1 | sed 's/^/     default: /'
           done
-      - name: No Malay-namespace link on the non-Malay footers
+      - name: Deferred filter asset is cached and deferred
         run: |
-          curl -s https://www.4dmalamini.com/ -o /tmp/h
-          grep -o 'const FLINKS={.*};' /tmp/h | sed 's/^const FLINKS=//; s/;$//' > /tmp/fl.json
-          FAIL=0
-          for L in en zh ta; do
-            BAD=$(jq -r --arg l "$L" '.[$l]' /tmp/fl.json | grep -o 'href="/keputusan/[0-9][^"]*"' | head -3)
-            if [ -n "$BAD" ]; then echo "  LEAK in $L: $BAD"; FAIL=1; fi
-          done
-          [ "$FAIL" = 0 ] && echo "  clean: no /keputusan/<date>/ link in the en, zh or ta footer"
-      - name: Redirect and cache still correct
+          A=$(curl -s https://www.4dmalamini.com/4d-statistics/ | grep -o '/assets/stf-en\.[a-z0-9]*\.js')
+          echo "asset: $A"
+          curl -s https://www.4dmalamini.com/4d-statistics/ | grep -o '<script src="[^"]*stf[^"]*"[^>]*>' | head -1
+          curl -sI "https://www.4dmalamini.com$A" | grep -iE '^(cache-control|content-length):' | sed 's/^/  /'
+      - name: Sprite the tiles use
         run: |
-          for U in http://4dmalamini.com/ https://www.4dmalamini.com/; do
-            printf '  %-32s hops=%s code=%s\n' "$U" \
-              "$(curl -sIL -o /dev/null -w '%{num_redirects}' "$U")" \
-              "$(curl -sIL -o /dev/null -w '%{http_code}' "$U")"
-          done
-          printf '  %-32s %s\n' "/keputusan/2026-11-04/" \
-            "$(curl -sI https://www.4dmalamini.com/keputusan/2026-11-04/ | grep -i '^cache-control:' | tr -d '\r' | cut -c16-)"
+          printf '  /img/op/tk.webp -> %s, %s\n' \
+            "$(curl -s -o /dev/null -w '%{http_code}' https://www.4dmalamini.com/img/op/tk.webp)" \
+            "$(curl -sI https://www.4dmalamini.com/img/op/tk.webp | grep -i '^cache-control' | tr -d '\r' | cut -c16-)"
