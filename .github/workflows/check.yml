@@ -7,35 +7,31 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
-      - name: Redirect chain from every entry point
-        run: |
-          for U in http://4dmalamini.com/ https://4dmalamini.com/ http://www.4dmalamini.com/ \
-                   http://4dmalamini.com/keputusan/2026/ https://4dmalamini.com/4d/8888/; do
-            echo "--- $U"
-            curl -s -o /dev/null -w '    %{http_code}  %{redirect_url}\n' "$U"
-            printf '    hops=%s  total=%ss\n' \
-              "$(curl -sIL -o /dev/null -w '%{num_redirects}' "$U")" \
-              "$(curl -sL -o /dev/null -w '%{time_total}' "$U")"
-          done
-      - name: Cache headers by page type
+      - name: Cache-Control now served per page type
         run: |
           S=https://www.4dmalamini.com
-          for U in / /ms/ /keputusan/2026-11-04/ /keputusan/2026/11/ /4d/8888/ /magnum-4d-result/ \
-                   /check-4d-number/ /assets/ /sitemap.xml /live.json; do
-            echo "--- $U"
-            curl -sI "$S$U" | grep -iE '^(cache-control|cf-cache-status|age|etag|last-modified|content-encoding|vary):' | sed 's/^/    /'
+          for U in / /ms/ /keputusan/2026-11-04/ /keputusan/2026/ /4d/8888/ /magnum-4d-result/ \
+                   /magnum-4d-result/2025/ /ms/magnum-4d-result/2025/ /check-4d-number/ /privacy/ \
+                   /assets/ /live.json /sitemap.xml; do
+            printf '%-30s %s\n' "$U" "$(curl -sI "$S$U" | grep -i '^cache-control:' | tr -d '\r' | cut -c16-)"
           done
-      - name: Does a second hit come from cache?
+      - name: No comma-joined Cache-Control anywhere
         run: |
           S=https://www.4dmalamini.com
-          for U in /keputusan/2026-11-04/ /4d/8888/ /keputusan/2026/; do
-            curl -s -o /dev/null "$S$U"; sleep 1
-            printf '%-26s  status=%-10s ttfb=%ss\n' "$U" \
-              "$(curl -sI "$S$U" | grep -i cf-cache-status | tr -d '\r' | cut -d' ' -f2)" \
-              "$(curl -s -o /dev/null -w '%{time_starttransfer}' "$S$U")"
+          FAIL=0
+          for U in / /keputusan/2026-11-04/ /4d/8888/ /magnum-4d-result/2025/ /privacy/ /check-4d-number/; do
+            CC=$(curl -sI "$S$U" | grep -i '^cache-control:' | tr -d '\r' | cut -c16-)
+            N=$(echo "$CC" | grep -o 'max-age' | wc -l)
+            if [ "$N" -gt 1 ]; then echo "JOINED on $U -> $CC"; FAIL=1; fi
           done
-      - name: Compression actually served
+          [ "$FAIL" = 0 ] && echo "clean: exactly one max-age on every page checked"
+      - name: A real fingerprinted asset
         run: |
-          curl -s -H 'Accept-Encoding: br,gzip' -o /dev/null -w \
-            '  br/gzip bytes: %{size_download}, encoding: %header{content-encoding}\n' \
-            https://www.4dmalamini.com/keputusan/2026-11-04/
+          A=$(curl -s https://www.4dmalamini.com/ | grep -o '/assets/[a-z0-9.]*\.css' | head -1)
+          echo "asset: $A"
+          curl -sI "https://www.4dmalamini.com$A" | grep -iE '^(cache-control|cf-cache-status|age):' | sed 's/^/  /'
+      - name: Redirect hops unchanged
+        run: |
+          for U in http://4dmalamini.com/ https://4dmalamini.com/ http://www.4dmalamini.com/; do
+            printf '%-34s hops=%s\n' "$U" "$(curl -sIL -o /dev/null -w '%{num_redirects}' "$U")"
+          done
