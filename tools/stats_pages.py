@@ -12,7 +12,7 @@ MON = {"en": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oc
 
 T = {
  "en": dict(title="4D Statistics: Hot & Cold Numbers, Digit Frequency", crumb="4D statistics", home="Home",
-            desc="Malaysia 4D statistics from {n} draws since {s}: most drawn numbers, numbers missing longest, top-3 prize regulars, digit frequency by position and Box families.",
+            desc="Malaysia 4D statistics from {n} draws since {s}: most drawn numbers, numbers missing longest, top-3 regulars and digit frequency by position.",
             h1="4D statistics", lead="What {n} draws across 10 companies since {s} say about every 4D number. Updated after every draw.",
             k=("Draws analysed", "Numbers drawn"),
             hot="Most drawn numbers", hots="All prizes, all companies, since {s}.", cold="Missing longest", colds="Numbers that won before but have not appeared for the longest time.",
@@ -44,7 +44,7 @@ T = {
             times="次", alltime="累计 {n} 次", days="{n} 天", last="最近", never="{s}以来有 {n} 个号码从未开出。",
             note="以上只是过往成绩。每期开彩都是独立的，过去出现次数不会让任何号码更容易或更难中奖。仅限21岁或以上非穆斯林 · 理性投注。",
             more="查询任何号码", pop="热门万字号码"),
- "ta": dict(title="4D புள்ளிவிவரம்: அதிகம் & குறைவாக வந்த எண்கள், இலக்க அதிர்வெண்", crumb="4D புள்ளிவிவரம்", home="முகப்பு",
+ "ta": dict(title="4D புள்ளிவிவரம்: அதிகம் & குறைவாக வந்த எண்கள்", crumb="4D புள்ளிவிவரம்", home="முகப்பு",
             desc="{s} முதல் {n} குலுக்கல்களின் மலேசியா 4D புள்ளிவிவரம்: அதிகம் வந்த எண்கள், நீண்ட நாள் வராத எண்கள், முதல் 3 பரிசுகள், இலக்க அதிர்வெண், Box குடும்பங்கள்.",
             h1="4D புள்ளிவிவரம்", lead="{s} முதல் 10 நிறுவனங்களின் {n} குலுக்கல்கள் ஒவ்வொரு 4D எண்ணைப் பற்றியும் சொல்வது. ஒவ்வொரு குலுக்கலுக்குப் பின் புதுப்பிக்கப்படும்.",
             k=("ஆய்வு செய்த குலுக்கல்கள்", "வந்த எண்கள்"),

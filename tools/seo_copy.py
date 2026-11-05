@@ -5,13 +5,13 @@ import json
 
 META = {
     "en": ("Malaysia 4D Result Today Live: Magnum, Toto, Damacai | 4D Malam Ini",
-           "Live Malaysia 4D results today: Magnum, Sports Toto, Da Ma Cai, GD Lotto, 9 Lotto, Super J3/J9, Singapore, Cash Sweep and Sandakan. Check any number against 5 years."),
+           "Live Malaysia 4D results today: Magnum, Sports Toto, Da Ma Cai, GD Lotto, 9 Lotto, Super J3/J9, Singapore and more. Check any number against 5 years."),
     "ms": ("Keputusan 4D Hari Ini Live: Magnum, Toto, Damacai | 4D Malam Ini",
            "Keputusan 4D hari ini: Magnum 4D, Sports Toto, Da Ma Cai 1+3D, GD Lotto dan 9 Lotto, dikemas kini dari 7 malam. Semak nombor anda dengan rekod 5 tahun."),
     "zh": ("今日万字成绩直播：万能、多多、大马彩 | 4D Malam Ini",
            "今日马来西亚万字成绩：万能 Magnum 4D、多多 Sports Toto、大马彩 Da Ma Cai、豪龙 GD Lotto 与 9 Lotto，晚上7点起即时更新。查询号码5年中奖记录与万字图。"),
     "ta": ("இன்றைய 4D முடிவுகள் நேரலை: Magnum, Toto, Damacai | 4D Malam Ini",
-           "இன்றைய மலேசியா 4D முடிவுகள்: Magnum 4D, Sports Toto, Da Ma Cai 1+3D, GD Lotto, 9 Lotto — இரவு 7 மணி முதல் புதுப்பிக்கப்படும். உங்கள் எண்ணை 5 ஆண்டு பதிவுகளுடன் சரிபாருங்கள்."),
+           "இன்றைய மலேசியா 4D முடிவுகள்: Magnum, Sports Toto, Da Ma Cai, GD Lotto — இரவு 7 மணி முதல் புதுப்பிக்கப்படும். எண்ணை 5 ஆண்டு பதிவுடன் சரிபாருங்கள்."),
 }
 
 H1 = {

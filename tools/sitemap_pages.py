@@ -10,7 +10,7 @@ CO = [("Magnum 4D", "magnum-4d-result", 0), ("Da Ma Cai 1+3D", "da-ma-cai-result
 
 T = {
  "en": dict(title="Sitemap", crumb="Sitemap", home="Home", h1="Sitemap",
-            desc="Every page on 4D Malam Ini: live results, each company's results, the results archive by year, the 4D dictionary, statistics, popular numbers and site information.",
+            desc="Every page on 4D Malam Ini: live results, each company's results, the archive by year, the 4D dictionary, statistics and popular numbers.",
             lead="Everything on this site, on one page.",
             g=("Results", "Numbers", "Results archive", "Information"),
             res=[("Live results tonight", ""), ("Results archive", "keputusan/"), ("Special draw dates & results", "special-draw/")],
@@ -18,7 +18,7 @@ T = {
             inf=[("Info centre", "info/"), ("How to play 4D", "guide/"), ("About us", "about/"), ("Data & editorial policy", "data-policy/")],
             co="Results by company", arch="By year", draws="{n} draws", langs="This page in other languages"),
  "ms": dict(title="Peta Laman", crumb="Peta laman", home="Utama", h1="Peta laman",
-            desc="Setiap halaman di 4D Malam Ini: keputusan langsung, keputusan setiap syarikat, arkib keputusan mengikut tahun, kamus 4D, statistik, nombor popular dan maklumat laman.",
+            desc="Setiap halaman di 4D Malam Ini: keputusan langsung, keputusan setiap syarikat, arkib mengikut tahun, kamus 4D, statistik dan nombor popular.",
             lead="Semua yang ada di laman ini, dalam satu halaman.",
             g=("Keputusan", "Nombor", "Arkib keputusan", "Maklumat"),
             res=[("Keputusan langsung malam ini", ""), ("Arkib keputusan", "keputusan/"), ("Tarikh & keputusan cabutan khas", "special-draw/")],
@@ -85,9 +85,11 @@ def build(site) -> None:
         num = "<ul>" + f'<li><a href="{site.u("4d/")}">{esc(x["num"][0][0])}</a></li>' \
             + "".join(f'<li><a href="{site.u(pre + u)}">{esc(t)}</a></li>' for t, u in x["num"][1:]) + "</ul>"
         inf = "<ul>" + "".join(f'<li><a href="{site.u((pre if u != "data-policy/" else "") + u)}">{esc(t)}</a></li>' for t, u in x["inf"]) + "</ul>"
-        co = "<ul>" + "".join(f'<li><a href="{site.u(pre + u)}"><span class="lg" style="background-position:{-i * 26}px 0"></span>{esc(t)}</a></li>' for t, u, i in CO) + "</ul>"
+        co = "<ul>" + "".join(f'<li><a href="{site.u(pre + u + "/")}"><span class="lg" style="background-position:{-i * 26}px 0"></span>{esc(t)}</a></li>' for t, u, i in CO) + "</ul>"
         lastof = {d[:4]: d for d in sorted(site.dates)}
-        ar = '<div class="yr">' + "".join(f'<a href="{site.u(pre)}?d={lastof[y]}"><b>{y}</b><span>{esc(x["draws"].format(n=n))}</span></a>' for y, n in sorted(yrs.items(), reverse=True)) + "</div>"
+        ar = '<div class="yr">' + "".join(
+            f'<a href="{site.u(f"keputusan/{y}/") if lang == "ms" else site.u(pre) + "?d=" + lastof[y]}"><b>{y}</b><span>{esc(x["draws"].format(n=n))}</span></a>'
+            for y, n in sorted(yrs.items(), reverse=True)) + "</div>"
         bc, bld = site.crumbs([(x["home"], pre), (x["crumb"], None)])
         body = (f'<div class="smp">{lng}{bc}<h1>{esc(x["h1"])}</h1><p class="lead">{esc(x["lead"])}</p>'
                 f'<h2><i>🔴</i>{esc(x["g"][0])}</h2>{res}'

@@ -12,7 +12,13 @@ OPS = [("M", "Magnum 4D", "万能", "#E9C46B"), ("D", "Da Ma Cai", "大马彩", 
 PRIZE = {1: ("Hadiah Pertama", "1st Prize", "头奖"), 2: ("Hadiah Kedua", "2nd Prize", "二奖"), 3: ("Hadiah Ketiga", "3rd Prize", "三奖"),
          4: ("Istimewa", "Special", "特别奖"), 5: ("Saguhati", "Consolation", "安慰奖")}
 HC = {"M": "#FFF200", "D": "#000080", "T": "#C00000", "G": "#B0121B", "N": "#0E8F86", "J": "#5B21B6", "K": "#C2410C", "S": "#B91C2C", "C": "#0B7A3B", "H": "#14532D"}
+SHORTN = {"M": "Magnum", "T": "Toto", "D": "Da Ma Cai", "G": "GD Lotto", "N": "9 Lotto", "S": "Singapore", "C": "Cash Sweep", "H": "Sandakan", "J": "Super J3", "K": "Super J9"}
 LPRE = {"en": "", "zh-Hans": "zh/", "zh": "zh/", "ta": "ta/"}
+# section roots that exist in all four languages: Malay-namespace pages (/keputusan/, /4d/) must
+# link to the ms/ copy, not the prefix-free English one.
+MSROOT = re.compile(r"^(magnum-4d-result|da-ma-cai-result|sports-toto-result|gd-lotto-result|9-lotto-result|"
+                    r"singapore-4d-result|cash-sweep-result|sandakan-4d-result|super-j3-j9-result|info|about|"
+                    r"guide|special-draw|4d-statistics|popular-4d-numbers|sitemap)/")
 
 
 def localize(doc: str, lang: str) -> str:
@@ -25,7 +31,7 @@ def localize(doc: str, lang: str) -> str:
     def f(m):
         h = re.sub(r"^(https://www\.4dmalamini\.com)?/", "", m.group(2))
         if lang == "ms" and not (h == "" or h.startswith("?")):
-            return m.group(0)
+            return m.group(1) + "/ms/" + h + m.group(3) if MSROOT.match(h) else m.group(0)
         x = re.fullmatch(r"keputusan/(\d{4})-(\d\d)-(\d\d)/", h)
         if x:
             return m.group(1) + pre + "?d=" + "".join(x.groups()) + m.group(3)
@@ -37,6 +43,8 @@ def localize(doc: str, lang: str) -> str:
         if lang == "ms":
             return m.group(0)
         if h == "keputusan/":
+            return m.group(1) + pre + m.group(3)
+        if re.fullmatch(r"keputusan/\d{4}/(\d\d/)?", h):
             return m.group(1) + pre + m.group(3)
         if h == "4d/" or re.fullmatch(r"4d/\d{4}-\d{4}/", h):
             return m.group(1) + pre + "?tab=dict" + m.group(3)
@@ -99,7 +107,7 @@ table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;p
 .sl{background:#0F1F3D;border:1px solid #1D3157;border-radius:18px;overflow:hidden;margin:12px 0;scroll-margin-top:70px;position:relative}
 .sl::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--ac)}
 .sl .hd{display:flex;align-items:center;gap:10px;padding:14px 14px 10px}.sl .hd img{width:36px;height:36px;object-fit:contain;flex:none;border-radius:10px;background:#fff;padding:3px}
-.sl .hd b{display:block;font-size:16px;line-height:1.2;color:#F8F4E8}.sl .hd b i{font-style:normal;color:#9FB0D3;font-weight:600;font-size:13px;margin-left:4px}.sl .hd small{display:block;font-size:12px;color:#9FB0D3}
+.sl .hd b,.sl .hd h2{display:block;font-size:16px;line-height:1.2;color:#F8F4E8;margin:0;font-weight:700}.sl .hd b i,.sl .hd h2 i{font-style:normal;color:#9FB0D3;font-weight:600;font-size:13px;margin-left:4px}.sl .hd small{display:block;font-size:12px;color:#9FB0D3}
 .sl .hd a{margin-left:auto;flex:none;font-size:12px;font-weight:700;color:#9FB0D3;text-decoration:none}
 .sl .t3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 14px}.sl .t3 a{display:flex;flex-direction:column;align-items:center;padding:10px 0 8px;border-radius:12px;background:#07142B;text-decoration:none}
 .sl .t3 small{font-size:10.5px;font-weight:800;letter-spacing:.06em;color:#9FB0D3;text-transform:uppercase}.sl .t3 b{font:800 26px/1.15 -apple-system,Roboto,"Segoe UI",Arial,sans-serif;color:#FFE7A3;letter-spacing:.03em}
@@ -114,7 +122,7 @@ table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;p
 .g5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-top:6px}.g5 a{min-height:44px;font-size:15px}
 .lbl{font-size:12px;font-weight:800;color:#A9B4CC;margin-top:12px}
 .kf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:14px}.kf div{background:#0F1F3D;border:1px solid #233862;border-radius:14px;padding:10px 12px}.kf small{display:block;font-size:11.5px;color:#9FB0D3;font-weight:700}.kf b{display:block;font-size:17px;line-height:1.3;margin-top:2px}.kf a{text-decoration:none}.kf .wd{grid-column:1/-1}.bars{display:grid;gap:7px;margin:10px 0 4px}.bars a,.bars div{display:grid;grid-template-columns:96px 1fr 28px;align-items:center;gap:8px;font-size:13px;color:#C9D4EA;text-decoration:none}.bars i{display:block;height:12px;border-radius:6px;background:var(--c,#E9C46B);min-width:3px}.bars b{text-align:right;color:#F8F4E8}.bars .z i{background:#233862}.chips a small{margin-left:6px;color:#9FB0D3;font-weight:600}.chips a.hot{border:1px solid rgba(233,196,107,.5)}.note{font-size:12.5px;color:#9FB0D3;margin-top:18px}.pol h2{margin-top:26px}.pol li{margin:4px 0}.pol .card p{margin:6px 0}.pn{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:22px}.pn a{min-height:56px;display:flex;flex-direction:column;justify-content:center;padding:8px 12px;border-radius:14px;background:#0F1F3D;border:1px solid #233862;text-decoration:none;color:#F8F4E8;font-size:13.5px;font-weight:700;line-height:1.3}.pn a::before{content:attr(data-l);font-size:11px;font-weight:700;color:#9FB0D3}.pn a:last-child:not(:first-child){text-align:right}.pn span{display:block}
-.list{columns:2;column-gap:18px;padding:0;list-style:none}.list li{break-inside:avoid;padding:5px 0;border-bottom:1px solid #1A2C50;font-size:14px}
+.yg,.mg{display:grid;gap:9px;margin:14px 0 4px}.yg{grid-template-columns:repeat(2,minmax(0,1fr))}.mg{grid-template-columns:repeat(3,minmax(0,1fr))}.yg a,.mg a{display:block;padding:12px;border-radius:14px;background:#0F1F3D;border:1px solid #233862;text-decoration:none;color:#F8F4E8}.yg a b,.mg a b{display:block;font-size:19px;line-height:1.1;color:#E9C46B}.mg a b{font-size:15px}.yg a small,.mg a small{display:block;font-size:11.5px;color:#9FB0D3;margin-top:3px;line-height:1.35}.mg span{display:block;padding:12px;border-radius:14px;background:#0C1A33;border:1px solid #16254487;color:#5E6F90}.mg span b{display:block;font-size:15px;line-height:1.1}.dg{display:grid;gap:8px;margin:14px 0 4px}.dg a{display:grid;grid-template-columns:46px 1fr;align-items:center;gap:11px;padding:10px 12px;border-radius:14px;background:#0F1F3D;border:1px solid #233862;text-decoration:none;color:#F8F4E8}.dg a>b{text-align:center;font-size:20px;line-height:1;color:#E9C46B}.dg a>b i{display:block;font-style:normal;font-size:10.5px;color:#9FB0D3;margin-top:2px;font-weight:700}.dg a>span{display:block;min-width:0}.dg a>span u{display:block;text-decoration:none;font-size:13px;font-weight:700;line-height:1.3}.dg a>span em{display:block;font-style:normal;font-size:11.5px;color:#9FB0D3;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.list{columns:2;column-gap:18px;padding:0;list-style:none}.list li{break-inside:avoid;padding:5px 0;border-bottom:1px solid #1A2C50;font-size:14px}
 .list a{text-decoration:none;color:#F8F4E8}.list .mono{color:#E9C46B;margin-right:8px}
 footer{max-width:720px;margin:0 auto;padding:18px 16px 40px;font-size:12px;color:#A9B4CC;border-top:1px solid #1A2C50}.tgi{position:relative;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#fff;color:#1877B8;flex:none}.tgi::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #fff;animation:tgp 2s ease-out infinite}.tgi svg{margin-left:-2px;animation:tgf 3s ease-in-out infinite}@keyframes tgp{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.7);opacity:0}}@keyframes tgf{0%,55%,100%{transform:none;opacity:1}70%{transform:translate(9px,-9px) scale(.6);opacity:0}71%{transform:translate(-9px,9px) scale(.6);opacity:0}85%{transform:none;opacity:1}}@media (prefers-reduced-motion:reduce){.tgi::after,.tgi svg{animation:none}}.tg{display:inline-flex;align-items:center;gap:10px;padding-left:7px!important;margin-top:14px;min-height:44px;padding:0 16px;border-radius:999px;background:#1877B8;color:#fff!important;font-weight:800;font-size:14px;text-decoration:none}
 @media(max-width:520px){.list{columns:1}dl{grid-template-columns:110px 1fr}}"""
@@ -247,17 +255,23 @@ class Site:
                 zhs = f" {zh}" if zh and zh != name and not zh.startswith("J") else ""
                 t3h = "".join(f'<a href="{self.u(f"4d/{x}/")}"><small>{lab}</small><b>{x}</b></a>' for lab, x in zip(("1st 首奖", "2nd 二奖", "3rd 三奖"), n[:3]))
                 body_ops.append(f'<section class="sl" id="r-{k}" style="--ac:{col}"><div class="hd"><img src="{self.u(f"img/op/{logo}.webp?v=4")}" alt="" width="36" height="36" loading="lazy">'
-                                f'<div><b>{name}<i>{zhs.strip()}</i></b><small>Cabutan {esc(no) or "–"}</small></div><a href="{self.u(OPSLUG[k] + "/")}">Semua ›</a></div>'
+                                f'<div><h2>{name}<i>{zhs.strip()}</i></h2><small>{self.date_sh(d)} · Cabutan {esc(no) or "–"}</small></div><a href="{self.u(OPSLUG[k] + "/")}">Semua ›</a></div>'
                                 f'<div class="t3">{t3h}</div>'
                                 f'<div class="sb">Istimewa · Special<i>特别奖</i></div><div class="gr">{"".join(a(x) for x in sorted(n[3:13]))}</div>'
                                 f'<div class="sb">Saguhati · Consolation<i>安慰奖</i></div><div class="gr">{"".join(a(x) for x in sorted(n[13:]))}</div>{six}</section>')
-            nav, ld = self.crumbs([("4D Malam Ini", ""), ("Keputusan", "keputusan/"), (self.date_ms(d), None)])
+            nav, ld = self.crumbs([("4D Malam Ini", ""), ("Keputusan", "keputusan/"), (d[:4], f"keputusan/{d[:4]}/"),
+                                   (BULAN[int(d[4:6]) - 1], f"keputusan/{d[:4]}/{d[4:6]}/"), (self.date_sh(d), None)])
             prev = f'<a data-l="‹ Sebelum · Previous" href="{self.u(f"keputusan/{d8(self.dates[i - 1]).isoformat()}/")}">{self.date_sh(self.dates[i - 1])}</a>' if i else "<span></span>"
             nxt = f'<a data-l="Seterusnya · Next ›" href="{self.u(f"keputusan/{d8(self.dates[i + 1]).isoformat()}/")}">{self.date_sh(self.dates[i + 1])}</a>' if i + 1 < len(self.dates) else "<span></span>"
             dd = d8(d)
-            title = f"4D Result {dd.day} {dd:%B %Y} ({dd:%A}) · Keputusan 4D | 4D Malam Ini"
-            if len(title) > 70:
-                title = f"4D Result {dd.day} {dd:%B %Y} · Keputusan 4D | 4D Malam Ini"
+            ks = [k for k, _, _, _ in OPS if d in by[k]]
+            base = f"Keputusan 4D {dd.day} {BULAN[dd.month - 1][:3]} {dd.year}"
+            title, pv = f"{base} · Past Result | 4D Malam Ini", []
+            for k in ks:
+                t2 = f"{base}: {', '.join(pv + [SHORTN[k]])} Result | 4D Malam Ini"
+                if len(t2) > 70:
+                    break
+                pv.append(SHORTN[k]); title = t2
             desc = f"4D result {dd.day} {dd:%b %Y} / keputusan 4D {self.date_ms(d)}: " + "; ".join(
                 f"{name} {by[k][d][2][0]}, {by[k][d][2][1]}, {by[k][d][2][2]}" for k, name, _, _ in OPS if d in by[k]) + ". Hadiah istimewa dan saguhati."
             desc = desc if len(desc) <= 158 else desc[:155].rsplit(";", 1)[0] + "…"
@@ -274,7 +288,14 @@ class Site:
             body = (f"{nav}<h1>Keputusan 4D {self.date_ms(d)}<small><span lang='en'>4D results {dd:%A, %-d %B %Y}</span> · <span lang='zh-Hans'>{dd.year}年{dd.month}月{dd.day}日万字成绩</span></small></h1>"
                     f'<div class="dnav">{pa}<b>{self.date_ms(d)}<small>{len(body_ops)} syarikat · companies</small></b>{na}</div>{jmp}'
                     + "".join(body_ops) + f'<div class="pn">{prev}{nxt}</div><a class="arch" href="{self.u("keputusan/")}">Arkib keputusan · All past results ›</a>')
-            self.page(f"keputusan/{iso}/", title, desc, body, "ms", [ld, ld_res], iso)
+            ld_li = {"@context": "https://schema.org", "@type": "ItemList",
+                     "name": f"Keputusan 4D {self.date_ms(d)}", "description": f"Keputusan 4D penuh {self.date_ms(d)}.",
+                     "itemListOrder": "https://schema.org/ItemListOrderAscending", "numberOfItems": len(ks),
+                     "itemListElement": [{"@type": "ListItem", "position": j + 1,
+                                          "name": f"{nm} 1st Prize: {by[kk][d][2][0]}",
+                                          "url": self.site + f"keputusan/{iso}/#r-{kk}"}
+                                         for j, (kk, nm) in enumerate((k2, n2) for k2, n2, _, _ in OPS if d in by[k2])]}
+            self.page(f"keputusan/{iso}/", title, desc, body, "ms", [ld, ld_res, ld_li], iso)
 
     def number_pages(self, last: str) -> None:
         lo, hi = d8(self.dates[0]), d8(self.dates[-1])
@@ -427,19 +448,104 @@ class Site:
                   f'{nav}<h1>Kamus 4D 万字图 0000–9999<small>4D dictionary · 万字图 · 4D அகராதி</small></h1>'
                   f'<p>10,000 nombor dengan gambar dan maksud dalam empat bahasa. Pilih julat, atau <a href="{self.u("?tab=dict")}">cari dengan perkataan</a>.</p>'
                   f'<div class="chips">{"".join(ranges)}</div>', "ms", [ld], lastiso)
-        # results archive hub
-        by_year = defaultdict(list)
-        for d in reversed(self.dates):
-            by_year[d[:4]].append(d)
-        secs = "".join(f"<h2>{y}</h2><ul class=\"list\">" + "".join(
-            f'<li><a href="{self.u(f"keputusan/{d8(d).isoformat()}/")}">{self.date_ms(d)}</a></li>' for d in ds) + "</ul>" for y, ds in by_year.items())
+        self.archive(last)
+
+    def archive(self, last: str) -> None:
+        """Silo: /keputusan/ (year hubs) -> /keputusan/YYYY/ (month silos) -> /keputusan/YYYY/MM/ -> date pages."""
+        lastiso = d8(last).isoformat()
+        by_y, by_m, has, fp = defaultdict(list), defaultdict(list), defaultdict(list), defaultdict(list)
+        for d in self.dates:
+            by_y[d[:4]].append(d)
+            by_m[d[:6]].append(d)
+        for k, _, _, _ in OPS:
+            for d, _no, n in self.draws.get(k, []):
+                has[d].append(k)
+                if n and n[0].isdigit():
+                    fp[d].append(f"{SHORTN[k]} {n[0]}")
+        years = sorted(by_y, reverse=True)
+        pv = " · ".join(f'<a href="{self.u("ms/" + sl + "/")}">Keputusan {nm} hari ini</a>' for sl, nm in (
+            ("magnum-4d-result", "Magnum 4D"), ("sports-toto-result", "Sports Toto"), ("da-ma-cai-result", "Da Ma Cai"),
+            ("gd-lotto-result", "GD Lotto"), ("9-lotto-result", "9 Lotto")))
+
+        def daycards(ds):
+            out = []
+            for d in ds:
+                x = d8(d)
+                out.append(f'<a href="{self.u(f"keputusan/{x.isoformat()}/")}"><b>{x.day}<i>{HARI[x.weekday()][:3]}</i></b>'
+                           f'<span><u>{esc(" · ".join(fp[d][:3])) or "Keputusan penuh"}</u>'
+                           f'<em>{len(has[d])} syarikat · {HARI[x.weekday()]}, {x.day} {BULAN[x.month - 1]}</em></span></a>')
+            return '<div class="dg">' + "".join(out) + "</div>"
+
+        # ---- month silos ----
+        for ym, ds in by_m.items():
+            y, mo = ym[:4], int(ym[4:6])
+            mn, nx = f"{BULAN[mo - 1]} {y}", None
+            keys = sorted(by_m)
+            i = keys.index(ym)
+            prev = f'<a data-l="‹ Bulan sebelum · Previous" href="{self.u(f"keputusan/{keys[i - 1][:4]}/{keys[i - 1][4:6]}/")}">{BULAN[int(keys[i - 1][4:6]) - 1]} {keys[i - 1][:4]}</a>' if i else "<span></span>"
+            nxt = f'<a data-l="Bulan seterusnya · Next ›" href="{self.u(f"keputusan/{keys[i + 1][:4]}/{keys[i + 1][4:6]}/")}">{BULAN[int(keys[i + 1][4:6]) - 1]} {keys[i + 1][:4]}</a>' if i + 1 < len(keys) else "<span></span>"
+            ops = sorted({k for d in ds for k in has[d]}, key=lambda k: [o[0] for o in OPS].index(k))
+            onames = [nm for k, nm, _, _ in OPS if k in ops]
+            nav, ld = self.crumbs([("4D Malam Ini", ""), ("Keputusan", "keputusan/"), (y, f"keputusan/{y}/"), (BULAN[mo - 1], None)])
+            title = f"Keputusan 4D {mn} · Magnum, Toto, Da Ma Cai | 4D Malam Ini"
+            desc = (f"Arkib keputusan 4D {mn}: {len(ds)} tarikh cabutan, " + ", ".join(onames[:4])
+                    + (f" dan {len(onames) - 4} lagi" if len(onames) > 4 else "") + ". Pilih tarikh untuk keputusan penuh.")
+            body = (f'{nav}<h1>Keputusan 4D {mn}<small><span lang="en">4D results {BULAN[mo - 1]} {y}</span> · '
+                    f'<span lang="zh-Hans">{y}年{mo}月万字成绩</span></small></h1>'
+                    f'<p>{len(ds)} tarikh cabutan dalam {mn}. Nombor di bawah ialah hadiah pertama Magnum, Da Ma Cai dan Sports Toto.</p>'
+                    + daycards(ds) + f'<div class="pn">{prev}{nxt}</div>'
+                    + f'<a class="arch" href="{self.u(f"keputusan/{y}/")}">Semua bulan {y} ›</a>')
+            mli = {"@context": "https://schema.org", "@type": "ItemList", "name": f"Keputusan 4D {mn}",
+                   "description": desc, "itemListOrder": "https://schema.org/ItemListOrderAscending", "numberOfItems": len(ds),
+                   "itemListElement": [{"@type": "ListItem", "position": j + 1, "name": f"Keputusan 4D {self.date_ms(dd_)}",
+                                        "url": self.site + f"keputusan/{d8(dd_).isoformat()}/"} for j, dd_ in enumerate(ds)]}
+            self.page(f"keputusan/{y}/{mo:02d}/", title, desc, body, "ms", [ld, mli], d8(ds[-1]).isoformat())
+
+        # ---- year hubs ----
+        for j, y in enumerate(years):
+            ds = by_y[y]
+            cells = []
+            for mo in range(1, 13):
+                k2 = f"{y}{mo:02d}"
+                if k2 in by_m:
+                    cells.append(f'<a href="{self.u(f"keputusan/{y}/{mo:02d}/")}"><b>{BULAN[mo - 1]}</b><small>{len(by_m[k2])} cabutan</small></a>')
+                else:
+                    cells.append(f'<span><b>{BULAN[mo - 1]}</b><small>—</small></span>')
+            nxt_y = years[j - 1] if j else None
+            prv_y = years[j + 1] if j + 1 < len(years) else None
+            prev = f'<a data-l="‹ Tahun sebelum · Previous" href="{self.u(f"keputusan/{prv_y}/")}">{prv_y}</a>' if prv_y else "<span></span>"
+            nxt = f'<a data-l="Tahun seterusnya · Next ›" href="{self.u(f"keputusan/{nxt_y}/")}">{nxt_y}</a>' if nxt_y else "<span></span>"
+            nav, ld = self.crumbs([("4D Malam Ini", ""), ("Keputusan", "keputusan/"), (y, None)])
+            onames = [nm for k, nm, _, _ in OPS if any(k in has[d] for d in ds)]
+            title = f"Keputusan 4D {y} · Arkib Past Result Magnum, Toto | 4D Malam Ini"
+            desc = (f"Arkib keputusan 4D {y}: {len(ds)} tarikh cabutan dari {self.date_sh(ds[0])} hingga {self.date_sh(ds[-1])}, "
+                    + ", ".join(onames[:4]) + (f" dan {len(onames) - 4} lagi" if len(onames) > 4 else "") + ".")
+            body = (f'{nav}<h1>Keputusan 4D {y}<small><span lang="en">4D results {y} archive</span> · '
+                    f'<span lang="zh-Hans">{y}年万字成绩档案</span></small></h1>'
+                    f'<p>{len(ds)} tarikh cabutan, {self.date_ms(ds[0])} – {self.date_ms(ds[-1])}. Pilih bulan:</p>'
+                    f'<div class="mg">{"".join(cells)}</div>'
+                    f'<h2>Cabutan terakhir {y}</h2>' + daycards(ds[-12:][::-1])
+                    + f'<div class="pn">{prev}{nxt}</div><a class="arch" href="{self.u("keputusan/")}">Semua tahun ›</a>')
+            ms_ = [m2 for m2 in range(1, 13) if f"{y}{m2:02d}" in by_m]
+            yli = {"@context": "https://schema.org", "@type": "ItemList", "name": f"Keputusan 4D {y}", "description": desc,
+                   "itemListOrder": "https://schema.org/ItemListOrderAscending", "numberOfItems": len(ms_),
+                   "itemListElement": [{"@type": "ListItem", "position": j + 1, "name": f"Keputusan 4D {BULAN[m2 - 1]} {y}",
+                                        "url": self.site + f"keputusan/{y}/{m2:02d}/"} for j, m2 in enumerate(ms_)]}
+            self.page(f"keputusan/{y}/", title, desc, body, "ms", [ld, yli], d8(ds[-1]).isoformat())
+
+        # ---- top archive hub ----
+        ycards = "".join(f'<a href="{self.u(f"keputusan/{y}/")}"><b>{y}</b><small>{len(by_y[y])} tarikh cabutan<br>'
+                         f'{self.date_sh(by_y[y][0])[5:]} – {self.date_sh(by_y[y][-1])[5:]}</small></a>' for y in years)
         nav, ld = self.crumbs([("4D Malam Ini", ""), ("Keputusan", None)])
-        self.page("keputusan/", "Arkib keputusan 4D Malaysia — Magnum, Sports Toto, Da Ma Cai | 4D Malam Ini",
-                  f"Semua keputusan 4D Magnum, Sports Toto dan Da Ma Cai dari {self.date_ms(self.dates[0])} hingga {self.date_ms(last)}.",
-                  f"{nav}<h1>Arkib keputusan 4D<small>4D results archive · 万字成绩档案</small></h1>"
-                  f'<p>Terkini: <a href="{self.u(f"keputusan/{lastiso}/")}">{self.date_ms(last)}</a></p>'
-                  + '<p>' + " · ".join(f'<a href="{self.u("ms/" + s + "/")}">Keputusan {n} hari ini</a>' for s, n in (("magnum-4d-result", "Magnum 4D"), ("sports-toto-result", "Sports Toto"), ("da-ma-cai-result", "Da Ma Cai"), ("gd-lotto-result", "GD Lotto"), ("9-lotto-result", "9 Lotto"))) + '</p>'
-                  + secs, "ms", [ld], lastiso)
+        self.page("keputusan/", "Arkib keputusan 4D Malaysia — Magnum, Toto, Da Ma Cai | 4D Malam Ini",
+                  f"Semua keputusan 4D Magnum, Sports Toto dan Da Ma Cai dari {self.date_ms(self.dates[0])} hingga {self.date_ms(last)}. "
+                  f"{len(self.dates)} tarikh cabutan, pilih tahun dan bulan.",
+                  f'{nav}<h1>Arkib keputusan 4D<small><span lang="en">4D results archive</span> · <span lang="zh-Hans">万字成绩档案</span></small></h1>'
+                  f'<p>{len(self.dates)} tarikh cabutan dari {self.date_ms(self.dates[0])} hingga '
+                  f'<a href="{self.u(f"keputusan/{lastiso}/")}">{self.date_ms(last)}</a>. Pilih tahun:</p>'
+                  f'<div class="yg">{ycards}</div>'
+                  f'<h2>Cabutan terkini</h2>' + daycards(self.dates[-10:][::-1])
+                  + f'<p>{pv}</p>', "ms", [ld], lastiso)
 
     def not_found(self) -> None:
         body = (f'<h1>Halaman tidak dijumpai<small>Page not found · 找不到页面 · பக்கம் கிடைக்கவில்லை</small></h1>'

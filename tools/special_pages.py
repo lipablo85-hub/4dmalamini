@@ -15,7 +15,7 @@ WD = {"en": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], "ms": ["Isn", "Se
 
 T = {
  "en": dict(title="4D Special Draw 2026: Dates, Schedule & Results", crumb="Special draw", home="Home",
-            desc="Malaysia 4D special draw dates for 2026 and the next special draw, with results of every past special draw for Magnum, Sports Toto, Da Ma Cai, Cash Sweep and Sandakan.",
+            desc="Malaysia 4D special draw dates for 2026 and the next special draw, with results of every past special draw for Magnum, Toto, Da Ma Cai and more.",
             h1="4D special draw dates & results", lead="Extra draws on top of the usual Wednesday, Saturday and Sunday, held by Magnum, Sports Toto, Da Ma Cai, Cash Sweep and Sandakan at 7pm.",
             nx="Next special draw", days="{n} days to go", tom="Tomorrow", today="Today, 7pm", none="The next special draw dates have not been announced yet.",
             sch="{y} special draw schedule", st=("Date", "Day", "Status"), done="Results", up="Upcoming", arch="Past special draws", archs="Tap a date to open that night's full results.",
@@ -29,7 +29,7 @@ T = {
                  ("Are special draw prizes different?", "No. Prizes and bet types are the same as a normal draw night. Check each company's official page for jackpot details.")],
             nxs="The next special draw is on {d} at 7pm.", rp="21+ · Non-Muslims only · Play responsibly. 4D Malam Ini does not sell tickets or take bets."),
  "ms": dict(title="Cabutan Khas 4D 2026: Tarikh, Jadual & Keputusan", crumb="Cabutan khas", home="Utama",
-            desc="Tarikh cabutan khas 4D Malaysia 2026 dan cabutan khas seterusnya, dengan keputusan setiap cabutan khas lepas untuk Magnum, Sports Toto, Da Ma Cai, Cash Sweep dan Sandakan.",
+            desc="Tarikh cabutan khas 4D Malaysia 2026 dan cabutan khas seterusnya, dengan keputusan setiap cabutan khas lepas untuk Magnum, Toto, Da Ma Cai dan lagi.",
             h1="Tarikh & keputusan cabutan khas 4D", lead="Cabutan tambahan selain Rabu, Sabtu dan Ahad biasa, oleh Magnum, Sports Toto, Da Ma Cai, Cash Sweep dan Sandakan pada 7 malam.",
             nx="Cabutan khas seterusnya", days="{n} hari lagi", tom="Esok", today="Hari ini, 7 mlm", none="Tarikh cabutan khas seterusnya belum diumumkan.",
             sch="Jadual cabutan khas {y}", st=("Tarikh", "Hari", "Status"), done="Keputusan", up="Akan datang", arch="Cabutan khas lepas", archs="Tekan tarikh untuk membuka keputusan penuh malam itu.",
@@ -56,8 +56,8 @@ T = {
                  ("哪些公司有特别开彩？", "万能、多多、大马彩、砂拉越大万和山打根，马来西亚时间晚上7点开彩。"),
                  ("特别开彩的奖金不一样吗？", "一样。奖金和玩法与平常开彩相同，积宝详情请看各公司官网。")],
             nxs="下一期特别开彩：{d} 晚上7点。", rp="21+ · 仅限非穆斯林 · 理性投注。4D Malam Ini 不卖彩票、不接受投注。"),
- "ta": dict(title="4D சிறப்புக் குலுக்கல் 2026: தேதிகள், அட்டவணை & முடிவுகள்", crumb="சிறப்புக் குலுக்கல்", home="முகப்பு",
-            desc="2026 மலேசியா 4D சிறப்புக் குலுக்கல் தேதிகள், அடுத்த சிறப்புக் குலுக்கல், Magnum, Sports Toto, Da Ma Cai, Cash Sweep, Sandakan கடந்த சிறப்புக் குலுக்கல் முடிவுகள்.",
+ "ta": dict(title="4D சிறப்புக் குலுக்கல் 2026: தேதி & முடிவுகள்", crumb="சிறப்புக் குலுக்கல்", home="முகப்பு",
+            desc="2026 மலேசியா 4D சிறப்புக் குலுக்கல் தேதிகள், அடுத்த குலுக்கல், Magnum, Sports Toto, Da Ma Cai கடந்த சிறப்புக் குலுக்கல் முடிவுகள்.",
             h1="4D சிறப்புக் குலுக்கல் தேதிகள் & முடிவுகள்", lead="வழக்கமான புதன், சனி, ஞாயிறுக்கு மேலாக Magnum, Sports Toto, Da Ma Cai, Cash Sweep, Sandakan இரவு 7 மணிக்கு நடத்தும் கூடுதல் குலுக்கல்கள்.",
             nx="அடுத்த சிறப்புக் குலுக்கல்", days="இன்னும் {n} நாட்கள்", tom="நாளை", today="இன்று இரவு 7", none="அடுத்த சிறப்புக் குலுக்கல் தேதிகள் இன்னும் அறிவிக்கப்படவில்லை.",
             sch="{y} சிறப்புக் குலுக்கல் அட்டவணை", st=("தேதி", "நாள்", "நிலை"), done="முடிவுகள்", up="வரவிருக்கிறது", arch="கடந்த சிறப்புக் குலுக்கல்கள்", archs="அன்றிரவு முழு முடிவுகளைக் காண தேதியைத் தட்டுங்கள்.",

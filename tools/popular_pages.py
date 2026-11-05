@@ -140,6 +140,7 @@ def build(site) -> None:
                 f'<a class="cta" href="{site.u(pre + "?tab=check")}">{esc(x["cta"])} ›</a>'
                 f'<a class="cta2" href="{site.u(pre + "4d-statistics/")}">{esc(x["stats"])} ›</a></div>')
         il = {"@context": "https://schema.org", "@type": "ItemList", "name": x["title"], "inLanguage": hl,
+              "itemListOrder": "https://schema.org/ItemListOrderAscending", "numberOfItems": len(nums),
               "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": n, "url": site.site + f"4d/{n}/"} for i, n in enumerate(nums)]}
         site.page(path(lang), x["title"] + " | 4D Malam Ini", x["desc"].format(s=S), body, lang=hl, ld=[bld, il],
                   head=f'<link rel="stylesheet" href="{site.u(css_name)}">' + alts, lastmod=d8(s1).isoformat())

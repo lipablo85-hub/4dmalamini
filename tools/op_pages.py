@@ -64,7 +64,7 @@ T = {
    when={"wss": "{n}在星期三、六、日（及特别开彩日）晚上7点开彩。", "sg": "{n}逢星期三、六、日傍晚6点30分开彩。", "daily": "{n}每天晚上7点开彩。", "twice": "{n}每天开彩两次：J3 下午3点起，J9 晚上9点起。"},
    more="今日所有公司成绩 ›", archive="往期成绩 ›", howto="玩法 ›", t9=("J3 · 下午3点", "J9 · 晚上9点")),
  "ta": dict(h1="இன்றைய {n} முடிவுகள்", title="இன்றைய {n} முடிவுகள் – {d} | 4D Malam Ini", home="முகப்பு", crumb="{n} முடிவுகள்",
-   desc="{n} முடிவுகள் {d}: முதல் {a}, இரண்டாம் {b}, மூன்றாம் {c}. முழு சிறப்பு மற்றும் ஆறுதல் எண்கள், கடைசி 10 குலுக்கல்கள். இரவு 7 முதல் நேரலை.",
+   desc="{n} முடிவுகள் {d}: முதல் {a}, இரண்டாம் {b}, மூன்றாம் {c}. சிறப்பு & ஆறுதல் எண்கள், கடைசி 10 குலுக்கல். இரவு 7 முதல் நேரலை.",
    latest="சமீபத்திய {n} முடிவு", draw="குலுக்கல்", p=("முதல் பரிசு", "இரண்டாம் பரிசு", "மூன்றாம் பரிசு", "சிறப்பு", "ஆறுதல்"),
    lead="{day}, {d} (குலுக்கல் {no}) {n} முடிவு: முதல் பரிசு {a}, இரண்டாம் {b}, மூன்றாம் {c}. {sched} குலுக்கல் இரவுகளில் எண்கள் வந்தவுடன் இந்தப் பக்கமும் நேரலைப் பலகையும் புதுப்பிக்கப்படும்.",
    sched={"wss": "{n} ஒவ்வொரு புதன், சனி, ஞாயிறு இரவு 7 மணிக்கு (மலேசிய நேரம்) குலுக்கல் நடத்துகிறது; முன்கூட்டியே அறிவிக்கப்படும் சிறப்பு குலுக்கல்களும் உண்டு.",
@@ -78,18 +78,39 @@ T = {
    more="இன்று அனைத்து நிறுவனங்களும் ›", archive="முடிவுக் காப்பகம் ›", howto="விளையாடும் முறை ›", t9=("J3 · மதியம் 3", "J9 · இரவு 9")),
 }
 GUIDE = {"M": "magnum-4d/", "D": "da-ma-cai-1-3d/", "T": "sports-toto-4d/"}
-CSS = """.opp .lead{color:#C9D3EA;line-height:1.65}.opp .card.op{border-left:4px solid var(--c)}.opp .cta{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+CSS = """.chips.yr{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}.chips.yr a{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border-radius:12px;background:#0F1F3D;border:1px solid #233862;text-decoration:none;color:#F8F4E8;font-weight:700}.chips.yr a small{color:#9FB0D3;font-weight:600;font-size:11.5px}
+.opp .lead{color:#C9D3EA;line-height:1.65}.opp .card.op{border-left:4px solid var(--c)}.opp .cta{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
 .opp .cta a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:12px;background:#172A4D;color:#F8F4E8;text-decoration:none;font-weight:700}.opp .cta a.p{background:#E9C46B;color:#1B1300}
 .opp table{width:100%;border-collapse:collapse;font-size:14px}.opp td,.opp th{padding:9px 6px;border-bottom:1px solid #1A2C50;text-align:left}.opp th{color:#A9B4CC;font-size:12px}
 .opp td.n{font-family:ui-monospace,Menlo,monospace;font-weight:700;letter-spacing:.04em}.opp details{border-bottom:1px solid #1A2C50;padding:12px 0}.opp summary{font-weight:700;cursor:pointer}.opp details p{color:#C9D3EA;margin:8px 0 0}"""
 
 
+# ---- provider-year archive strings ----
+YT = {
+ "en": {"h1": "{n} Results {y}", "ttl": "{n} Results {y} — Full Year Archive | 4D Malam Ini",
+        "dsc": "Every {n} result in {y}: {c} draws from {a} to {b}. First, second and third prize for each draw date.",
+        "lead": "{c} {n} draw dates in {y}, {a} – {b}. Tap a date for the full result including special and consolation prizes.",
+        "yrs": "Other years", "all": "All {n} results ›", "mon": "{m} {y}"},
+ "ms": {"h1": "Keputusan {n} {y}", "ttl": "Keputusan {n} {y} — Arkib Penuh Setahun | 4D Malam Ini",
+        "dsc": "Semua keputusan 4D {n} tahun {y}: {c} cabutan dari {a} hingga {b}. Hadiah pertama, kedua dan ketiga setiap tarikh.",
+        "lead": "{c} tarikh cabutan {n} dalam {y}, {a} – {b}. Tekan tarikh untuk keputusan penuh termasuk hadiah istimewa dan saguhati.",
+        "yrs": "Tahun lain", "all": "Semua keputusan {n} ›", "mon": "{m} {y}"},
+ "zh": {"h1": "{y}年{n}开奖记录", "ttl": "{y}年{n}开奖记录 — 全年万字成绩档案 | 4D Malam Ini",
+        "dsc": "{y}年{n}全部开奖记录：{c} 期，{a} 至 {b}。每期头奖、二奖、三奖。",
+        "lead": "{y}年{n}共 {c} 期开奖，{a} – {b}。点击日期查看完整成绩，包括特别奖和安慰奖。",
+        "yrs": "其他年份", "all": "全部{n}成绩 ›", "mon": "{y}年{m}"},
+ "ta": {"h1": "{n} {y} முடிவுகள்", "ttl": "{n} {y} முடிவுகள் — முழு ஆண்டு காப்பகம் | 4D Malam Ini",
+        "dsc": "{y} ஆம் ஆண்டின் அனைத்து {n} 4D முடிவுகள்: {a} முதல் {b} வரை {c} குலுக்கல். ஒவ்வொரு தேதிக்கும் முதல், இரண்டாம், மூன்றாம் பரிசு.",
+        "lead": "{y} இல் {c} {n} குலுக்கல் தேதிகள், {a} – {b}. முழு முடிவுக்கு தேதியை தட்டவும்.",
+        "yrs": "மற்ற ஆண்டுகள்", "all": "அனைத்து {n} முடிவுகள் ›", "mon": "{m} {y}"},
+}
+ZHMON = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+
+
 def build(site) -> None:
-    import hashlib
     from seo_pages import d8
-    cssn = "assets/o." + hashlib.sha256(CSS.encode()).hexdigest()[:8] + ".css"
-    (site.out / cssn).write_text(CSS)
-    head0 = f'<link rel="stylesheet" href="{site.u(cssn)}">'
+    # 1.1 KB — inlined instead of a second stylesheet request on 248 pages
+    head0 = "<style>" + CSS + "</style>"
 
     def fd(d, lang):
         x = d8(d)
@@ -133,6 +154,13 @@ def build(site) -> None:
             trs = "".join(f'<tr><td><a href="{site.u(f"keputusan/{d8(r[0]).isoformat()}/")}">{fd(r[0], lang)}</a>'
                           + (f' <small style="color:#A9B4CC">{x["t9"][1 if r[3] == "K" else 0]}</small>' if len(keys) > 1 else "")
                           + f'</td><td>{esc(r[1])}</td><td class="n">{" · ".join(r[2][:3])}</td></tr>' for r in hist)
+            yrs = {}
+            for k in keys:
+                for r in rows[k]:
+                    yrs.setdefault(r[0][:4], []).append(r + (k,))
+            ylist = sorted(yrs, reverse=True)
+            y_ = YT[lang]
+            ychips = "".join(f'<a href="{site.u(f"{pre}{slug}/{yy}/")}">{yy}<small>{len(yrs[yy])}</small></a>' for yy in ylist)
             faq = [(f(q), f(a_).replace("{when}", f(x["when"][sk])) if "{when}" in a_ else f(a_)) for q, a_ in x["faq"]]
             faq = [(q, a_.replace("{when}", f(x["when"][sk]))) for q, a_ in faq]
             home = site.u(pre)
@@ -144,6 +172,7 @@ def build(site) -> None:
             body = (f'<div class="opp" style="--c:{col}">{nav}<h1>{esc(f(x["h1"]))}<small>{DAY[lang][d8(d).weekday()]}, {fd(d, lang)}{(" · " + x["draw"] + " " + esc(no)) if no else ""}</small></h1>'
                     f'<p class="lead">{esc(lead)}</p><div class="cta">{links[0]}</div>{cards}<div class="cta">{"".join(links[1:])}</div>'
                     f'<h2>{esc(f(x["prev"]))}</h2><table><tr><th>{x["date"]}</th><th>{x["draw"]}</th><th>{x["top"]}</th></tr>{trs}</table>'
+                    f'<h2>{esc(y_["yrs"])}</h2><div class="chips yr">{ychips}</div>'
                     f'<h2>{esc(f(x["faqh"]))}</h2>' + "".join(f"<details><summary>{esc(q)}</summary><p>{esc(a_)}</p></details>" for q, a_ in faq) + "</div>")
             fql = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a_}} for q, a_ in faq]}
             alts = "".join(f'<link rel="alternate" hreflang="{LANGS[l][0]}" href="{site.site}{LANGS[l][1]}{slug}/">' for l in LANGS) + f'<link rel="alternate" hreflang="x-default" href="{site.site}{slug}/">'
@@ -154,3 +183,34 @@ def build(site) -> None:
                     "license": site.site + "data-policy/", "temporalCoverage": f"{d8(min(r[0] for k in keys for r in rows[k])).isoformat()}/{d8(d).isoformat()}",
                     "creator": {"@type": "Organization", "name": "4D Malam Ini", "url": site.site}}
             site.page(path, title, desc, body, hl, [bld, fql, ld_d], d8(d).isoformat(), head=head0 + alts)
+
+            # ---- provider-year archives: {pre}{slug}/{year}/ ----
+            for yy in ylist:
+                rs = sorted(yrs[yy], key=lambda r: (r[0], r[3] == "K"))
+                g = {}
+                for r in rs:
+                    g.setdefault(r[0][4:6], []).append(r)
+                mn = lambda mm: (y_["mon"].format(m=ZHMON[int(mm) - 1], y=yy) if lang == "zh"
+                                 else y_["mon"].format(m=MON["ms" if lang == "ms" else "en"][int(mm) - 1], y=yy))
+                secs = "".join(
+                    f'<h2>{mn(mm)}</h2><table><tr><th>{x["date"]}</th><th>{x["draw"]}</th><th>{x["top"]}</th></tr>' + "".join(
+                        f'<tr><td><a href="{site.u(f"keputusan/{d8(r[0]).isoformat()}/")}">{fd(r[0], lang)}</a>'
+                        + (f' <small style="color:#A9B4CC">{x["t9"][1 if r[3] == "K" else 0]}</small>' if multi else "")
+                        + f'</td><td>{esc(r[1])}</td><td class="n">{" · ".join(r[2][:3])}</td></tr>' for r in g[mm]) + "</table>"
+                    for mm in sorted(g))
+                fa, la = fd(rs[0][0], lang), fd(rs[-1][0], lang)
+                sub = dict(n=nm, y=yy, c=len(rs), a=fa, b=la)
+                ynav, ybld = site.crumbs([(x["home"], pre), (f(x["crumb"]), f"{pre}{slug}/"), (yy, None)])
+                yalts = "".join(f'<link rel="alternate" hreflang="{LANGS[l][0]}" href="{site.site}{LANGS[l][1]}{slug}/{yy}/">' for l in LANGS) \
+                    + f'<link rel="alternate" hreflang="x-default" href="{site.site}{slug}/{yy}/">'
+                ybody = (f'<div class="opp" style="--c:{col}">{ynav}<h1>{esc(y_["h1"].format(**sub))}<small>{fa} – {la}</small></h1>'
+                         f'<p class="lead">{esc(y_["lead"].format(**sub))}</p>'
+                         f'<h2>{esc(y_["yrs"])}</h2><div class="chips yr">{ychips}</div>'
+                         + secs + f'<div class="cta"><a class="p" href="{site.u(f"{pre}{slug}/")}">{esc(y_["all"].format(n=nm))}</a>'
+                         f'<a href="{site.u(f"keputusan/{yy}/") if lang == "ms" else site.u("?d=" + d8(rs[-1][0]).strftime("%Y%m%d"))}">{esc(x["archive"])} {yy}</a></div></div>')
+                yld = {"@context": "https://schema.org", "@type": "Dataset", "name": y_["h1"].format(**sub), "inLanguage": hl,
+                       "description": y_["dsc"].format(**sub), "url": site.site + f"{pre}{slug}/{yy}/", "isAccessibleForFree": True,
+                       "license": site.site + "data-policy/", "temporalCoverage": f"{d8(rs[0][0]).isoformat()}/{d8(rs[-1][0]).isoformat()}",
+                       "creator": {"@type": "Organization", "name": "4D Malam Ini", "url": site.site}}
+                site.page(f"{pre}{slug}/{yy}/", y_["ttl"].format(**sub), y_["dsc"].format(**sub), ybody, hl,
+                          [ybld, yld], d8(rs[-1][0]).isoformat(), head=head0 + yalts)
