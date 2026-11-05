@@ -229,14 +229,16 @@ Backups: git tags `data-20261104-1859`, `data-20261104-1939`.
 Year/month archive silos · provider-year pages · 5-level breadcrumbs · provider H2s on date
 pages · ItemList schema · footer follows language · number-search hub · sitemap index ·
 freshness lines + `dateModified` · privacy/terms/contact · cache headers · one-hop redirect ·
-desktop footer and sheet alignment · provider filter on the statistics page.
+desktop footer and sheet alignment · provider filter on the statistics page · heat map caption (option A: real spread, 4 languages).
 
 ### Open
 - **HSTS** — user's decision, not started. Start at `max-age=86400`, no `includeSubDomains`,
   no `preload`. Hard to undo; see the reasoning in the session history.
-- The digit heat map on `/4d-statistics/` colours from the lowest cell to the highest, so a
-  9.6–10.2% spread (ordinary randomness) looks like a hot/cold pattern. A caption saying so was
-  drafted but not shipped; the alternative is a fixed ±3% scale. User hasn't decided.
+- **Possible data errors (not yet checked against a source).** Chi-square tests on digit-by-position
+  counts show two anomalies that start or stop at a date, which points at the data rather than the draws:
+  Sandakan digit 4 is 12-15% of digits every month since Mar 2026 (16-17% in 1st-3rd prize; 10% is even);
+  Magnum digit 7 is ~1 point low in each of 2022-2025, normal in 2026. Verify a sample against check4d and
+  loto4d via `check.yml` before trusting either. No duplicate draws or malformed numbers were found.
 - Filling the 24 data gaps needs a source neither check4d nor loto4d has.
 - `CF_ZONE_TOKEN` can be deleted now that the redirect is fixed.
 
