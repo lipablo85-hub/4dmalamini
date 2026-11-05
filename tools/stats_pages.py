@@ -66,6 +66,7 @@ CSS = """.fw{position:sticky;top:0;z-index:6;margin:14px -14px 2px;padding:9px 0
 .fstrip{position:relative}
 .fstrip ul{display:flex;gap:8px;overflow-x:auto;padding:3px 14px 7px;margin:0;list-style:none;scroll-snap-type:x proximity;scrollbar-width:none}
 .fstrip ul::-webkit-scrollbar{display:none}
+.fstrip ul>li{flex:none;display:flex}
 .fstrip::after{content:"";position:absolute;right:0;top:0;width:26px;height:100%;pointer-events:none;background:linear-gradient(90deg,transparent,var(--bg,#07142B))}
 .fchip{flex:none;scroll-snap-align:start;position:relative;display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;
  border-radius:13px;border:1.5px solid #27406E;background:#0F1F3D;cursor:pointer;padding:0;transition:border-color .15s,background .15s,transform .12s}
@@ -73,7 +74,7 @@ CSS = """.fw{position:sticky;top:0;z-index:6;margin:14px -14px 2px;padding:9px 0
 .fchip:active{transform:scale(.94)}
 .fchip.on{border-color:#E9C46B;background:#1A2B4D;box-shadow:0 0 0 3px rgba(233,196,107,.17)}
 .fchip.on::after{content:"";position:absolute;right:-3px;top:-3px;width:9px;height:9px;border-radius:50%;background:#E9C46B;border:2px solid var(--bg,#07142B)}
-.fchip.w{width:auto;padding:0 14px;font:800 12.5px/1 inherit;color:#C9D4EA;letter-spacing:.05em}
+.fchip.w{width:auto;min-width:46px;padding:0 15px;font-weight:800;font-size:12.5px;line-height:1;letter-spacing:.05em;color:#C9D4EA;white-space:nowrap}
 .fchip.w.on{color:#E9C46B}
 .fchip.multi{gap:3px;padding:0 10px}
 .fchip.multi i{width:21px;height:21px;border-radius:6px;background-size:210px 21px}
