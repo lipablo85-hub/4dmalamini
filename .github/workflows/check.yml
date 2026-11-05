@@ -1,22 +1,16 @@
 name: Check sources (dry run)
 on: workflow_dispatch
 permissions:
-  contents: write
+  contents: read
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 5
     steps:
       - run: |
-          mkdir probe && cd probe
-          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"
-          f(){ curl -sSL -A "$UA" -e "$3" --max-time 25 -o "$1" -w "$1 %{http_code} %{size_download}\n" "$2" || echo "fail $1"; }
-          f cs23.html "https://www.check4d.org/past-results/2023-08-23" https://www.check4d.org/
-          f gd_oct.html "https://loto4d.com/past-results/2026-10-15" https://loto4d.com/past-results/
-          f gd_oct2.html "https://www.check4d.org/past-results/2026-10-15" https://www.check4d.org/
-          f gdoff.html "https://gdlotto.net/results/past/" https://gdlotto.net/
-          f sg25.html "https://www.check4d.org/past-results/2025-07-09" https://www.check4d.org/
-          f moon.html "https://www.4dmoon.com/past-results/" https://www.4dmoon.com/
-          f sk24.html "https://www.check4d.org/past-results/2024-03-20" https://www.check4d.org/
-          git init -q -b probe && git add -A && git -c user.name=p -c user.email=p@l commit -qm probe
-          git push -fq "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" probe:probe-data
+          for u in 4d-statistics zh/4d-statistics ms/4d-statistics ta/4d-statistics popular-4d-numbers zh/popular-4d-numbers special-draw data-policy; do
+            printf "%-26s %s  " "/$u/" "$(curl -s -o /tmp/p -w '%{http_code}' https://www.4dmalamini.com/$u/)"
+            grep -o '<title>[^<]*' /tmp/p | head -1 | cut -c8-70; echo
+          done
+          echo "sitemap:"; curl -s https://www.4dmalamini.com/sitemap.xml | grep -o '4d-statistics\|popular-4d-numbers' | sort | uniq -c
+          echo "home links:"; curl -s https://www.4dmalamini.com/ | grep -o 'href="[^"]*\(statistics\|popular-4d\)[^"]*"' | sort -u | head
