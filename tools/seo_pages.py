@@ -164,17 +164,17 @@ class Site:
     def page(self, path: str, title: str, desc: str, body: str, lang: str = "ms", ld: list | None = None, lastmod: str | None = None, head: str = "", foot: str | None = None) -> None:
         canon = self.site + path.lstrip("/")
         FT = {"ms": ("Rekod tidak rasmi untuk rujukan. Sahkan dengan syarikat sebelum menuntut hadiah. 21+ · Bukan Islam sahaja · Main secara bertanggungjawab.",
-                     ("Semak nombor", "Arkib keputusan", "Kamus 4D 万字图", "Info 4D", "Dasar data", "Panduan 4D"), "Hubungi kami · Telegram"),
+                     ("Semak nombor", "Arkib keputusan", "Kamus 4D 万字图", "Info 4D", "Dasar data", "Panduan 4D", "Peta laman"), "Hubungi kami · Telegram"),
               "en": ("Unofficial record for reference. Confirm with the operator before claiming a prize. 21+ · Non-Muslims only · Play responsibly.",
-                     ("Check a number", "Results archive", "4D dictionary", "Info", "Data policy", "How to play"), "Contact us · Telegram"),
+                     ("Check a number", "Results archive", "4D dictionary", "Info", "Data policy", "How to play", "Sitemap"), "Contact us · Telegram"),
               "zh-Hans": ("非官方记录，仅供参考。兑奖前请向公司核实。仅限21岁或以上非穆斯林 · 理性投注。",
-                          ("查号码", "成绩记录", "万字图", "资讯", "数据政策", "玩法指南"), "联系我们 · Telegram"),
+                          ("查号码", "成绩记录", "万字图", "资讯", "数据政策", "玩法指南", "网站地图"), "联系我们 · Telegram"),
               "ta": ("அதிகாரப்பூர்வமற்ற குறிப்பு. பரிசு கோருவதற்கு முன் நிறுவனத்திடம் உறுதிப்படுத்துங்கள். 21+ · முஸ்லிம் அல்லாதவர்கள் மட்டும் · பொறுப்புடன் விளையாடுங்கள்.",
-                     ("எண் சரிபார்ப்பு", "முடிவுகள் காப்பகம்", "4D அகராதி", "தகவல்", "தரவுக் கொள்கை", "விளையாடும் முறை"), "தொடர்பு கொள்ள · Telegram")}
+                     ("எண் சரிபார்ப்பு", "முடிவுகள் காப்பகம்", "4D அகராதி", "தகவல்", "தரவுக் கொள்கை", "விளையாடும் முறை", "தள வரைபடம்"), "தொடர்பு கொள்ள · Telegram")}
         ft, fl, fc = FT.get(lang, FT["ms"])
-        lp = {"en": "", "ms": "ms/", "zh-Hans": "zh/", "ta": "ta/"}.get(lang, "") if any(x in path for x in ("guide/", "info/", "about/", "-result/", "special-draw/", "4d-statistics/", "popular-4d-numbers/")) else ""
+        lp = {"en": "", "ms": "ms/", "zh-Hans": "zh/", "ta": "ta/"}.get(lang, "") if any(x in path for x in ("guide/", "info/", "about/", "-result/", "special-draw/", "4d-statistics/", "popular-4d-numbers/", "sitemap/")) else ""
         DEFAULT_FOOT = (f"""<footer>{ft}<br>"""
-                        f"""<a href="{self.u(lp)}">{fl[0]}</a> · <a href="{self.u('keputusan/')}">{fl[1]}</a> · <a href="{self.u('4d/')}">{fl[2]}</a> · <a href="{self.u(lp + 'info/')}">{fl[3]}</a> · <a href="{self.u('data-policy/')}">{fl[4]}</a> · <a href="{self.u(lp + 'guide/')}">{fl[5]}</a><br>"""
+                        f"""<a href="{self.u(lp)}">{fl[0]}</a> · <a href="{self.u('keputusan/')}">{fl[1]}</a> · <a href="{self.u('4d/')}">{fl[2]}</a> · <a href="{self.u(lp + 'info/')}">{fl[3]}</a> · <a href="{self.u('data-policy/')}">{fl[4]}</a> · <a href="{self.u(lp + 'guide/')}">{fl[5]}</a> · <a href="{self.u(lp + 'sitemap/')}">{fl[6]}</a><br>"""
                         f"""<a class="tg" href="https://t.me/ssgsales" target="_blank" rel="noopener"><i class="tgi" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.6-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.1l-4.7-1.5c-1-.3-1-1 .2-1.5L20.5 3c.9-.3 1.6.2 1.4 1.3Z"/></svg></i><span>{fc}</span></a></footer>""")
         lds = "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False, separators=(",", ":"))}</script>' for x in (ld or []))
         doc = f"""<!DOCTYPE html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -195,9 +195,9 @@ class Site:
         self.urls.append((canon, lastmod))
 
     def bnav(self, path: str, lang: str) -> str:
-        pre = {"en": "", "ms": "ms/", "zh-Hans": "zh/", "ta": "ta/"}.get(lang, "") if any(x in path for x in ("guide/", "info/", "about/", "-result/", "special-draw/", "4d-statistics/", "popular-4d-numbers/")) else ""
+        pre = {"en": "", "ms": "ms/", "zh-Hans": "zh/", "ta": "ta/"}.get(lang, "") if any(x in path for x in ("guide/", "info/", "about/", "-result/", "special-draw/", "4d-statistics/", "popular-4d-numbers/", "sitemap/")) else ""
         lab = BN_LAB.get(lang, BN_LAB["ms"])
-        cur = 3 if ("guide/" in path or "info/" in path or "about/" in path or "special-draw/" in path or "4d-statistics/" in path or "popular-4d-numbers/" in path) else 2 if path.startswith("4d/") else 0 if path.startswith("keputusan/") else -1
+        cur = 3 if ("guide/" in path or "info/" in path or "about/" in path or "special-draw/" in path or "4d-statistics/" in path or "popular-4d-numbers/" in path or "sitemap/" in path) else 2 if path.startswith("4d/") else 0 if path.startswith("keputusan/") else -1
         hrefs = [self.u(pre), self.u(pre + "?tab=check"), self.u(pre + "?tab=dict"), self.u(pre + "info/")]
         return '<nav class="bnav" aria-label="Main"><div class="bw">' + "".join(
             f'<a href="{h}"' + (' aria-current="page"' if i == cur else "") + f'>{BN_ICONS[i]}<span>{esc(lab[i])}</span></a>' for i, h in enumerate(hrefs)) + "</div></nav>" + LIVEJS

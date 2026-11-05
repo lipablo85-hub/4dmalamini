@@ -254,12 +254,28 @@ def main() -> None:
                 .replace("__TITLE__", H.escape(title)).replace("__DESC__", H.escape(desc)).replace("__OGLOCALE__", locale[lang])
                 .replace("__H1__", H.escape(h1[lang])).replace("<!--SEO-->", SC.block(lang) + SC.faq_ld(lang)).replace('id="nav-guide" href="info/"', f'id="nav-guide" href="{"" if lang == "en" else lang + "/"}info/"').replace('id="home" href="./"', f'id="home" href="{"./" if lang == "en" else lang + "/"}"'))
         pre_ = "" if lang == "en" else lang + "/"
-        FL = {"en": ("Latest results", "Results archive", "4D dictionary", "Info", "Special draws", "How to play", "Data policy"),
-              "ms": ("Keputusan terkini", "Arkib keputusan", "Kamus 4D 万字图", "Info", "Cabutan khas", "Panduan 4D", "Dasar data"),
-              "zh": ("最新成绩", "成绩记录", "万字图", "资讯", "特别开彩", "玩法指南", "数据政策"),
-              "ta": ("சமீபத்திய முடிவுகள்", "முடிவுகள் காப்பகம்", "4D அகராதி", "தகவல்", "சிறப்புக் குலுக்கல்", "விளையாடும் முறை", "தரவுக் கொள்கை")}[lang]
-        hrefs = [f"keputusan/{lastiso}/", "keputusan/", "4d/", pre_ + "info/", pre_ + "special-draw/", pre_ + "guide/", "data-policy/"]
-        page = page.replace("<!--FOOTLINKS-->", " · ".join(f'<a href="/{h}"{" data-cal" if i == 1 else ""}>{t}</a>' for i, (h, t) in enumerate(zip(hrefs, FL)))).replace('href="special-draw/"', f'href="/{pre_}special-draw/"')
+        # Footer: grouped link columns + company list
+        FG = {
+         "en": (("Results", [("Latest results", f"keputusan/{lastiso}/", 0), ("Results archive", "keputusan/", 1), ("Special draws", pre_ + "special-draw/", 0)]),
+                ("Numbers", [("4D dictionary", "4d/", 0), ("Popular numbers", pre_ + "popular-4d-numbers/", 0), ("4D statistics", pre_ + "4d-statistics/", 0)]),
+                ("About", [("Info centre", pre_ + "info/", 0), ("How to play", pre_ + "guide/", 0), ("About us", pre_ + "about/", 0), ("Data policy", "data-policy/", 0), ("Sitemap", pre_ + "sitemap/", 0)])),
+         "ms": (("Keputusan", [("Keputusan terkini", f"keputusan/{lastiso}/", 0), ("Arkib keputusan", "keputusan/", 1), ("Cabutan khas", pre_ + "special-draw/", 0)]),
+                ("Nombor", [("Kamus 4D 万字图", "4d/", 0), ("Nombor popular", pre_ + "popular-4d-numbers/", 0), ("Statistik 4D", pre_ + "4d-statistics/", 0)]),
+                ("Maklumat", [("Pusat info", pre_ + "info/", 0), ("Panduan 4D", pre_ + "guide/", 0), ("Tentang kami", pre_ + "about/", 0), ("Dasar data", "data-policy/", 0), ("Peta laman", pre_ + "sitemap/", 0)])),
+         "zh": (("成绩", [("最新成绩", f"keputusan/{lastiso}/", 0), ("成绩记录", "keputusan/", 1), ("特别开彩", pre_ + "special-draw/", 0)]),
+                ("号码", [("万字图", "4d/", 0), ("热门号码", pre_ + "popular-4d-numbers/", 0), ("万字统计", pre_ + "4d-statistics/", 0)]),
+                ("关于", [("资讯中心", pre_ + "info/", 0), ("玩法指南", pre_ + "guide/", 0), ("关于我们", pre_ + "about/", 0), ("数据政策", "data-policy/", 0), ("网站地图", pre_ + "sitemap/", 0)])),
+         "ta": (("முடிவுகள்", [("சமீபத்திய முடிவுகள்", f"keputusan/{lastiso}/", 0), ("முடிவுகள் காப்பகம்", "keputusan/", 1), ("சிறப்புக் குலுக்கல்", pre_ + "special-draw/", 0)]),
+                ("எண்கள்", [("4D அகராதி", "4d/", 0), ("பிரபல எண்கள்", pre_ + "popular-4d-numbers/", 0), ("4D புள்ளிவிவரம்", pre_ + "4d-statistics/", 0)]),
+                ("தகவல்", [("தகவல் மையம்", pre_ + "info/", 0), ("விளையாடும் முறை", pre_ + "guide/", 0), ("எங்களைப் பற்றி", pre_ + "about/", 0), ("தரவுக் கொள்கை", "data-policy/", 0), ("தள வரைபடம்", pre_ + "sitemap/", 0)])),
+        }[lang]
+        CO = [("Magnum 4D", "magnum-4d-result"), ("Da Ma Cai", "da-ma-cai-result"), ("Sports Toto", "sports-toto-result"), ("GD Lotto", "gd-lotto-result"),
+              ("9 Lotto", "9-lotto-result"), ("Singapore 4D", "singapore-4d-result"), ("Cash Sweep", "cash-sweep-result"), ("Sandakan 4D", "sandakan-4d-result"),
+              ("Super J3 & J9", "super-j3-j9-result")]
+        COH = {"en": "By company", "ms": "Ikut syarikat", "zh": "各公司成绩", "ta": "நிறுவனம் வாரியாக"}[lang]
+        cols = "".join(f'<nav><b>{H.escape(h)}</b>' + "".join(f'<a href="/{u}"{" data-cal" if c else ""}>{H.escape(t)}</a>' for t, u, c in ls) + "</nav>" for h, ls in FG)
+        cols += f'<nav class="co"><b>{H.escape(COH)}</b><div>' + "".join(f'<a href="/{pre_}{u}/">{H.escape(t)}</a>' for t, u in CO) + "</div></nav>"
+        page = page.replace("<!--FOOTLINKS-->", cols).replace('href="special-draw/"', f'href="/{pre_}special-draw/"')
         page = SP.localize(page, lang)
         f = out / ("index.html" if lang == "en" else f"{lang}/index.html")
         f.parent.mkdir(exist_ok=True)
@@ -284,6 +300,8 @@ def main() -> None:
     STP.build(sp)
     import popular_pages as PPP
     PPP.build(sp)
+    import sitemap_pages as SMP
+    SMP.build(sp)
     n_urls = sp.sitemap(alts)
     print(f"  SEO pages: {len(sp.urls)} static pages, sitemap.xml with {n_urls} URLs, robots.txt, 404.html")
 
