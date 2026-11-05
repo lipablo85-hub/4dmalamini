@@ -314,8 +314,16 @@ def main() -> None:
     PPP.build(sp)
     import check_pages as CKP
     CKP.build(sp)
+    import legal_pages as LGP
+    LGP.build(sp)
     import sitemap_pages as SMP
     SMP.build(sp)
+    # IndexNow: the key file must be readable at https://host/<key>.txt
+    kp = Path(__file__).parent / "indexnow.key"
+    if kp.exists():
+        k = kp.read_text().strip()
+        (out / f"{k}.txt").write_text(k)
+        print(f"  IndexNow key file: /{k}.txt")
     n_urls = sp.sitemap(alts)
     print(f"  SEO pages: {len(sp.urls)} static pages, {n_urls} URLs in sitemap index, robots.txt, 404.html")
     for fn, cnt in getattr(sp, "sitemap_groups", []):

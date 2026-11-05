@@ -42,3 +42,20 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - name: Tell IndexNow what changed
+        continue-on-error: true
+        run: |
+          KEY=$(cat tools/indexnow.key)
+          S=https://www.4dmalamini.com
+          # the newest draw date, and the hubs that change with it
+          D=$(ls -d dist/keputusan/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] | sort | tail -1 | sed 's|dist/keputusan/||')
+          Y=${D%%-*}; M=$(echo "$D" | cut -d- -f2)
+          URLS=$(printf '"%s/",' "$S" "$S/ms" "$S/zh" "$S/ta" \
+                   "$S/keputusan/$D" "$S/keputusan/$Y/$M" "$S/keputusan/$Y" "$S/keputusan")
+          BODY=$(printf '{"host":"www.4dmalamini.com","key":"%s","keyLocation":"%s/%s.txt","urlList":[%s]}' \
+                   "$KEY" "$S" "$KEY" "${URLS%,}")
+          echo "$BODY"
+          for EP in https://api.indexnow.org/indexnow https://www.bing.com/indexnow; do
+            printf '%-40s -> %s\n' "$EP" \
+              "$(curl -s -o /dev/null -w '%{http_code}' -X POST "$EP" -H 'Content-Type: application/json' -d "$BODY")"
+          done
