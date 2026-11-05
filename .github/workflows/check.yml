@@ -7,38 +7,32 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
-      - name: Status + title of the new archive silo
+      - name: New number-search hub
         run: |
           S=https://www.4dmalamini.com
-          for u in keputusan keputusan/2026 keputusan/2026/11 keputusan/2025 keputusan/2025/05 \
-                   keputusan/2026-11-04 magnum-4d-result/2025 ms/magnum-4d-result/2025 \
-                   zh/magnum-4d-result/2025 ta/gd-lotto-result/2024 sports-toto-result/2026; do
-            printf "%-34s %s  " "/$u/" "$(curl -s -o /tmp/p -w '%{http_code}' $S/$u/)"
-            grep -o '<title>[^<]*' /tmp/p | head -1 | cut -c8-74; echo
+          for u in check-4d-number ms/check-4d-number zh/check-4d-number ta/check-4d-number; do
+            printf "%-28s %s  " "/$u/" "$(curl -s -o /tmp/p -w '%{http_code}' $S/$u/)"
+            grep -o '<title>[^<]*' /tmp/p | head -1 | cut -c8-72; echo
           done
-      - name: Schema + breadcrumb on a date page
+      - name: Footer translations shipped to the client
         run: |
-          curl -s https://www.4dmalamini.com/keputusan/2026-11-04/ -o /tmp/d
-          echo "ld types:"; grep -o '"@type":"[A-Za-z]*"' /tmp/d | sort | uniq -c
-          echo "breadcrumb:"; grep -o '<nav class="bc".*\?</nav>' /tmp/d | head -c 320; echo
-          echo "h2 count:"; grep -c '<h2>' /tmp/d || true
-          echo "ItemList first entry:"; grep -o '"ItemList".\{0,220\}' /tmp/d | head -c 260; echo
-      - name: Language of links on a Malay date page
-        run: |
-          curl -s https://www.4dmalamini.com/keputusan/2026-11-04/ | \
-            grep -o 'href="/[a-z0-9-]*result/"' | sort -u
-      - name: Sitemap coverage
+          curl -s https://www.4dmalamini.com/ -o /tmp/h
+          echo "FLINKS present: $(grep -c 'const FLINKS=' /tmp/h)"
+          for w in 成绩 号码 关于 各公司成绩 Keputusan Maklumat முடிவுகள் எண்கள்; do
+            printf "%-14s %s\n" "$w" "$(grep -c "$w" /tmp/h)"
+          done
+      - name: Sitemap index
         run: |
           curl -s https://www.4dmalamini.com/sitemap.xml -o /tmp/s
-          echo "total urls: $(grep -c '<loc>' /tmp/s)"
-          echo "year hubs:  $(grep -cE '<loc>[^<]*/keputusan/[0-9]{4}/</loc>' /tmp/s)"
-          echo "month silos:$(grep -cE '<loc>[^<]*/keputusan/[0-9]{4}/[0-9]{2}/</loc>' /tmp/s)"
-          echo "prov-year:  $(grep -cE '<loc>[^<]*result/[0-9]{4}/</loc>' /tmp/s)"
-      - name: Transfer size of the new hubs
-        run: |
-          S=https://www.4dmalamini.com
-          for u in keputusan keputusan/2026 keputusan/2026/11 magnum-4d-result/2025; do
-            printf "%-26s %s bytes gzip, %s ms\n" "/$u/" \
-              "$(curl -s -H 'Accept-Encoding: gzip' -o /dev/null -w '%{size_download}' $S/$u/)" \
-              "$(curl -s -o /dev/null -w '%{time_total}' $S/$u/)"
+          echo "root is index: $(grep -c sitemapindex /tmp/s)"
+          for f in $(grep -o 'sitemap-[a-z]*\.xml' /tmp/s | sort -u); do
+            printf "  %-26s %s urls\n" "$f" "$(curl -s https://www.4dmalamini.com/$f | grep -c '<loc>')"
           done
+          echo "robots:"; curl -s https://www.4dmalamini.com/robots.txt | tail -2
+      - name: Freshness line and dateModified
+        run: |
+          curl -s https://www.4dmalamini.com/keputusan/2026-11-04/ -o /tmp/d
+          grep -o '<p class="vfy">.*\?</p>' /tmp/d | sed 's/<[^>]*>//g' | head -c 200; echo
+          echo "dateModified: $(grep -o '"dateModified":"[^"]*"' /tmp/d | head -1)"
+          curl -s https://www.4dmalamini.com/4d/8888/ -o /tmp/n
+          grep -o '<p class="vfy">.*\?</p>' /tmp/n | sed 's/<[^>]*>//g' | head -c 200; echo
