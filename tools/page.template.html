@@ -697,6 +697,7 @@ function renderStatic(){
   document.documentElement.lang=st.lang==="zh"?"zh-Hans":st.lang;
   document.querySelectorAll("[data-t]").forEach(e=>e.textContent=t(e.dataset.t));
   {const q=st.lang==="en"?"":st.lang+"/";const a=$("#lnk-stats"),b=$("#lnk-pop");if(a)a.href="/"+q+"4d-statistics/";if(b)b.href="/"+q+"popular-4d-numbers/"}
+  {const fl=document.querySelector("footer .fl");if(fl&&FLINKS[st.lang]&&fl.dataset.l!==st.lang){fl.innerHTML=FLINKS[st.lang];fl.dataset.l=st.lang}}
   document.querySelectorAll("[data-lang]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===st.lang));{const lc=$("#lcur");if(lc)lc.textContent={en:"EN",ms:"BM",zh:"中文",ta:"தமிழ்"}[st.lang]}
   document.querySelectorAll("[data-mode]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.mode===st.mode));
   const n=LIVE.filter(o=>st.ops.has(o.k)).reduce((s,o)=>s+o.D.length,0);
@@ -970,6 +971,7 @@ $("#mlist").addEventListener("click",e=>{const r=e.target.closest("[data-rm]");i
 if(location.hash==="#mine")mineOpen(true);
 $("#mtX").onclick=()=>$("#mtoast").classList.remove("on");
 /* live board: Wed/Sat/Sun (GD daily) from 6:55pm MYT, standby cards + countdown, polls live.json until every result is in */
+const FLINKS=__FLINKS__;
 const SPD=__SPECIAL__,SPOPS="MDTCH",isSp=(k,ymd)=>SPOPS.includes(k)&&SPD.includes(ymd);
 const LDAYS={M:[0,3,6],D:[0,3,6],T:[0,3,6],G:[0,1,2,3,4,5,6],N:[0,1,2,3,4,5,6],J:[0,1,2,3,4,5,6],K:[0,1,2,3,4,5,6],S:[0,3,6],C:[0,3,6],H:[0,3,6]};const DRAWM={J:900,K:1260,S:1110};const dmin=k=>DRAWM[k]||1140;
 function myt(){const d=new Date(Date.now()+288e5);return{ymd:d.toISOString().slice(0,10).replace(/-/g,""),wd:d.getUTCDay(),m:d.getUTCHours()*60+d.getUTCMinutes(),s:d.getUTCSeconds()}}

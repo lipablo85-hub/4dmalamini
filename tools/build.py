@@ -256,28 +256,38 @@ def main() -> None:
                 .replace('id="lnk-stats" href="4d-statistics/"', f'id="lnk-stats" href="/{"" if lang == "en" else lang + "/"}4d-statistics/"')
                 .replace('id="lnk-pop" href="popular-4d-numbers/"', f'id="lnk-pop" href="/{"" if lang == "en" else lang + "/"}popular-4d-numbers/"'))
         pre_ = "" if lang == "en" else lang + "/"
-        # Footer: grouped link columns + company list
-        FG = {
-         "en": (("Results", [("Latest results", f"keputusan/{lastiso}/", 0), ("Results archive", "keputusan/", 1), ("Special draws", pre_ + "special-draw/", 0)]),
-                ("Numbers", [("4D dictionary", "4d/", 0), ("Popular numbers", pre_ + "popular-4d-numbers/", 0), ("4D statistics", pre_ + "4d-statistics/", 0)]),
-                ("About", [("Info centre", pre_ + "info/", 0), ("How to play", pre_ + "guide/", 0), ("About us", pre_ + "about/", 0), ("Data policy", "data-policy/", 0), ("Sitemap", pre_ + "sitemap/", 0)])),
-         "ms": (("Keputusan", [("Keputusan terkini", f"keputusan/{lastiso}/", 0), ("Arkib keputusan", "keputusan/", 1), ("Cabutan khas", pre_ + "special-draw/", 0)]),
-                ("Nombor", [("Kamus 4D 万字图", "4d/", 0), ("Nombor popular", pre_ + "popular-4d-numbers/", 0), ("Statistik 4D", pre_ + "4d-statistics/", 0)]),
-                ("Maklumat", [("Pusat info", pre_ + "info/", 0), ("Panduan 4D", pre_ + "guide/", 0), ("Tentang kami", pre_ + "about/", 0), ("Dasar data", "data-policy/", 0), ("Peta laman", pre_ + "sitemap/", 0)])),
-         "zh": (("成绩", [("最新成绩", f"keputusan/{lastiso}/", 0), ("成绩记录", "keputusan/", 1), ("特别开彩", pre_ + "special-draw/", 0)]),
-                ("号码", [("万字图", "4d/", 0), ("热门号码", pre_ + "popular-4d-numbers/", 0), ("万字统计", pre_ + "4d-statistics/", 0)]),
-                ("关于", [("资讯中心", pre_ + "info/", 0), ("玩法指南", pre_ + "guide/", 0), ("关于我们", pre_ + "about/", 0), ("数据政策", "data-policy/", 0), ("网站地图", pre_ + "sitemap/", 0)])),
-         "ta": (("முடிவுகள்", [("சமீபத்திய முடிவுகள்", f"keputusan/{lastiso}/", 0), ("முடிவுகள் காப்பகம்", "keputusan/", 1), ("சிறப்புக் குலுக்கல்", pre_ + "special-draw/", 0)]),
-                ("எண்கள்", [("4D அகராதி", "4d/", 0), ("பிரபல எண்கள்", pre_ + "popular-4d-numbers/", 0), ("4D புள்ளிவிவரம்", pre_ + "4d-statistics/", 0)]),
-                ("தகவல்", [("தகவல் மையம்", pre_ + "info/", 0), ("விளையாடும் முறை", pre_ + "guide/", 0), ("எங்களைப் பற்றி", pre_ + "about/", 0), ("தரவுக் கொள்கை", "data-policy/", 0), ("தள வரைபடம்", pre_ + "sitemap/", 0)])),
-        }[lang]
-        CO = [("Magnum 4D", "magnum-4d-result"), ("Da Ma Cai", "da-ma-cai-result"), ("Sports Toto", "sports-toto-result"), ("GD Lotto", "gd-lotto-result"),
-              ("9 Lotto", "9-lotto-result"), ("Singapore 4D", "singapore-4d-result"), ("Cash Sweep", "cash-sweep-result"), ("Sandakan 4D", "sandakan-4d-result"),
-              ("Super J3 & J9", "super-j3-j9-result")]
-        COH = {"en": "By company", "ms": "Ikut syarikat", "zh": "各公司成绩", "ta": "நிறுவனம் வாரியாக"}[lang]
-        cols = "".join(f'<nav><b>{H.escape(h)}</b>' + "".join(f'<a href="/{u}"{" data-cal" if c else ""}>{H.escape(t)}</a>' for t, u, c in ls) + "</nav>" for h, ls in FG)
-        cols += f'<nav class="co"><b>{H.escape(COH)}</b><div>' + "".join(f'<a href="/{pre_}{u}/">{H.escape(t)}</a>' for t, u in CO) + "</div></nav>"
-        page = page.replace("<!--FOOTLINKS-->", cols).replace('href="special-draw/"', f'href="/{pre_}special-draw/"')
+
+        # Footer: grouped link columns + company list, built for every language so the in-page
+        # language switcher can swap them without a reload (the page's own language is rendered
+        # server-side, so it is what crawlers and no-JS visitors get).
+        def footcols(lg):
+            pf = "" if lg == "en" else lg + "/"
+            FG = {
+             "en": (("Results", [("Latest results", f"keputusan/{lastiso}/", 0), ("Results archive", "keputusan/", 1), ("Special draws", pf + "special-draw/", 0)]),
+                    ("Numbers", [("Check a number", pf + "check-4d-number/", 0), ("4D dictionary", "4d/", 0), ("Popular numbers", pf + "popular-4d-numbers/", 0), ("4D statistics", pf + "4d-statistics/", 0)]),
+                    ("About", [("Info centre", pf + "info/", 0), ("How to play", pf + "guide/", 0), ("About us", pf + "about/", 0), ("Data policy", "data-policy/", 0), ("Sitemap", pf + "sitemap/", 0)])),
+             "ms": (("Keputusan", [("Keputusan terkini", f"keputusan/{lastiso}/", 0), ("Arkib keputusan", "keputusan/", 1), ("Cabutan khas", pf + "special-draw/", 0)]),
+                    ("Nombor", [("Semak nombor", pf + "check-4d-number/", 0), ("Kamus 4D 万字图", "4d/", 0), ("Nombor popular", pf + "popular-4d-numbers/", 0), ("Statistik 4D", pf + "4d-statistics/", 0)]),
+                    ("Maklumat", [("Pusat info", pf + "info/", 0), ("Panduan 4D", pf + "guide/", 0), ("Tentang kami", pf + "about/", 0), ("Dasar data", "data-policy/", 0), ("Peta laman", pf + "sitemap/", 0)])),
+             "zh": (("成绩", [("最新成绩", f"keputusan/{lastiso}/", 0), ("成绩记录", "keputusan/", 1), ("特别开彩", pf + "special-draw/", 0)]),
+                    ("号码", [("查号码", pf + "check-4d-number/", 0), ("万字图", "4d/", 0), ("热门号码", pf + "popular-4d-numbers/", 0), ("万字统计", pf + "4d-statistics/", 0)]),
+                    ("关于", [("资讯中心", pf + "info/", 0), ("玩法指南", pf + "guide/", 0), ("关于我们", pf + "about/", 0), ("数据政策", "data-policy/", 0), ("网站地图", pf + "sitemap/", 0)])),
+             "ta": (("முடிவுகள்", [("சமீபத்திய முடிவுகள்", f"keputusan/{lastiso}/", 0), ("முடிவுகள் காப்பகம்", "keputusan/", 1), ("சிறப்புக் குலுக்கல்", pf + "special-draw/", 0)]),
+                    ("எண்கள்", [("எண் சரிபார்", pf + "check-4d-number/", 0), ("4D அகராதி", "4d/", 0), ("பிரபல எண்கள்", pf + "popular-4d-numbers/", 0), ("4D புள்ளிவிவரம்", pf + "4d-statistics/", 0)]),
+                    ("தகவல்", [("தகவல் மையம்", pf + "info/", 0), ("விளையாடும் முறை", pf + "guide/", 0), ("எங்களைப் பற்றி", pf + "about/", 0), ("தரவுக் கொள்கை", "data-policy/", 0), ("தள வரைபடம்", pf + "sitemap/", 0)])),
+            }[lg]
+            SL = ["magnum-4d-result", "da-ma-cai-result", "sports-toto-result", "gd-lotto-result", "9-lotto-result",
+                  "singapore-4d-result", "cash-sweep-result", "sandakan-4d-result", "super-j3-j9-result"]
+            CN = {"zh": ["万能", "大马彩", "多多", "豪龙", "9 Lotto", "新加坡万字", "砂拉越大万", "山打根", "Super J3 & J9"]}.get(
+                lg, ["Magnum 4D", "Da Ma Cai", "Sports Toto", "GD Lotto", "9 Lotto", "Singapore 4D", "Cash Sweep", "Sandakan 4D", "Super J3 & J9"])
+            CO = list(zip(CN, SL))
+            COH = {"en": "By company", "ms": "Ikut syarikat", "zh": "各公司成绩", "ta": "நிறுவனம் வாரியாக"}[lg]
+            out = "".join(f'<nav><b>{H.escape(h)}</b>' + "".join(f'<a href="/{u}"{" data-cal" if c else ""}>{H.escape(t)}</a>' for t, u, c in ls) + "</nav>" for h, ls in FG)
+            return out + f'<nav class="co"><b>{H.escape(COH)}</b><div>' + "".join(f'<a href="/{pf}{u}/">{H.escape(t)}</a>' for t, u in CO) + "</div></nav>"
+
+        page = (page.replace("<!--FOOTLINKS-->", footcols(lang))
+                    .replace("__FLINKS__", json.dumps({lg: footcols(lg) for lg in ("en", "ms", "zh", "ta")}, ensure_ascii=False))
+                    .replace('href="special-draw/"', f'href="/{pre_}special-draw/"'))
         page = SP.localize(page, lang)
         f = out / ("index.html" if lang == "en" else f"{lang}/index.html")
         f.parent.mkdir(exist_ok=True)
@@ -302,10 +312,14 @@ def main() -> None:
     STP.build(sp)
     import popular_pages as PPP
     PPP.build(sp)
+    import check_pages as CKP
+    CKP.build(sp)
     import sitemap_pages as SMP
     SMP.build(sp)
     n_urls = sp.sitemap(alts)
-    print(f"  SEO pages: {len(sp.urls)} static pages, sitemap.xml with {n_urls} URLs, robots.txt, 404.html")
+    print(f"  SEO pages: {len(sp.urls)} static pages, {n_urls} URLs in sitemap index, robots.txt, 404.html")
+    for fn, cnt in getattr(sp, "sitemap_groups", []):
+        print(f"    {fn:26} {cnt:6} urls")
 
     version = h8((out / "index.html").read_bytes() + res + json.dumps(dict_urls).encode())
     (out / "sw.js").write_text(SW.replace("__V__", version))

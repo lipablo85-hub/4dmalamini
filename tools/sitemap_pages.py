@@ -14,7 +14,7 @@ T = {
             lead="Everything on this site, on one page.",
             g=("Results", "Numbers", "Results archive", "Information"),
             res=[("Live results tonight", ""), ("Results archive", "keputusan/"), ("Special draw dates & results", "special-draw/")],
-            num=[("4D dictionary · 10,000 numbers", "4d/"), ("Popular 4D numbers", "popular-4d-numbers/"), ("4D statistics", "4d-statistics/")],
+            num=[("Check a 4D number", "check-4d-number/"), ("4D dictionary · 10,000 numbers", "4d/"), ("Popular 4D numbers", "popular-4d-numbers/"), ("4D statistics", "4d-statistics/")],
             inf=[("Info centre", "info/"), ("How to play 4D", "guide/"), ("About us", "about/"), ("Data & editorial policy", "data-policy/")],
             co="Results by company", arch="By year", draws="{n} draws", langs="This page in other languages"),
  "ms": dict(title="Peta Laman", crumb="Peta laman", home="Utama", h1="Peta laman",
@@ -22,7 +22,7 @@ T = {
             lead="Semua yang ada di laman ini, dalam satu halaman.",
             g=("Keputusan", "Nombor", "Arkib keputusan", "Maklumat"),
             res=[("Keputusan langsung malam ini", ""), ("Arkib keputusan", "keputusan/"), ("Tarikh & keputusan cabutan khas", "special-draw/")],
-            num=[("Kamus 4D · 10,000 nombor", "4d/"), ("Nombor 4D popular", "popular-4d-numbers/"), ("Statistik 4D", "4d-statistics/")],
+            num=[("Semak nombor 4D", "check-4d-number/"), ("Kamus 4D · 10,000 nombor", "4d/"), ("Nombor 4D popular", "popular-4d-numbers/"), ("Statistik 4D", "4d-statistics/")],
             inf=[("Pusat info", "info/"), ("Panduan main 4D", "guide/"), ("Tentang kami", "about/"), ("Dasar data & editorial", "data-policy/")],
             co="Keputusan ikut syarikat", arch="Ikut tahun", draws="{n} cabutan", langs="Halaman ini dalam bahasa lain"),
  "zh": dict(title="网站地图", crumb="网站地图", home="首页", h1="网站地图",
@@ -30,7 +30,7 @@ T = {
             lead="本站所有内容，一页看完。",
             g=("成绩", "号码", "成绩记录", "资讯"),
             res=[("今晚即时成绩", ""), ("成绩记录", "keputusan/"), ("特别开彩日期与成绩", "special-draw/")],
-            num=[("万字图 · 10,000 个号码", "4d/"), ("热门万字号码", "popular-4d-numbers/"), ("万字统计", "4d-statistics/")],
+            num=[("查万字号码", "check-4d-number/"), ("万字图 · 10,000 个号码", "4d/"), ("热门万字号码", "popular-4d-numbers/"), ("万字统计", "4d-statistics/")],
             inf=[("资讯中心", "info/"), ("万字玩法指南", "guide/"), ("关于我们", "about/"), ("数据与编辑政策", "data-policy/")],
             co="各公司成绩", arch="按年份", draws="{n} 期", langs="其他语言版本"),
  "ta": dict(title="தள வரைபடம்", crumb="தள வரைபடம்", home="முகப்பு", h1="தள வரைபடம்",
@@ -38,7 +38,7 @@ T = {
             lead="இந்தத் தளத்தில் உள்ள அனைத்தும், ஒரே பக்கத்தில்.",
             g=("முடிவுகள்", "எண்கள்", "முடிவுகள் காப்பகம்", "தகவல்"),
             res=[("இன்றிரவு நேரலை முடிவுகள்", ""), ("முடிவுகள் காப்பகம்", "keputusan/"), ("சிறப்புக் குலுக்கல் தேதிகள் & முடிவுகள்", "special-draw/")],
-            num=[("4D அகராதி · 10,000 எண்கள்", "4d/"), ("பிரபல 4D எண்கள்", "popular-4d-numbers/"), ("4D புள்ளிவிவரம்", "4d-statistics/")],
+            num=[("4D எண் சரிபார்ப்பு", "check-4d-number/"), ("4D அகராதி · 10,000 எண்கள்", "4d/"), ("பிரபல 4D எண்கள்", "popular-4d-numbers/"), ("4D புள்ளிவிவரம்", "4d-statistics/")],
             inf=[("தகவல் மையம்", "info/"), ("4D விளையாடும் முறை", "guide/"), ("எங்களைப் பற்றி", "about/"), ("தரவு & ஆசிரியர் கொள்கை", "data-policy/")],
             co="நிறுவனம் வாரியான முடிவுகள்", arch="ஆண்டு வாரியாக", draws="{n} குலுக்கல்", langs="பிற மொழிகளில்"),
 }
@@ -82,8 +82,8 @@ def build(site) -> None:
         li = lambda items, p=True: "<ul>" + "".join(f'<li><a href="{site.u((pre if p else "") + u)}">{esc(t)}</a></li>' for t, u in items) + "</ul>"
         res = "<ul>" + "".join(f'<li><a href="{site.u(pre if u == "" else u)}">{esc(t)}</a></li>' for t, u in [(x["res"][0][0], ""), (x["res"][1][0], "keputusan/")]) \
             + f'<li><a href="{site.u(pre + "special-draw/")}">{esc(x["res"][2][0])}</a></li></ul>'
-        num = "<ul>" + f'<li><a href="{site.u("4d/")}">{esc(x["num"][0][0])}</a></li>' \
-            + "".join(f'<li><a href="{site.u(pre + u)}">{esc(t)}</a></li>' for t, u in x["num"][1:]) + "</ul>"
+        num = "<ul>" + "".join(
+            f'<li><a href="{site.u(u if u == "4d/" else pre + u)}">{esc(t)}</a></li>' for t, u in x["num"]) + "</ul>"
         inf = "<ul>" + "".join(f'<li><a href="{site.u((pre if u != "data-policy/" else "") + u)}">{esc(t)}</a></li>' for t, u in x["inf"]) + "</ul>"
         co = "<ul>" + "".join(f'<li><a href="{site.u(pre + u + "/")}"><span class="lg" style="background-position:{-i * 26}px 0"></span>{esc(t)}</a></li>' for t, u, i in CO) + "</ul>"
         lastof = {d[:4]: d for d in sorted(site.dates)}

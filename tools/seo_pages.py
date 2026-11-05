@@ -122,7 +122,7 @@ table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;p
 .g5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-top:6px}.g5 a{min-height:44px;font-size:15px}
 .lbl{font-size:12px;font-weight:800;color:#A9B4CC;margin-top:12px}
 .kf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:14px}.kf div{background:#0F1F3D;border:1px solid #233862;border-radius:14px;padding:10px 12px}.kf small{display:block;font-size:11.5px;color:#9FB0D3;font-weight:700}.kf b{display:block;font-size:17px;line-height:1.3;margin-top:2px}.kf a{text-decoration:none}.kf .wd{grid-column:1/-1}.bars{display:grid;gap:7px;margin:10px 0 4px}.bars a,.bars div{display:grid;grid-template-columns:96px 1fr 28px;align-items:center;gap:8px;font-size:13px;color:#C9D4EA;text-decoration:none}.bars i{display:block;height:12px;border-radius:6px;background:var(--c,#E9C46B);min-width:3px}.bars b{text-align:right;color:#F8F4E8}.bars .z i{background:#233862}.chips a small{margin-left:6px;color:#9FB0D3;font-weight:600}.chips a.hot{border:1px solid rgba(233,196,107,.5)}.note{font-size:12.5px;color:#9FB0D3;margin-top:18px}.pol h2{margin-top:26px}.pol li{margin:4px 0}.pol .card p{margin:6px 0}.pn{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:22px}.pn a{min-height:56px;display:flex;flex-direction:column;justify-content:center;padding:8px 12px;border-radius:14px;background:#0F1F3D;border:1px solid #233862;text-decoration:none;color:#F8F4E8;font-size:13.5px;font-weight:700;line-height:1.3}.pn a::before{content:attr(data-l);font-size:11px;font-weight:700;color:#9FB0D3}.pn a:last-child:not(:first-child){text-align:right}.pn span{display:block}
-.yg,.mg{display:grid;gap:9px;margin:14px 0 4px}.yg{grid-template-columns:repeat(2,minmax(0,1fr))}.mg{grid-template-columns:repeat(3,minmax(0,1fr))}.yg a,.mg a{display:block;padding:12px;border-radius:14px;background:#0F1F3D;border:1px solid #233862;text-decoration:none;color:#F8F4E8}.yg a b,.mg a b{display:block;font-size:19px;line-height:1.1;color:#E9C46B}.mg a b{font-size:15px}.yg a small,.mg a small{display:block;font-size:11.5px;color:#9FB0D3;margin-top:3px;line-height:1.35}.mg span{display:block;padding:12px;border-radius:14px;background:#0C1A33;border:1px solid #16254487;color:#5E6F90}.mg span b{display:block;font-size:15px;line-height:1.1}.dg{display:grid;gap:8px;margin:14px 0 4px}.dg a{display:grid;grid-template-columns:46px 1fr;align-items:center;gap:11px;padding:10px 12px;border-radius:14px;background:#0F1F3D;border:1px solid #233862;text-decoration:none;color:#F8F4E8}.dg a>b{text-align:center;font-size:20px;line-height:1;color:#E9C46B}.dg a>b i{display:block;font-style:normal;font-size:10.5px;color:#9FB0D3;margin-top:2px;font-weight:700}.dg a>span{display:block;min-width:0}.dg a>span u{display:block;text-decoration:none;font-size:13px;font-weight:700;line-height:1.3}.dg a>span em{display:block;font-style:normal;font-size:11.5px;color:#9FB0D3;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.list{columns:2;column-gap:18px;padding:0;list-style:none}.list li{break-inside:avoid;padding:5px 0;border-bottom:1px solid #1A2C50;font-size:14px}
+.vfy{display:flex;gap:8px;align-items:flex-start;margin:18px 0 0;padding:10px 12px;background:#0C1A33;border:1px solid #1D3157;border-radius:12px;font-size:12.5px;line-height:1.45;color:#9FB0D3}.vfy svg{flex:none;margin-top:2px;color:#4ADE80}.vfy b{color:#C9D4EA;font-weight:700}.vfy a{color:#E9C46B}.yg,.mg{display:grid;gap:9px;margin:14px 0 4px}.yg{grid-template-columns:repeat(2,minmax(0,1fr))}.mg{grid-template-columns:repeat(3,minmax(0,1fr))}.yg a,.mg a{display:block;padding:12px;border-radius:14px;background:#0F1F3D;border:1px solid #233862;text-decoration:none;color:#F8F4E8}.yg a b,.mg a b{display:block;font-size:19px;line-height:1.1;color:#E9C46B}.mg a b{font-size:15px}.yg a small,.mg a small{display:block;font-size:11.5px;color:#9FB0D3;margin-top:3px;line-height:1.35}.mg span{display:block;padding:12px;border-radius:14px;background:#0C1A33;border:1px solid #16254487;color:#5E6F90}.mg span b{display:block;font-size:15px;line-height:1.1}.dg{display:grid;gap:8px;margin:14px 0 4px}.dg a{display:grid;grid-template-columns:46px 1fr;align-items:center;gap:11px;padding:10px 12px;border-radius:14px;background:#0F1F3D;border:1px solid #233862;text-decoration:none;color:#F8F4E8}.dg a>b{text-align:center;font-size:20px;line-height:1;color:#E9C46B}.dg a>b i{display:block;font-style:normal;font-size:10.5px;color:#9FB0D3;margin-top:2px;font-weight:700}.dg a>span{display:block;min-width:0}.dg a>span u{display:block;text-decoration:none;font-size:13px;font-weight:700;line-height:1.3}.dg a>span em{display:block;font-style:normal;font-size:11.5px;color:#9FB0D3;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.list{columns:2;column-gap:18px;padding:0;list-style:none}.list li{break-inside:avoid;padding:5px 0;border-bottom:1px solid #1A2C50;font-size:14px}
 .list a{text-decoration:none;color:#F8F4E8}.list .mono{color:#E9C46B;margin-right:8px}
 footer{max-width:720px;margin:0 auto;padding:18px 16px 40px;font-size:12px;color:#A9B4CC;border-top:1px solid #1A2C50}.tgi{position:relative;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#fff;color:#1877B8;flex:none}.tgi::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #fff;animation:tgp 2s ease-out infinite}.tgi svg{margin-left:-2px;animation:tgf 3s ease-in-out infinite}@keyframes tgp{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.7);opacity:0}}@keyframes tgf{0%,55%,100%{transform:none;opacity:1}70%{transform:translate(9px,-9px) scale(.6);opacity:0}71%{transform:translate(-9px,9px) scale(.6);opacity:0}85%{transform:none;opacity:1}}@media (prefers-reduced-motion:reduce){.tgi::after,.tgi svg{animation:none}}.tg{display:inline-flex;align-items:center;gap:10px;padding-left:7px!important;margin-top:14px;min-height:44px;padding:0 16px;border-radius:999px;background:#1877B8;color:#fff!important;font-weight:800;font-size:14px;text-decoration:none}
 @media(max-width:520px){.list{columns:1}dl{grid-template-columns:110px 1fr}}"""
@@ -232,6 +232,12 @@ class Site:
         self.hubs(last)
         self.not_found()
 
+    def verified(self, when: str, what: str) -> str:
+        return ('<p class="vfy"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+                'stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+                '<path d="M20 6 9 17l-5-5"/></svg><span>' + what + ' <b>' + when + '</b> daripada laman rasmi syarikat '
+                '(check4d, loto4d). <a href="' + self.u("data-policy/") + '">Sumber &amp; pembetulan ›</a></span></p>')
+
     def date_sh(self, d: str) -> str:
         x = d8(d)
         return f"{HARI[x.weekday()][:3]}, {x.day} {BULAN[x.month - 1][:3]} {x.year}"
@@ -283,11 +289,12 @@ class Site:
                       "description": f"Malaysia 4D results for {dd:%-d %B %Y}: " + ", ".join(titles) + ".",
                       "temporalCoverage": dd.isoformat(), "inLanguage": "ms", "isAccessibleForFree": True,
                       "license": self.site + "data-policy/", "url": self.site + f"keputusan/{dd.isoformat()}/",
+                      "datePublished": dd.isoformat(), "dateModified": dd.isoformat(),
                       "creator": {"@type": "Organization", "name": "4D Malam Ini", "url": self.site},
                       "variableMeasured": [{"@type": "PropertyValue", "name": nm, "value": " ".join(by[k][d][2][:3])} for k, nm, _, _ in OPS if d in by[k]]}
             body = (f"{nav}<h1>Keputusan 4D {self.date_ms(d)}<small><span lang='en'>4D results {dd:%A, %-d %B %Y}</span> · <span lang='zh-Hans'>{dd.year}年{dd.month}月{dd.day}日万字成绩</span></small></h1>"
                     f'<div class="dnav">{pa}<b>{self.date_ms(d)}<small>{len(body_ops)} syarikat · companies</small></b>{na}</div>{jmp}'
-                    + "".join(body_ops) + f'<div class="pn">{prev}{nxt}</div><a class="arch" href="{self.u("keputusan/")}">Arkib keputusan · All past results ›</a>')
+                    + "".join(body_ops) + self.verified(self.date_sh(d), "Keputusan disahkan") + f'<div class="pn">{prev}{nxt}</div><a class="arch" href="{self.u("keputusan/")}">Arkib keputusan · All past results ›</a>')
             ld_li = {"@context": "https://schema.org", "@type": "ItemList",
                      "name": f"Keputusan 4D {self.date_ms(d)}", "description": f"Keputusan 4D penuh {self.date_ms(d)}.",
                      "itemListOrder": "https://schema.org/ItemListOrderAscending", "numberOfItems": len(ks),
@@ -399,10 +406,12 @@ class Site:
             ld_n = {"@context": "https://schema.org", "@type": "Dataset", "name": f"4D {n} — sejarah menang", "inLanguage": "ms",
                     "description": f"Setiap kali nombor 4D {n} menang di Malaysia sejak {span}: {len(hits)} kali.",
                     "url": self.site + f"4d/{n}/", "isAccessibleForFree": True, "license": self.site + "data-policy/",
+                    "dateModified": d8(last).isoformat(), "temporalCoverage": f"{d8(self.dates[0]).isoformat()}/{d8(last).isoformat()}",
                     "creator": {"@type": "Organization", "name": "4D Malam Ini", "url": self.site},
                     "variableMeasured": [{"@type": "PropertyValue", "name": "Jumlah menang", "value": len(hits)},
                                          {"@type": "PropertyValue", "name": "Menang terakhir", "value": d8(hits[0][0]).isoformat()}] if hits else
                                         [{"@type": "PropertyValue", "name": "Jumlah menang", "value": 0}]}
+            body += self.verified(self.date_sh(last), "Statistik dikemas kini selepas cabutan")
             self.page(f"4d/{n}/", title, desc, body, "ms", [ld, ld_n], lastmod)
 
     def policy_page(self, last: str) -> None:
@@ -497,6 +506,7 @@ class Site:
                     + f'<a class="arch" href="{self.u(f"keputusan/{y}/")}">Semua bulan {y} ›</a>')
             mli = {"@context": "https://schema.org", "@type": "ItemList", "name": f"Keputusan 4D {mn}",
                    "description": desc, "itemListOrder": "https://schema.org/ItemListOrderAscending", "numberOfItems": len(ds),
+                   "dateModified": d8(ds[-1]).isoformat(),
                    "itemListElement": [{"@type": "ListItem", "position": j + 1, "name": f"Keputusan 4D {self.date_ms(dd_)}",
                                         "url": self.site + f"keputusan/{d8(dd_).isoformat()}/"} for j, dd_ in enumerate(ds)]}
             self.page(f"keputusan/{y}/{mo:02d}/", title, desc, body, "ms", [ld, mli], d8(ds[-1]).isoformat())
@@ -557,18 +567,43 @@ class Site:
         self.urls.pop()
 
     def sitemap(self, home_alternates: list) -> None:
-        parts = ['<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
+        """A sitemap index split by section, so Search Console reports indexing per group."""
+        import re as _re
         lastiso = d8(self.dates[-1]).isoformat()
         links = "".join(f'<xhtml:link rel="alternate" hreflang="{hl}" href="{href}"/>' for hl, href in home_alternates)
+        groups = {"main": [], "results": [], "operators": [], "dictionary": []}
         for hl, href in home_alternates:
             if hl != "x-default":
-                parts.append(f"<url><loc>{href}</loc><lastmod>{lastiso}</lastmod>{links}</url>")
+                groups["main"].append(f"<url><loc>{href}</loc><lastmod>{lastiso}</lastmod>{links}</url>")
         for loc, lm in self.urls:
-            parts.append(f"<url><loc>{loc}</loc>" + (f"<lastmod>{lm}</lastmod>" if lm else "") + "</url>")
-        parts.append("</urlset>")
-        (self.out / "sitemap.xml").write_text("\n".join(parts), encoding="utf-8")
+            path = loc[len(self.site):]
+            tail = _re.sub(r"^(ms|zh|ta)/", "", path)
+            if _re.match(r"4d/(\d{4}|\d{4}-\d{4})/$", tail):
+                g = "dictionary"
+            elif tail.startswith("keputusan/"):
+                g = "results"
+            elif _re.search(r"-result/", tail):
+                g = "operators"
+            else:
+                g = "main"
+            groups[g].append(f"<url><loc>{loc}</loc>" + (f"<lastmod>{lm}</lastmod>" if lm else "") + "</url>")
+        names, total = [], 0
+        for g, rows in groups.items():
+            if not rows:
+                continue
+            total += len(rows)
+            fn = f"sitemap-{g}.xml"
+            (self.out / fn).write_text(
+                '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+                'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + "\n".join(rows) + "\n</urlset>", encoding="utf-8")
+            names.append((fn, len(rows)))
+        (self.out / "sitemap.xml").write_text(
+            '<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            + "\n".join(f"<sitemap><loc>{self.site}{fn}</loc><lastmod>{lastiso}</lastmod></sitemap>" for fn, _ in names)
+            + "\n</sitemapindex>", encoding="utf-8")
         (self.out / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {self.site}sitemap.xml\n")
-        return len(parts) - 2
+        self.sitemap_groups = names
+        return total
 
 
 def _perms(n: str):
