@@ -18,7 +18,7 @@ results; everything else is prerendered HTML.
 | Host | Cloudflare Pages, deployed by GitHub Actions on push to `main` |
 | Owner | Site owner, timezone MYT (UTC+08:00) |
 
-**Ten operators**, keyed by a single letter throughout the codebase:
+**Eleven operators**, keyed by a single letter throughout the codebase:
 
 | Key | Operator | Rows | Draw time (DRAWM) |
 |---|---|---|---|
@@ -29,11 +29,12 @@ results; everything else is prerendered HTML.
 | `N` | 9 Lotto 4D | 221 | 7:00pm (started 29 Mar 2026) |
 | `S` | Singapore 4D | 777 | 6:30pm |
 | `C` | Sarawak Cash Sweep | 825 | 7:00pm |
+| `B` | Sabah 88 4D (Diriwan) | 840 | 7:00pm (added 5 Nov 2026) |
 | `H` | Sandakan 4D | 840 | 7:00pm |
 | `J` | Super J3 3PM | 18 | 3:00pm |
 | `K` | Super J9 9PM | 17 | 9:00pm |
 
-7,050 draws total. **MKT** is the user's shorthand for Magnum + Da Ma Cai + Sports Toto —
+7,890+ draws total. Display order everywhere: … Cash Sweep → Sabah 88 → Sandakan (user's rule). **MKT** is the user's shorthand for Magnum + Da Ma Cai + Sports Toto —
 the "big three" that draw Wed/Sat/Sun plus special draws.
 
 ---
@@ -222,7 +223,7 @@ FAQPage on several (note: Google **retired the FAQ rich result on 7 May 2026** �
 is kept for machine comprehension, but it will not change the SERP).
 
 **Known data gaps:** 24 (operator, date) pairs are genuinely unpublished by both sources —
-Cash Sweep 16 (23 Aug–24 Sep 2023), Singapore 7 (Jul–Aug 2025), Sandakan 1 (20 Mar 2024).
+Cash Sweep 16 (23 Aug–24 Sep 2023), Singapore 7 (Jul–Aug 2025), Sandakan 1 (20 Mar 2024), Sabah 88 1 (16 Nov 2024).
 Backups: git tags `data-20261104-1859`, `data-20261104-1939`.
 
 ### Shipped 5 Nov
@@ -233,6 +234,9 @@ desktop footer and sheet alignment · provider filter on the statistics page · 
 Home header logo intro (option D, "Van Gogh cloud"): SVG + CSS in `page.template.html`, +1.3 KB gz, plays once
 (~2.9 s) then the old twinkle loop. Finished logo is the default; intro only under `prefers-reduced-motion: no-preference`.
 Draft sources in the artifact "4D Malam Ini: logo intro D" (A-C in its earlier versions). Inner pages keep the static `mark.svg`.
+Sabah 88 4D (key `B`, slug `sabah-88-4d-result`): 840 draws from check4d cross-checked with 4d2ulive (0 conflicts); draw 3950
+(16 Nov 2024) unpublished by both. Logo sprite is now `img/op/tk11.webp` (11 tiles; `/img/*` is immutable, so a new sprite
+needs a new file name). Ticker sprite positions come from the `TKI` map, not display order. Temp branch `sabah88-data` can be deleted.
 
 ### Open
 - **HSTS** — user's decision, not started. Start at `max-age=86400`, no `includeSubDomains`,
