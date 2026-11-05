@@ -86,7 +86,8 @@ def build(site) -> None:
             + "".join(f'<li><a href="{site.u(pre + u)}">{esc(t)}</a></li>' for t, u in x["num"][1:]) + "</ul>"
         inf = "<ul>" + "".join(f'<li><a href="{site.u((pre if u != "data-policy/" else "") + u)}">{esc(t)}</a></li>' for t, u in x["inf"]) + "</ul>"
         co = "<ul>" + "".join(f'<li><a href="{site.u(pre + u)}"><span class="lg" style="background-position:{-i * 26}px 0"></span>{esc(t)}</a></li>' for t, u, i in CO) + "</ul>"
-        ar = '<div class="yr">' + "".join(f'<a href="{site.u("keputusan/")}#{y}"><b>{y}</b><span>{esc(x["draws"].format(n=n))}</span></a>' for y, n in sorted(yrs.items(), reverse=True)) + "</div>"
+        lastof = {d[:4]: d for d in sorted(site.dates)}
+        ar = '<div class="yr">' + "".join(f'<a href="{site.u(pre)}?d={lastof[y]}"><b>{y}</b><span>{esc(x["draws"].format(n=n))}</span></a>' for y, n in sorted(yrs.items(), reverse=True)) + "</div>"
         bc, bld = site.crumbs([(x["home"], pre), (x["crumb"], None)])
         body = (f'<div class="smp">{lng}{bc}<h1>{esc(x["h1"])}</h1><p class="lead">{esc(x["lead"])}</p>'
                 f'<h2><i>🔴</i>{esc(x["g"][0])}</h2>{res}'

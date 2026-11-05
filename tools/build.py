@@ -252,7 +252,9 @@ def main() -> None:
         title, desc = SP.LANG_META[lang]
         page = (prerender_lang(html, lang).replace("__HTMLLANG__", SP.HTML_LANG[lang]).replace("__CANON__", url[lang])
                 .replace("__TITLE__", H.escape(title)).replace("__DESC__", H.escape(desc)).replace("__OGLOCALE__", locale[lang])
-                .replace("__H1__", H.escape(h1[lang])).replace("<!--SEO-->", SC.block(lang) + SC.faq_ld(lang)).replace('id="nav-guide" href="info/"', f'id="nav-guide" href="{"" if lang == "en" else lang + "/"}info/"').replace('id="home" href="./"', f'id="home" href="{"./" if lang == "en" else lang + "/"}"'))
+                .replace("__H1__", H.escape(h1[lang])).replace("<!--SEO-->", SC.block(lang) + SC.faq_ld(lang)).replace('id="nav-guide" href="info/"', f'id="nav-guide" href="{"" if lang == "en" else lang + "/"}info/"').replace('id="home" href="./"', f'id="home" href="{"./" if lang == "en" else lang + "/"}"')
+                .replace('id="lnk-stats" href="4d-statistics/"', f'id="lnk-stats" href="/{"" if lang == "en" else lang + "/"}4d-statistics/"')
+                .replace('id="lnk-pop" href="popular-4d-numbers/"', f'id="lnk-pop" href="/{"" if lang == "en" else lang + "/"}popular-4d-numbers/"'))
         pre_ = "" if lang == "en" else lang + "/"
         # Footer: grouped link columns + company list
         FG = {
