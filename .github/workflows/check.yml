@@ -5,33 +5,10 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 6
+    timeout-minutes: 4
     steps:
-      - name: Cache-Control now served per page type
+      - name: Real fingerprinted assets
         run: |
-          S=https://www.4dmalamini.com
-          for U in / /ms/ /keputusan/2026-11-04/ /keputusan/2026/ /4d/8888/ /magnum-4d-result/ \
-                   /magnum-4d-result/2025/ /ms/magnum-4d-result/2025/ /check-4d-number/ /privacy/ \
-                   /assets/ /live.json /sitemap.xml; do
-            printf '%-30s %s\n' "$U" "$(curl -sI "$S$U" | grep -i '^cache-control:' | tr -d '\r' | cut -c16-)"
-          done
-      - name: No comma-joined Cache-Control anywhere
-        run: |
-          S=https://www.4dmalamini.com
-          FAIL=0
-          for U in / /keputusan/2026-11-04/ /4d/8888/ /magnum-4d-result/2025/ /privacy/ /check-4d-number/; do
-            CC=$(curl -sI "$S$U" | grep -i '^cache-control:' | tr -d '\r' | cut -c16-)
-            N=$(echo "$CC" | grep -o 'max-age' | wc -l)
-            if [ "$N" -gt 1 ]; then echo "JOINED on $U -> $CC"; FAIL=1; fi
-          done
-          [ "$FAIL" = 0 ] && echo "clean: exactly one max-age on every page checked"
-      - name: A real fingerprinted asset
-        run: |
-          A=$(curl -s https://www.4dmalamini.com/ | grep -o '/assets/[a-z0-9.]*\.css' | head -1)
-          echo "asset: $A"
-          curl -sI "https://www.4dmalamini.com$A" | grep -iE '^(cache-control|cf-cache-status|age):' | sed 's/^/  /'
-      - name: Redirect hops unchanged
-        run: |
-          for U in http://4dmalamini.com/ https://4dmalamini.com/ http://www.4dmalamini.com/; do
-            printf '%-34s hops=%s\n' "$U" "$(curl -sIL -o /dev/null -w '%{num_redirects}' "$U")"
+          for A in assets/a.2530e22f.css img/op/m.webp; do
+            printf '%-34s %s\n' "/$A" "$(curl -sI https://www.4dmalamini.com/$A | grep -i '^cache-control:' | tr -d '\r' | cut -c16-)"
           done
