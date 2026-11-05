@@ -5,12 +5,40 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 6
     steps:
-      - run: |
-          for u in 4d-statistics zh/4d-statistics ms/4d-statistics ta/4d-statistics popular-4d-numbers zh/popular-4d-numbers special-draw data-policy; do
-            printf "%-26s %s  " "/$u/" "$(curl -s -o /tmp/p -w '%{http_code}' https://www.4dmalamini.com/$u/)"
-            grep -o '<title>[^<]*' /tmp/p | head -1 | cut -c8-70; echo
+      - name: Status + title of the new archive silo
+        run: |
+          S=https://www.4dmalamini.com
+          for u in keputusan keputusan/2026 keputusan/2026/11 keputusan/2025 keputusan/2025/05 \
+                   keputusan/2026-11-04 magnum-4d-result/2025 ms/magnum-4d-result/2025 \
+                   zh/magnum-4d-result/2025 ta/gd-lotto-result/2024 sports-toto-result/2026; do
+            printf "%-34s %s  " "/$u/" "$(curl -s -o /tmp/p -w '%{http_code}' $S/$u/)"
+            grep -o '<title>[^<]*' /tmp/p | head -1 | cut -c8-74; echo
           done
-          echo "sitemap:"; curl -s https://www.4dmalamini.com/sitemap.xml | grep -o '4d-statistics\|popular-4d-numbers' | sort | uniq -c
-          echo "home links:"; curl -s https://www.4dmalamini.com/ | grep -o 'href="[^"]*\(statistics\|popular-4d\)[^"]*"' | sort -u | head
+      - name: Schema + breadcrumb on a date page
+        run: |
+          curl -s https://www.4dmalamini.com/keputusan/2026-11-04/ -o /tmp/d
+          echo "ld types:"; grep -o '"@type":"[A-Za-z]*"' /tmp/d | sort | uniq -c
+          echo "breadcrumb:"; grep -o '<nav class="bc".*\?</nav>' /tmp/d | head -c 320; echo
+          echo "h2 count:"; grep -c '<h2>' /tmp/d || true
+          echo "ItemList first entry:"; grep -o '"ItemList".\{0,220\}' /tmp/d | head -c 260; echo
+      - name: Language of links on a Malay date page
+        run: |
+          curl -s https://www.4dmalamini.com/keputusan/2026-11-04/ | \
+            grep -o 'href="/[a-z0-9-]*result/"' | sort -u
+      - name: Sitemap coverage
+        run: |
+          curl -s https://www.4dmalamini.com/sitemap.xml -o /tmp/s
+          echo "total urls: $(grep -c '<loc>' /tmp/s)"
+          echo "year hubs:  $(grep -cE '<loc>[^<]*/keputusan/[0-9]{4}/</loc>' /tmp/s)"
+          echo "month silos:$(grep -cE '<loc>[^<]*/keputusan/[0-9]{4}/[0-9]{2}/</loc>' /tmp/s)"
+          echo "prov-year:  $(grep -cE '<loc>[^<]*result/[0-9]{4}/</loc>' /tmp/s)"
+      - name: Transfer size of the new hubs
+        run: |
+          S=https://www.4dmalamini.com
+          for u in keputusan keputusan/2026 keputusan/2026/11 magnum-4d-result/2025; do
+            printf "%-26s %s bytes gzip, %s ms\n" "/$u/" \
+              "$(curl -s -H 'Accept-Encoding: gzip' -o /dev/null -w '%{size_download}' $S/$u/)" \
+              "$(curl -s -o /dev/null -w '%{time_total}' $S/$u/)"
+          done
