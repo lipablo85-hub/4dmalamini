@@ -286,7 +286,8 @@ def main() -> None:
             return out + f'<nav class="co"><b>{H.escape(COH)}</b><div>' + "".join(f'<a href="/{pf}{u}/">{H.escape(t)}</a>' for t, u in CO) + "</div></nav>"
 
         page = (page.replace("<!--FOOTLINKS-->", footcols(lang))
-                    .replace("__FLINKS__", json.dumps({lg: footcols(lg) for lg in ("en", "ms", "zh", "ta")}, ensure_ascii=False))
+                    .replace("__FLINKS__", json.dumps(
+                        {lg: SP.localize(footcols(lg), lg) for lg in ("en", "ms", "zh", "ta")}, ensure_ascii=False))
                     .replace('href="special-draw/"', f'href="/{pre_}special-draw/"'))
         page = SP.localize(page, lang)
         f = out / ("index.html" if lang == "en" else f"{lang}/index.html")
