@@ -7,12 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Strip on static pages, Sabah lotto card
+      - name: Strip only on home pages
         run: |
           S=https://www.4dmalamini.com
-          for u in keputusan/2026-11-04/ 4d/8888/ zh/magnum-4d-result/ ta/4d-statistics/ info/; do
+          for u in "" ms/ zh/ ta/ keputusan/2026-11-04/ 4d/8888/ zh/magnum-4d-result/ info/; do
             printf '%-26s %s strip=%s\n' "/$u" "$(curl -s -o /dev/null -w '%{http_code}' "$S/$u?v=$RANDOM")" "$(curl -s "$S/$u?v=$RANDOM" | grep -c 'class="tkr"')"
           done
-          echo "tk.json: $(curl -s "$S/tk.json")"; curl -sI "$S/tk.json" | grep -i '^cache-control'
-          curl -s "$S/live.json?v=$RANDOM" | grep -o '"B":{"sl[^}]*' | head -c 200; echo
-          curl -s "$S/live.json?v=$RANDOM" | grep -o '"l5":\[[^]]*\]' | head -c 160; echo
