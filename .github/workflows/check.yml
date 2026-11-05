@@ -7,32 +7,35 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
-      - name: Trust pages live in four languages
+      - name: Redirect chain from every entry point
+        run: |
+          for U in http://4dmalamini.com/ https://4dmalamini.com/ http://www.4dmalamini.com/ \
+                   http://4dmalamini.com/keputusan/2026/ https://4dmalamini.com/4d/8888/; do
+            echo "--- $U"
+            curl -s -o /dev/null -w '    %{http_code}  %{redirect_url}\n' "$U"
+            printf '    hops=%s  total=%ss\n' \
+              "$(curl -sIL -o /dev/null -w '%{num_redirects}' "$U")" \
+              "$(curl -sL -o /dev/null -w '%{time_total}' "$U")"
+          done
+      - name: Cache headers by page type
         run: |
           S=https://www.4dmalamini.com
-          for u in privacy terms contact ms/privacy ms/terms ms/contact zh/privacy zh/terms zh/contact ta/privacy ta/terms ta/contact; do
-            printf "%-16s %s  " "/$u/" "$(curl -s -o /tmp/p -w '%{http_code}' $S/$u/)"
-            grep -o '<title>[^<]*' /tmp/p | head -1 | cut -c8-60; echo
+          for U in / /ms/ /keputusan/2026-11-04/ /keputusan/2026/11/ /4d/8888/ /magnum-4d-result/ \
+                   /check-4d-number/ /assets/ /sitemap.xml /live.json; do
+            echo "--- $U"
+            curl -sI "$S$U" | grep -iE '^(cache-control|cf-cache-status|age|etag|last-modified|content-encoding|vary):' | sed 's/^/    /'
           done
-      - name: IndexNow key file
+      - name: Does a second hit come from cache?
         run: |
-          KEY=$(curl -s https://www.4dmalamini.com/7f4b3a3244116bcf1b830ea88d5bb236.txt)
-          echo "served: $KEY"
-          test "$KEY" = "7f4b3a3244116bcf1b830ea88d5bb236" && echo "matches the key we submit" || echo "MISMATCH"
-      - name: Re-submit to IndexNow now that the key file is definitely live
-        run: |
-          B='{"host":"www.4dmalamini.com","key":"7f4b3a3244116bcf1b830ea88d5bb236","keyLocation":"https://www.4dmalamini.com/7f4b3a3244116bcf1b830ea88d5bb236.txt","urlList":["https://www.4dmalamini.com/privacy/","https://www.4dmalamini.com/terms/","https://www.4dmalamini.com/contact/","https://www.4dmalamini.com/check-4d-number/","https://www.4dmalamini.com/ms/check-4d-number/"]}'
-          for EP in https://api.indexnow.org/indexnow https://www.bing.com/indexnow; do
-            printf '%-40s -> %s\n' "$EP" "$(curl -s -o /dev/null -w '%{http_code}' -X POST "$EP" -H 'Content-Type: application/json' -d "$B")"
+          S=https://www.4dmalamini.com
+          for U in /keputusan/2026-11-04/ /4d/8888/ /keputusan/2026/; do
+            curl -s -o /dev/null "$S$U"; sleep 1
+            printf '%-26s  status=%-10s ttfb=%ss\n' "$U" \
+              "$(curl -sI "$S$U" | grep -i cf-cache-status | tr -d '\r' | cut -d' ' -f2)" \
+              "$(curl -s -o /dev/null -w '%{time_starttransfer}' "$S$U")"
           done
-      - name: Schema on the contact page
+      - name: Compression actually served
         run: |
-          curl -s https://www.4dmalamini.com/contact/ -o /tmp/c
-          grep -o '"@type":"[A-Za-z]*"' /tmp/c | sort | uniq -c
-          echo "publishingPrinciples: $(grep -c publishingPrinciples /tmp/c)"
-      - name: Sitemap totals
-        run: |
-          curl -s https://www.4dmalamini.com/sitemap.xml -o /tmp/s
-          for f in $(grep -o 'sitemap-[a-z]*\.xml' /tmp/s | sort -u); do
-            printf '  %-26s %s urls\n' "$f" "$(curl -s https://www.4dmalamini.com/$f | grep -c '<loc>')"
-          done
+          curl -s -H 'Accept-Encoding: br,gzip' -o /dev/null -w \
+            '  br/gzip bytes: %{size_download}, encoding: %header{content-encoding}\n' \
+            https://www.4dmalamini.com/keputusan/2026-11-04/
