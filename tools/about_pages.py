@@ -39,7 +39,7 @@ def build(site) -> None:
                f'<meta name="theme-color" content="#050505"><link rel="icon" href="{site.u("favicon.svg")}" type="image/svg+xml"><link rel="apple-touch-icon" href="{site.u("apple-touch-icon.png")}">'
                f'<meta property="og:type" content="website"><meta property="og:site_name" content="4D Malam Ini"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{canon}"><meta property="og:image" content="{site.site}og-image.jpg">'
                f'<link rel="stylesheet" href="{site.u(name)}"><script type="application/ld+json">{json.dumps(ld, ensure_ascii=False, separators=(",", ":"))}</script>'
-               '<script async src="https://www.googletagmanager.com/gtag/js?id=G-VMHF911ZT1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-VMHF911ZT1");</script>'
+               '<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-VMHF911ZT1");(function(){var l=0,go=function(){if(l)return;l=1;var s=document.createElement("script");s.async=1;s.src="https://www.googletagmanager.com/gtag/js?id=G-VMHF911ZT1";document.head.appendChild(s)};addEventListener("load",function(){(window.requestIdleCallback||function(f){setTimeout(f,1500)})(go,{timeout:4000})});["pointerdown","keydown","scroll"].forEach(function(e){addEventListener(e,go,{once:true,passive:true})})})();</script>'
                f'</head><body>{b}{site.bnav(path(lang), hl)}{js}</body></html>')
         out = site.out / path(lang) / "index.html"
         out.parent.mkdir(parents=True, exist_ok=True)

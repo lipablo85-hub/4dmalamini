@@ -181,7 +181,7 @@ class Site:
 <title>{esc(title)}</title><meta name="description" content="{esc(desc)}"><link rel="canonical" href="{canon}">
 <meta name="theme-color" content="#07142B"><link rel="icon" href="{self.u('favicon.svg')}" type="image/svg+xml"><link rel="apple-touch-icon" href="{self.u('apple-touch-icon.png')}">
 <link rel="stylesheet" href="{self.u(self.css)}">
-<meta property="og:type" content="website"><meta property="og:site_name" content="4D Malam Ini"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{canon}"><meta property="og:image" content="{self.site}og-image.jpg"><meta name="twitter:card" content="summary_large_image">{head}{lds}<script async src="https://www.googletagmanager.com/gtag/js?id=G-VMHF911ZT1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag("js",new Date());gtag("config","G-VMHF911ZT1");</script>
+<meta property="og:type" content="website"><meta property="og:site_name" content="4D Malam Ini"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{canon}"><meta property="og:image" content="{self.site}og-image.jpg"><meta name="twitter:card" content="summary_large_image">{head}{lds}<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag("js",new Date());gtag("config","G-VMHF911ZT1");(function(){{var l=0,go=function(){{if(l)return;l=1;var s=document.createElement("script");s.async=1;s.src="https://www.googletagmanager.com/gtag/js?id=G-VMHF911ZT1";document.head.appendChild(s)}};addEventListener("load",function(){{(window.requestIdleCallback||function(f){{setTimeout(f,1500)}})(go,{{timeout:4000}})}});["pointerdown","keydown","scroll"].forEach(function(e){{addEventListener(e,go,{{once:true,passive:true}})}})}})();</script>
 </head>
 <body><header><div class="w"><a href="{self.u('')}">{self.mark}<span>4D Malam Ini</span></a></div></header>
 <main class="w">{body}</main>
@@ -265,10 +265,16 @@ class Site:
             na = f'<a href="{self.u(f"keputusan/{d8(self.dates[i + 1]).isoformat()}/")}" aria-label="{self.date_ms(self.dates[i + 1])}">›</a>' if i + 1 < len(self.dates) else "<span>›</span>"
             TKI = {"M": 0, "T": 1, "D": 2, "S": 3, "C": 4, "H": 5, "G": 6, "N": 7, "J": 8, "K": 9}
             jmp = '<nav class="jmp" aria-label="Syarikat">' + "".join(f'<a href="#r-{k}"><i style="background-position:{-TKI[k] * 22}px 0"></i>{name}</a>' for k, name, _, _ in OPS if d in by[k]) + "</nav>"
+            ld_res = {"@context": "https://schema.org", "@type": "Dataset", "name": f"Keputusan 4D {self.date_ms(d)}",
+                      "description": f"Malaysia 4D results for {dd:%-d %B %Y}: " + ", ".join(titles) + ".",
+                      "temporalCoverage": dd.isoformat(), "inLanguage": "ms", "isAccessibleForFree": True,
+                      "license": self.site + "data-policy/", "url": self.site + f"keputusan/{dd.isoformat()}/",
+                      "creator": {"@type": "Organization", "name": "4D Malam Ini", "url": self.site},
+                      "variableMeasured": [{"@type": "PropertyValue", "name": nm, "value": " ".join(by[k][d][2][:3])} for k, nm, _, _ in OPS if d in by[k]]}
             body = (f"{nav}<h1>Keputusan 4D {self.date_ms(d)}<small><span lang='en'>4D results {dd:%A, %-d %B %Y}</span> · <span lang='zh-Hans'>{dd.year}年{dd.month}月{dd.day}日万字成绩</span></small></h1>"
                     f'<div class="dnav">{pa}<b>{self.date_ms(d)}<small>{len(body_ops)} syarikat · companies</small></b>{na}</div>{jmp}'
                     + "".join(body_ops) + f'<div class="pn">{prev}{nxt}</div><a class="arch" href="{self.u("keputusan/")}">Arkib keputusan · All past results ›</a>')
-            self.page(f"keputusan/{iso}/", title, desc, body, "ms", [ld], iso)
+            self.page(f"keputusan/{iso}/", title, desc, body, "ms", [ld, ld_res], iso)
 
     def number_pages(self, last: str) -> None:
         lo, hi = d8(self.dates[0]), d8(self.dates[-1])
@@ -369,7 +375,14 @@ class Site:
                     + (f"<h2>Susunan digit sama (Box) · {len(perms)}</h2><div class=\"chips\">{box}</div>" if perms else "") + pn
                     + f'<p class="note">Sumber: keputusan rasmi syarikat, disemak semula. <a href="{self.u("data-policy/")}">Dasar data · Data policy</a></p>')
             lastmod = d8(hits[0][0]).isoformat() if hits else None
-            self.page(f"4d/{n}/", title, desc, body, "ms", [ld], lastmod)
+            ld_n = {"@context": "https://schema.org", "@type": "Dataset", "name": f"4D {n} — sejarah menang", "inLanguage": "ms",
+                    "description": f"Setiap kali nombor 4D {n} menang di Malaysia sejak {span}: {len(hits)} kali.",
+                    "url": self.site + f"4d/{n}/", "isAccessibleForFree": True, "license": self.site + "data-policy/",
+                    "creator": {"@type": "Organization", "name": "4D Malam Ini", "url": self.site},
+                    "variableMeasured": [{"@type": "PropertyValue", "name": "Jumlah menang", "value": len(hits)},
+                                         {"@type": "PropertyValue", "name": "Menang terakhir", "value": d8(hits[0][0]).isoformat()}] if hits else
+                                        [{"@type": "PropertyValue", "name": "Jumlah menang", "value": 0}]}
+            self.page(f"4d/{n}/", title, desc, body, "ms", [ld, ld_n], lastmod)
 
     def policy_page(self, last: str) -> None:
         upd = d8(last)

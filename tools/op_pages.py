@@ -149,4 +149,8 @@ def build(site) -> None:
             alts = "".join(f'<link rel="alternate" hreflang="{LANGS[l][0]}" href="{site.site}{LANGS[l][1]}{slug}/">' for l in LANGS) + f'<link rel="alternate" hreflang="x-default" href="{site.site}{slug}/">'
             title = f(x["title"]).replace("{d}", fd(d, lang))
             desc = f(x["desc"]).replace("{d}", fd(d, lang)).replace("{a}", n[0]).replace("{b}", n[1]).replace("{c}", n[2])
-            site.page(path, title, desc, body, hl, [bld, fql], d8(d).isoformat(), head=head0 + alts)
+            ld_d = {"@context": "https://schema.org", "@type": "Dataset", "name": title.split(" | ")[0], "inLanguage": hl,
+                    "description": desc, "url": site.site + path, "isAccessibleForFree": True,
+                    "license": site.site + "data-policy/", "temporalCoverage": f"{d8(min(r[0] for k in keys for r in rows[k])).isoformat()}/{d8(d).isoformat()}",
+                    "creator": {"@type": "Organization", "name": "4D Malam Ini", "url": site.site}}
+            site.page(path, title, desc, body, hl, [bld, fql, ld_d], d8(d).isoformat(), head=head0 + alts)
