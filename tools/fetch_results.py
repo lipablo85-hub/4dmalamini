@@ -460,6 +460,38 @@ def fetch_cs(day: dt.date) -> dict | None:
     return parse_check4d_cs(html_text(get(f"https://www.check4d.org/past-results/{day.isoformat()}", {"Referer": "https://www.check4d.org/"})), day)
 
 
+# ---------- Sabah 88 4D (Diriwan, Kota Kinabalu): check4d.org, Wed/Sat/Sun 7pm + special draws ----------
+SB = "Sabah 88 4D"
+
+
+def parse_sb(text: str, day: dt.date) -> dict | None:
+    """Sabah 88 block. check4d and 4d2ulive print it the same way; 4d2ulive adds "----" in empty special slots."""
+    t = re.sub(r"\s+", " ", text)
+    m = re.search(r"Sabah 88 4D \S+ Date:\s*(\d{2})-(\d{2})-(\d{4})\s*\(\w+\)\s*Draw No:\s*([\d/]+)(.*?)(?:4D Jackpot|3D 1st Prize|Sabah 88 Lotto|Lotto 6/45|CAMBODIA|Advertisements|$)", t)
+    if not m or dt.date(int(m.group(3)), int(m.group(2)), int(m.group(1))) != day:
+        return None
+    b = m.group(5)
+    p = re.search(r"1st Prize \S+ (\d{4}) 2nd Prize \S+ (\d{4}) 3rd Prize \S+ (\d{4})", b)
+    sp, co = re.search(r"Special(.*?)Consolation", b), re.search(r"Consolation(.*)$", b)
+    if not (p and sp and co):
+        return None
+    top, s_, c_ = list(p.groups()), re.findall(r"\b\d{4}\b", sp.group(1))[:10], re.findall(r"\b\d{4}\b", co.group(1))[:10]
+    if complete(top, s_, c_):
+        return {"operator": SB, "draw_no": m.group(4), "top": top, "sp": s_, "co": c_}
+    return None
+
+
+def fetch_sb(day: dt.date) -> dict | None:
+    now = dt.datetime.now(MYT)
+    if day == now.date() and now.hour * 60 + now.minute < 1140:
+        return None
+    r = parse_sb(check4d_text(), day)
+    if r or day == now.date():
+        return r
+    r = parse_sb(html_text(get(f"https://www.check4d.org/past-results/{day.isoformat()}", {"Referer": "https://www.check4d.org/"})), day)
+    return r or parse_sb(html_text(get(f"https://4d2ulive.com/past-results/{day.isoformat()}", {"Referer": "https://4d2ulive.com/"})), day)
+
+
 # ---------- Sandakan STC 4D (Sandakan Turf Club, Sabah): check4d.org, Wed/Sat/Sun 7pm + special draws ----------
 STC = "Sandakan 4D"
 
