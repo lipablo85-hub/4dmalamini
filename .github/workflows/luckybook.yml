@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: pip install -q pillow
-      - run: python3 tools/luckybook_fetch.py /tmp/lb 1 2 3 | tee /tmp/lb/report.txt
+      - run: mkdir -p /tmp/lb && python3 tools/luckybook_fetch.py /tmp/lb 1 2 3 | tee /tmp/lb/report.txt
       - run: |
           du -sh /tmp/lb; ls /tmp/lb
           cd /tmp/lb && git init -q -b luckybook-data && git config user.name "4d-results-bot" && git config user.email "actions@users.noreply.github.com"

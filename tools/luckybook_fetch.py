@@ -18,7 +18,7 @@ def get(u, tries=4):
             err = e; time.sleep(2 + 3 * t)
     raise err
 
-ITEM = re.compile(r"""<img id="bookitemitemphoto" src='([^']+)'\s*alt="([^"]*)".*?<div id="bookitemitemname"><b>([^<]*)</b>""", re.S)
+ITEM = re.compile(r"""<img id="bookitemitemphoto"\s+src='([^']+)'\s*alt="([^"]*)".*?<div id="bookitemitemname"><b>([^<]*)</b>""", re.S)
 for bid in sys.argv[2:]:
     first = get(f"{B}/home/?menu=bookitem&id={bid}").decode("utf-8", "replace")
     (out / f"page{bid}.html").write_text(first)
@@ -39,17 +39,26 @@ for bid in sys.argv[2:]:
         time.sleep(0.15)
     (out / f"img{bid}").mkdir(exist_ok=True)
     dims, fails = {}, []
-    for it in items:
+    from concurrent.futures import ThreadPoolExecutor
+    def one(i_it):
+        i, it = i_it
         try:
             im = Image.open(BytesIO(get(it["src"].replace("http://", "https://"))))
-            dims[im.size] = dims.get(im.size, 0) + 1
             im = im.convert("RGBA") if im.mode in ("P", "LA", "RGBA") else im.convert("RGB")
-            name = f"{it['n']}.webp" if it["n"] not in [x["n"] for x in items[:items.index(it)]] else f"{it['n']}-{items.index(it)}.webp"
+            name = f"{it['n']}.webp" if i == firsts[it["n"]] else f"{it['n']}-{i}.webp"
             im.save(out / f"img{bid}" / name, "WEBP", quality=90, method=5)
-            it["img"] = name
+            return i, name, im.size, None
         except Exception as e:
-            fails.append((it["n"], str(e)[:80]))
-        time.sleep(0.05)
+            return i, None, None, str(e)[:80]
+    firsts = {}
+    for i, it in enumerate(items):
+        firsts.setdefault(it["n"], i)
+    with ThreadPoolExecutor(6) as ex:
+        for i, name, size, err in ex.map(one, enumerate(items)):
+            if err:
+                fails.append((items[i]["n"], err))
+            else:
+                items[i]["img"] = name; dims[size] = dims.get(size, 0) + 1
     json.dump({"id": bid, "title": title.group(1).strip() if title else "", "items": items}, open(out / f"book{bid}.json", "w"), ensure_ascii=False, indent=0)
     nums = [it["n"] for it in items]
     print(f"book {bid}: {len(items)} items, numbers {nums[:3]}..{nums[-3:]}, dup numbers {len(nums) - len(set(nums))}, "
