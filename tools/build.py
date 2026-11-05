@@ -348,7 +348,13 @@ def main() -> None:
         xj = json.loads(xf.read_text(encoding="utf-8"))
         live["X"] = {d: xj[d] for d in sorted(xj)[-4:]}
     (out / "live.json").write_text(json.dumps(live, separators=(",", ":")))
-    (out / "_headers").write_text(HEADERS)
+    opyear = "\n".join(
+        f"/{pf}{sl}/20*\n  Cache-Control: public, max-age=86400, stale-while-revalidate=604800"
+        for pf in ("", "ms/", "zh/", "ta/")
+        for sl in ("magnum-4d-result", "da-ma-cai-result", "sports-toto-result", "gd-lotto-result",
+                   "9-lotto-result", "singapore-4d-result", "cash-sweep-result", "sandakan-4d-result",
+                   "super-j3-j9-result"))
+    (out / "_headers").write_text(HEADERS.replace("__OPYEAR__", opyear))
     (out / ".htaccess").write_text(HTACCESS)
     for p in sorted(out.rglob("*")):
         if p.is_file() and not re.search(r"img/d(?:ict|2)|^4d/|^keputusan/", str(p.relative_to(out))):
@@ -363,18 +369,90 @@ if(/\\/(data|img|assets)\\//.test(u.pathname)){e.respondWith(caches.open(V).then
 e.respondWith(fetch(r).then(res=>{if(res.ok){const cp=res.clone();caches.open(V).then(c=>c.put(r,cp))}return res}).catch(()=>caches.match(r)))});
 """
 
-HEADERS = """/index.html
-  Cache-Control: public, max-age=0, must-revalidate
-/sw.js
-  Cache-Control: public, max-age=0, must-revalidate
-/live.json
-  Cache-Control: public, max-age=0, must-revalidate
-/data/*
-  Cache-Control: public, max-age=31536000, immutable
-/img/*
-  Cache-Control: public, max-age=31536000, immutable
+HEADERS = """# Cloudflare Pages header rules.
+#
+# IMPORTANT: Pages does NOT let a later rule override an earlier one. A request matching
+# several rules inherits all of them, and a header set twice is JOINED WITH A COMMA. So the
+# Cache-Control rules below must not overlap: /* carries security headers only, and every
+# path that needs a cache policy gets exactly one rule. Anything left unlisted falls back to
+# the Pages default (max-age=0, must-revalidate), which is the safe choice for live pages.
+#
+# Why this matters: 12,000 archive pages were being served max-age=0, must-revalidate, so
+# every repeat visit paid a round trip for a page whose content will never change again.
+#
+# CDN-Cache-Control is read by Cloudflare ahead of Cache-Control. HTML is not edge-cache
+# eligible by default, so it does nothing until a Cache Rule is added in the zone; it is
+# harmless until then, and the browser TTL is what does the work today.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Past draws: fixed once every company has drawn. Short freshness window so tonight's page
+# still catches late results, then a long stale-while-revalidate for the five-year archive.
+/keputusan/*
+  Cache-Control: public, max-age=600, stale-while-revalidate=86400
+  CDN-Cache-Control: public, max-age=3600
+
+# Dictionary and number pages: statistics shift once a day at most.
+/4d/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+  CDN-Cache-Control: public, max-age=86400
+
+# Fingerprinted or versioned, safe forever.
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+  CDN-Cache-Control: public, max-age=31536000
+/img/*
+  Cache-Control: public, max-age=31536000, immutable
+  CDN-Cache-Control: public, max-age=31536000
+/data/*
+  Cache-Control: public, max-age=31536000, immutable
+  CDN-Cache-Control: public, max-age=31536000
+
+# Reference pages that change rarely.
+/info/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+/guide/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+/about/*
+  Cache-Control: public, max-age=86400
+/privacy/*
+  Cache-Control: public, max-age=86400
+/terms/*
+  Cache-Control: public, max-age=86400
+/contact/*
+  Cache-Control: public, max-age=86400
+/data-policy/*
+  Cache-Control: public, max-age=86400
+/check-4d-number/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+# Crawler files.
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+/sitemap-main.xml
+  Cache-Control: public, max-age=3600
+/sitemap-results.xml
+  Cache-Control: public, max-age=3600
+/sitemap-operators.xml
+  Cache-Control: public, max-age=3600
+/sitemap-dictionary.xml
+  Cache-Control: public, max-age=86400
+/robots.txt
+  Cache-Control: public, max-age=86400
+
+# Provider-year archives (/magnum-4d-result/2025/ and friends, in four languages). The
+# "20*" suffix matches the year pages without matching the operator hub above them, which
+# shows tonight's draw and must stay on the default must-revalidate.
+__OPYEAR__
+
+# The live surfaces. Never hold these.
+/live.json
+  Cache-Control: no-store
+  CDN-Cache-Control: no-store
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
 """
 
 HTACCESS = """# Compression (Apache)
