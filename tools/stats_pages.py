@@ -14,7 +14,7 @@ T = {
  "en": dict(title="4D Statistics: Hot & Cold Numbers, Digit Frequency", crumb="4D statistics", home="Home",
             desc="Malaysia 4D statistics from {n} draws since {s}: most drawn numbers, numbers missing longest, top-3 prize regulars, digit frequency by position and Box families.",
             h1="4D statistics", lead="What {n} draws across 10 companies since {s} say about every 4D number. Updated after every draw.",
-            k=("Draws analysed", "Numbers drawn", "Different numbers", "Never drawn"),
+            k=("Draws analysed", "Numbers drawn"),
             hot="Most drawn numbers", hots="All prizes, all companies, since {s}.", cold="Missing longest", colds="Numbers that won before but have not appeared for the longest time.",
             rec="Hot in the last 90 days", recs="Most wins since {d}.", top="Top-3 prize regulars", tops="Most times in 1st, 2nd or 3rd prize.",
             dig="Digit frequency by position", digs="How often each digit appears in each of the 4 positions, as a share of that position.", dlo="less often", dhi="more often", pos=("1st digit", "2nd digit", "3rd digit", "4th digit"),
@@ -25,7 +25,7 @@ T = {
  "ms": dict(title="Statistik 4D: Nombor Panas & Sejuk, Kekerapan Digit", crumb="Statistik 4D", home="Utama",
             desc="Statistik 4D Malaysia daripada {n} cabutan sejak {s}: nombor paling kerap, nombor paling lama tidak keluar, hadiah 1–3, kekerapan digit dan keluarga Box.",
             h1="Statistik 4D", lead="Apa yang {n} cabutan dari 10 syarikat sejak {s} tunjukkan tentang setiap nombor 4D. Dikemas kini selepas setiap cabutan.",
-            k=("Cabutan dianalisis", "Nombor dicabut", "Nombor berbeza", "Belum pernah keluar"),
+            k=("Cabutan dianalisis", "Nombor dicabut"),
             hot="Nombor paling kerap", hots="Semua hadiah, semua syarikat, sejak {s}.", cold="Paling lama tidak keluar", colds="Nombor yang pernah menang tetapi paling lama tidak muncul.",
             rec="Panas dalam 90 hari", recs="Paling banyak menang sejak {d}.", top="Kerap dalam hadiah 1–3", tops="Paling kerap dalam hadiah Pertama, Kedua atau Ketiga.",
             dig="Kekerapan digit mengikut kedudukan", digs="Berapa kerap setiap digit muncul di setiap kedudukan, sebagai peratusan.", dlo="kurang kerap", dhi="lebih kerap", pos=("Digit 1", "Digit 2", "Digit 3", "Digit 4"),
@@ -36,7 +36,7 @@ T = {
  "zh": dict(title="万字统计：热门与冷门号码、数字出现频率", crumb="万字统计", home="首页",
             desc="根据{s}以来{n}期马来西亚万字开彩统计：最常开出号码、最久未开号码、前三奖常客、各位数字频率与 Box 号码组。",
             h1="万字统计", lead="{s}以来10家公司共{n}期开彩，每个万字号码的出现记录。每期开彩后更新。",
-            k=("统计期数", "开出号码", "不同号码", "从未开出"),
+            k=("统计期数", "开出号码"),
             hot="最常开出的号码", hots="所有奖项、所有公司，{s}至今。", cold="最久未开的号码", colds="曾经中过、但已经最久没有再出现的号码。",
             rec="近90天热门", recs="{d}以来中奖最多。", top="前三奖常客", tops="最常进入头奖、二奖或三奖。",
             dig="各位数字出现频率", digs="每个数字在4个位置出现的比例（%）。", dlo="较少", dhi="较多", pos=("第1位", "第2位", "第3位", "第4位"),
@@ -47,7 +47,7 @@ T = {
  "ta": dict(title="4D புள்ளிவிவரம்: அதிகம் & குறைவாக வந்த எண்கள், இலக்க அதிர்வெண்", crumb="4D புள்ளிவிவரம்", home="முகப்பு",
             desc="{s} முதல் {n} குலுக்கல்களின் மலேசியா 4D புள்ளிவிவரம்: அதிகம் வந்த எண்கள், நீண்ட நாள் வராத எண்கள், முதல் 3 பரிசுகள், இலக்க அதிர்வெண், Box குடும்பங்கள்.",
             h1="4D புள்ளிவிவரம்", lead="{s} முதல் 10 நிறுவனங்களின் {n} குலுக்கல்கள் ஒவ்வொரு 4D எண்ணைப் பற்றியும் சொல்வது. ஒவ்வொரு குலுக்கலுக்குப் பின் புதுப்பிக்கப்படும்.",
-            k=("ஆய்வு செய்த குலுக்கல்கள்", "வந்த எண்கள்", "வெவ்வேறு எண்கள்", "ஒருமுறையும் வராதவை"),
+            k=("ஆய்வு செய்த குலுக்கல்கள்", "வந்த எண்கள்"),
             hot="அதிகம் வந்த எண்கள்", hots="எல்லா பரிசுகளும், எல்லா நிறுவனங்களும், {s} முதல்.", cold="நீண்ட நாள் வராதவை", colds="முன்பு வென்று, நீண்ட காலமாக மீண்டும் வராத எண்கள்.",
             rec="கடந்த 90 நாளில் அதிகம்", recs="{d} முதல் அதிக வெற்றிகள்.", top="முதல் 3 பரிசில் அடிக்கடி", tops="1வது, 2வது, 3வது பரிசில் அதிக முறை.",
             dig="நிலை வாரியான இலக்க அதிர்வெண்", digs="4 நிலைகளிலும் ஒவ்வொரு இலக்கமும் வரும் விகிதம் (%).", dlo="குறைவு", dhi="அதிகம்", pos=("1வது இலக்கம்", "2வது இலக்கம்", "3வது இலக்கம்", "4வது இலக்கம்"),
@@ -63,7 +63,7 @@ CSS = """.st4{--mu:#9DB0D3;--cd:#0F1F3D;--ln:#1D3157;--gold:#E9C46B;--ui:-apple-
 .st4 .lng{display:flex;gap:6px;margin:4px 0 12px}
 .st4 .lng a{padding:6px 11px;border-radius:999px;border:1px solid var(--ln);text-decoration:none;font-size:12.5px;font-weight:700;color:#C9D4EA}
 .st4 .lng a[aria-current]{background:#F8F4E8;color:#07142B;border-color:#F8F4E8}
-.st4 .kp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.st4 .kp div:nth-child(3):last-child{grid-column:1/-1}
+.st4 .kp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .st4 .kp div{padding:13px 14px;border-radius:14px;background:var(--cd);border:1px solid #233862}
 .st4 .kp b{display:block;font:700 23px/1.15 var(--ui);font-variant-numeric:tabular-nums;color:#FFE7A3;letter-spacing:-.3px}
 .st4 .kp small{display:block;margin-top:3px;font-size:12px;color:var(--mu);font-weight:600;line-height:1.3}
@@ -96,7 +96,7 @@ CSS = """.st4{--mu:#9DB0D3;--cd:#0F1F3D;--ln:#1D3157;--gold:#E9C46B;--ui:-apple-
 .st4 .nt{margin-top:24px;padding:14px 16px;border-radius:14px;background:rgba(255,90,95,.08);border:1px solid rgba(255,90,95,.3);font-size:13px;color:#C2CEE4;line-height:1.6}
 .st4 .cta2{display:flex;justify-content:center;align-items:center;height:48px;margin-top:8px;border-radius:999px;border:1px solid rgba(233,196,107,.4);color:var(--gold);font-weight:700;text-decoration:none;font-size:14px}
 .st4 .cta{display:flex;justify-content:center;align-items:center;height:50px;margin-top:16px;border-radius:999px;background:var(--gold);color:#1A1405;font-weight:700;font-size:15px;text-decoration:none}
-@media (min-width:620px){.st4 .kp{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
 """
 
 
@@ -177,8 +177,7 @@ def build(site) -> None:
         bx = '<div class="bx">' + "".join(
             f'<a href="{site.u("4d/" + k + "/")}"><b>{k}</b><small><strong>{fam[k]}{"次" if lang == "zh" else "×"}</strong> · {esc(x["combos"].format(n=len(set(permutations(k)))))}</small></a>' for k in boxes) + "</div>"
         lng = '<nav class="lng" aria-label="Language">' + "".join(f'<a href="{site.u(path(l))}" hreflang="{LANGS[l][0]}"' + (' aria-current="page"' if l == lang else "") + f'>{names[l]}</a>' for l in LANGS) + "</nav>"
-        vals = [f"{nd:,}", f"{total:,}", f"{len(cnt):,}"] + ([f"{never:,}"] if never else [])
-        kp = '<div class="kp">' + "".join(f"<div><b>{v}</b><small>{esc(lb)}</small></div>" for v, lb in zip(vals, x["k"])) + "</div>"
+        kp = '<div class="kp">' + "".join(f"<div><b>{v}</b><small>{esc(lb)}</small></div>" for v, lb in zip((f"{nd:,}", f"{total:,}"), x["k"])) + "</div>"
         ids = [("hot", "🔥", x["hot"]), ("cold", "❄️", x["cold"]), ("recent", "📈", x["rec"]), ("top3", "🏆", x["top"]), ("digits", "🔢", x["dig"]), ("box", "🎲", x["box"])]
         tabs = '<nav class="tabs">' + "".join(f'<a href="#{i}">{ic} {esc(t)}</a>' for i, ic, t in ids) + "</nav>"
         sec = lambda i, ic, t, sub, body: f'<section id="{i}"><h2><i>{ic}</i>{esc(t)}</h2><p class="sub">{esc(sub)}</p>{body}</section>'
@@ -190,7 +189,6 @@ def build(site) -> None:
                 + sec("top3", "🏆", x["top"], x["tops"], f'<div class="card">{top_h}</div>')
                 + sec("digits", "🔢", x["dig"], x["digs"], f'<div class="card" style="padding:12px">{hm}</div>')
                 + sec("box", "🎲", x["box"], x["boxs"], bx)
-                + (f'<p class="sub" style="margin-top:14px">{esc(x["never"].format(n=f"{never:,}", s=S))}</p>' if never else "")
                 + f'<a class="cta" href="{site.u(pre + "?tab=check")}">{esc(x["more"])} ›</a>'
                 + f'<a class="cta2" href="{site.u(pre + "popular-4d-numbers/")}">{esc(x["pop"])} ›</a><div class="nt">{esc(x["note"])}</div></div>')
         bc, bld = site.crumbs([(x["home"], pre), (x["crumb"], None)])
