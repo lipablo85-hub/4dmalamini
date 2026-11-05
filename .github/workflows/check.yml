@@ -5,16 +5,17 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     steps:
-      - name: Sabah 88 live
+      - name: Map 4dluckybook
         run: |
-          S=https://www.4dmalamini.com
-          for u in sabah-88-4d-result/ ms/sabah-88-4d-result/ zh/sabah-88-4d-result/ ta/sabah-88-4d-result/ sabah-88-4d-result/2024/ img/op/b.webp img/op/tk11.webp; do
-            printf '%-32s %s %sB\n' "/$u" "$(curl -s -o /dev/null -w '%{http_code}' $S/$u)" "$(curl -s -o /dev/null -w '%{size_download}' $S/$u)"
-          done
-          curl -s "$S/?v=$RANDOM" | grep -o 'id="rc-B"[^>]*>' | head -1
-          curl -s "$S/?v=$RANDOM" | grep -o 'rc-C.\{0,4\}' | head -1
-          curl -s "$S/live.json?v=$RANDOM" | grep -o '"B":"[^|"]\{0,60\}' | head -1
-          echo "api B:"; curl -s "$S/api/live" | grep -o '"B":{[^}]*}' | head -c 300; echo
-          curl -s "$S/sitemap-operators.xml" | grep -c sabah-88 || true
+          UA="Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 Chrome/130 Mobile Safari/537.36"
+          B=https://4dluckybook.com
+          curl -s -A "$UA" "$B/home/?menu=bookitem&id=1" -o p1.html; wc -c p1.html
+          echo "== links/menus"; grep -o 'href="[^"]*"' p1.html | sort -u | head -40
+          echo "== scripts"; grep -o '<script[^>]*src="[^"]*"' p1.html | head; grep -o 'ajax\|\.load(\|fetch(\|\$\.get\|\$\.post\|url:[^,]*\|page=[^"&]*\|more[^"]\{0,60\}' p1.html | sort | uniq -c | head -40
+          echo "== first 2 entries raw"; grep -o '<img[^>]*bookitem[^>]*>' p1.html | head -3
+          echo "== tail of html"; tail -c 3000 p1.html
+          for id in 1 2 3 4 5; do printf 'id=%s ' $id; curl -s -A "$UA" "$B/home/?menu=bookitem&id=$id" | grep -o '<title>[^<]*\|bookitem/[0-9]*/' | sort -u | tr '\n' ' '; echo; done
+          for q in "page=2" "p=2" "page=1&size=2000" "start=20"; do printf '%s: ' "$q"; curl -s -A "$UA" "$B/home/?menu=bookitem&id=1&$q" | grep -o 'alt="[0-9]\{3,4\}' | head -2 | tr '\n' ' '; echo; done
+          for f in 999.png 0999.png 100.png 1000.png; do printf '%s %s\n' $f "$(curl -s -o /dev/null -w '%{http_code} %{size_download} %{content_type}' $B/resource/home/bookitem/1/$f)"; done
