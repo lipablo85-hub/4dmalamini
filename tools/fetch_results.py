@@ -236,6 +236,24 @@ def parse_check4d_extras(text: str, day: dt.date) -> dict:
         m = re.search(r"Jackpot 1 ((?:\d ){6})\+ ((?:\d ){2})Prize : (RM [\d,.]+(?: Partially Won| Won)?).*?Jackpot 2 .*?Prize : (RM [\d,.]+(?: Partially Won| Won)?)", b)
         if m:
             out.setdefault("M", {})["gold"] = {"n": m.group(1).replace(" ", ""), "b": m.group(2).replace(" ", ""), "jp": _amts(m.group(3)) + _amts(m.group(4))}
+    b = _block(t, "Sabah 88 4D", ["Sabah 88 Lotto", "CAMBODIA", "Grand Dragon", "Advertisements"])
+    if dated(b):
+        x = {"sl": slots(b), **jp(b)}
+        m = re.search(r"3D 1st Prize \S+ (\d{3}) 2nd Prize \S+ (\d{3}) 3rd Prize \S+ (\d{3})", b)
+        if m:
+            x["d3"] = list(m.groups())
+        out["B"] = x
+    b = _block(t, "Sabah 88 Lotto", ["CAMBODIA", "Grand Dragon", "Perdana", "Lucky HariHari", "Advertisements"])
+    if dated(b):
+        x = out.setdefault("B", {})
+        m = re.search(r"Lotto 6/45 ((?:\d{1,2} ){6})\+ (\d{1,2}) (.*?)(?=Lotto [56] |$)", b)
+        if m:
+            x["l645"] = {"n": m.group(1).split(), "b": m.group(2), "jp": _amts(m.group(3))[:2]}
+        for key, start, nd in (("l6", r"Lotto 6 (?!/)", 5), ("l5", r"Lotto 5 ", 4)):
+            seg = re.search(start + r"(.*?)(?=Lotto [56] |$)", b)
+            rows = re.findall(r"((?:\d ){%d})\+ (\d{2}) Jackpot (\d) (RM [\d,.]+(?: Partially Won| Won)?)" % nd, seg.group(1)) if seg else []
+            if rows:
+                x[key] = [{"n": n.replace(" ", ""), "b": bo, **_amts(a)[0]} for n, bo, _, a in rows]
     if out:
         out["date"] = day.isoformat()
     return out
