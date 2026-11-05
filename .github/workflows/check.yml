@@ -7,33 +7,27 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: What can the deploy token see? (no secret is printed)
-        env:
-          CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      - name: Redirect hops from each entry point
         run: |
-          api() { curl -s -H "Authorization: Bearer $CF" -H 'Content-Type: application/json' "$@"; }
-          echo "--- token verify"
-          api https://api.cloudflare.com/client/v4/user/tokens/verify \
-            | jq -r '"  success=\(.success)  \(.messages[0].message // (.errors|map(.message)|join("; ")))"'
-          echo "--- zones visible to this token"
-          api 'https://api.cloudflare.com/client/v4/zones?per_page=50' \
-            | jq -r 'if .success then (.result[] | "  \(.name)  status=\(.status)") else "  NO ZONE READ: " + (.errors|map(.message)|join("; ")) end'
-      - name: Existing redirect configuration
+          for U in http://4dmalamini.com/ https://4dmalamini.com/ http://www.4dmalamini.com/ https://www.4dmalamini.com/; do
+            printf '%-34s hops=%s  final=%s\n' "$U" \
+              "$(curl -sIL -o /dev/null -w '%{num_redirects}' "$U")" \
+              "$(curl -sIL -o /dev/null -w '%{url_effective}' "$U")"
+          done
+      - name: Cache-Control by page type
+        run: |
+          S=https://www.4dmalamini.com
+          for U in / /keputusan/2026-11-04/ /4d/8888/ /magnum-4d-result/ /magnum-4d-result/2025/ /privacy/ /live.json; do
+            printf '%-30s %s\n' "$U" "$(curl -sI "$S$U" | grep -i '^cache-control:' | tr -d '\r' | cut -c16-)"
+          done
+      - name: Zone settings relevant to the above (read-only)
         env:
           CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
           api() { curl -s -H "Authorization: Bearer $CF" -H 'Content-Type: application/json' "$@"; }
           ZID=$(api 'https://api.cloudflare.com/client/v4/zones?name=4dmalamini.com' | jq -r '.result[0].id // empty')
-          if [ -z "$ZID" ]; then echo "  zone not readable with this token - stopping here"; exit 0; fi
-          echo "  zone readable"
-          echo "--- dynamic redirect rules"
-          api "https://api.cloudflare.com/client/v4/zones/$ZID/rulesets/phases/http_request_dynamic_redirect/entrypoint" \
-            | jq -r 'if .success then (.result.rules // [] | .[] | "  \(.description // "(none)")\n    when: \(.expression)\n    then: \(.action_parameters|tostring)") else "  " + (.errors|map(.message)|join("; ")) end'
-          echo "--- page rules"
-          api "https://api.cloudflare.com/client/v4/zones/$ZID/pagerules" \
-            | jq -r 'if .success then (.result[] | "  \([.targets[].constraint.value]|join(","))  ->  \(.actions|tostring)  [\(.status)]") else "  " + (.errors|map(.message)|join("; ")) end'
-          echo "--- settings"
+          [ -z "$ZID" ] && { echo "  zone not readable"; exit 0; }
           for S in always_use_https ssl security_header; do
             api "https://api.cloudflare.com/client/v4/zones/$ZID/settings/$S" \
-              | jq -r --arg s "$S" 'if .success then "  \($s) = \(.result.value|tostring)" else "  \($s): " + (.errors|map(.message)|join("; ")) end'
+              | jq -r --arg s "$S" 'if .success then "  \($s) = \(.result.value|tostring)" else "  \($s): unreadable" end'
           done
