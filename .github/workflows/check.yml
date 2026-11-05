@@ -5,28 +5,16 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-      - name: Sabah 88 block on check4d and 4d2ulive
+      - name: Sabah 88 live
         run: |
-          cat > /tmp/p.py <<'PY'
-          import sys, re
-          sys.path.insert(0, "tools")
-          import fetch_results as F
-          def show(label, url, ref, start="Sabah 88"):
-              try:
-                  t = re.sub(r"\s+", " ", F.html_text(F.get(url, {"Referer": ref})))
-              except Exception as e:
-                  print(label, "ERROR", e); return
-              i = t.find(start)
-              print(f"== {label} len={len(t)} first@{i} count={t.count(start)}")
-              for m in re.finditer(re.escape(start), t):
-                  print("  ..", t[m.start():m.start()+900]); print()
-          show("check4d home", "https://www.check4d.org/", "https://www.check4d.org/")
-          show("check4d 2026-11-04", "https://www.check4d.org/past-results/2026-11-04", "https://www.check4d.org/")
-          show("check4d 2021-11-03", "https://www.check4d.org/past-results/2021-11-03", "https://www.check4d.org/")
-          show("4d2ulive 2026-11-04", "https://4d2ulive.com/past-results/2026-11-04", "https://4d2ulive.com/")
-          show("4d2ulive 2021-11-03", "https://4d2ulive.com/past-results/2021-11-03", "https://4d2ulive.com/")
-          PY
-          python3 /tmp/p.py
+          S=https://www.4dmalamini.com
+          for u in sabah-88-4d-result/ ms/sabah-88-4d-result/ zh/sabah-88-4d-result/ ta/sabah-88-4d-result/ sabah-88-4d-result/2024/ img/op/b.webp img/op/tk11.webp; do
+            printf '%-32s %s %sB\n' "/$u" "$(curl -s -o /dev/null -w '%{http_code}' $S/$u)" "$(curl -s -o /dev/null -w '%{size_download}' $S/$u)"
+          done
+          curl -s "$S/?v=$RANDOM" | grep -o 'id="rc-B"[^>]*>' | head -1
+          curl -s "$S/?v=$RANDOM" | grep -o 'rc-C.\{0,4\}' | head -1
+          curl -s "$S/live.json?v=$RANDOM" | grep -o '"B":"[^|"]\{0,60\}' | head -1
+          echo "api B:"; curl -s "$S/api/live" | grep -o '"B":{[^}]*}' | head -c 300; echo
+          curl -s "$S/sitemap-operators.xml" | grep -c sabah-88 || true
