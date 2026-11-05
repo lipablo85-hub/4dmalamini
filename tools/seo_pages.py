@@ -8,16 +8,16 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
-OPS = [("M", "Magnum 4D", "万能", "#E9C46B"), ("D", "Da Ma Cai", "大马彩", "#4C8DFF"), ("T", "Sports Toto", "多多", "#FF5A5F"), ("G", "GD Lotto", "豪龙", "#F27BA5"), ("N", "9 Lotto", "9 Lotto", "#2EC4B6"), ("S", "Singapore 4D", "新加坡万字", "#38BDF8"), ("C", "Cash Sweep", "砂拉越大万", "#4ADE80"), ("H", "Sandakan 4D", "山打根", "#FACC15"), ("J", "Super J3 3pm", "J3 下午3点", "#A78BFA"), ("K", "Super J9 9pm", "J9 晚上9点", "#FB923C")]
+OPS = [("M", "Magnum 4D", "万能", "#E9C46B"), ("D", "Da Ma Cai", "大马彩", "#4C8DFF"), ("T", "Sports Toto", "多多", "#FF5A5F"), ("G", "GD Lotto", "豪龙", "#F27BA5"), ("N", "9 Lotto", "9 Lotto", "#2EC4B6"), ("S", "Singapore 4D", "新加坡万字", "#38BDF8"), ("C", "Cash Sweep", "砂拉越大万", "#4ADE80"), ("B", "Sabah 88", "沙巴88", "#E5484D"), ("H", "Sandakan 4D", "山打根", "#FACC15"), ("J", "Super J3 3pm", "J3 下午3点", "#A78BFA"), ("K", "Super J9 9pm", "J9 晚上9点", "#FB923C")]
 PRIZE = {1: ("Hadiah Pertama", "1st Prize", "头奖"), 2: ("Hadiah Kedua", "2nd Prize", "二奖"), 3: ("Hadiah Ketiga", "3rd Prize", "三奖"),
          4: ("Istimewa", "Special", "特别奖"), 5: ("Saguhati", "Consolation", "安慰奖")}
-HC = {"M": "#FFF200", "D": "#000080", "T": "#C00000", "G": "#B0121B", "N": "#0E8F86", "J": "#5B21B6", "K": "#C2410C", "S": "#B91C2C", "C": "#0B7A3B", "H": "#14532D"}
-SHORTN = {"M": "Magnum", "T": "Toto", "D": "Da Ma Cai", "G": "GD Lotto", "N": "9 Lotto", "S": "Singapore", "C": "Cash Sweep", "H": "Sandakan", "J": "Super J3", "K": "Super J9"}
+HC = {"M": "#FFF200", "D": "#000080", "T": "#C00000", "G": "#B0121B", "N": "#0E8F86", "J": "#5B21B6", "K": "#C2410C", "S": "#B91C2C", "C": "#0B7A3B", "B": "#D7141A", "H": "#14532D"}
+SHORTN = {"M": "Magnum", "T": "Toto", "D": "Da Ma Cai", "G": "GD Lotto", "N": "9 Lotto", "S": "Singapore", "C": "Cash Sweep", "B": "Sabah 88", "H": "Sandakan", "J": "Super J3", "K": "Super J9"}
 LPRE = {"en": "", "zh-Hans": "zh/", "zh": "zh/", "ta": "ta/"}
 # section roots that exist in all four languages: Malay-namespace pages (/keputusan/, /4d/) must
 # link to the ms/ copy, not the prefix-free English one.
 MSROOT = re.compile(r"^(magnum-4d-result|da-ma-cai-result|sports-toto-result|gd-lotto-result|9-lotto-result|"
-                    r"singapore-4d-result|cash-sweep-result|sandakan-4d-result|super-j3-j9-result|info|about|"
+                    r"singapore-4d-result|cash-sweep-result|sabah-88-4d-result|sandakan-4d-result|super-j3-j9-result|info|about|"
                     r"guide|special-draw|4d-statistics|popular-4d-numbers|sitemap)/")
 
 
@@ -55,7 +55,7 @@ def localize(doc: str, lang: str) -> str:
 
 
 OPSLUG = {"M": "magnum-4d-result", "D": "da-ma-cai-result", "T": "sports-toto-result", "G": "gd-lotto-result", "N": "9-lotto-result", "S": "singapore-4d-result",
-          "C": "cash-sweep-result", "H": "sandakan-4d-result", "J": "super-j3-j9-result", "K": "super-j3-j9-result"}
+          "C": "cash-sweep-result", "B": "sabah-88-4d-result", "H": "sandakan-4d-result", "J": "super-j3-j9-result", "K": "super-j3-j9-result"}
 HARI = ["Isnin", "Selasa", "Rabu", "Khamis", "Jumaat", "Sabtu", "Ahad"]
 BULAN = ["Januari", "Februari", "Mac", "April", "Mei", "Jun", "Julai", "Ogos", "September", "Oktober", "November", "Disember"]
 LANG_META = {
@@ -103,7 +103,7 @@ table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;p
 .chips{display:flex;flex-wrap:wrap;gap:8px}.chips a{display:inline-flex;min-height:44px;align-items:center;padding:0 12px;border-radius:10px;background:#172A4D;text-decoration:none;color:#F8F4E8}
 .op{border-left:4px solid;padding-left:12px}
 .dnav{display:grid;grid-template-columns:44px 1fr 44px;gap:8px;align-items:center;margin:6px 0 10px}.dnav a,.dnav span{height:44px;border-radius:12px;display:grid;place-items:center;text-decoration:none;background:#0F1F3D;border:1px solid #233862;color:#C9D4EA;font-size:20px}.dnav span{opacity:.35}.dnav b{text-align:center;font-size:14px;line-height:1.25;color:#F8F4E8}.dnav b small{display:block;color:#9FB0D3;font-weight:600;font-size:11.5px}
-.jmp{display:flex;gap:6px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}.jmp a{flex:none;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 10px 0 6px;border-radius:999px;background:#0F1F3D;border:1px solid #233862;text-decoration:none;color:#E4EAF6;font-size:13px;font-weight:700}.jmp i{width:22px;height:22px;border-radius:6px;background:url(/img/op/tk.webp) 0 0/220px 22px no-repeat}
+.jmp{display:flex;gap:6px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}.jmp a{flex:none;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 10px 0 6px;border-radius:999px;background:#0F1F3D;border:1px solid #233862;text-decoration:none;color:#E4EAF6;font-size:13px;font-weight:700}.jmp i{width:22px;height:22px;border-radius:6px;background:url(/img/op/tk11.webp) 0 0/242px 22px no-repeat}
 .sl{background:#0F1F3D;border:1px solid #1D3157;border-radius:18px;overflow:hidden;margin:12px 0;scroll-margin-top:70px;position:relative}
 .sl::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--ac)}
 .sl .hd{display:flex;align-items:center;gap:10px;padding:14px 14px 10px}.sl .hd img{width:36px;height:36px;object-fit:contain;flex:none;border-radius:10px;background:#fff;padding:3px}
@@ -283,7 +283,7 @@ class Site:
             desc = desc if len(desc) <= 158 else desc[:155].rsplit(";", 1)[0] + "…"
             pa = f'<a href="{self.u(f"keputusan/{d8(self.dates[i - 1]).isoformat()}/")}" aria-label="{self.date_ms(self.dates[i - 1])}">‹</a>' if i else "<span>‹</span>"
             na = f'<a href="{self.u(f"keputusan/{d8(self.dates[i + 1]).isoformat()}/")}" aria-label="{self.date_ms(self.dates[i + 1])}">›</a>' if i + 1 < len(self.dates) else "<span>›</span>"
-            TKI = {"M": 0, "T": 1, "D": 2, "S": 3, "C": 4, "H": 5, "G": 6, "N": 7, "J": 8, "K": 9}
+            TKI = {"M": 0, "T": 1, "D": 2, "S": 3, "C": 4, "H": 5, "G": 6, "N": 7, "J": 8, "K": 9, "B": 10}
             jmp = '<nav class="jmp" aria-label="Syarikat">' + "".join(f'<a href="#r-{k}"><i style="background-position:{-TKI[k] * 22}px 0"></i>{name}</a>' for k, name, _, _ in OPS if d in by[k]) + "</nav>"
             ld_res = {"@context": "https://schema.org", "@type": "Dataset", "name": f"Keputusan 4D {self.date_ms(d)}",
                       "description": f"Malaysia 4D results for {dd:%-d %B %Y}: " + ", ".join(titles) + ".",
@@ -418,16 +418,16 @@ class Site:
         upd = d8(last)
         nav, ld = self.crumbs([("4D Malam Ini", ""), ("Info", "info/"), ("Data policy", None)])
         src = [("Magnum 4D", "magnum4d.my"), ("Sports Toto", "sportstoto.com.my"), ("Da Ma Cai", "damacai.com.my"), ("GD Lotto", "gdlotto.com"), ("9 Lotto", "9lotto.com"),
-               ("Super J3 & J9", "superj3.net"), ("Singapore 4D", "singaporepools.com.sg"), ("Cash Sweep", "cashsweep.my"), ("Sandakan 4D", "stc4d.com")]
+               ("Super J3 & J9", "superj3.net"), ("Singapore 4D", "singaporepools.com.sg"), ("Cash Sweep", "cashsweep.my"), ("Sabah 88", "diriwan88.com"), ("Sandakan 4D", "stc4d.com")]
         body = (f"{nav}<div class=\"pol\"><h1>Data &amp; editorial policy<small>Dasar data &amp; editorial · 数据与编辑政策</small></h1>"
                 "<p>4D Malam Ini is an independent results site. This page explains where our numbers come from, how we check them and what to do if you spot a mistake.</p>"
                 "<h2>Where results come from</h2><p>Each operator publishes its own official results:</p><ul>" + "".join(f"<li><b>{a}</b>: {b}</li>" for a, b in src) + "</ul>"
-                "<p>We read results from the official site wherever it can be read automatically. For Singapore 4D, Cash Sweep and Sandakan, and whenever an official site is unreachable, we read the same draw from independent results publishers (check4d.org, loto4d.com).</p>"
+                "<p>We read results from the official site wherever it can be read automatically. For Singapore 4D, Cash Sweep, Sabah 88 and Sandakan, and whenever an official site is unreachable, we read the same draw from independent results publishers (check4d.org, loto4d.com, 4d2ulive.com).</p>"
                 "<h2>When results are checked</h2><ul><li>During each draw, the live board refreshes about every 25 seconds.</li>"
                 "<li>The live board treats a result as final only after the full set (top 3, Special and Consolation) has been seen twice in a row, unchanged. Results are saved to the history only when complete, usually within minutes of the draw.</li>"
                 "<li>Saved results are compared with the source again on later checks; any difference is flagged for a manual review.</li>"
                 "<li>Special draw dates are added when they are announced.</li></ul>"
-                "<h2>Who maintains the data</h2><p>The 4D Malam Ini team. The history covers November 2021 to today. A few past draws are missing because no source published them (for example 7 Singapore 4D draws in 2025, 16 Cash Sweep draws in Aug–Sep 2023 and 1 Sandakan draw in March 2024); they are not guessed or filled in.</p>"
+                "<h2>Who maintains the data</h2><p>The 4D Malam Ini team. The history covers November 2021 to today. A few past draws are missing because no source published them (for example 7 Singapore 4D draws in 2025, 16 Cash Sweep draws in Aug–Sep 2023, 1 Sandakan draw in March 2024 and 1 Sabah 88 draw in November 2024); they are not guessed or filled in.</p>"
                 "<h2>Corrections</h2><p>If a number on this site differs from the operator's official result, the official result is correct. Tell us through the contact button on the home page with the company, date and number; we check it against the operator and correct the record.</p>"
                 "<h2>What we are not</h2><ul><li>We do not sell tickets, take bets or hold money.</li><li>We are not affiliated with any operator, and we do not predict numbers. Past results do not change the odds of future draws.</li>"
                 "<li>4D is for non-Muslims aged 21 and above in Malaysia. Play responsibly: set a budget and never chase losses.</li></ul>"

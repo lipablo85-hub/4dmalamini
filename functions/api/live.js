@@ -1,5 +1,5 @@
 // GET /api/live : numbers drawn so far tonight (partial while a draw is in progress).
-// Reads check4d.org (Magnum, Da Ma Cai, Sports Toto, GD) and loto4d.com (9 Lotto, GD backup); cached 15 s at the edge.
+// Reads check4d.org (Magnum, Da Ma Cai, Sports Toto, GD, Singapore, Cash Sweep, Sabah 88, Sandakan) and loto4d.com (9 Lotto, GD backup); cached 15 s at the edge.
 const SRC = { c4d: "https://www.check4d.org/", loto: "https://loto4d.com/" };
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36";
 
@@ -62,6 +62,7 @@ export async function onRequestGet(ctx) {
     put("S", parse(block(c, "Singapore 4D Date", E.concat(["Singapore Toto"]))));
     put("H", parse(block(c, "Sandakan 4D", E.concat(["Special CashSweep", "Sabah 88"]))));
     put("C", parse(block(c, "Special CashSweep", E.concat(["Sabah 88", "SABAH"]))));
+    put("B", parse(block(c, "Sabah 88 4D", E.concat(["Sabah 88 Lotto", "3D 1st Prize", "CAMBODIA"]))));
   }
   if (l) {
     put("G", parse(block(l, "Grand Dragon 4D", E)));

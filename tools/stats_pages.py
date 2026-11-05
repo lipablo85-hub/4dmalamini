@@ -12,9 +12,9 @@ MON = {"en": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oc
 
 T = {
  "en": dict(title="4D Statistics: Hot & Cold Numbers, Digit Frequency", crumb="4D statistics", home="Home",
-            flab='Filter by company', allco='ALL', scope='Showing <b>{who}</b> · {n} draws · {w} winning numbers · {u} different numbers seen', mkt='Magnum, Da Ma Cai and Sports Toto', alln='all ten companies', jk='Super J3 and Super J9', thin='Not enough draws from this company yet.', 
+            flab='Filter by company', allco='ALL', scope='Showing <b>{who}</b> · {n} draws · {w} winning numbers · {u} different numbers seen', mkt='Magnum, Da Ma Cai and Sports Toto', alln='all eleven companies', jk='Super J3 and Super J9', thin='Not enough draws from this company yet.', 
             desc="Malaysia 4D statistics from {n} draws since {s}: most drawn numbers, numbers missing longest, top-3 regulars and digit frequency by position.",
-            h1="4D statistics", lead="What {n} draws across 10 companies since {s} say about every 4D number. Updated after every draw.",
+            h1="4D statistics", lead="What {n} draws across 11 companies since {s} say about every 4D number. Updated after every draw.",
             k=("Draws analysed", "Numbers drawn"),
             hot="Most drawn numbers", hots="Every prize tier, since {s}.", cold="Missing longest", colds="Numbers that won before but have not appeared for the longest time.",
             rec="Hot in the last 90 days", recs="Most wins since {d}.", top="Top-3 prize regulars", tops="Most times in 1st, 2nd or 3rd prize.",
@@ -24,9 +24,9 @@ T = {
             note="These are past results only. Every draw is independent, so past frequency does not make any number more or less likely to win. 21+ · Non-Muslims only · Play responsibly.",
             more="Check any number", pop="Popular 4D numbers"),
  "ms": dict(title="Statistik 4D: Nombor Panas & Sejuk, Kekerapan Digit", crumb="Statistik 4D", home="Utama",
-            flab='Tapis ikut syarikat', allco='SEMUA', scope='Menunjukkan <b>{who}</b> · {n} cabutan · {w} nombor menang · {u} nombor berbeza', mkt='Magnum, Da Ma Cai dan Sports Toto', alln='kesemua sepuluh syarikat', jk='Super J3 dan Super J9', thin='Belum cukup cabutan daripada syarikat ini.', 
+            flab='Tapis ikut syarikat', allco='SEMUA', scope='Menunjukkan <b>{who}</b> · {n} cabutan · {w} nombor menang · {u} nombor berbeza', mkt='Magnum, Da Ma Cai dan Sports Toto', alln='kesemua sebelas syarikat', jk='Super J3 dan Super J9', thin='Belum cukup cabutan daripada syarikat ini.', 
             desc="Statistik 4D Malaysia daripada {n} cabutan sejak {s}: nombor paling kerap, nombor paling lama tidak keluar, hadiah 1–3, kekerapan digit dan keluarga Box.",
-            h1="Statistik 4D", lead="Apa yang {n} cabutan dari 10 syarikat sejak {s} tunjukkan tentang setiap nombor 4D. Dikemas kini selepas setiap cabutan.",
+            h1="Statistik 4D", lead="Apa yang {n} cabutan dari 11 syarikat sejak {s} tunjukkan tentang setiap nombor 4D. Dikemas kini selepas setiap cabutan.",
             k=("Cabutan dianalisis", "Nombor dicabut"),
             hot="Nombor paling kerap", hots="Semua peringkat hadiah, sejak {s}.", cold="Paling lama tidak keluar", colds="Nombor yang pernah menang tetapi paling lama tidak muncul.",
             rec="Panas dalam 90 hari", recs="Paling banyak menang sejak {d}.", top="Kerap dalam hadiah 1–3", tops="Paling kerap dalam hadiah Pertama, Kedua atau Ketiga.",
@@ -36,9 +36,9 @@ T = {
             note="Ini hanya keputusan lepas. Setiap cabutan adalah bebas, jadi kekerapan lepas tidak menjadikan mana-mana nombor lebih atau kurang berpeluang. 21+ · Bukan Islam sahaja · Main secara bertanggungjawab.",
             more="Semak mana-mana nombor", pop="Nombor 4D popular"),
  "zh": dict(title="万字统计：热门与冷门号码、数字出现频率", crumb="万字统计", home="首页",
-            flab='按公司筛选', allco='全部', scope='显示 <b>{who}</b> · {n} 期 · {w} 个中奖号码 · {u} 个不同号码', mkt='万能、大马彩与多多', alln='全部十家公司', jk='Super J3 与 Super J9', thin='这家公司的开彩期数还不足。', 
+            flab='按公司筛选', allco='全部', scope='显示 <b>{who}</b> · {n} 期 · {w} 个中奖号码 · {u} 个不同号码', mkt='万能、大马彩与多多', alln='全部十一家公司', jk='Super J3 与 Super J9', thin='这家公司的开彩期数还不足。', 
             desc="根据{s}以来{n}期马来西亚万字开彩统计：最常开出号码、最久未开号码、前三奖常客、各位数字频率与 Box 号码组。",
-            h1="万字统计", lead="{s}以来10家公司共{n}期开彩，每个万字号码的出现记录。每期开彩后更新。",
+            h1="万字统计", lead="{s}以来11家公司共{n}期开彩，每个万字号码的出现记录。每期开彩后更新。",
             k=("统计期数", "开出号码"),
             hot="最常开出的号码", hots="所有奖项，{s}至今。", cold="最久未开的号码", colds="曾经中过、但已经最久没有再出现的号码。",
             rec="近90天热门", recs="{d}以来中奖最多。", top="前三奖常客", tops="最常进入头奖、二奖或三奖。",
@@ -48,9 +48,9 @@ T = {
             note="以上只是过往成绩。每期开彩都是独立的，过去出现次数不会让任何号码更容易或更难中奖。仅限21岁或以上非穆斯林 · 理性投注。",
             more="查询任何号码", pop="热门万字号码"),
  "ta": dict(title="4D புள்ளிவிவரம்: அதிகம் & குறைவாக வந்த எண்கள்", crumb="4D புள்ளிவிவரம்", home="முகப்பு",
-            flab='நிறுவனம் வாரியாக வடிகட்டு', allco='அனைத்தும்', scope='காட்டுவது <b>{who}</b> · {n} குலுக்கல் · {w} வெற்றி எண்கள் · {u} வெவ்வேறு எண்கள்', mkt='Magnum, Da Ma Cai மற்றும் Sports Toto', alln='அனைத்து பத்து நிறுவனங்கள்', jk='Super J3 மற்றும் Super J9', thin='இந்த நிறுவனத்திடம் போதுமான குலுக்கல்கள் இல்லை.', 
+            flab='நிறுவனம் வாரியாக வடிகட்டு', allco='அனைத்தும்', scope='காட்டுவது <b>{who}</b> · {n} குலுக்கல் · {w} வெற்றி எண்கள் · {u} வெவ்வேறு எண்கள்', mkt='Magnum, Da Ma Cai மற்றும் Sports Toto', alln='அனைத்து பதினொரு நிறுவனங்கள்', jk='Super J3 மற்றும் Super J9', thin='இந்த நிறுவனத்திடம் போதுமான குலுக்கல்கள் இல்லை.', 
             desc="{s} முதல் {n} குலுக்கல்களின் மலேசியா 4D புள்ளிவிவரம்: அதிகம் வந்த எண்கள், நீண்ட நாள் வராத எண்கள், முதல் 3 பரிசுகள், இலக்க அதிர்வெண், Box குடும்பங்கள்.",
-            h1="4D புள்ளிவிவரம்", lead="{s} முதல் 10 நிறுவனங்களின் {n} குலுக்கல்கள் ஒவ்வொரு 4D எண்ணைப் பற்றியும் சொல்வது. ஒவ்வொரு குலுக்கலுக்குப் பின் புதுப்பிக்கப்படும்.",
+            h1="4D புள்ளிவிவரம்", lead="{s} முதல் 11 நிறுவனங்களின் {n} குலுக்கல்கள் ஒவ்வொரு 4D எண்ணைப் பற்றியும் சொல்வது. ஒவ்வொரு குலுக்கலுக்குப் பின் புதுப்பிக்கப்படும்.",
             k=("ஆய்வு செய்த குலுக்கல்கள்", "வந்த எண்கள்"),
             hot="அதிகம் வந்த எண்கள்", hots="எல்லா பரிசுகளும், எல்லா நிறுவனங்களும், {s} முதல்.", cold="நீண்ட நாள் வராதவை", colds="முன்பு வென்று, நீண்ட காலமாக மீண்டும் வராத எண்கள்.",
             rec="கடந்த 90 நாளில் அதிகம்", recs="{d} முதல் அதிக வெற்றிகள்.", top="முதல் 3 பரிசில் அடிக்கடி", tops="1வது, 2வது, 3வது பரிசில் அதிக முறை.",
@@ -70,14 +70,14 @@ CSS = """.fw{position:sticky;top:0;z-index:6;margin:14px -14px 2px;padding:9px 0
 .fstrip::after{content:"";position:absolute;right:0;top:0;width:26px;height:100%;pointer-events:none;background:linear-gradient(90deg,transparent,var(--bg,#07142B))}
 .fchip{flex:none;scroll-snap-align:start;position:relative;display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;
  border-radius:13px;border:1.5px solid #27406E;background:#0F1F3D;cursor:pointer;padding:0;transition:border-color .15s,background .15s,transform .12s}
-.fchip i{width:28px;height:28px;border-radius:8px;background:url(/img/op/tk.webp) 0 0/280px 28px no-repeat;flex:none;display:block}
+.fchip i{width:28px;height:28px;border-radius:8px;background:url(/img/op/tk11.webp) 0 0/308px 28px no-repeat;flex:none;display:block}
 .fchip:active{transform:scale(.94)}
 .fchip.on{border-color:#E9C46B;background:#1A2B4D;box-shadow:0 0 0 3px rgba(233,196,107,.17)}
 .fchip.on::after{content:"";position:absolute;right:-3px;top:-3px;width:9px;height:9px;border-radius:50%;background:#E9C46B;border:2px solid var(--bg,#07142B)}
 .fchip.w{width:auto;min-width:46px;padding:0 15px;font-weight:800;font-size:12.5px;line-height:1;letter-spacing:.05em;color:#C9D4EA;white-space:nowrap}
 .fchip.w.on{color:#E9C46B}
 .fchip.multi{gap:3px;padding:0 10px}
-.fchip.multi i{width:21px;height:21px;border-radius:6px;background-size:210px 21px}
+.fchip.multi i{width:21px;height:21px;border-radius:6px;background-size:231px 21px}
 .scope{margin:0 0 4px;padding:9px 12px;border-radius:12px;background:#0C1A33;border:1px solid #1D3157;font-size:12.5px;line-height:1.45;color:#9FB0D3}
 .scope b{color:#E9C46B}
 .thin{font-size:12.5px;color:#8FA0C0;padding:10px 2px;margin:0}
@@ -186,8 +186,8 @@ def build(site) -> None:
     NDALL = site.ndraws        # every draw, for copy that describes the dataset as a whole
     # Eleven filter states, each precomputed here rather than in the browser: shipping the raw
     # draw history would be ~400 KB, these are ~9 KB gzipped and switch instantly.
-    FILT = [("mkt", "MDT"), ("all", "MDTGNSCHJK"), ("M", "M"), ("D", "D"), ("T", "T"), ("G", "G"),
-            ("N", "N"), ("S", "S"), ("C", "C"), ("H", "H"), ("JK", "JK")]
+    FILT = [("mkt", "MDT"), ("all", "MDTGNSCBHJK"), ("M", "M"), ("D", "D"), ("T", "T"), ("G", "G"),
+            ("N", "N"), ("S", "S"), ("C", "C"), ("B", "B"), ("H", "H"), ("JK", "JK")]
     since90 = (last - dt.timedelta(days=90)).strftime("%Y%m%d")
 
     def agg(opsel):
@@ -305,12 +305,12 @@ def build(site) -> None:
             return f'<script src="{site.u(name)}" defer></script>'
 
         # ---- provider filter: logo tiles, MKT first and selected by default ----
-        SPR = {"M": 0, "T": 1, "D": 2, "S": 3, "C": 4, "H": 5, "G": 6, "N": 7, "J": 8, "K": 9}
+        SPR = {"M": 0, "T": 1, "D": 2, "S": 3, "C": 4, "H": 5, "G": 6, "N": 7, "J": 8, "K": 9, "B": 10}
         CO = {"M": "Magnum 4D", "D": "Da Ma Cai 1+3D", "T": "Sports Toto 4D", "G": "GD Lotto", "N": "9 Lotto",
-              "S": "Singapore 4D", "C": "Sarawak Cash Sweep", "H": "Sandakan 4D"}
+              "S": "Singapore 4D", "C": "Sarawak Cash Sweep", "B": "Sabah 88 4D", "H": "Sandakan 4D"}
         if lang == "zh":
             CO = {"M": "万能", "D": "大马彩", "T": "多多", "G": "豪龙", "N": "9 Lotto",
-                  "S": "新加坡万字", "C": "砂拉越大万", "H": "山打根"}
+                  "S": "新加坡万字", "C": "砂拉越大万", "B": "沙巴88", "H": "山打根"}
         WHO = dict(CO, mkt=x["mkt"], all=x["alln"], JK=x["jk"])
 
         def tile(fid):

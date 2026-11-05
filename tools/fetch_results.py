@@ -576,7 +576,7 @@ def fetch_j9(day: dt.date) -> dict | None:
     return _fetch_j(day, "21", J9)
 
 
-FETCHERS = [("Magnum 4D", fetch_magnum), ("Sports Toto 4D", fetch_toto), ("Da Ma Cai 1+3D", fetch_damacai), ("GD Lotto 4D", fetch_gd), (N7, fetch_9lotto_7pm), (SG, fetch_sg), (CS, fetch_cs), (STC, fetch_stc), (J3, fetch_j3), (J9, fetch_j9)]
+FETCHERS = [("Magnum 4D", fetch_magnum), ("Sports Toto 4D", fetch_toto), ("Da Ma Cai 1+3D", fetch_damacai), ("GD Lotto 4D", fetch_gd), (N7, fetch_9lotto_7pm), (SG, fetch_sg), (CS, fetch_cs), (SB, fetch_sb), (STC, fetch_stc), (J3, fetch_j3), (J9, fetch_j9)]
 
 
 def save_extras(path: Path, day: dt.date, dry: bool) -> None:
@@ -626,7 +626,7 @@ def main() -> int:
         mins = (now.hour * 60 + now.minute) if day == now.date() else 24 * 60
         spd = set(json.loads((Path(__file__).with_name("special_draws.json")).read_text()).get("dates", []))
         big = day.weekday() in (2, 5, 6) or day.isoformat() in spd
-        due = ([J3] if mins >= 900 else []) + (["GD Lotto 4D", N7] if mins >= 1140 else []) + (["Magnum 4D", "Sports Toto 4D", "Da Ma Cai 1+3D"] if big and mins >= 1140 else []) + ([SG] if day.weekday() in (2, 5, 6) and mins >= 1110 else []) + ([CS, STC] if big and mins >= 1140 else []) + ([J9] if mins >= 1260 else [])
+        due = ([J3] if mins >= 900 else []) + (["GD Lotto 4D", N7] if mins >= 1140 else []) + (["Magnum 4D", "Sports Toto 4D", "Da Ma Cai 1+3D"] if big and mins >= 1140 else []) + ([SG] if day.weekday() in (2, 5, 6) and mins >= 1110 else []) + ([CS, SB, STC] if big and mins >= 1140 else []) + ([J9] if mins >= 1260 else [])
         for name in due:
             if (name, day.isoformat()) not in have:
                 print(name)

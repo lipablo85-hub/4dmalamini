@@ -26,13 +26,13 @@ COPY = {
 "en": {
  "h": "4D results Malaysia: every draw, one page",
  "p": [
-  '<strong>4D Malam Ini</strong> shows tonight\'s <strong>Magnum 4D</strong>, <strong>Sports Toto 4D</strong>, <strong>Da Ma Cai 1+3D</strong>, <strong>GD Lotto</strong>, <strong>9 Lotto</strong>, <strong>Super J3 &amp; J9</strong>, <strong>Singapore 4D</strong>, <strong>Cash Sweep</strong> and <strong>Sandakan 4D</strong> results together, live as each number is drawn, so you never have to open ten websites.',
+  '<strong>4D Malam Ini</strong> shows tonight\'s <strong>Magnum 4D</strong>, <strong>Sports Toto 4D</strong>, <strong>Da Ma Cai 1+3D</strong>, <strong>GD Lotto</strong>, <strong>9 Lotto</strong>, <strong>Super J3 &amp; J9</strong>, <strong>Singapore 4D</strong>, <strong>Cash Sweep</strong>, <strong>Sabah 88</strong> and <strong>Sandakan 4D</strong> results together, live as each number is drawn, so you never have to open eleven websites.',
   'Special and consolation prizes are sorted from smallest to biggest, which makes it quick to spot your number. Use the date buttons to go back to any past draw, or open the <a href="keputusan/" data-cal>4D results archive</a> for every draw since 2021.',
   'Want to know if a number has ever won? <a href="?tab=check">Check a 4D number</a> against five years of draws, see which prize it won and when, or browse popular picks like <a href="4d/8888/">8888</a> and <a href="4d/1314/">1314</a>. The <a href="4d/">4D dictionary 万字图</a> explains what each number means, in English, Malay, Chinese and Tamil.',
  ],
  "fh": "Frequently asked questions",
  "faq": [
-  ("What time are the 4D results out tonight?", "Magnum, Sports Toto, Da Ma Cai, Cash Sweep and Sandakan draw at 7pm on Wednesday, Saturday and Sunday, plus announced special draws (usually a Tuesday). Singapore 4D draws at 6:30pm on the same days. GD Lotto and 9 Lotto draw every day at 7pm, Super J3 at 3pm and Super J9 at 9pm. This page updates live as each number is drawn."),
+  ("What time are the 4D results out tonight?", "Magnum, Sports Toto, Da Ma Cai, Cash Sweep, Sabah 88 and Sandakan draw at 7pm on Wednesday, Saturday and Sunday, plus announced special draws (usually a Tuesday). Singapore 4D draws at 6:30pm on the same days. GD Lotto and 9 Lotto draw every day at 7pm, Super J3 at 3pm and Super J9 at 9pm. This page updates live as each number is drawn."),
   ("How do I check if my 4D number won?", 'Type your 4-digit number in <a href="?tab=check">Check number</a>. You will see every win across all operators in the last five years, with the date and prize. Each number also has its own page, for example <a href="4d/0000/">4D 0000</a>.'),
   ("Why are special and consolation numbers sorted?", "Sorting them from small to big lets you scan for your number in seconds instead of reading every box. The 1st, 2nd and 3rd prizes stay in prize order."),
   ("What is the 4D dictionary (万字图)?", 'It is the traditional picture book that links each number from 0000 to 9999 to a meaning or object, used to turn dreams and events into numbers. Search it in any of the four languages in the <a href="?tab=dict">dictionary tab</a>.'),
@@ -42,13 +42,13 @@ COPY = {
 "ms": {
  "h": "Keputusan 4D Malaysia: semua cabutan, satu halaman",
  "p": [
-  '<strong>4D Malam Ini</strong> memaparkan keputusan <strong>Magnum 4D</strong>, <strong>Sports Toto 4D</strong>, <strong>Da Ma Cai 1+3D</strong>, <strong>GD Lotto</strong>, <strong>9 Lotto</strong>, <strong>Super J3 &amp; J9</strong>, <strong>Singapore 4D</strong>, <strong>Cash Sweep</strong> dan <strong>Sandakan 4D</strong> dalam satu tempat, secara langsung ketika setiap nombor dicabut.',
+  '<strong>4D Malam Ini</strong> memaparkan keputusan <strong>Magnum 4D</strong>, <strong>Sports Toto 4D</strong>, <strong>Da Ma Cai 1+3D</strong>, <strong>GD Lotto</strong>, <strong>9 Lotto</strong>, <strong>Super J3 &amp; J9</strong>, <strong>Singapore 4D</strong>, <strong>Cash Sweep</strong>, <strong>Sabah 88</strong> dan <strong>Sandakan 4D</strong> dalam satu tempat, secara langsung ketika setiap nombor dicabut.',
   'Nombor hadiah istimewa (special) dan saguhati (consolation) disusun dari kecil ke besar supaya nombor anda mudah dijumpai. Guna butang tarikh untuk melihat cabutan lepas, atau buka <a href="keputusan/" data-cal>arkib keputusan 4D</a> untuk semua cabutan sejak 2021.',
   'Mahu tahu sama ada sesuatu nombor pernah menang? <a href="?tab=check">Semak nombor 4D</a> dengan rekod lima tahun, lihat hadiah dan tarikhnya, atau lihat nombor popular seperti <a href="4d/8888/">8888</a> dan <a href="4d/1314/">1314</a>. <a href="4d/">Kamus 4D 万字图</a> menerangkan maksud setiap nombor dalam bahasa Melayu, Inggeris, Cina dan Tamil.',
  ],
  "fh": "Soalan lazim",
  "faq": [
-  ("Pukul berapa keputusan 4D keluar malam ini?", "Magnum, Sports Toto, Da Ma Cai, Cash Sweep dan Sandakan membuat cabutan jam 7 malam pada hari Rabu, Sabtu dan Ahad, serta cabutan khas (biasanya hari Selasa). Singapore 4D jam 6:30 petang pada hari yang sama. GD Lotto dan 9 Lotto setiap hari jam 7 malam, Super J3 jam 3 petang dan Super J9 jam 9 malam. Halaman ini dikemas kini secara langsung."),
+  ("Pukul berapa keputusan 4D keluar malam ini?", "Magnum, Sports Toto, Da Ma Cai, Cash Sweep, Sabah 88 dan Sandakan membuat cabutan jam 7 malam pada hari Rabu, Sabtu dan Ahad, serta cabutan khas (biasanya hari Selasa). Singapore 4D jam 6:30 petang pada hari yang sama. GD Lotto dan 9 Lotto setiap hari jam 7 malam, Super J3 jam 3 petang dan Super J9 jam 9 malam. Halaman ini dikemas kini secara langsung."),
   ("Bagaimana nak semak nombor 4D saya menang atau tidak?", 'Taip nombor 4 digit anda di <a href="?tab=check">Semak nombor</a>. Anda akan nampak semua kemenangan bagi semua syarikat dalam lima tahun lepas, berserta tarikh dan hadiah. Setiap nombor juga ada halaman sendiri, contohnya <a href="4d/0000/">4D 0000</a>.'),
   ("Kenapa nombor special dan consolation disusun?", "Susunan dari kecil ke besar membolehkan anda mencari nombor dalam beberapa saat. Hadiah pertama, kedua dan ketiga kekal mengikut susunan hadiah."),
   ("Apa itu kamus 4D (万字图)?", 'Buku gambar tradisional yang mengaitkan setiap nombor dari 0000 hingga 9999 dengan maksud atau objek, digunakan untuk menukar mimpi dan kejadian kepada nombor. Cari dalam mana-mana empat bahasa di <a href="?tab=dict">tab kamus</a>.'),
@@ -58,13 +58,13 @@ COPY = {
 "zh": {
  "h": "马来西亚万字成绩：所有开彩，一页看完",
  "p": [
-  '<strong>4D Malam Ini</strong> 把今晚 <strong>万能</strong>、<strong>多多</strong>、<strong>大马彩</strong>、<strong>豪龙 GD Lotto</strong>、<strong>9 Lotto</strong>、<strong>Super J3 &amp; J9</strong>、<strong>新加坡万字</strong>、<strong>砂拉越大万</strong>和<strong>山打根万字</strong>的成绩放在同一页，开彩时逐个号码即时更新，不用再开十个网站。',
+  '<strong>4D Malam Ini</strong> 把今晚 <strong>万能</strong>、<strong>多多</strong>、<strong>大马彩</strong>、<strong>豪龙 GD Lotto</strong>、<strong>9 Lotto</strong>、<strong>Super J3 &amp; J9</strong>、<strong>新加坡万字</strong>、<strong>砂拉越大万</strong>、<strong>沙巴88</strong>和<strong>山打根万字</strong>的成绩放在同一页，开彩时逐个号码即时更新，不用再开十一个网站。',
   '特别奖（入围奖）和安慰奖号码由小到大排列，一眼就能找到你的号码。用日期按钮查看任何一期旧成绩，或打开<a href="keputusan/" data-cal>万字成绩记录</a>，查看2021年以来的每一期。',
   '想知道某个号码有没有中过？<a href="?tab=check">查询万字号码</a>，对照5年开彩记录，看中过什么奖、哪一天中；也可以看看热门号码如 <a href="4d/8888/">8888</a>、<a href="4d/1314/">1314</a>。<a href="4d/">万字图 4D 字典</a>以中文、英文、马来文和淡米尔文解释每个号码的含义。',
  ],
  "fh": "常见问题",
  "faq": [
-  ("今晚万字成绩几点出？", "万能、多多、大马彩、砂拉越大万和山打根逢星期三、六、日晚上7点开彩，另有特别开彩日（通常是星期二）。新加坡万字同日傍晚6点30分开彩。豪龙与 9 Lotto 每天晚上7点，Super J3 下午3点，Super J9 晚上9点。本页随开彩即时更新。"),
+  ("今晚万字成绩几点出？", "万能、多多、大马彩、砂拉越大万、沙巴88和山打根逢星期三、六、日晚上7点开彩，另有特别开彩日（通常是星期二）。新加坡万字同日傍晚6点30分开彩。豪龙与 9 Lotto 每天晚上7点，Super J3 下午3点，Super J9 晚上9点。本页随开彩即时更新。"),
   ("怎样查我的万字号码有没有中？", '在<a href="?tab=check">查号码</a>输入4位数号码，即可看到过去5年所有公司的中奖记录、日期和奖项。每个号码也有独立页面，例如 <a href="4d/0000/">万字 0000</a>。'),
   ("为什么特别奖和安慰奖要排序？", "由小到大排列，几秒内就能找到号码，不用逐格看。头奖、二奖、三奖仍按奖项顺序显示。"),
   ("什么是万字图？", '万字图是传统的号码图册，把0000到9999每个号码对应到一个含义或物件，常用来把梦境和生活事件转成号码。可在<a href="?tab=dict">万字图页面</a>用四种语言搜索。'),
@@ -92,28 +92,28 @@ COPY = {
 
 EXTRA = {
  "en": dict(qh="Has your number won?", qp="Enter a 4-digit number to see every win in the last 5 years.", qb="Check", sh="4D draw schedule (Malaysia time)",
-            sc=("Company", "Draw days", "Time"), rows=[("Magnum, Sports Toto, Da Ma Cai, Cash Sweep, Sandakan", "Wed, Sat, Sun + special Tue", "7:00pm"), ("Singapore 4D", "Wed, Sat, Sun", "6:30pm"),
+            sc=("Company", "Draw days", "Time"), rows=[("Magnum, Sports Toto, Da Ma Cai, Cash Sweep, Sabah 88, Sandakan", "Wed, Sat, Sun + special Tue", "7:00pm"), ("Singapore 4D", "Wed, Sat, Sun", "6:30pm"),
             ("GD Lotto, 9 Lotto", "Every day", "7:00pm"), ("Super J3 / J9", "Every day", "3:00pm / 9:00pm")], oh="Official sources",
             op="Results are published by each operator. Always confirm a win on the official site before claiming.", pol="How we check results: data policy",
             rh="Play responsibly", rp="4D is for non-Muslims aged 21 and above. Set a budget, never chase losses, and take a break if it stops being fun. 4D Malam Ini does not sell tickets or take bets."),
  "ms": dict(qh="Adakah nombor anda menang?", qp="Masukkan nombor 4 digit untuk melihat semua kemenangan dalam 5 tahun lepas.", qb="Semak", sh="Jadual cabutan 4D (waktu Malaysia)",
-            sc=("Syarikat", "Hari cabutan", "Masa"), rows=[("Magnum, Sports Toto, Da Ma Cai, Cash Sweep, Sandakan", "Rabu, Sabtu, Ahad + Selasa khas", "7:00 mlm"), ("Singapore 4D", "Rabu, Sabtu, Ahad", "6:30 ptg"),
+            sc=("Syarikat", "Hari cabutan", "Masa"), rows=[("Magnum, Sports Toto, Da Ma Cai, Cash Sweep, Sabah 88, Sandakan", "Rabu, Sabtu, Ahad + Selasa khas", "7:00 mlm"), ("Singapore 4D", "Rabu, Sabtu, Ahad", "6:30 ptg"),
             ("GD Lotto, 9 Lotto", "Setiap hari", "7:00 mlm"), ("Super J3 / J9", "Setiap hari", "3:00 ptg / 9:00 mlm")], oh="Sumber rasmi",
             op="Keputusan diterbitkan oleh setiap syarikat. Sentiasa sahkan kemenangan di laman rasmi sebelum menuntut.", pol="Cara kami menyemak keputusan: dasar data",
             rh="Main secara bertanggungjawab", rp="4D hanya untuk bukan Islam berumur 21 tahun ke atas. Tetapkan bajet, jangan kejar kerugian, dan berehat jika tidak lagi seronok. 4D Malam Ini tidak menjual tiket atau menerima pertaruhan."),
  "zh": dict(qh="你的号码中过吗？", qp="输入4位数号码，查看过去5年所有中奖记录。", qb="查询", sh="万字开彩时间表（马来西亚时间）",
-            sc=("公司", "开彩日", "时间"), rows=[("万能、多多、大马彩、砂拉越大万、山打根", "星期三、六、日 + 特别星期二", "晚上7:00"), ("新加坡万字", "星期三、六、日", "傍晚6:30"),
+            sc=("公司", "开彩日", "时间"), rows=[("万能、多多、大马彩、砂拉越大万、沙巴88、山打根", "星期三、六、日 + 特别星期二", "晚上7:00"), ("新加坡万字", "星期三、六、日", "傍晚6:30"),
             ("豪龙 GD Lotto、9 Lotto", "每天", "晚上7:00"), ("Super J3 / J9", "每天", "下午3:00 / 晚上9:00")], oh="官方来源",
             op="成绩由各公司官方公布。领奖前请务必在官方网站核实。", pol="我们如何核对成绩：数据政策",
             rh="理性投注", rp="万字仅限21岁或以上非穆斯林。请设定预算，不要追输，玩得不开心就休息。4D Malam Ini 不卖彩票、不接受投注。"),
  "ta": dict(qh="உங்கள் எண் வென்றதா?", qp="கடந்த 5 ஆண்டுகளின் எல்லா வெற்றிகளையும் காண 4 இலக்க எண்ணை உள்ளிடுங்கள்.", qb="சரிபார்", sh="4D குலுக்கல் அட்டவணை (மலேசிய நேரம்)",
-            sc=("நிறுவனம்", "குலுக்கல் நாட்கள்", "நேரம்"), rows=[("Magnum, Sports Toto, Da Ma Cai, Cash Sweep, Sandakan", "புதன், சனி, ஞாயிறு + சிறப்பு செவ்வாய்", "இரவு 7:00"), ("Singapore 4D", "புதன், சனி, ஞாயிறு", "மாலை 6:30"),
+            sc=("நிறுவனம்", "குலுக்கல் நாட்கள்", "நேரம்"), rows=[("Magnum, Sports Toto, Da Ma Cai, Cash Sweep, Sabah 88, Sandakan", "புதன், சனி, ஞாயிறு + சிறப்பு செவ்வாய்", "இரவு 7:00"), ("Singapore 4D", "புதன், சனி, ஞாயிறு", "மாலை 6:30"),
             ("GD Lotto, 9 Lotto", "தினமும்", "இரவு 7:00"), ("Super J3 / J9", "தினமும்", "பிற்பகல் 3:00 / இரவு 9:00")], oh="அதிகாரப்பூர்வ ஆதாரங்கள்",
             op="முடிவுகள் ஒவ்வொரு நிறுவனத்தாலும் வெளியிடப்படுகின்றன. பரிசு கோருவதற்கு முன் அதிகாரப்பூர்வ தளத்தில் உறுதிப்படுத்துங்கள்.", pol="நாங்கள் முடிவுகளைச் சரிபார்க்கும் முறை: தரவுக் கொள்கை",
             rh="பொறுப்புடன் விளையாடுங்கள்", rp="4D 21 வயதுக்கு மேற்பட்ட முஸ்லிம் அல்லாதவர்களுக்கு மட்டுமே. வரவுசெலவு வையுங்கள், இழப்புகளைத் துரத்தாதீர்கள். 4D Malam Ini டிக்கெட் விற்பதோ பந்தயம் ஏற்பதோ இல்லை."),
 }
 SRC = [("Magnum 4D", "https://www.magnum4d.my/"), ("Sports Toto", "https://www.sportstoto.com.my/"), ("Da Ma Cai", "https://www.damacai.com.my/"), ("GD Lotto", "https://gdlotto.com/"),
-       ("9 Lotto", "https://9lotto.com/"), ("Super J3 & J9", "https://superj3.net/"), ("Singapore Pools", "https://www.singaporepools.com.sg/"), ("Cash Sweep", "https://www.cashsweep.my/"), ("Sandakan STC 4D", "https://stc4d.com/")]
+       ("9 Lotto", "https://9lotto.com/"), ("Super J3 & J9", "https://superj3.net/"), ("Singapore Pools", "https://www.singaporepools.com.sg/"), ("Cash Sweep", "https://www.cashsweep.my/"), ("Sabah 88", "https://www.diriwan88.com/"), ("Sandakan STC 4D", "https://stc4d.com/")]
 
 
 def _extra(lang: str) -> str:
@@ -126,7 +126,7 @@ def _extra(lang: str) -> str:
           "zh": ("每天", "三 · 六 · 日", "+ 特别星期二"), "ta": ("தினமும்", "புதன் · சனி · ஞாயிறு", "+ சிறப்பு செவ்வாய்")}[lang]
     tm = [r[2] for r in x["rows"]]
     t3, t9 = tm[3].split(" / ")
-    slots = [(t3, [8], "all", "Super J3"), (tm[1], [3], "wss", "Singapore 4D"), (tm[0], [0, 1, 2, 4, 5], "wsssp", "Magnum · Toto · Da Ma Cai · Cash Sweep · Sandakan"),
+    slots = [(t3, [8], "all", "Super J3"), (tm[1], [3], "wss", "Singapore 4D"), (tm[0], [0, 1, 2, 4, 10, 5], "wsssp", "Magnum · Toto · Da Ma Cai · Cash Sweep · Sabah 88 · Sandakan"),
              (tm[2], [6, 7], "all", "GD Lotto · 9 Lotto"), (t9, [9], "all", "Super J9")]
     def week(kind):
         on = {"all": range(7), "wss": (2, 5, 6), "wsssp": (2, 5, 6)}[kind]
@@ -153,7 +153,7 @@ BYCO = {"en": ("Results by company", "{n} result today"), "ms": ("Keputusan meng
         "zh": ("各公司成绩", "今日{n}成绩"), "ta": ("நிறுவன வாரியான முடிவுகள்", "இன்றைய {n} முடிவுகள்")}
 BYCO_N = [("magnum-4d-result", {"zh": "万能"}, "Magnum 4D"), ("sports-toto-result", {"zh": "多多"}, "Sports Toto"), ("da-ma-cai-result", {"zh": "大马彩"}, "Da Ma Cai"),
           ("gd-lotto-result", {"zh": "豪龙"}, "GD Lotto"), ("9-lotto-result", {}, "9 Lotto"), ("super-j3-j9-result", {}, "Super J3 & J9"),
-          ("singapore-4d-result", {"zh": "新加坡万字"}, "Singapore 4D"), ("cash-sweep-result", {"zh": "砂拉越大万"}, "Cash Sweep"), ("sandakan-4d-result", {"zh": "山打根万字"}, "Sandakan 4D")]
+          ("singapore-4d-result", {"zh": "新加坡万字"}, "Singapore 4D"), ("cash-sweep-result", {"zh": "砂拉越大万"}, "Cash Sweep"), ("sabah-88-4d-result", {"zh": "沙巴88"}, "Sabah 88"), ("sandakan-4d-result", {"zh": "山打根万字"}, "Sandakan 4D")]
 
 
 def _bycompany(lang: str) -> str:

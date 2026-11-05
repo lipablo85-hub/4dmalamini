@@ -14,6 +14,7 @@ CO = [
     ("gd-lotto-result", ["G"], {"en": "GD Lotto 4D", "ms": "GD Lotto 4D", "zh": "豪龙", "ta": "GD Lotto 4D"}, "#F27BA5", "daily"),
     ("singapore-4d-result", ["S"], {"en": "Singapore 4D", "ms": "Singapore 4D", "zh": "新加坡万字", "ta": "Singapore 4D"}, "#38BDF8", "sg"),
     ("cash-sweep-result", ["C"], {"en": "Sarawak Cash Sweep", "ms": "Sarawak Cash Sweep", "zh": "砂拉越大万", "ta": "Sarawak Cash Sweep"}, "#4ADE80", "wss"),
+    ("sabah-88-4d-result", ["B"], {"en": "Sabah 88 4D", "ms": "Sabah 88 4D", "zh": "沙巴88", "ta": "Sabah 88 4D"}, "#E5484D", "wss"),
     ("sandakan-4d-result", ["H"], {"en": "Sandakan STC 4D", "ms": "Sandakan STC 4D", "zh": "山打根万字", "ta": "Sandakan STC 4D"}, "#FACC15", "wss"),
     ("super-j3-j9-result", ["K", "J"], {"en": "Super J3 & J9", "ms": "Super J3 & J9", "zh": "Super J3 & J9", "ta": "Super J3 & J9"}, "#A78BFA", "twice"),
     ("9-lotto-result", ["N"], {"en": "9 Lotto 4D", "ms": "9 Lotto 4D", "zh": "9 Lotto", "ta": "9 Lotto 4D"}, "#2EC4B6", "daily"),

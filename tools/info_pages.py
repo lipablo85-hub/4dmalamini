@@ -12,6 +12,7 @@ CO = [
     ("N", "9 Lotto", "", "#0E8F86", "#2EC4B6", "n-w", None, "https://9lotto.com/result", ["4D", "Daily 7pm"]),
     ("S", "Singapore 4D", "新加坡万字", "#B91C2C", "#38BDF8", "s", "1968", "https://www.singaporepools.com.sg/en/product/pages/4d_results.aspx", ["4D", "Big", "Small", "iBet"]),
     ("C", "Cash Sweep", "砂拉越大万", "#0B7A3B", "#4ADE80", "c", "1992", "https://www.cashsweep.my/", ["1+3D", "3D", "1+3D Jackpot", "Sarawak"]),
+    ("B", "Sabah 88", "沙巴88", "#D7141A", "#E5484D", "b", None, "https://www.diriwan88.com/", ["4D", "3D", "4D Jackpot", "Lotto 6/45"]),
     ("H", "Sandakan 4D", "山打根", "#14532D", "#FACC15", "h", None, "https://stc4d.com/", ["4D", "Big", "Small", "Sabah"]),
     ("J", "Super J3 & J9", "", "#5B21B6", "#A78BFA", "j", None, "https://superj3.net/", ["J3 · 3pm", "J9 · 9pm", "4D", "6D Jackpot"]),
 ]
@@ -211,7 +212,24 @@ for _lg, (_sub, _w3, _intro, _facts, _s2) in _HX.items():
     T[_lg]["sub"]["H"], T[_lg]["intro"]["H"], T[_lg]["facts"]["H"], T[_lg]["w3"] = _sub, _intro, _facts, _w3
     T[_lg]["s2s"] = T[_lg]["s2s"].rstrip() + _s2
 
-OPSLUG = {"H": "sandakan-4d-result/", "C": "cash-sweep-result/", "S": "singapore-4d-result/", "M": "magnum-4d-result/", "T": "sports-toto-result/", "D": "da-ma-cai-result/", "G": "gd-lotto-result/", "N": "9-lotto-result/", "J": "super-j3-j9-result/"}
+# Sabah 88 4D (added Nov 2026)
+_BX = {
+ "en": ("Diriwan Corporation", "The 4D game of Diriwan in Sabah (Sabah 88, 沙巴88), one of the East Malaysia draws. It follows the West Malaysia draw days and also runs 3D, a 4D Jackpot and Lotto 6/45.",
+        [("Based in", "Sabah"), ("Draws", "Wed, Sat, Sun · 7pm + special Tuesdays")], " Sabah 88 4D draws on the same days at 7pm."),
+ "ms": ("Diriwan Corporation", "Permainan 4D Diriwan di Sabah (Sabah 88, 沙巴88), salah satu cabutan Malaysia Timur. Ia mengikut hari cabutan Semenanjung dan turut menawarkan 3D, Jackpot 4D dan Lotto 6/45.",
+        [("Berpusat di", "Sabah"), ("Cabutan", "Rabu, Sabtu, Ahad · 7 mlm + Selasa khas")], " Sabah 88 4D membuat cabutan pada hari yang sama pada 7 malam."),
+ "zh": ("Diriwan 公司", "沙巴 Diriwan 公司的万字（沙巴88），是东马的开彩之一。开彩日和西马相同，另有 3D、4D 头奖累积（Jackpot）和 Lotto 6/45。",
+        [("总部", "沙巴"), ("开彩", "星期三、六、日 · 晚上7点 + 特别星期二")], "沙巴88同日晚上7点开彩。"),
+ "ta": ("Diriwan Corporation", "சபாவின் Diriwan நடத்தும் 4D (Sabah 88, 沙巴88), கிழக்கு மலேசியக் குலுக்கல்களில் ஒன்று. தீபகற்ப குலுக்கல் நாட்களையே பின்பற்றுகிறது; 3D, 4D Jackpot, Lotto 6/45 ஆகியவையும் உண்டு.",
+        [("தலைமையகம்", "சபா"), ("குலுக்கல்", "புதன், சனி, ஞாயிறு · இரவு 7 + சிறப்பு செவ்வாய்")], " Sabah 88 4D அதே நாட்களில் இரவு 7 மணிக்கு குலுக்கல் நடத்துகிறது."),
+}
+for _lg, (_sub, _intro, _facts, _s2) in _BX.items():
+    T[_lg]["sub"]["B"], T[_lg]["intro"]["B"], T[_lg]["facts"]["B"] = _sub, _intro, _facts
+    _h = _HX[_lg][4].strip()   # Sarawak, then Sabah 88, then Sandakan
+    assert _h in T[_lg]["s2s"]
+    T[_lg]["s2s"] = T[_lg]["s2s"].replace(_h, _s2.strip() + " " + _h if _lg != "zh" else _s2.strip() + _h)
+
+OPSLUG = {"B": "sabah-88-4d-result/", "H": "sandakan-4d-result/", "C": "cash-sweep-result/", "S": "singapore-4d-result/", "M": "magnum-4d-result/", "T": "sports-toto-result/", "D": "da-ma-cai-result/", "G": "gd-lotto-result/", "N": "9-lotto-result/", "J": "super-j3-j9-result/"}
 ABOUT = {"en": "About us", "ms": "Tentang kami", "zh": "关于我们", "ta": "எங்களைப் பற்றி"}
 SCHED = {"M": "s", "T": "s", "D": "s"}  # Wed/Sat/Sun + special Tue
 

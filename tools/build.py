@@ -17,7 +17,7 @@ Run it again after every draw (add the new rows to the results CSV) and upload t
 import argparse, csv, hashlib, html as H, json, re, shutil, subprocess
 from pathlib import Path
 
-OPS = {"Magnum 4D": "M", "Sports Toto 4D": "T", "Da Ma Cai 1+3D": "D", "GD Lotto 4D": "G", "9 Lotto 4D": "N", "9 Lotto 4D 9PM": "N", "Super J3 3PM": "J", "Super J9 9PM": "K", "Singapore 4D": "S", "Sarawak Cash Sweep": "C", "Sandakan 4D": "H"}
+OPS = {"Magnum 4D": "M", "Sports Toto 4D": "T", "Da Ma Cai 1+3D": "D", "GD Lotto 4D": "G", "9 Lotto 4D": "N", "9 Lotto 4D 9PM": "N", "Super J3 3PM": "J", "Super J9 9PM": "K", "Singapore 4D": "S", "Sarawak Cash Sweep": "C", "Sabah 88 4D": "B", "Sandakan 4D": "H"}
 
 
 def h8(b: bytes) -> str:
@@ -91,9 +91,9 @@ def prerender_lang(html: str, lang: str) -> str:
 def prerender_latest(html: str, data: dict) -> str:
     """Write the results board (classic result slips, official draw order) into the page; the page script redraws it in the visitor's language."""
     import datetime
-    board = [("M", "Magnum 4D", "#E9C46B"), ("D", "Da Ma Cai", "#4C8DFF"), ("T", "Sports Toto", "#FF5A5F"), ("S", "Singapore 4D", "#38BDF8"), ("C", "Cash Sweep", "#4ADE80"), ("H", "Sandakan 4D", "#FACC15"), ("G", "GD Lotto", "#F27BA5"), ("N", "9 Lotto", "#2EC4B6"), ("J", "Super J3 3pm", "#A78BFA"), ("K", "Super J9 9pm", "#FB923C")]
-    zh = {"M": "万能", "D": "大马彩", "T": "多多", "G": "豪龙", "N": "", "J": "下午3点", "K": "晚上9点", "S": "新加坡万字", "C": "砂拉越大万", "H": "山打根"}
-    hc = {"M": "#FFF200", "D": "#000080", "T": "#C00000", "G": "#B0121B", "N": "#0E8F86", "J": "#5B21B6", "K": "#C2410C", "S": "#B91C2C", "C": "#0B7A3B", "H": "#14532D"}
+    board = [("M", "Magnum 4D", "#E9C46B"), ("D", "Da Ma Cai", "#4C8DFF"), ("T", "Sports Toto", "#FF5A5F"), ("S", "Singapore 4D", "#38BDF8"), ("C", "Cash Sweep", "#4ADE80"), ("B", "Sabah 88", "#E5484D"), ("H", "Sandakan 4D", "#FACC15"), ("G", "GD Lotto", "#F27BA5"), ("N", "9 Lotto", "#2EC4B6"), ("J", "Super J3 3pm", "#A78BFA"), ("K", "Super J9 9pm", "#FB923C")]
+    zh = {"M": "万能", "D": "大马彩", "T": "多多", "G": "豪龙", "N": "", "J": "下午3点", "K": "晚上9点", "S": "新加坡万字", "C": "砂拉越大万", "B": "沙巴88", "H": "山打根"}
+    hc = {"M": "#FFF200", "D": "#000080", "T": "#C00000", "G": "#B0121B", "N": "#0E8F86", "J": "#5B21B6", "K": "#C2410C", "S": "#B91C2C", "C": "#0B7A3B", "B": "#D7141A", "H": "#14532D"}
     fd = lambda d: datetime.date(int(d[:4]), int(d[4:6]), int(d[6:])).strftime("%a, %-d %b %Y")
     cdf = lambda d: datetime.date(int(d[:4]), int(d[4:6]), int(d[6:])).strftime("(%a) %d-%b-%Y")
     nb = lambda n: f'<button type="button" data-n="{n}">{n}</button>'
@@ -277,9 +277,9 @@ def main() -> None:
                     ("தகவல்", [("தகவல் மையம்", pf + "info/", 0), ("விளையாடும் முறை", pf + "guide/", 0), ("எங்களைப் பற்றி", pf + "about/", 0), ("தரவுக் கொள்கை", "data-policy/", 0), ("தள வரைபடம்", pf + "sitemap/", 0)])),
             }[lg]
             SL = ["magnum-4d-result", "da-ma-cai-result", "sports-toto-result", "gd-lotto-result", "9-lotto-result",
-                  "singapore-4d-result", "cash-sweep-result", "sandakan-4d-result", "super-j3-j9-result"]
-            CN = {"zh": ["万能", "大马彩", "多多", "豪龙", "9 Lotto", "新加坡万字", "砂拉越大万", "山打根", "Super J3 & J9"]}.get(
-                lg, ["Magnum 4D", "Da Ma Cai", "Sports Toto", "GD Lotto", "9 Lotto", "Singapore 4D", "Cash Sweep", "Sandakan 4D", "Super J3 & J9"])
+                  "singapore-4d-result", "cash-sweep-result", "sabah-88-4d-result", "sandakan-4d-result", "super-j3-j9-result"]
+            CN = {"zh": ["万能", "大马彩", "多多", "豪龙", "9 Lotto", "新加坡万字", "砂拉越大万", "沙巴88", "山打根", "Super J3 & J9"]}.get(
+                lg, ["Magnum 4D", "Da Ma Cai", "Sports Toto", "GD Lotto", "9 Lotto", "Singapore 4D", "Cash Sweep", "Sabah 88", "Sandakan 4D", "Super J3 & J9"])
             CO = list(zip(CN, SL))
             COH = {"en": "By company", "ms": "Ikut syarikat", "zh": "各公司成绩", "ta": "நிறுவனம் வாரியாக"}[lg]
             out = "".join(f'<nav><b>{H.escape(h)}</b>' + "".join(f'<a href="/{u}"{" data-cal" if c else ""}>{H.escape(t)}</a>' for t, u, c in ls) + "</nav>" for h, ls in FG)
@@ -353,7 +353,7 @@ def main() -> None:
         f"/{pf}{sl}/20*\n  Cache-Control: public, max-age=86400, stale-while-revalidate=604800"
         for pf in ("", "ms/", "zh/", "ta/")
         for sl in ("magnum-4d-result", "da-ma-cai-result", "sports-toto-result", "gd-lotto-result",
-                   "9-lotto-result", "singapore-4d-result", "cash-sweep-result", "sandakan-4d-result",
+                   "9-lotto-result", "singapore-4d-result", "cash-sweep-result", "sabah-88-4d-result", "sandakan-4d-result",
                    "super-j3-j9-result"))
     (out / "_headers").write_text(HEADERS.replace("__OPYEAR__", opyear))
     (out / ".htaccess").write_text(HTACCESS)

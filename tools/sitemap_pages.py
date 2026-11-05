@@ -6,7 +6,7 @@ from html import escape as esc
 LANGS = {"en": ("en", ""), "ms": ("ms", "ms/"), "zh": ("zh-Hans", "zh/"), "ta": ("ta", "ta/")}
 CO = [("Magnum 4D", "magnum-4d-result", 0), ("Da Ma Cai 1+3D", "da-ma-cai-result", 1), ("Sports Toto 4D", "sports-toto-result", 2),
       ("GD Lotto 4D", "gd-lotto-result", 6), ("9 Lotto 4D", "9-lotto-result", 7), ("Singapore 4D", "singapore-4d-result", 3),
-      ("Cash Sweep", "cash-sweep-result", 4), ("Sandakan 4D", "sandakan-4d-result", 5), ("Super J3 & J9", "super-j3-j9-result", 8)]
+      ("Cash Sweep", "cash-sweep-result", 4), ("Sabah 88", "sabah-88-4d-result", 10), ("Sandakan 4D", "sandakan-4d-result", 5), ("Super J3 & J9", "super-j3-j9-result", 8)]
 
 T = {
  "en": dict(title="Sitemap", crumb="Sitemap", home="Home", h1="Sitemap",
@@ -56,7 +56,7 @@ CSS = """.smp{--mu:#9DB0D3;--cd:#0F1F3D;--ln:#1D3157;--gold:#E9C46B;--ui:-apple-
 .smp li a{display:flex;align-items:center;gap:10px;padding:13px 15px;text-decoration:none;color:#E4EAF6;font-size:14.5px;line-height:1.35}
 .smp li a::after{content:"›";margin-left:auto;color:#6F80A3;font-size:17px}
 .smp li a img{width:26px;height:26px;flex:none;border-radius:7px;background:#fff;padding:2px;object-fit:contain}
-.smp li a .lg{width:26px;height:26px;flex:none;border-radius:7px;background:url(/img/op/tk.webp) 0 0/260px 26px no-repeat}
+.smp li a .lg{width:26px;height:26px;flex:none;border-radius:7px;background:url(/img/op/tk11.webp) 0 0/286px 26px no-repeat}
 .smp li a small{margin-left:auto;color:#6F80A3;font-size:12px;font-variant-numeric:tabular-nums}
 .smp li a small+::after{margin-left:8px}
 .smp .yr{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}
