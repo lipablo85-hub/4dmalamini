@@ -230,6 +230,9 @@ Year/month archive silos · provider-year pages · 5-level breadcrumbs · provid
 pages · ItemList schema · footer follows language · number-search hub · sitemap index ·
 freshness lines + `dateModified` · privacy/terms/contact · cache headers · one-hop redirect ·
 desktop footer and sheet alignment · provider filter on the statistics page · heat map caption (option A: real spread, 4 languages).
+Home header logo intro (option D, "Van Gogh cloud"): SVG + CSS in `page.template.html`, +1.3 KB gz, plays once
+(~2.9 s) then the old twinkle loop. Finished logo is the default; intro only under `prefers-reduced-motion: no-preference`.
+Draft sources in the artifact "4D Malam Ini: logo intro D" (A-C in its earlier versions). Inner pages keep the static `mark.svg`.
 
 ### Open
 - **HSTS** — user's decision, not started. Start at `max-age=86400`, no `includeSubDomains`,
