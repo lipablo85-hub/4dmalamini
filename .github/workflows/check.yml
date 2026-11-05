@@ -7,26 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Statistics page in four languages
+      - name: Heat map caption live in four languages
         run: |
           S=https://www.4dmalamini.com
           for u in 4d-statistics ms/4d-statistics zh/4d-statistics ta/4d-statistics; do
-            curl -s "$S/$u/" -o /tmp/p
-            printf '%-22s %s  tiles=%s  html=%sB gz\n' "/$u/" \
-              "$(curl -s -o /dev/null -w '%{http_code}' $S/$u/)" \
-              "$(grep -o 'class="fchip' /tmp/p | wc -l)" \
-              "$(curl -s -H 'Accept-Encoding: gzip' -o /dev/null -w '%{size_download}' $S/$u/)"
-            grep -o 'Showing[^<]*<b>[^<]*' /tmp/p | head -1 | sed 's/^/     default: /'
-            grep -o '显示 <b>[^<]*' /tmp/p | head -1 | sed 's/^/     default: /'
+            curl -s "$S/$u/?v=$RANDOM" -o /tmp/p
+            printf '%-20s %s  ' "/$u/" "$(curl -s -o /dev/null -w '%{http_code}' $S/$u/)"
+            grep -o '<p class="hcap">[^<]*' /tmp/p | cut -c17-80 || echo "NO CAPTION"
+            A=$(grep -o '/assets/stf-[a-z]*\.[a-z0-9]*\.js' /tmp/p | head -1)
+            printf '     asset %s hcap-in-js=%s\n' "$A" "$(curl -s $S$A | grep -c hcap)"
           done
-      - name: Deferred filter asset is cached and deferred
-        run: |
-          A=$(curl -s https://www.4dmalamini.com/4d-statistics/ | grep -o '/assets/stf-en\.[a-z0-9]*\.js')
-          echo "asset: $A"
-          curl -s https://www.4dmalamini.com/4d-statistics/ | grep -o '<script src="[^"]*stf[^"]*"[^>]*>' | head -1
-          curl -sI "https://www.4dmalamini.com$A" | grep -iE '^(cache-control|content-length):' | sed 's/^/  /'
-      - name: Sprite the tiles use
-        run: |
-          printf '  /img/op/tk.webp -> %s, %s\n' \
-            "$(curl -s -o /dev/null -w '%{http_code}' https://www.4dmalamini.com/img/op/tk.webp)" \
-            "$(curl -sI https://www.4dmalamini.com/img/op/tk.webp | grep -i '^cache-control' | tr -d '\r' | cut -c16-)"
