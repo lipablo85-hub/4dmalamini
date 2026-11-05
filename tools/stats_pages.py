@@ -18,7 +18,7 @@ T = {
             k=("Draws analysed", "Numbers drawn"),
             hot="Most drawn numbers", hots="Every prize tier, since {s}.", cold="Missing longest", colds="Numbers that won before but have not appeared for the longest time.",
             rec="Hot in the last 90 days", recs="Most wins since {d}.", top="Top-3 prize regulars", tops="Most times in 1st, 2nd or 3rd prize.",
-            dig="Digit frequency by position", digs="How often each digit appears in each of the 4 positions, as a share of that position.", dlo="less often", dhi="more often", pos=("1st digit", "2nd digit", "3rd digit", "4th digit"),
+            dig="Digit frequency by position", digs="How often each digit appears in each of the 4 positions, as a share of that position.", dlo="less often", dhi="more often", hcap="Every cell is between {lo}% and {hi}%. The colours stretch that small gap from red to green, so small differences can look like a hot or cold pattern.", pos=("1st digit", "2nd digit", "3rd digit", "4th digit"),
             box="Most frequent Box families", boxs="All arrangements of the same 4 digits counted together.", combos="{n} arrangements",
             times="×", alltime="all-time {n}×", days="{n}d", last="last", never="{n} numbers have never been drawn since {s}.",
             note="These are past results only. Every draw is independent, so past frequency does not make any number more or less likely to win. 21+ · Non-Muslims only · Play responsibly.",
@@ -30,7 +30,7 @@ T = {
             k=("Cabutan dianalisis", "Nombor dicabut"),
             hot="Nombor paling kerap", hots="Semua peringkat hadiah, sejak {s}.", cold="Paling lama tidak keluar", colds="Nombor yang pernah menang tetapi paling lama tidak muncul.",
             rec="Panas dalam 90 hari", recs="Paling banyak menang sejak {d}.", top="Kerap dalam hadiah 1–3", tops="Paling kerap dalam hadiah Pertama, Kedua atau Ketiga.",
-            dig="Kekerapan digit mengikut kedudukan", digs="Berapa kerap setiap digit muncul di setiap kedudukan, sebagai peratusan.", dlo="kurang kerap", dhi="lebih kerap", pos=("Digit 1", "Digit 2", "Digit 3", "Digit 4"),
+            dig="Kekerapan digit mengikut kedudukan", digs="Berapa kerap setiap digit muncul di setiap kedudukan, sebagai peratusan.", dlo="kurang kerap", dhi="lebih kerap", hcap="Setiap sel antara {lo}% dan {hi}%. Warna meregangkan jurang kecil itu daripada merah ke hijau, jadi perbezaan kecil boleh kelihatan seperti corak panas atau sejuk.", pos=("Digit 1", "Digit 2", "Digit 3", "Digit 4"),
             box="Keluarga Box paling kerap", boxs="Semua susunan 4 digit yang sama dikira bersama.", combos="{n} susunan",
             times="×", alltime="jumlah {n}×", days="{n}h", last="terakhir", never="{n} nombor belum pernah keluar sejak {s}.",
             note="Ini hanya keputusan lepas. Setiap cabutan adalah bebas, jadi kekerapan lepas tidak menjadikan mana-mana nombor lebih atau kurang berpeluang. 21+ · Bukan Islam sahaja · Main secara bertanggungjawab.",
@@ -42,7 +42,7 @@ T = {
             k=("统计期数", "开出号码"),
             hot="最常开出的号码", hots="所有奖项，{s}至今。", cold="最久未开的号码", colds="曾经中过、但已经最久没有再出现的号码。",
             rec="近90天热门", recs="{d}以来中奖最多。", top="前三奖常客", tops="最常进入头奖、二奖或三奖。",
-            dig="各位数字出现频率", digs="每个数字在4个位置出现的比例（%）。", dlo="较少", dhi="较多", pos=("第1位", "第2位", "第3位", "第4位"),
+            dig="各位数字出现频率", digs="每个数字在4个位置出现的比例（%）。", dlo="较少", dhi="较多", hcap="所有格子都在 {lo}% 至 {hi}% 之间。颜色把这个很小的差距拉开成由红到绿，所以细微的差别也可能看起来像冷热规律。", pos=("第1位", "第2位", "第3位", "第4位"),
             box="最常开出的 Box 号码组", boxs="同样4个数字的所有排列合并计算。", combos="{n} 种排列",
             times="次", alltime="累计 {n} 次", days="{n} 天", last="最近", never="{s}以来有 {n} 个号码从未开出。",
             note="以上只是过往成绩。每期开彩都是独立的，过去出现次数不会让任何号码更容易或更难中奖。仅限21岁或以上非穆斯林 · 理性投注。",
@@ -54,7 +54,7 @@ T = {
             k=("ஆய்வு செய்த குலுக்கல்கள்", "வந்த எண்கள்"),
             hot="அதிகம் வந்த எண்கள்", hots="எல்லா பரிசுகளும், எல்லா நிறுவனங்களும், {s} முதல்.", cold="நீண்ட நாள் வராதவை", colds="முன்பு வென்று, நீண்ட காலமாக மீண்டும் வராத எண்கள்.",
             rec="கடந்த 90 நாளில் அதிகம்", recs="{d} முதல் அதிக வெற்றிகள்.", top="முதல் 3 பரிசில் அடிக்கடி", tops="1வது, 2வது, 3வது பரிசில் அதிக முறை.",
-            dig="நிலை வாரியான இலக்க அதிர்வெண்", digs="4 நிலைகளிலும் ஒவ்வொரு இலக்கமும் வரும் விகிதம் (%).", dlo="குறைவு", dhi="அதிகம்", pos=("1வது இலக்கம்", "2வது இலக்கம்", "3வது இலக்கம்", "4வது இலக்கம்"),
+            dig="நிலை வாரியான இலக்க அதிர்வெண்", digs="4 நிலைகளிலும் ஒவ்வொரு இலக்கமும் வரும் விகிதம் (%).", dlo="குறைவு", dhi="அதிகம்", hcap="ஒவ்வொரு கட்டமும் {lo}% முதல் {hi}% வரை மட்டுமே. இந்தச் சிறிய இடைவெளியை நிறங்கள் சிவப்பிலிருந்து பச்சை வரை நீட்டுகின்றன; அதனால் சிறிய வேறுபாடுகளும் சூடான/குளிர்ந்த போக்கு போலத் தோன்றலாம்.", pos=("1வது இலக்கம்", "2வது இலக்கம்", "3வது இலக்கம்", "4வது இலக்கம்"),
             box="அதிகம் வந்த Box குடும்பங்கள்", boxs="அதே 4 இலக்கங்களின் எல்லா வரிசைகளும் சேர்த்து எண்ணப்படுகின்றன.", combos="{n} வரிசைகள்",
             times="×", alltime="மொத்தம் {n}×", days="{n}நா", last="கடைசி", never="{s} முதல் {n} எண்கள் ஒருமுறையும் வரவில்லை.",
             note="இவை கடந்த முடிவுகள் மட்டுமே. ஒவ்வொரு குலுக்கலும் தனித்தது; கடந்த அதிர்வெண் எந்த எண்ணின் வாய்ப்பையும் மாற்றாது. 21+ · முஸ்லிம் அல்லாதவர்கள் மட்டும் · பொறுப்புடன் விளையாடுங்கள்.",
@@ -112,7 +112,7 @@ CSS = """.fw{position:sticky;top:0;z-index:6;margin:14px -14px 2px;padding:9px 0
 .st4 .hm{display:grid;grid-template-columns:58px repeat(10,minmax(0,1fr));gap:3px;font-size:11px}
 .st4 .hm b{display:grid;place-items:center;height:20px;color:var(--mu);font-weight:700;font-variant-numeric:tabular-nums}
 .st4 .hm span{display:grid;place-items:center;height:32px;border-radius:6px;font-weight:700;color:#1A1405;font-size:10.5px;font-variant-numeric:tabular-nums}
-.st4 .hm em{font-style:normal;display:flex;align-items:center;color:#C9D4EA;font-weight:600;font-size:11px}.st4 .hleg{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:11px;color:var(--mu)}.st4 .hleg i{flex:1;height:8px;border-radius:4px;background:linear-gradient(90deg,#DC3C3C,#E9C46B,#4ADE80)}
+.st4 .hm em{font-style:normal;display:flex;align-items:center;color:#C9D4EA;font-weight:600;font-size:11px}.st4 .hleg{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:11px;color:var(--mu)}.st4 .hleg i{flex:1;height:8px;border-radius:4px;background:linear-gradient(90deg,#DC3C3C,#E9C46B,#4ADE80)}.st4 .hcap{margin:12px 0 0;padding-top:10px;border-top:1px solid rgba(245,245,242,.08);font-size:12px;color:#C2CEE4;line-height:1.55}
 .st4 .bx{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .st4 .bx a{padding:11px 13px;border-radius:14px;background:var(--cd);border:1px solid #233862;text-decoration:none}
 .st4 .bx b{display:block;font:700 18px/1.1 var(--ui);font-variant-numeric:tabular-nums;color:#FFE7A3;letter-spacing:.06em}
@@ -148,6 +148,8 @@ function heat(pos){
   for(i=0;i<4;i++){var t=pos[i].reduce(function(a,b){return a+b},0);
     h+="<em>"+(lab[i]?lab[i].textContent:"")+"</em>";
     for(j=0;j<10;j++)h+='<span title="'+nf(pos[i][j])+'" style="background:'+col(pos[i][j])+'">'+(pos[i][j]/t*100).toFixed(1)+"</span>";}
+  var t0=pos[0].reduce(function(a,b){return a+b},0)||1,cp=document.querySelector("#digits .hcap");
+  if(cp)cp.textContent=L.hcap.replace("{lo}",(mn/t0*100).toFixed(1)).replace("{hi}",(mx/t0*100).toFixed(1));
   return h;
 }
 function paint(){
@@ -266,7 +268,9 @@ def build(site) -> None:
         for i in range(4):
             hm += f'<em>{esc(x["pos"][i])}</em>' + "".join(
                 f'<span title="{pos[i][d]:,}" style="background:{hcol(pos[i][d])}">{pos[i][d] / sum(pos[i]) * 100:.1f}</span>' for d in range(10))
-        hm += f'</div><div class="hleg"><span>{esc(x["dlo"])}</span><i></i><span>{esc(x["dhi"])}</span></div>'
+        tp = sum(pos[0]) or 1
+        hm += (f'</div><div class="hleg"><span>{esc(x["dlo"])}</span><i></i><span>{esc(x["dhi"])}</span></div>'
+               f'<p class="hcap">{esc(x["hcap"].format(lo=f"{mnp / tp * 100:.1f}", hi=f"{mxp / tp * 100:.1f}"))}</p>')
         bx = '<div class="bx">' + "".join(
             f'<a href="{site.u("4d/" + k + "/")}"><b>{k}</b><small><strong>{fam[k]}{"次" if lang == "zh" else "×"}</strong> · {esc(x["combos"].format(n=len(set(permutations(k)))))}</small></a>' for k in boxes) + "</div>"
         lng = '<nav class="lng" aria-label="Language">' + "".join(f'<a href="{site.u(path(l))}" hreflang="{LANGS[l][0]}"' + (' aria-current="page"' if l == lang else "") + f'>{names[l]}</a>' for l in LANGS) + "</nav>"
@@ -288,7 +292,7 @@ def build(site) -> None:
                 "box": [[k, st["fam"][k], len(set(permutations(k)))] for k in st["boxes"]],
             } for fid, st in ST.items()}
             L = {"who": {k: WHO[k] for k in WHO}, "scope": x["scope"], "times": tm, "days": x["days"],
-                 "alltime": x["alltime"], "combos": x["combos"], "thin": x["thin"],
+                 "alltime": x["alltime"], "combos": x["combos"], "thin": x["thin"], "hcap": x["hcap"],
                  "u4": site.u("4d/"), "zh": lang == "zh",
                  "mon": MON["en" if lang in ("en", "ta") else lang] if lang != "zh" else None}
             blob = json.dumps({"d": SD, "m": {n: mk(n) for n in sorted(shown) if mk(n)}, "l": L},
