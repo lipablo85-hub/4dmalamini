@@ -7,11 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Info typography live
+      - name: Favicon probe
         run: |
           S=https://www.4dmalamini.com
-          for u in info/ ms/info/ zh/info/ ta/info/; do
-            H=$(curl -s "$S/$u?v=$RANDOM"); C=$(echo "$H" | grep -o 'assets/i\.[0-9a-f]*\.css' | head -1)
-            printf '/%-9s %s css=%s font=%s typo=%s\n' "$u" "$(curl -s -o /dev/null -w '%{http_code}' $S/$u)" "$C" "$(echo "$H" | grep -c 'jakarta\.')" "$(curl -s $S/$C | grep -c 'text-wrap:balance')"
+          for u in / /favicon.svg /favicon-32.png /favicon.ico /icon-192.png /apple-touch-icon.png /robots.txt; do
+            curl -s -o /dev/null -A "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)" -w "$u %{http_code} %{content_type} %{size_download}B\n" "$S$u"
           done
-          curl -s "$S/zh/info/?v=$RANDOM" | grep -o '每周3次' | head -1
+          curl -s "$S/" | grep -o '<link[^>]*icon[^>]*>'
+          for d in www.4dmalamini.com 4dmalamini.com; do
+            curl -sL -o g.png -w "google s2 $d %{http_code} %{size_download}B\n" "https://www.google.com/s2/favicons?domain=$d&sz=64"; sha1sum g.png
+          done
+          curl -sL -o x.png "https://www.google.com/s2/favicons?domain=nonexistent-abc-123456.com&sz=64"; echo "default globe:"; sha1sum x.png
