@@ -7,6 +7,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - name: Cloudflare beacon check (no secrets printed)
+        env:
+          T1: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          ACC: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          UA="Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Mobile Safari/537.36"
+          for u in / /zh/ "/?x=$RANDOM"; do echo "$u browser-UA beacon: $(curl -s -A "$UA" -H 'Accept: text/html' -H 'Accept-Encoding: identity' "https://www.4dmalamini.com$u" | grep -o 'cloudflareinsights[^"]*' | head -1)"; done
+          curl -s -A "$UA" -H 'Accept: text/html' https://www.4dmalamini.com/ | grep -o '<script[^>]*cloudflareinsights[^>]*>' | head -2
+          curl -s -H "Authorization: Bearer $T1" "https://api.cloudflare.com/client/v4/accounts/$ACC/rum/site_info/list?per_page=50" | jq -c '[.result[]? | {site_tag, host:.ruleset.zone_name, auto_install, enabled:.ruleset.enabled, rules:[.rules[]? | {host, paths, inclusive, is_paused}]}]'
+          curl -s -H "Authorization: Bearer $T1" "https://api.cloudflare.com/client/v4/accounts/$ACC/pages/projects/4dmalamini" | jq -c '.result | {wa: (.deployment_configs.production | keys)}'
       - name: Small logos live
         run: |
           for u in img/op/sm/k.webp img/op/sm/n-s.webp img/op/sm/d-n.webp img/op/k.webp; do curl -s -o /dev/null -w "$u %{http_code} %{size_download}B\n" "https://www.4dmalamini.com/$u"; done
