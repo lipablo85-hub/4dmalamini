@@ -177,7 +177,10 @@ def prerender_latest(html: str, data: dict, xt: dict | None = None) -> str:
     fd = lambda d: datetime.date(int(d[:4]), int(d[4:6]), int(d[6:])).strftime("%a, %-d %b %Y")
     cdf = lambda d: datetime.date(int(d[:4]), int(d[4:6]), int(d[6:])).strftime("(%a) %d-%b-%Y")
     nb = lambda n: f'<button type="button" data-n="{n}">{n}</button>'
-    head = lambda k, name, sub, rs="": (f'<div class="sh"><span class="lgw">{('<img class="opl" src="img/op/sm/n-s.webp" width="46" height="46" alt="9 Lotto">' if k == "N" else f'<img class="opl" src="img/op/sm/{k.lower()}{"-n" if k in "DT" else ""}.webp" width="40" height="40" alt="">')}</span>'
+    # A card logo is often the LCP element. Only the cards that can be shown first get
+    # fetchpriority=high: the first in build order and the ones the head script can move to the top.
+    fp = lambda k: ' fetchpriority="high"' if k in {"G", "J", "K", "N", board[0][0]} else ""
+    head = lambda k, name, sub, rs="": (f'<div class="sh"><span class="lgw">{('<img class="opl" src="img/op/sm/n-s.webp" width="46" height="46" alt="9 Lotto"' + fp(k) + '>' if k == "N" else f'<img class="opl" src="img/op/sm/{k.lower()}{"-n" if k in "DT" else ""}.webp" width="40" height="40" alt=""{fp(k)}>')}</span>'
                                  f'<div class="sht"><b>{name} {f"<i>{zh[k]}</i>" if zh[k] else ""}</b><small>{sub}</small></div>{rs}</div>')
     lb = '<div class="lbar"><span>1st Prize<em>首奖</em></span><span>2nd Prize<em>二奖</em></span><span>3rd Prize<em>三奖</em></span></div>'
     cards, last = [], ""
@@ -200,8 +203,11 @@ def prerender_latest(html: str, data: dict, xt: dict | None = None) -> str:
     # half-loaded board doesn't paint Magnum first and then jump when the daily games arrive.
     now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8)))
     sp = [x.replace("-", "") for x in json.loads(Path(__file__).with_name("special_draws.json").read_text())["dates"]]
-    nd = now.weekday() not in (2, 5, 6) and now.strftime("%Y%m%d") not in sp
     mm = now.hour * 60 + now.minute
+    # Board day as the page script sees it: today once the first draw window opens (14:55),
+    # before that the previous day's results.
+    bdd = now.date() if mm >= 895 else now.date() - datetime.timedelta(days=1)
+    nd = bdd.weekday() not in (2, 5, 6) and bdd.strftime("%Y%m%d") not in sp
     rank = {"G": -3, "N": -2, "J": -1, "K": -1} if nd else {}
     if nd and 895 <= mm < 1135: rank["J"] = -9
     elif nd and mm >= 1255: rank["K"] = -9
