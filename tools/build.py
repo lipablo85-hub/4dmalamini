@@ -177,7 +177,7 @@ def prerender_latest(html: str, data: dict, xt: dict | None = None) -> str:
     fd = lambda d: datetime.date(int(d[:4]), int(d[4:6]), int(d[6:])).strftime("%a, %-d %b %Y")
     cdf = lambda d: datetime.date(int(d[:4]), int(d[4:6]), int(d[6:])).strftime("(%a) %d-%b-%Y")
     nb = lambda n: f'<button type="button" data-n="{n}">{n}</button>'
-    head = lambda k, name, sub, rs="": (f'<div class="sh"><span class="lgw">{('<img class="opl" src="img/op/n-s.webp" width="46" height="46" alt="9 Lotto">' if k == "N" else f'<img class="opl" src="img/op/{k.lower()}{"-n" if k in "DT" else ""}.webp?v=4" width="40" height="40" alt="">')}</span>'
+    head = lambda k, name, sub, rs="": (f'<div class="sh"><span class="lgw">{('<img class="opl" src="img/op/sm/n-s.webp" width="46" height="46" alt="9 Lotto">' if k == "N" else f'<img class="opl" src="img/op/sm/{k.lower()}{"-n" if k in "DT" else ""}.webp" width="40" height="40" alt="">')}</span>'
                                  f'<div class="sht"><b>{name} {f"<i>{zh[k]}</i>" if zh[k] else ""}</b><small>{sub}</small></div>{rs}</div>')
     lb = '<div class="lbar"><span>1st Prize<em>首奖</em></span><span>2nd Prize<em>二奖</em></span><span>3rd Prize<em>三奖</em></span></div>'
     cards, last = [], ""
@@ -267,6 +267,14 @@ def icons(out: Path) -> None:
             print(f"  ! brand file missing: tools/brand/{f}")
     if (brand / "op").is_dir():
         shutil.copytree(brand / "op", out / "img" / "op", dirs_exist_ok=True)
+        # Small copies for the logos shown at 34-46 px (the 128 px originals stay for the share images).
+        from PIL import Image
+        (out / "img" / "op" / "sm").mkdir(parents=True, exist_ok=True)
+        for f in (brand / "op").glob("*.webp"):
+            if f.stem.startswith("tk"): continue
+            im = Image.open(f); im = im.convert("RGBA") if im.mode not in ("RGB", "RGBA") else im
+            if im.width != im.height or im.width <= 80: shutil.copy(f, out / "img" / "op" / "sm" / f.name); continue
+            im.resize((80, 80), Image.LANCZOS).save(out / "img" / "op" / "sm" / f.name, "WEBP", quality=84, method=6)
 
 
 def main() -> None:

@@ -260,7 +260,7 @@ class Site:
                 six = (f'<div class="j6"><small>6D JACKPOT</small><b>{"".join(x[2:] for x in n[:3])}</b></div>' if k in "JK" else "")
                 zhs = f" {zh}" if zh and zh != name and not zh.startswith("J") else ""
                 t3h = "".join(f'<a href="{self.u(f"4d/{x}/")}"><small>{lab}</small><b>{x}</b></a>' for lab, x in zip(("1st 首奖", "2nd 二奖", "3rd 三奖"), n[:3]))
-                body_ops.append(f'<section class="sl" id="r-{k}" style="--ac:{col}"><div class="hd"><img src="{self.u(f"img/op/{logo}.webp?v=4")}" alt="" width="36" height="36" loading="lazy">'
+                body_ops.append(f'<section class="sl" id="r-{k}" style="--ac:{col}"><div class="hd"><img src="{self.u(f"img/op/sm/{logo}.webp")}" alt="" width="36" height="36" loading="lazy">'
                                 f'<div><h2>{name}<i>{zhs.strip()}</i></h2><small>{self.date_sh(d)} · Cabutan {esc(no) or "–"}</small></div><a href="{self.u(OPSLUG[k] + "/")}">Semua ›</a></div>'
                                 f'<div class="t3">{t3h}</div>'
                                 f'<div class="sb">Istimewa · Special<i>特别奖</i></div><div class="gr">{"".join(a(x) for x in sorted(n[3:13]))}</div>'
