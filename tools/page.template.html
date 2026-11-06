@@ -864,10 +864,14 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-rs]");if(!
 
 // Header ticker: each company's tiny logo + its latest 1st/2nd/3rd prize, flipping in gold/silver/bronze.
 const TKI={M:0,T:1,D:2,S:3,C:4,H:5,G:6,N:7,J:8,K:9,B:10};
+/* The strip is a draw-night feature: Results tab, an MKT (Magnum / Da Ma Cai / Toto) result dated today, 8:30pm-10:00pm MYT. Hidden otherwise. */
+function tkVis(){const tr=$("#tkr");if(!tr)return;const n=new Date(Date.now()+288e5),d8=n.toISOString().slice(0,10).replace(/-/g,""),m=n.getUTCHours()*60+n.getUTCMinutes();
+  tr.hidden=!(st.tab==="results"&&m>=1230&&m<1320&&["M","D","T"].some(k=>{const o=LIVE.find(x=>x.k===k);return o&&o.D.length&&o.D[o.D.length-1].d===d8}))}
+setInterval(tkVis,30000);
 function renderTicker(){const el=$("#tk");if(!el)return;const MD=["#FFD36A","#DCE4F2","#E9A877"];
   const its=["M","D","T"].map(k=>{const o=LIVE.find(x=>x.k===k),dr=o&&o.D.length&&o.D[o.D.length-1];if(!dr||!dr.n.slice(0,3).every(v=>/^\d{4}$/.test(v)))return"";
     return`<a class="it" href="#rc-${k}" data-tk="${k}" aria-label="${esc(oname(o))}: ${dr.n.slice(0,3).join(", ")}"><i style="background-position:${-TKI[k]*24}px 0"></i><span class="v">${dr.n.slice(0,3).map((v,j)=>`<b style="--m:${MD[j]};--d:${j*3}s">${v}</b>`).join("")}</span></a>`}).join("");
-  const h=its?`<span class="pz" aria-hidden="true">${[0,1,2].map(j=>`<em style="--m:${MD[j]};--d:${j*3}s">${t("tkp"+(j+1))}</em>`).join("")}</span>`+its:"";if(el.innerHTML!==h)el.innerHTML=h}
+  const h=its?`<span class="pz" aria-hidden="true">${[0,1,2].map(j=>`<em style="--m:${MD[j]};--d:${j*3}s">${t("tkp"+(j+1))}</em>`).join("")}</span>`+its:"";if(el.innerHTML!==h)el.innerHTML=h;tkVis()}
 document.addEventListener("click",e=>{const a=e.target.closest("[data-tk]");if(a){e.preventDefault();if(st.tab!=="results")setTab("results");st.rd=null;renderLatest();const c=document.getElementById("rc-"+a.dataset.tk);if(c)c.scrollIntoView({block:"start",behavior:"smooth"});return}
   const ls=document.querySelector(".lsel");if(!ls)return;if(e.target.closest("#lcur")){const o=!ls.classList.contains("open");ls.classList.toggle("open",o);$("#lcur").setAttribute("aria-expanded",o);return}
   if(!e.target.closest(".lsel")||e.target.closest("[data-lang]")){ls.classList.remove("open");$("#lcur").setAttribute("aria-expanded","false")}});
@@ -1069,8 +1073,7 @@ function renderDraws(){
 function setTab(tab){
   ["results","check","browse","dict"].forEach(k=>{const b=$("#tab-"+k);if(b)b.setAttribute("aria-selected",k===tab);$("#p-"+k).hidden=k!==tab});
   $("#ops").hidden=!(tab==="check"||tab==="browse");
-  {const tr=$("#tkr");if(tr)tr.hidden=tab!=="results"}
-  st.tab=tab;setTimeout(hist,0);if(tab==="browse")renderDraws();if(tab==="dict"){renderDict();Promise.all(needChunks().map(k=>ensureDict(k))).then(renderDict)}
+  st.tab=tab;tkVis();setTimeout(hist,0);if(tab==="browse")renderDraws();if(tab==="dict"){renderDict();Promise.all(needChunks().map(k=>ensureDict(k))).then(renderDict)}
 }
 function syncHash(){try{history.replaceState(history.state,"",st.q?"#"+st.q:location.pathname+location.search)}catch(e){}}
 /* phone Back steps back inside the app (entry -> search -> previous tab) instead of leaving the site */
