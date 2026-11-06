@@ -234,12 +234,40 @@ ABOUT = {"en": "About us", "ms": "Tentang kami", "zh": "关于我们", "ta": "�
 SCHED = {"M": "s", "T": "s", "D": "s"}  # Wed/Sat/Sun + special Tue
 
 
+TYPO = """
+/* type system (Nov 2026): one family, five sizes 12 / 13.5 / 15 / 18 / 24, CJK and Tamil get more leading */
+.info{font-family:"Jakarta",system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC","Noto Sans Tamil",sans-serif;font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+html[lang^=zh] .info{letter-spacing:.02em}html[lang=ta] .info{line-height:1.8}
+.info h1,.info h2,.info summary{text-wrap:balance}.info p,.info dd{text-wrap:pretty}
+.info .crumb{font-size:12px}.info .lng a{font-size:12px}.info .tabs a,.info .tabs a.ab{font-size:13px;font-weight:700}
+.info .hero{padding:22px 0 6px}.info h1{font-size:24px;line-height:1.3;font-weight:800;letter-spacing:-.01em}html[lang^=zh] .info h1{letter-spacing:.01em}
+.info .hero p{font-size:15px;line-height:1.7;margin-top:8px}
+.info section{padding-top:30px}.info h2{font-size:18px;line-height:1.35;font-weight:800}.info .sub{font-size:13.5px;line-height:1.6;margin:2px 0 16px}
+.info .ch b{font-size:18px;font-weight:800;line-height:1.25}.info .ch small{font-size:12px;font-weight:600;opacity:.82;margin-top:1px}
+.info .since small{font-size:11px;font-weight:700;letter-spacing:.06em}.info .since span{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums lining-nums}
+.info .cb{padding:16px 16px 6px}.info .cb p{font-size:15px;line-height:1.75;color:#D5DEF0;margin:0 0 14px}html[lang=ta] .info .cb p{font-size:14.5px;line-height:1.85}
+.info dl{font-size:13.5px;line-height:1.5;gap:8px 16px;margin:0 0 14px}.info dt{font-weight:500}.info dd{font-weight:600;color:#EEF2FA}
+.info .chips{gap:6px}.info .chips span{font-size:12px;font-weight:600;padding:4px 10px;letter-spacing:0}
+.info .cf a{font-size:13.5px;font-weight:700;padding:10px 6px}
+.info .sch table{font-size:13.5px}.info .sch th{font-size:12px;font-weight:600}.info .note{font-size:12px;line-height:1.6}
+.info summary{font-size:15px;line-height:1.45}.info details .bd{font-size:14px;line-height:1.75}
+"""
+
 def build(site) -> None:
-    import hashlib
-    css_name = "assets/i." + hashlib.sha256(CSS.encode()).hexdigest()[:8] + ".css"
+    import hashlib, shutil
+    from pathlib import Path
     (site.out / "assets").mkdir(exist_ok=True)
-    (site.out / css_name).write_text(CSS)
-    cssl = f'<link rel="stylesheet" href="{site.u(css_name)}">'
+    # Plus Jakarta Sans for Latin text: the same hashed file the guide pages use, so it is shared in the cache
+    font = Path(__file__).with_name("brand") / "fonts" / "jakarta-latin.woff2"
+    fname = "assets/jakarta." + hashlib.sha256(font.read_bytes()).hexdigest()[:8] + ".woff2"
+    shutil.copy2(font, site.out / fname)
+    face = ('@font-face{font-family:"Jakarta";src:url(' + site.u(fname) + ') format("woff2");font-weight:200 800;font-display:swap;'
+            'unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}')
+    css = face + CSS + TYPO
+    css_name = "assets/i." + hashlib.sha256(css.encode()).hexdigest()[:8] + ".css"
+    (site.out / css_name).write_text(css)
+    cssl = (f'<link rel="preload" href="{site.u(fname)}" as="font" type="font/woff2" crossorigin>'
+            f'<link rel="stylesheet" href="{site.u(css_name)}">')
     path = lambda l: LANGS[l][1] + "info/"
     alts = "".join(f'<link rel="alternate" hreflang="{LANGS[l][0]}" href="{site.site}{path(l)}">' for l in LANGS) + f'<link rel="alternate" hreflang="x-default" href="{site.site}info/">'
     names = {"en": "EN", "ms": "BM", "zh": "中文", "ta": "தமிழ்"}
@@ -253,7 +281,7 @@ def build(site) -> None:
                + f'<a class="ab" href="{site.u(pre + "about/")}">{esc(ABOUT[lang])} ›</a></nav></div>')
         cards = ""
         for k, name, zh, hb, c, logo, since, url, chips in CO:
-            sv = f'<small>{esc(x["since"])}</small><br><span>{since}</span>' if since else f'<small>{esc(x["draws"])}</small><br><span>{esc(x["twice"] if k == "J" else x.get("w3", "3×") if k == "H" else x["daily"])}</span>'
+            sv = f'<small>{esc(x["since"])}</small><br><span>{since}</span>' if since else f'<small>{esc(x["draws"])}</small><br><span>{esc(x["twice"] if k == "J" else x.get("w3", "3×") if k in ("H", "B") else x["daily"])}</span>'
             zhh = f' <i>{zh}</i>' if zh and lang != "zh" else ""
             nm = (zh if lang == "zh" and zh else name)
             alt = ' alt="9 Lotto"' if k == "N" else ' alt=""'
