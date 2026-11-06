@@ -313,7 +313,7 @@ footer>p{line-height:1.6}
 .slip .lgw{width:48px;height:40px;display:grid;place-items:center;background:none;flex:none}.slip .lgw img{filter:drop-shadow(0 1px 2px rgba(0,0,0,.25))}
 .slip .lgw img{width:44px;height:36px;object-fit:contain}
 
-.slip .sht{min-width:0;flex:1}.slip .sht b{display:block;font-size:17px;line-height:1.15;font-weight:800}.slip .sht b i{font-style:normal;font-weight:700}
+.slip .sht{min-width:0;flex:1}.slip .sht b{display:block;font-size:17px;line-height:1.15;font-weight:800}.slip .sht b i{font-style:normal;font-weight:700;display:inline-block}.lv>span{display:flex;flex-wrap:wrap;column-gap:.3em;min-width:0}
 .slip .sht small{display:block;font-size:12.5px;font-weight:700;margin-top:2px;opacity:.95}
 .slip .lvp{flex:none;background:#000;color:#fff}
 .slip .lbar{display:grid;grid-template-columns:repeat(3,1fr);background:#5A4630;color:#fff;font-weight:700;font-size:12.5px;text-align:center}
@@ -960,8 +960,8 @@ function renderLatest(){
   const cards=BO.map(([k,c])=>{const o=LIVE.find(x=>x.k===k),nm=o?oname(o):OPS.find(x=>x.k===k).name,st_=`style="--c:${c};--hb:${HC[k]}"`;
     if(L&&L.wait.includes(k)){const on=L.n.m>=(DRAWM[k]||1140),pv=livePart(k,L.n);
       if(pv){const cell=v=>v?nb(v):'<button type="button" class="bl" disabled>----</button>',pad=(a,n)=>a.concat(Array(Math.max(0,n-a.length)).fill(""));
-        return`<article class="rc slip wait live part k-${k}" id="rc-${k}" ${st_}>${head(k,o,nm,`${t("tonight")}${pv.no?" · #"+pv.no:""}`,1)}<div class="lbar">${["p1","p2","p3"].map(p=>`<span>${lab(p)}</span>`).join("")}</div><div class="s3">${pv.top.map(cell).join("")}</div><div class="sec">${lab("p4")}</div><div class="s5">${pad(pv.sl.filter(Boolean).sort(),10).map(cell).join("")}</div><div class="sec">${lab("p5")}</div><div class="s5">${pad(pv.co.filter(Boolean).sort(),10).map(cell).join("")}</div>${j6(k,pv.top)}<p class="lv"><i></i><span>${t("drawing")}</span></p></article>`}
-      return`<article class="rc slip wait${on?" live":""} k-${k}" id="rc-${k}" ${st_}>${head(k,o,nm,`${t("tonight")} · ${t(k==="J"?"at3":k==="K"?"at9":k==="S"?"at630":"at7")}`,on)}${body(Array(23).fill("----"),1)}<p class="lv"><i></i><span class="cd" data-k="${k}">${liveMsg(L.n,k)}</span></p></article>`}
+        return`<article class="rc slip wait live part k-${k}" id="rc-${k}" ${st_}>${head(k,o,nm,`${t("tonight")}${pv.no?" · #"+pv.no:""}`,1)}<div class="lbar">${["p1","p2","p3"].map(p=>`<span>${lab(p)}</span>`).join("")}</div><div class="s3">${pv.top.map(cell).join("")}</div><div class="sec">${lab("p4")}</div><div class="s5">${pad(pv.sl.filter(Boolean).sort(),10).map(cell).join("")}</div><div class="sec">${lab("p5")}</div><div class="s5">${pad(pv.co.filter(Boolean).sort(),10).map(cell).join("")}</div>${j6(k,pv.top)}<p class="lv"><i></i><span>${lvH(t("drawing"))}</span></p></article>`}
+      return`<article class="rc slip wait${on?" live":""} k-${k}" id="rc-${k}" ${st_}>${head(k,o,nm,`${t("tonight")} · ${t(k==="J"?"at3":k==="K"?"at9":k==="S"?"at630":"at7")}`,on)}${body(Array(23).fill("----"),1)}<p class="lv"><i></i><span class="cd" data-k="${k}">${lvH(liveMsg(L.n,k))}</span></p></article>`}
     if(!o||!o.D.length)return`<article class="rc slip soon k-${k}" id="rc-${k}" ${st_}>${head(k,o,nm,t("soon"))}<div class="rb">${t("gdSoon")}</div></article>`;
     const dr=boardDraw(k);
     if(!dr)return`<article class="rc slip none k-${k}" id="rc-${k}" ${st_}>${head(k,o,nm,fD(st.rd))}<div class="rb">${t("noDraw")}</div></article>`;
@@ -1037,6 +1037,8 @@ const LDAYS={M:[0,3,6],D:[0,3,6],T:[0,3,6],G:[0,1,2,3,4,5,6],N:[0,1,2,3,4,5,6],J
 function myt(){const d=new Date(Date.now()+288e5);return{ymd:d.toISOString().slice(0,10).replace(/-/g,""),wd:d.getUTCDay(),m:d.getUTCHours()*60+d.getUTCMinutes(),s:d.getUTCSeconds()}}
 function liveNow(){if(st.rd)return null;const n=myt();const ks=BOARD.map(b=>b[0]).filter(k=>(LDAYS[k].includes(n.wd)||isSp(k,n.ymd))&&n.m>=dmin(k)-5);if(!ks.length)return null;
   return{n,ks,wait:ks.filter(k=>{const o=LIVE.find(x=>x.k===k);return!o||!o.D.length||o.D[o.D.length-1].d!==n.ymd})}}
+/* each word is its own flex item, so a late live line never outsizes the first-paint text (keeps LCP early) */
+function lvH(m){return m.split(" ").map(x=>`<span>${x}</span>`).join("")}
 function liveMsg(n,k){const r=((DRAWM[k]||1140)-n.m)*60-n.s;const p=x=>String(x).padStart(2,"0");return r>0?t("startsIn").replace("{t}",r>=3600?Math.floor(r/3600)+":"+p(Math.floor(r/60)%60)+":"+p(r%60):Math.floor(r/60)+":"+p(r%60)):t("waiting")}
 let LT=0,PT=0;
 let LV={},LVS="",LPT=0,LCONF={};
@@ -1055,7 +1057,7 @@ function lpoll(){if(document.hidden)return;{const L=liveNow();if(!L||!L.wait.som
   if(L.wait.some(k=>!livePart(k,L.n)&&L.n.m>=dmin(k)+10))poll();
   renderLatest()}).catch(()=>poll())}
 function liveStop(){clearInterval(LT);clearInterval(PT);clearInterval(LPT);LT=PT=LPT=0}
-function liveTick(){const L=liveNow();if(!L||!L.wait.length){liveStop();if(document.querySelector(".rc.wait"))renderLatest();return}if([...document.querySelectorAll(".rc.wait:not(.live) .cd")].some(e=>L.n.m>=(DRAWM[e.dataset.k]||1140))){renderLatest();return}document.querySelectorAll(".rc.wait .cd").forEach(e=>e.textContent=liveMsg(L.n,e.dataset.k))}
+function liveTick(){const L=liveNow();if(!L||!L.wait.length){liveStop();if(document.querySelector(".rc.wait"))renderLatest();return}if([...document.querySelectorAll(".rc.wait:not(.live) .cd")].some(e=>L.n.m>=(DRAWM[e.dataset.k]||1140))){renderLatest();return}document.querySelectorAll(".rc.wait .cd").forEach(e=>{const h=lvH(liveMsg(L.n,e.dataset.k));if(e.innerHTML!==h)e.innerHTML=h})}
 function armLive(){const L=liveNow();if(!L||!L.wait.length){liveStop();return}if(!LT)LT=setInterval(liveTick,1000);if(!PT){PT=setInterval(poll,45000);poll()}if(!LPT){LPT=setInterval(lpoll,25000);lpoll()}}
 function poll(){if(document.hidden)return;fetch("live.json?"+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(!j)return;LUP=Date.now();renderUpd();let add=0;if(j.X&&JSON.stringify(j.X)!==JSON.stringify(XT)){XT=j.X;add++}
   LIVE.forEach(o=>{const last=o.D.length?o.D[o.D.length-1].d:"";(j[o.k]||"").split("|").filter(Boolean).forEach(s=>{const a=s.split(",");if(a[0]>last&&a[2]&&a[2].length===92){const n=[];for(let i=0;i<92;i+=4)n.push(a[2].slice(i,i+4));o.D.push({d:a[0],no:a[1],n});add++}})});
