@@ -200,6 +200,7 @@ footer>p{line-height:1.6}
 .dbooks button small{display:block;font-weight:600;color:#7F8DAA;font-size:11px}
 .dbooks button[aria-pressed=true]{background:#F8F4E8;color:#07142B;border-color:#F8F4E8}.dbooks button[aria-pressed=true] small{color:#5A6785}
 .bksec{display:flex;align-items:center;gap:10px;margin:20px 0 0;font-size:16px}.bksec i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:800;color:#07142B;flex:none}.bksec small{font-size:12px;color:#7F8DAA;font-weight:600}
+@media(max-width:759px){.bkfeat .entry:nth-child(n+7){display:none}}
 .bkwhy{font-size:12px;color:#A9B4CC;margin:4px 0 0}.bkhint{font-size:12.5px;color:#A9B4CC;margin:12px 0 0}
 .bkrelh{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#7F8DAA;margin:18px 0 8px}
 .bkrel{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}.bkrel::-webkit-scrollbar{display:none}
@@ -1270,9 +1271,9 @@ function renderBookView(){
   if(ds.b==="all"){$("#ranges").hidden=true;$("#dgrid").innerHTML="";
     const need=[0,1].filter(k=>DICT_URLS&&!dlDone[k]);if(need.length)Promise.all(need.map(k=>ensureDict(k))).then(()=>{if(ds.b==="all"&&!ds.q.trim())renderBookView()});
     if(!BKD.tpk)loadBooks().then(()=>{if(ds.b==="all"&&!ds.q.trim())renderBookView()});
-    const pick={wz:[8,168,518,666,1688,1234],tpk:[8,88,168,388,666,888],gy:[8,88,168,388,666,888]};
+    const pick={wz:[8,168,518,666,1688,1234,5,6,9,1111],tpk:[8,88,168,388,666,888,1,128,288,518],gy:[8,88,168,388,666,888,1,128,288,518]};/* 10 = two full rows of 5 on desktop; phones show the first 6 (two rows of 3) */
     $("#dother").innerHTML=`<p class="bkhint">${t("bkPick")}</p>`+["wz","tpk","gy"].map(b=>{const g=b==="wz"?(need.length?'<div class="sk"></div>':pick.wz.map(n=>wcard(DICT[n])).join("")):(BKD[b]?pick[b].map(n=>bcard(b,BKD[b][n])).join(""):'<div class="sk"></div>');
-      return`<h3 class="bksec"><i style="background:${BKC[b]}">${BKI[b]}</i><span>${t(BKF[b])}</span><small>${b==="wz"?"0000–9999":"000–999"}</small></h3><div class="dgrid">${g}</div><button type="button" class="more" data-bkb="${b}">${esc(t(BKF[b]))} →</button>`}).join("");
+      return`<h3 class="bksec"><i style="background:${BKC[b]}">${BKI[b]}</i><span>${t(BKF[b])}</span><small>${b==="wz"?"0000–9999":"000–999"}</small></h3><div class="dgrid bkfeat">${g}</div><button type="button" class="more" data-bkb="${b}">${esc(t(BKF[b]))} →</button>`}).join("");
     return}
   const b=ds.b;$("#ranges").hidden=false;
   $("#ranges").innerHTML=Array.from({length:10},(_,i)=>`<button type="button" data-br="${i}" aria-pressed="${ds.br===i}"><span class="mono">${i}00–${i}99</span></button>`).join("");
