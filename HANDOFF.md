@@ -203,8 +203,19 @@ read it from the current session, it changes.
 descriptions (>160), 0 broken internal links, 0 cross-language links, 0 orphan pages, 0 pages
 missing from the sitemap, 26,226 JSON-LD blocks valid, hreflang fully reciprocal.
 
-**Performance:** CLS 0, LCP 112–268 ms across page types. Home SPA ~61 KB gz (it inlines
-everything); date pages ~6 KB gz; statistics 6 KB gz + a 12 KB deferred filter asset.
+**Performance:** CLS 0, LCP 112–268 ms across page types. Home SPA HTML ~28 KB gz (6 Nov: the
+~100 KB app script moved to `assets/app.<hash>.js`, `defer` in `<head>`, identical for all four
+languages and cached forever); date pages ~6 KB gz; statistics 6 KB gz + a 12 KB deferred filter asset.
+
+**Themes (6 Nov, `tools/themes.py` + `tools/theme_sky.py`):** header switch Black (default) /
+Day / Starry Night on the four home pages. `themes.apply()` runs on the minified home HTML and
+turns every role colour into a CSS variable (`ROLE` map: base shade -> role; palettes per theme),
+SVG/meta attributes excluded. Day needs extra overrides (`DAY_FIX`). The Van Gogh sky is NOT in
+the page: `assets/sky.<hash>.html` (~8 KB gz) is fetched only when Starry Night is active.
+Choice kept in `localStorage.th`. GA4: user property `ui_theme` (set before `config`, so the first
+page_view carries it) + event `theme_select {theme, theme_from}`; the user must register both as
+custom dimensions in GA Admin. Static SEO/info pages are not themed yet (still navy).
+If the home template's colours change, re-check `ROLE` covers the new shades.
 
 **Caching** (`_headers`): archive 10 min + 1 day SWR, dictionary and provider-year 1 day +
 7 day SWR, assets 1 year immutable, home and operator hubs `must-revalidate` (they show

@@ -146,6 +146,22 @@ def prerender_static(html: str, data: dict) -> str:
     return html
 
 
+def external_app(html: str, out: Path) -> str:
+    """Move the app script (~100 KB, identical in all four languages) into a fingerprinted file.
+
+    It is cached forever (/assets/* is immutable, and the service worker serves it cache-first),
+    so repeat visits and language switches only download the HTML. The tag goes in <head> with
+    defer: it downloads in parallel with the page and still runs after parsing, as before."""
+    blocks = [m for m in re.finditer(r"<script>(.*?)</script>", html, re.S)]
+    m = max(blocks, key=lambda x: len(x.group(1)))
+    js = m.group(1).encode()
+    if len(js) < 20000: return html
+    name = f"assets/app.{h8(js)}.js"
+    (out / name).parent.mkdir(parents=True, exist_ok=True); (out / name).write_bytes(js)
+    html = html[:m.start()] + html[m.end():]
+    return html.replace("</head>", f'<script src="/{name}" defer></script></head>', 1)
+
+
 def icons(out: Path) -> None:
     """Copy the 4D Malam Ini brand files (favicon, app icons, share image) into the site root."""
     brand = Path(__file__).with_name("brand")
@@ -269,6 +285,8 @@ def main() -> None:
     mini = shutil.which("html-minifier-terser") or next((str(p) for p in [Path(__file__).resolve().parent.parent / "node_modules/.bin/html-minifier-terser"] if p.exists()), None)
     if not mini:
         print("  ! html-minifier-terser not found: pages left unminified (npm i -g html-minifier-terser)")
+    import themes as TH                      # Black / Day / Starry Night switch (see themes.py)
+    sky_url = TH.write_fragment(out)
     for lang in ("en", "ms", "zh", "ta"):
         title, desc = SP.LANG_META[lang]
         page = (prerender_lang(html, lang).replace("__HTMLLANG__", SP.HTML_LANG[lang]).replace("__CANON__", url[lang])
@@ -317,6 +335,7 @@ def main() -> None:
         if mini:
             subprocess.run([mini, "--collapse-whitespace", "--remove-comments", "--minify-css", "true", "--minify-js", "true",
                             "--remove-redundant-attributes", "-o", str(f), str(f)], check=True)
+        f.write_text(external_app(TH.apply(f.read_text(), sky_url), out))
     mark = Path(__file__).with_name("brand").joinpath("mark.svg").read_text().replace("<svg ", '<svg width="40" height="28" aria-hidden="true" ', 1)
     sp = SP.Site(out, site, base, data, lines if (a.dict or imgs or text) else [], mark)
     sp.build()
