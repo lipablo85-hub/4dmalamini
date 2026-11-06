@@ -72,6 +72,13 @@ DAY_FIX = ('[data-th=day] .dbooks button i,[data-th=day] .bksec i{color:#1C1A16!
            '[data-th=day] .mtop{color:#1C1A16}[data-th=day] .mtt small{opacity:.85}[data-th=day] .bell{background:#1C1A16}[data-th=day] .chev{background:rgba(28,26,22,.14)}'
            '[data-th=day] .chev::before{border-color:#1C1A16}[data-th=day] .bell::after,[data-th=day] .bell::before{border-color:rgba(28,26,22,.5)}'
            '[data-th=day] .seo a{color:#1F4FB5;text-decoration-color:rgba(31,79,181,.45)}[data-th=day] .seo a:hover{color:#163A8A}[data-th=day] .fl nav b{color:#7A5A00}'
+           '[data-th=day] .msum span{background:#1C1A16;color:#FFD34D}[data-th=day] .msum .wn{background:#FFFFFF;color:#1C1A16}[data-th=day] .msum .mlv{background:#c81e1e;color:#fff}'
+           '[data-th=day] .mit{background:#FAF7F0;border-color:#E2DACB}[data-th=day] .mit .n,[data-th=day] .mit .st b{color:#1C1A16}[data-th=day] .mit .tg{background:#E8E1D3;color:#3D382F}'
+           '[data-th=day] .mit .x{background:rgba(28,26,22,.06)}[data-th=day] .mit.won{background:linear-gradient(90deg,#FFF0B8,#FFF9E6);border-color:#C99A00}'
+           '[data-th=day] .mit.won .n,[data-th=day] .mit.won .st b{color:#7A5A00}[data-th=day] .mlive{color:#0F766E}[data-th=day] .mlive.on{color:#B3261E}'
+           '[data-th=day] .tk .pz em,[data-th=day] .op[aria-pressed=true],[data-th=day] .hx-tiers div,[data-th=day] .hx-co .hb span,[data-th=day] .hx-it .pz,[data-th=day] .rc>header,[data-th=day] .mtoast{color:#1C1A16}'
+           '[data-th=day] .op[aria-pressed=true] i{background:#1C1A16!important}[data-th=day] .hx{background:radial-gradient(120% 120% at 100% 0,#F6E7BF 0,var(--r-surf) 55%)}[data-th=day] .hx-none,[data-th=day] .hx-strip .hy{color:#6B6457}'
+           '[data-th=day] .hx-tg button{color:#1C1A16;border-color:#B8AE9C}[data-th=day] .hx-tg button.on{color:#000}'
            '[data-th=day] header,[data-th=day] .nav,[data-th=day] .bnav{color:#1C1A16}[data-th=day] .bar .bt small{color:#6B6457}')
 SW_CSS = ('.thsw{display:flex;gap:2px;padding:3px;margin-left:auto;margin-right:8px;border-radius:999px;background:rgba(var(--r-rgb_ink),.08);border:1px solid var(--r-bord)}'
           '.thsw button{display:grid;place-items:center;width:30px;height:30px;border:0;border-radius:999px;background:none;color:var(--r-mut);cursor:pointer;padding:0}'
