@@ -149,7 +149,7 @@ def prerender_static(html: str, data: dict) -> str:
 def icons(out: Path) -> None:
     """Copy the 4D Malam Ini brand files (favicon, app icons, share image) into the site root."""
     brand = Path(__file__).with_name("brand")
-    for f in ("favicon.svg", "favicon-32.png", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "icon-maskable-512.png", "og-image.jpg"):
+    for f in ("favicon.svg", "favicon-32.png", "favicon-96.png", "favicon.ico", "apple-touch-icon.png", "icon-192.png", "icon-512.png", "icon-maskable-512.png", "og-image.jpg"):
         if (brand / f).exists():
             shutil.copy2(brand / f, out / f)
         else:
