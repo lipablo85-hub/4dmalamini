@@ -240,6 +240,11 @@ often exhausted, so `check.yml` runs Lighthouse itself. hreflang verified on all
 pages (self-reference, reciprocity, x-default, canonical match); `/keputusan/` and `/4d/` are
 single-language by design. Every sitemap URL now has `<lastmod>` (guides use their generator's
 last commit; deploy checks out 300 commits for this).
+**Live-window LCP (6 Nov):** during draw windows the wait card is drawn after live.json, so any
+large late text becomes the LCP (was 4.4 s). `lvH()` puts each word of the live line in its own
+flex item and `.sht b i` is inline-block, so nothing late outsizes the first-paint `#rdlabel`.
+Keep new late-rendered text split or small. Rescan at 21:23 MYT: home EN 99, zh 97–98, ta 91–94,
+ms 95 (CLS 0.071 on ms still to trace), LCP 1.4–2.4 s.
 
 **Cloudflare Web Analytics is off** (6 Nov): its auto-injected `beacon.min.js` (10 KB, legacy JS,
 a request chain) was the last Lighthouse warning and duplicated GA4. Turned off with
