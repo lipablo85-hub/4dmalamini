@@ -186,6 +186,14 @@ scratch probe — rewrite it freely.
 the fixed bottom nav (or the body background), and a `backdrop-filter` on those bars stops the
 sampling. Keep both bars solid theme colour with no blur (`themes.INLINE_CSS_TAIL`).
 
+**The home prerender must match the script's first render.** The page script redraws the board
+after first paint (it waits for `live.json`), so anything it adds or reorders above the fold
+shifts the page. On 6 Nov this was CLS 0.58 on slow 4G: cards written Magnum-first and then
+reordered for daily games, plus missing jackpot bars, 6D rows, ticker and special-draw pill.
+`prerender_latest()` now writes cards in display order and includes those parts; the order
+classes are set on `<html>` from a head script. Measure CLS with network throttling
+(`/tmp/cls.py` pattern: Playwright, 150 ms / 1.6 Mbps, CPU x4), never on a fast local load.
+
 **Verify every scripted edit.** A heredoc that does all its `s.replace()` work then writes at
 the end will silently write nothing if an assertion fails partway. `grep` after each edit.
 
@@ -220,6 +228,15 @@ Choice kept in `localStorage.th`. GA4: user property `ui_theme` (set before `con
 page_view carries it) + event `theme_select {theme, theme_from}`; the user must register both as
 custom dimensions in GA Admin. Static SEO/info pages are not themed yet (still navy).
 If the home template's colours change, re-check `ROLE` covers the new shades.
+
+**Lighthouse (6 Nov, mobile, from a GitHub runner):** CLS 0-0.008 on every page type after the
+fix; LCP 1.8-2.5 s on Google's slow-4G profile, 0.7-1.0 s on a Malaysia-like 4G profile (60 ms,
+20 Mbps); home TBT 450-780 ms is the remaining cost (main-thread work of the app script).
+`/4d/NNNN/` LCP is the dictionary sprite sheet (2.7-3.8 s on slow 4G). PSI's keyless API quota is
+often exhausted, so `check.yml` runs Lighthouse itself. hreflang verified on all 300 localized
+pages (self-reference, reciprocity, x-default, canonical match); `/keputusan/` and `/4d/` are
+single-language by design. Every sitemap URL now has `<lastmod>` (guides use their generator's
+last commit; deploy checks out 300 commits for this).
 
 **Caching** (`_headers`): archive 10 min + 1 day SWR, dictionary and provider-year 1 day +
 7 day SWR, assets 1 year immutable, home and operator hubs `must-revalidate` (they show
