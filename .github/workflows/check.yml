@@ -7,6 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - name: Small logos live
+        run: |
+          for u in img/op/sm/k.webp img/op/sm/n-s.webp img/op/sm/d-n.webp img/op/k.webp; do curl -s -o /dev/null -w "$u %{http_code} %{size_download}B\n" "https://www.4dmalamini.com/$u"; done
+          curl -s https://www.4dmalamini.com/zh/ | grep -o 'img/op/[a-z/-]*\.webp' | sort | uniq -c | head -5
       - name: Lighthouse insight details (home)
         run: |
           npm i -g lighthouse@12 >/dev/null 2>&1
