@@ -194,9 +194,25 @@ def main() -> None:
                 if p.suffix == ".webp":
                     imgs.add(m.group(1))
     dict_urls, stats = None, None
+    # Tua Pek Kong + Guan Yin Ma (000-999 each): text as hashed JSON, pictures as 40 AVIF sheets each
+    books = {}
+    bdir = Path(__file__).resolve().parent.parent
+    for key in ("tpk", "gy"):
+        bj, bs = bdir / "dict_books" / f"{key}.json", bdir / f"sprites_{key}"
+        if bj.exists() and bs.is_dir():
+            b = bj.read_bytes()
+            books[key] = f"data/book-{key}.{h8(b)}.json"
+            (out / "data").mkdir(exist_ok=True)
+            (out / books[key]).write_bytes(b)
+            shutil.copytree(bs, out / "img" / key)
     text = load_text(Path(a.text)) if a.text else {}
     if a.dict or imgs or text:
         lines = build_dict(Path(a.dict) if a.dict else None, imgs, text)
+        # extra wordings from the 4D Lucky Book copy of the same book: an 8th, search-only field
+        altf = Path(__file__).resolve().parent.parent / "dict_books" / "wz_alt.json"
+        if lines and altf.exists():
+            alt = json.loads(altf.read_text(encoding="utf-8"))
+            lines = [l + "|" * max(0, 6 - l.count("|")) + "|" + alt[l[:4]] if l[:4] in alt else l for l in lines]
         if lines:
             dict_urls, stats = [], {"pictures": len(imgs), "chunks": [0] * 10, "zh": 0, "en": 0, "ms": 0, "ta": 0}
             for k in range(10):
@@ -221,7 +237,7 @@ def main() -> None:
     (out / jkd_name).write_bytes(jkd.read_bytes())
     html = html.replace("__JKD__", jkd_name)
     html = (html.replace("__DATAURL__", res_name).replace("__SITEURL__", a.site)
-                .replace("__UPDTXT__", "Updated " + __import__("datetime").datetime.now(__import__("datetime").timezone(__import__("datetime").timedelta(hours=8))).strftime("%-d %b %Y, %-I:%M%p").replace("AM", "am").replace("PM", "pm") + " MYT").replace("__SPECIAL__", json.dumps([d.replace("-", "") for d in json.loads((Path(__file__).with_name("special_draws.json")).read_text())["dates"]])).replace("__DICTURL__", json.dumps(dict_urls)).replace("__DICTSTATS__", json.dumps(stats)).replace("__DICT__", '""').replace("__DICTIMG__", "{}"))
+                .replace("__UPDTXT__", "Updated " + __import__("datetime").datetime.now(__import__("datetime").timezone(__import__("datetime").timedelta(hours=8))).strftime("%-d %b %Y, %-I:%M%p").replace("AM", "am").replace("PM", "pm") + " MYT").replace("__SPECIAL__", json.dumps([d.replace("-", "") for d in json.loads((Path(__file__).with_name("special_draws.json")).read_text())["dates"]])).replace("__DICTURL__", json.dumps(dict_urls)).replace("__BOOKS__", json.dumps(books)).replace("__DICTSTATS__", json.dumps(stats)).replace("__DICT__", '""').replace("__DICTIMG__", "{}"))
     from urllib.parse import urlparse
     import sys
     sys.path.insert(0, str(Path(__file__).parent))
@@ -335,7 +351,7 @@ def main() -> None:
     for fn, cnt in getattr(sp, "sitemap_groups", []):
         print(f"    {fn:26} {cnt:6} urls")
 
-    version = h8((out / "index.html").read_bytes() + res + json.dumps(dict_urls).encode())
+    version = h8((out / "index.html").read_bytes() + res + json.dumps(dict_urls).encode() + json.dumps(books).encode())
     (out / "sw.js").write_text(SW.replace("__V__", version))
     (out / "manifest.webmanifest").write_text(json.dumps({
         "name": "4D Malam Ini", "short_name": "4D Malam Ini", "lang": "ms", "start_url": "./", "scope": "./",

@@ -1,0 +1,6 @@
+book 1: 1000 items, numbers ['000', '001', '002']..['997', '998', '999'], dup numbers 0, image sizes [((200, 200), 686), ((125, 125), 292), ((100, 100), 21), ((120, 120), 1)], failed 0 []
+book 2: 1000 items, numbers ['000', '001', '002']..['997', '998', '999'], dup numbers 0, image sizes [((200, 200), 1000)], failed 0 []
+book 3: 10000 items, numbers ['0000', '0001', '0002']..['9997', '9998', '9999'], dup numbers 0, image sizes [((200, 200), 10000)], failed 0 []
+
+Source: 4dluckybook.com (books 1, 2, 3), pulled 5 Nov 2026 by tools/luckybook_fetch.py. Owner states the images are free to use.
+book 3 = the same 万字图 as dict_text/ + sprites/ (same drawings), so only its extra wordings are kept, in wz_alt.json, as search words.
