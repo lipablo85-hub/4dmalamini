@@ -1173,7 +1173,7 @@ const pic=(e,alt,big)=>{
   const o=+e.n,sz=big?400:240,c=o%25;return`<span class="pic mv" style="--ox:${20+o*37%60}%;--oy:${30+o*53%40}%"><i class="sp" role="img" aria-label="${esc(alt||t("dictTitle")+" "+e.n)}" style="background-image:url(img/d2/${sz}/${String(Math.floor(o/25)).padStart(3,"0")}.avif);background-position:${c%5*25}% ${Math.floor(c/5)*25}%"></i></span>`};
 const SITE="__SITEURL__";
 const ga=(n,p)=>{try{if(window.gtag)gtag("event",n,p)}catch(e){}};
-function shareData(n){const x=DICT[+n],m=x[st.lang]||x.en||x.zh;return{title:"4D "+n+" · 4D Malam Ini",text:t("shareTxt",{n,m,z:st.lang==="zh"?(x.zh||m):x.zh}),url:SITE+"4d/"+n+"/"}}
+function shareData(n){const x=DICT[+n],m=x[st.lang]||x.en||x.zh;return{title:"4D "+n+" · 4D Malam Ini",text:t("shareTxt",{n,m,z:st.lang==="zh"?(x.zh||m):x.zh}),url:st.lang==="ms"?SITE+"4d/"+n+"/":SITE+(st.lang==="en"?"":st.lang+"/")+"?n="+n}}
 function winLine(n){
   if(!FULL){loadFull().then(()=>{if(ds.open===n)renderDict()},()=>{});return`<span class="ld">${t("winLoading")}</span>`}
   const hs=hitsOf(n);if(!hs.length)return t("winNone");
