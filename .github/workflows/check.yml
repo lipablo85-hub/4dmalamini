@@ -7,9 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Strip only on home pages
+      - name: Dictionary books live
         run: |
           S=https://www.4dmalamini.com
-          for u in "" ms/ zh/ ta/ keputusan/2026-11-04/ 4d/8888/ zh/magnum-4d-result/ info/; do
-            printf '%-26s %s strip=%s\n' "/$u" "$(curl -s -o /dev/null -w '%{http_code}' "$S/$u?v=$RANDOM")" "$(curl -s "$S/$u?v=$RANDOM" | grep -c 'class="tkr"')"
-          done
+          H=$(curl -s "$S/?v=$RANDOM")
+          for u in $(echo "$H" | grep -o 'data/book-[a-z]*\.[0-9a-f]*\.json' | sort -u); do printf '%-36s %s %sB\n' "$u" "$(curl -s -o /dev/null -w '%{http_code}' $S/$u)" "$(curl -s $S/$u | wc -c)"; done
+          for u in img/tpk/00.avif img/tpk/39.avif img/gy/00.avif img/gy/39.avif; do printf '%-20s %s %s\n' $u "$(curl -s -o /dev/null -w '%{http_code} %{content_type}' $S/$u)" "$(curl -sI $S/$u | grep -i '^cache-control' | tr -d '\r')"; done
+          C=$(echo "$H" | grep -o 'data/dict-0\.[0-9a-f]*\.txt' | head -1); echo "$C"; curl -s "$S/$C" | sed -n 2p
+          for l in "" ms/ zh/ ta/; do printf '/%-4s dbooks=%s\n' "$l" "$(curl -s "$S/$l?v=$RANDOM" | grep -c 'id="dbooks"')"; done
