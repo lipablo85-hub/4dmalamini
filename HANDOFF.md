@@ -229,10 +229,13 @@ page_view carries it) + event `theme_select {theme, theme_from}`; the user must 
 custom dimensions in GA Admin. Static SEO/info pages are not themed yet (still navy).
 If the home template's colours change, re-check `ROLE` covers the new shades.
 
-**Lighthouse (6 Nov, mobile, from a GitHub runner):** CLS 0-0.008 on every page type after the
-fix; LCP 1.8-2.5 s on Google's slow-4G profile, 0.7-1.0 s on a Malaysia-like 4G profile (60 ms,
-20 Mbps); home TBT 450-780 ms is the remaining cost (main-thread work of the app script).
-`/4d/NNNN/` LCP is the dictionary sprite sheet (2.7-3.8 s on slow 4G). PSI's keyless API quota is
+**Lighthouse (6 Nov evening, mobile, from a GitHub runner):** scores 91-99 on Google's slow-4G
+profile and 94-99 on a Malaysia-like 4G profile (60 ms, 20 Mbps); CLS 0-0.002; home TBT 140-280 ms
+(was 450-780: content-visibility on off-screen sections, share images prepared only after the first
+touch/scroll, board morphed in place). The remaining gap to 100 is FCP ~1.6-1.8 s, which is mostly
+the simulated 150 ms round trips. `/4d/NNNN/` LCP is the 184 KB 25-picture AVIF sheet (2.8 s on
+slow 4G, 0.8 s on 4G); single-picture files would need 10,000 more files and Pages allows 20,000
+per deploy (we use ~12,200). The first Lighthouse run in a job is a cold outlier; read the second. PSI's keyless API quota is
 often exhausted, so `check.yml` runs Lighthouse itself. hreflang verified on all 300 localized
 pages (self-reference, reciprocity, x-default, canonical match); `/keputusan/` and `/4d/` are
 single-language by design. Every sitemap URL now has `<lastmod>` (guides use their generator's
