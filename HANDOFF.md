@@ -211,7 +211,7 @@ languages and cached forever); date pages ~6 KB gz; statistics 6 KB gz + a 12 KB
 Day / Starry Night on the four home pages. `themes.apply()` runs on the minified home HTML and
 turns every role colour into a CSS variable (`ROLE` map: base shade -> role; palettes per theme),
 SVG/meta attributes excluded. Day needs extra overrides (`DAY_FIX`). The Van Gogh sky is NOT in
-the page: `assets/sky.<hash>.html` (~8 KB gz) is fetched only when Starry Night is active.
+the page: `assets/sky.<hash>.txt` (not .html: Pages redirects those) (~8 KB gz) is fetched only when Starry Night is active.
 Choice kept in `localStorage.th`. GA4: user property `ui_theme` (set before `config`, so the first
 page_view carries it) + event `theme_select {theme, theme_from}`; the user must register both as
 custom dimensions in GA Admin. Static SEO/info pages are not themed yet (still navy).

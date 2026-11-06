@@ -3,7 +3,7 @@
 Run on the built home pages (after minifying). Every themed colour in the page becomes a CSS
 variable, so the three themes cost ~1.5 KB of variables instead of three stylesheets.
 The Starry Night painting is NOT in the page: it is a separate fingerprinted fragment
-(assets/sky.<hash>.html, cached forever) fetched only when a visitor picks Starry Night, so
+(assets/sky.<hash>.txt, cached forever) fetched only when a visitor picks Starry Night, so
 Black and Day visitors never download it.
 GA4: user property ui_theme on every hit (queued before gtag config, so the first page_view has
 it) and a theme_select event {theme, theme_from} on each button press.
@@ -103,7 +103,7 @@ def body_js(sky_url):
 
 def write_fragment(out: Path) -> str:
     b = fragment().encode()
-    name = f"assets/sky.{hashlib.sha256(b).hexdigest()[:10]}.html"
+    name = f"assets/sky.{hashlib.sha256(b).hexdigest()[:10]}.txt"   # not .html: Pages 308-redirects .html to pretty URLs
     (out / name).parent.mkdir(parents=True, exist_ok=True); (out / name).write_bytes(b)
     return "/" + name
 
