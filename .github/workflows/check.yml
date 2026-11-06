@@ -7,19 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Cloudflare Web Analytics disable (no secrets printed)
-        env:
-          T1: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          ACC: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: |
-          B="https://api.cloudflare.com/client/v4/accounts/$ACC/rum/site_info"
-          curl -s -H "Authorization: Bearer $T1" "$B/list" | jq -c '[.result[] | {site_tag, site_token, host:.ruleset.zone_name, auto_install, enabled:.ruleset.enabled}]'
-          S=$(curl -s -H "Authorization: Bearer $T1" "$B/list" | jq -r '.result[] | select(.site_token=="bf09b2436dd8467a9948306d2dde5cf9" or .ruleset.zone_name=="4dmalamini.com") | .site_tag' | head -1)
-          Z=$(curl -s -H "Authorization: Bearer $T1" "$B/$S" | jq -r '.result.ruleset.zone_tag')
-          curl -s -X PUT -H "Authorization: Bearer $T1" -H "Content-Type: application/json" "$B/$S" \
-            -d "{\"auto_install\":false,\"enabled\":false,\"zone_tag\":\"$Z\",\"host\":\"4dmalamini.com\"}" | jq -c '{success, errors:[.errors[]?.message], auto_install:.result.auto_install, enabled:.result.ruleset.enabled}'
-          UA="Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Mobile Safari/537.36"
-          for k in 1 2 3 4 5 6; do sleep 30; echo "t+$((k*30))s beacon: $(curl -s -A "$UA" -H 'Accept: text/html' "https://www.4dmalamini.com/?x=$RANDOM" | grep -c cloudflareinsights)"; done
       - name: Small logos live
         run: |
           for u in img/op/sm/k.webp img/op/sm/n-s.webp img/op/sm/d-n.webp img/op/k.webp; do curl -s -o /dev/null -w "$u %{http_code} %{size_download}B\n" "https://www.4dmalamini.com/$u"; done
@@ -35,5 +22,20 @@ jobs:
             echo "== /$u score $(jq '.categories.performance.score' l.json)"
             for a in cache-insight image-delivery-insight legacy-javascript-insight network-dependency-tree-insight uses-long-cache-ttl modern-image-formats uses-responsive-images legacy-javascript third-party-summary; do
               jq -r --arg a "$a" '.audits[$a] // empty | "-- \($a): \(.displayValue // "") score=\(.score)", ((.details.items // [])[:12][] | "   " + ([.url // .entity // "", (.wastedBytes // .totalBytes // .transferSize // "" | tostring), (.cacheLifetimeMs // .ttl // "" | tostring), ((.subItems.items // [])[:6] | map(.signal // .reason // .url // "") | join(";"))] | map(tostring) | join(" | ")))' l.json
+            done
+          done
+      - name: Lighthouse mobile scores
+        run: |
+          for prof in default my4g; do
+            if [ $prof = my4g ]; then T="--throttling.rttMs=60 --throttling.throughputKbps=20000 --throttling.cpuSlowdownMultiplier=4"; else T=""; fi
+            for u in "" zh/ ms/ keputusan/2026-11-05/ zh/magnum-4d-result/ 4d/8888/ zh/4d-statistics/; do
+              for k in 1 2; do
+                lighthouse "https://www.4dmalamini.com/$u" --only-categories=performance --form-factor=mobile --screenEmulation.mobile $T \
+                  --chrome-flags="--headless=new --no-sandbox" --output=json --output-path=l.json --quiet >/dev/null 2>&1 || continue
+                jq -r --arg u "$prof /$u" '[$u, "score=" + ((.categories.performance.score // 0) * 100 | floor | tostring),
+                  "FCP=" + .audits["first-contentful-paint"].displayValue, "LCP=" + .audits["largest-contentful-paint"].displayValue,
+                  "TBT=" + .audits["total-blocking-time"].displayValue, "CLS=" + .audits["cumulative-layout-shift"].displayValue,
+                  "SI=" + .audits["speed-index"].displayValue] | join("  ")' l.json
+              done
             done
           done
