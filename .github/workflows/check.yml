@@ -10,9 +10,9 @@ jobs:
       - name: LCP element detail
         run: |
           npm i -g lighthouse@12 >/dev/null 2>&1
-          for u in "" ms/; do for k in 1 2; do
+          for u in "" ms/ zh/ ta/; do for k in 1 2; do
             lighthouse "https://www.4dmalamini.com/$u" --only-categories=performance --form-factor=mobile --screenEmulation.mobile \
               --chrome-flags="--headless=new --no-sandbox" --output=json --output-path=l.json --quiet >/dev/null 2>&1
-            jq -r --arg u "/$u" '[$u, .audits["largest-contentful-paint"].displayValue, (.audits["largest-contentful-paint-element"].details.items[0].items[0].node | (.selector + " :: " + (.snippet|.[0:120]))), ((.audits["largest-contentful-paint-element"].details.items[1].items // []) | map(.phase + "=" + (.timing|floor|tostring)) | join(" "))] | join("  |  ")' l.json
+            jq -r --arg u "/$u" '[$u, ((.categories.performance.score*100|floor|tostring)+"/100"), "CLS="+.audits["cumulative-layout-shift"].displayValue, "TBT="+.audits["total-blocking-time"].displayValue, .audits["largest-contentful-paint"].displayValue, (.audits["largest-contentful-paint-element"].details.items[0].items[0].node | (.selector + " :: " + (.snippet|.[0:120]))), ((.audits["largest-contentful-paint-element"].details.items[1].items // []) | map(.phase + "=" + (.timing|floor|tostring)) | join(" "))] | join("  |  ")' l.json
             jq -r '.audits["legacy-javascript"].details.items[]? | "  legacy: " + .url + " " + ((.wastedBytes//0)|tostring)' l.json
           done; done
