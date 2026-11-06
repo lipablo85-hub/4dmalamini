@@ -237,6 +237,12 @@ Draft sources in the artifact "4D Malam Ini: logo intro D" (A-C in its earlier v
 Sabah 88 4D (key `B`, slug `sabah-88-4d-result`): 840 draws from check4d cross-checked with 4d2ulive (0 conflicts); draw 3950
 (16 Nov 2024) unpublished by both. Logo sprite is now `img/op/tk11.webp` (11 tiles; `/img/*` is immutable, so a new sprite
 needs a new file name). Ticker sprite positions come from the `TKI` map, not display order. Temp branch `sabah88-data` can be deleted.
+Dictionary has three books (6 Nov): 4D Dream Numbers = the existing 10,000 (`dict_text/`, `sprites/`), Tua Pek Kong and
+Guan Yin Ma 000-999 from 4D Lucky Book (`dict_books/tpk.json`, `gy.json`, `sprites_tpk/`, `sprites_gy/`, 200 px AVIF sheets made by
+`tools/book_img.py`; owner states the images are free to use). Lucky Book's 万字图 is the same drawings as ours at half the
+resolution, so only its extra wordings are kept (`dict_books/wz_alt.json`, 8th search-only field in each dict chunk). One search
+covers all three; a 4-digit number matches the 3-digit books on its last 3 digits. Header results strip: Results tab only.
+Temp branch `luckybook-data` (raw pull, 221 MB) can be deleted.
 
 ### Open
 - **HSTS** — user's decision, not started. Start at `max-age=86400`, no `includeSubDomains`,
