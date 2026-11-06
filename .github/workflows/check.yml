@@ -7,11 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Dictionary books live
+      - name: Info typography live
         run: |
           S=https://www.4dmalamini.com
-          H=$(curl -s "$S/?v=$RANDOM")
-          for u in $(echo "$H" | grep -o 'data/book-[a-z]*\.[0-9a-f]*\.json' | sort -u); do printf '%-36s %s %sB\n' "$u" "$(curl -s -o /dev/null -w '%{http_code}' $S/$u)" "$(curl -s $S/$u | wc -c)"; done
-          for u in img/tpk/00.avif img/tpk/39.avif img/gy/00.avif img/gy/39.avif; do printf '%-20s %s %s\n' $u "$(curl -s -o /dev/null -w '%{http_code} %{content_type}' $S/$u)" "$(curl -sI $S/$u | grep -i '^cache-control' | tr -d '\r')"; done
-          C=$(echo "$H" | grep -o 'data/dict-0\.[0-9a-f]*\.txt' | head -1); echo "$C"; curl -s "$S/$C" | sed -n 2p
-          for l in "" ms/ zh/ ta/; do printf '/%-4s dbooks=%s\n' "$l" "$(curl -s "$S/$l?v=$RANDOM" | grep -c 'id="dbooks"')"; done
+          for u in info/ ms/info/ zh/info/ ta/info/; do
+            H=$(curl -s "$S/$u?v=$RANDOM"); C=$(echo "$H" | grep -o 'assets/i\.[0-9a-f]*\.css' | head -1)
+            printf '/%-9s %s css=%s font=%s typo=%s\n' "$u" "$(curl -s -o /dev/null -w '%{http_code}' $S/$u)" "$C" "$(echo "$H" | grep -c 'jakarta\.')" "$(curl -s $S/$C | grep -c 'text-wrap:balance')"
+          done
+          curl -s "$S/zh/info/?v=$RANDOM" | grep -o '每周3次' | head -1
