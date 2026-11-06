@@ -182,6 +182,10 @@ check4d is blocked and WebFetch rejects non-allowlisted hosts. To check anything
 the checks into `.github/workflows/check.yml`, dispatch it, and read the log. That file is a
 scratch probe — rewrite it freely.
 
+**iOS 26 Safari ignores `theme-color`.** It tints its top/bottom bars from the sticky header and
+the fixed bottom nav (or the body background), and a `backdrop-filter` on those bars stops the
+sampling. Keep both bars solid theme colour with no blur (`themes.INLINE_CSS_TAIL`).
+
 **Verify every scripted edit.** A heredoc that does all its `s.replace()` work then writes at
 the end will silently write nothing if an assertion fails partway. `grep` after each edit.
 
