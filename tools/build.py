@@ -267,14 +267,8 @@ def icons(out: Path) -> None:
             print(f"  ! brand file missing: tools/brand/{f}")
     if (brand / "op").is_dir():
         shutil.copytree(brand / "op", out / "img" / "op", dirs_exist_ok=True)
-        # Small copies for the logos shown at 34-46 px (the 128 px originals stay for the share images).
-        from PIL import Image
-        (out / "img" / "op" / "sm").mkdir(parents=True, exist_ok=True)
-        for f in (brand / "op").glob("*.webp"):
-            if f.stem.startswith("tk"): continue
-            im = Image.open(f); im = im.convert("RGBA") if im.mode not in ("RGB", "RGBA") else im
-            if im.width != im.height or im.width <= 80: shutil.copy(f, out / "img" / "op" / "sm" / f.name); continue
-            im.resize((80, 80), Image.LANCZOS).save(out / "img" / "op" / "sm" / f.name, "WEBP", quality=84, method=6)
+        # img/op/sm/: 80 px copies (made once, committed) for the logos shown at 30-46 px;
+        # the 128 px originals stay for the share images.
 
 
 def main() -> None:
