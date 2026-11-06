@@ -11,7 +11,7 @@ jobs:
         run: |
           S=https://www.4dmalamini.com
           for u in / zh/ ms/ ta/; do
-            H=$(curl -s "$S/$u?v=$RANDOM"); A=$(echo "$H" | grep -o 'assets/app\.[0-9a-f]*\.js' | head -1); K=$(echo "$H" | grep -o 'assets/sky\.[0-9a-f]*\.html' | head -1)
+            H=$(curl -s "$S/$u?v=$RANDOM"); A=$(echo "$H" | grep -o 'assets/app\.[0-9a-f]*\.js' | head -1); K=$(echo "$H" | grep -o 'assets/sky\.[0-9a-f]*\.txt' | head -1)
             printf '/%-4s html=%sB gz=%sB thsw=%s app=%s(%s) sky=%s(%s)\n' "$u" "${#H}" "$(curl -s -H 'Accept-Encoding: gzip' -o /dev/null -w '%{size_download}' $S/$u)" "$(echo "$H" | grep -c 'class="thsw"')" "$A" "$(curl -s -o /dev/null -w '%{http_code}' $S/$A)" "$K" "$(curl -s -o /dev/null -w '%{http_code}' $S/$K)"
           done
           curl -sI "$S/$(curl -s $S/ | grep -o 'assets/app\.[0-9a-f]*\.js' | head -1)" | grep -i 'cache-control\|content-type'
