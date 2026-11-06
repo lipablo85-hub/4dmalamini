@@ -244,7 +244,12 @@ last commit; deploy checks out 300 commits for this).
 large late text becomes the LCP (was 4.4 s). `lvH()` puts each word of the live line in its own
 flex item and `.sht b i` is inline-block, so nothing late outsizes the first-paint `#rdlabel`.
 Keep new late-rendered text split or small. Rescan at 21:23 MYT: home EN 99, zh 97–98, ta 91–94,
-ms 95 (CLS 0.071 on ms still to trace), LCP 1.4–2.4 s.
+ms 95, LCP 1.4–2.4 s.
+**Board day (7 Nov):** before 14:55 the script orders cards by the previous day's results, so the
+head-script order classes and `prerender_latest()` must use that same day (they used today's weekday,
+which moved 9 Lotto to the top late after midnight on Wed/Sat/Sun: late logo LCP, ms CLS 0.071).
+Now CLS 0 on all four homes. Logos of cards that can be first (build-first, G, N, J, K) carry
+`fetchpriority=high`. gtag already loads after `load` + idle; its "unused JS" is unscored.
 
 **Cloudflare Web Analytics is off** (6 Nov): its auto-injected `beacon.min.js` (10 KB, legacy JS,
 a request chain) was the last Lighthouse warning and duplicated GA4. Turned off with
