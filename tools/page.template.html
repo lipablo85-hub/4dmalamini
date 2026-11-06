@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="__HTMLLANG__">
-<head>
+<head><script>(function(){var t=new Date(Date.now()+288e5),d=t.getUTCDay(),y=t.toISOString().slice(0,10).replace(/-/g,"");if(d!==0&&d!==3&&d!==6&&(__SPECIAL__).indexOf(y)<0){var m=t.getUTCHours()*60+t.getUTCMinutes(),e=document.documentElement.classList;e.add("nd");if(m>=895&&m<1135)e.add("sJ");else if(m>=1255)e.add("sK")}})()</script>
 <meta charset="utf-8">
 <base href="__BASE__">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -541,7 +541,7 @@ footer a{color:#A9B4CC}
       <button type="button" data-lang="en">EN</button><button type="button" data-lang="ms">BM</button><button type="button" data-lang="zh">中文</button><button type="button" data-lang="ta">தமிழ்</button>
     </div></div>
   </div>
-  <div class="tkr" id="tkr" aria-label="Magnum, Da Ma Cai, Sports Toto: latest 1st, 2nd and 3rd prizes"><div class="tk" id="tk"></div></div>
+  <div class="tkr" id="tkr" hidden aria-label="Magnum, Da Ma Cai, Sports Toto: latest 1st, 2nd and 3rd prizes"><div class="tk" id="tk"></div></div>
 </header>
 <noscript><p style="max-width:560px;margin:12px auto;padding:0 16px">Turn on JavaScript to check numbers. You can still browse the <a href="keputusan/">results archive</a> and the <a href="4d/">4D dictionary 万字图</a>.</p></noscript>
 <main class="wrap">
@@ -559,7 +559,7 @@ footer a{color:#A9B4CC}
     <p class="upd" id="upd"><i></i>__UPDTXT__</p>
     <a class="spd" id="spd" href="special-draw/" hidden></a>
     <nav class="jump" id="rjump" aria-label="Jump to company"></nav>
-    <section class="mine" id="mine" aria-labelledby="mh"><button type="button" class="mtop" id="mtop" aria-expanded="false" aria-controls="mbody"><span class="bell" aria-hidden="true"><i>🔔</i></span><span class="mtt"><b id="mh" data-t="myNums"></b><small data-t="mTag"></small><span class="msum" id="msum"></span></span><span class="chev" aria-hidden="true"></span></button>
+    <section class="mine empty" id="mine" aria-labelledby="mh"><button type="button" class="mtop" id="mtop" aria-expanded="false" aria-controls="mbody"><span class="bell" aria-hidden="true"><i>🔔</i></span><span class="mtt"><b id="mh" data-t="myNums"></b><small data-t="mTag"></small><span class="msum" id="msum"></span></span><span class="chev" aria-hidden="true"></span></button>
       <div class="mbody" id="mbody"><div class="min">
         <ol class="mstp" id="mstp"><li><b>1</b><span data-t="st1"></span></li><li><b>2</b><span data-t="st2"></span></li><li><b>3</b><span data-t="st3"></span></li></ol>
         <p class="mlive" id="mlive"><i></i><span></span></p>
@@ -567,7 +567,7 @@ footer a{color:#A9B4CC}
         <button type="button" class="madd2" id="maddb"></button>
         <p class="mpriv" data-t="mPriv"></p>
       </div></div></section>
-    <div class="stage"><div class="board" id="board"><!--BOARD--></div></div><section class="jx" id="jx" hidden></section><script>(function(){var t=new Date(Date.now()+288e5),d=t.getUTCDay(),y=t.toISOString().slice(0,10).replace(/-/g,"");if(d!==0&&d!==3&&d!==6&&(__SPECIAL__).indexOf(y)<0){document.getElementById("board").classList.add("nd");document.getElementById("rjump").classList.add("nd")}})()</script>
+    <div class="stage"><div class="board" id="board"><!--BOARD--></div></div><section class="jx" id="jx" hidden></section>
   <!--SEO-->
   </section>
 
@@ -945,7 +945,7 @@ function renderLatest(){
   $("#rdlabel").textContent=st.rd?fD(st.rd):L&&L.ks.length?`● ${t("tonight")} · ${fD(L.n.ymd)}`:`${t("latestTag")} · ${fD(MAX)}`;
   $("#rprev").disabled=i<=0;$("#rnext").disabled=!st.rd||i>=DATES.length-1;
   $("#rprev").setAttribute("aria-label",t("prevDraw"));$("#rnext").setAttribute("aria-label",t("nextDraw"));
-  {const n_=myt(),bd=st.rd||(L&&L.ks.length?L.n.ymd:MAX),bwd=new Date(Date.UTC(+bd.slice(0,4),+bd.slice(4,6)-1,+bd.slice(6))).getUTCDay(),big=LDAYS.M.includes(bwd)||isSp("M",bd),sj=!st.rd&&!big&&n_.m>=895&&n_.m<1135,sk=!st.rd&&!big&&n_.m>=1255;["board","rjump"].forEach(i=>{$("#"+i).classList.toggle("sJ",sj);$("#"+i).classList.toggle("sK",sk);$("#"+i).classList.toggle("nd",!big)})}
+  {const n_=myt(),bd=st.rd||(L&&L.ks.length?L.n.ymd:MAX),bwd=new Date(Date.UTC(+bd.slice(0,4),+bd.slice(4,6)-1,+bd.slice(6))).getUTCDay(),big=LDAYS.M.includes(bwd)||isSp("M",bd),sj=!st.rd&&!big&&n_.m>=895&&n_.m<1135,sk=!st.rd&&!big&&n_.m>=1255;["board","rjump"].forEach(i=>{$("#"+i).classList.toggle("sJ",sj);$("#"+i).classList.toggle("sK",sk);$("#"+i).classList.toggle("nd",!big)});document.documentElement.classList.remove("nd","sJ","sK")}
   rsArm();renderTicker();renderSpd();renderUpd();renderJx();armLive();renderMine();$("#tab-results").classList.toggle("lvn",!!(L&&L.wait.some(k=>L.n.m>=dmin(k)-5)));
 }
 /* My numbers: saved on this phone, matched against the board; toast when tonight's results include them */

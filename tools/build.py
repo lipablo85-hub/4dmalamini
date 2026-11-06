@@ -88,7 +88,42 @@ def prerender_lang(html: str, lang: str) -> str:
     return re.sub(r'data-t="(\w+)"([^>]*)></', lambda x: f'data-t="{x.group(1)}"{x.group(2)}>{H.escape(t.get(x.group(1)) or en.get(x.group(1), ""), quote=False)}</', html)
 
 
-def prerender_latest(html: str, data: dict) -> str:
+def prerender_spd(html: str) -> str:
+    """The special-draw pill as the script draws it (English; the script relabels it), so it doesn't pop in."""
+    import datetime
+    now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8)))
+    ymd, m = now.strftime("%Y%m%d"), now.hour * 60 + now.minute
+    dates = [d.replace("-", "") for d in json.loads(Path(__file__).with_name("special_draws.json").read_text())["dates"]]
+    nx = next((d for d in dates if d > ymd or (d == ymd and m < 1140 + 90)), None)
+    tag = '<a class="spd" id="spd" href="special-draw/" hidden></a>'
+    if not nx or tag not in html: return html
+    dd = (datetime.date(int(nx[:4]), int(nx[4:6]), int(nx[6:])) - now.date()).days
+    day = datetime.date(int(nx[:4]), int(nx[4:6]), int(nx[6:]))
+    cd = "Today" if dd == 0 else "Tomorrow" if dd == 1 else f"in {dd} days"
+    pill = (f'<a class="spd{" today" if dd == 0 else ""}" id="spd" href="special-draw/" title="Magnum, Sports Toto, Da Ma Cai, Cash Sweep, Sabah 88, Sandakan">'
+            '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>'
+            f'<b>Special draw</b><span>{day.day} {day.strftime("%b")} ({day.strftime("%a")}) · 7:00pm</span><span class="cd">· {cd}</span></a>')
+    return html.replace(tag, pill)
+
+
+def jp_bar(x) -> str:
+    """Same markup as jpBar() in the page script, so the first script render keeps the card height."""
+    if not x or not x.get("jp"): return ""
+    w = lambda j: "" if not j or not j.get("w") else f'<span class="w {"f" if j["w"] == "Won" else "p"}">{"Won" if j["w"] == "Won" else "Partially won"}</span>'
+    out = ('<div class="jp"><div class="jh"><span>★ 4D Jackpot</span><span>积宝</span></div><div class="jr">'
+           + "".join(f'<div><small>Jackpot {i + 1}</small><strong>RM {j["a"]}</strong>{w(j)}</div>' for i, j in enumerate(x["jp"])) + "</div>")
+    if x.get("jp3"): out += f'<div class="j3"><small>3D Jackpot</small><strong>RM {x["jp3"]["a"]}</strong></div>'
+    if x.get("next") and len(x["next"]) == 2: out += f'<div class="nx">Next draw estimate: <b>RM {x["next"][0]}</b> · <b>RM {x["next"][1]}</b></div>'
+    return out + "</div>"
+
+
+def j6(k: str, t3: list) -> str:
+    if k not in "JK": return ""
+    v = "".join(x[2:] for x in t3) if all(re.fullmatch(r"\d{4}", x or "") for x in t3) else ""
+    return f'<div class="j6d"><small>6D Jackpot</small><b>{v}</b></div>' if v else '<div class="j6d wait"><small>6D Jackpot</small><b>------</b></div>'
+
+
+def prerender_latest(html: str, data: dict, xt: dict | None = None) -> str:
     """Write the results board (classic result slips, official draw order) into the page; the page script redraws it in the visitor's language."""
     import datetime
     board = [("M", "Magnum 4D", "#E9C46B"), ("D", "Da Ma Cai", "#4C8DFF"), ("T", "Sports Toto", "#FF5A5F"), ("S", "Singapore 4D", "#38BDF8"), ("C", "Cash Sweep", "#4ADE80"), ("B", "Sabah 88", "#E5484D"), ("H", "Sandakan 4D", "#FACC15"), ("G", "GD Lotto", "#F27BA5"), ("N", "9 Lotto", "#2EC4B6"), ("J", "Super J3 3pm", "#A78BFA"), ("K", "Super J9 9pm", "#FB923C")]
@@ -112,7 +147,19 @@ def prerender_latest(html: str, data: dict) -> str:
         cards.append(f'<article class="rc slip k-{k}" id="rc-{k}" {stl}>{head(k, name, cdf(d) + (f" #{no}" if no else ""))}{lb}'
                      f'<div class="s3">{"".join(nb(x) for x in n[:3])}</div>'
                      f'<div class="sec">Special<em>特别奖</em></div><div class="s5">{"".join(nb(x) for x in sorted(n[3:13]))}</div>'
-                     f'<div class="sec">Consolation<em>安慰奖</em></div><div class="s5">{"".join(nb(x) for x in sorted(n[13:]))}</div></article>')
+                     f'<div class="sec">Consolation<em>安慰奖</em></div><div class="s5">{"".join(nb(x) for x in sorted(n[13:]))}</div>'
+                     f'{jp_bar((xt or {}).get(d, {}).get(k))}{j6(k, n[:3])}</article>')
+    # DOM order = the order the page shows at build time (same rules as the .nd/.sJ/.sK CSS), so a
+    # half-loaded board doesn't paint Magnum first and then jump when the daily games arrive.
+    now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8)))
+    sp = [x.replace("-", "") for x in json.loads(Path(__file__).with_name("special_draws.json").read_text())["dates"]]
+    nd = now.weekday() not in (2, 5, 6) and now.strftime("%Y%m%d") not in sp
+    mm = now.hour * 60 + now.minute
+    rank = {"G": -3, "N": -2, "J": -1, "K": -1} if nd else {}
+    if nd and 895 <= mm < 1135: rank["J"] = -9
+    elif nd and mm >= 1255: rank["K"] = -9
+    order = sorted(range(len(board)), key=lambda i: (rank.get(board[i][0], 0), i))
+    cards = [cards[i] for i in order]
     jump = "".join(f'<a href="#rc-{k}" style="--c:{c}"><i></i>{name}</a>' for k, name, c in board)
     assert "<!--BOARD-->" in html
     html = html.replace("<!--BOARD-->", "".join(cards)).replace('<nav class="jump" id="rjump" aria-label="Jump to company"></nav>', f'<nav class="jump" id="rjump" aria-label="Jump to company">{jump}</nav>')
@@ -280,8 +327,10 @@ def main() -> None:
     ldjson = "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False, separators=(",", ":"))}</script>' for x in ld)
     html = (html.replace("__BASE__", base).replace("__HREFLANG__", hreflang).replace("__LDJSON__", ldjson)
                 .replace("__LASTISO__", lastiso).replace("__TITLES__", json.dumps(titles, ensure_ascii=False)))
-    html = prerender_latest(html, data)
+    xf = Path(a.results).with_name("extras.json")
+    html = prerender_latest(html, data, json.loads(xf.read_text(encoding="utf-8")) if xf.exists() else {})
     html = prerender_static(html, data)
+    html = prerender_spd(html)
     mini = shutil.which("html-minifier-terser") or next((str(p) for p in [Path(__file__).resolve().parent.parent / "node_modules/.bin/html-minifier-terser"] if p.exists()), None)
     if not mini:
         print("  ! html-minifier-terser not found: pages left unminified (npm i -g html-minifier-terser)")
@@ -335,6 +384,9 @@ def main() -> None:
         if mini:
             subprocess.run([mini, "--collapse-whitespace", "--remove-comments", "--minify-css", "true", "--minify-js", "true",
                             "--remove-redundant-attributes", "-o", str(f), str(f)], check=True)
+        # The app script lives in assets/app.<hash>.js (cached forever). It redraws the board after
+        # first paint, so the prerender must match its first render (jackpots, 6D, card order,
+        # ticker hidden, special-draw pill) or the page shifts: CLS was 0.58 before that (6 Nov).
         f.write_text(external_app(TH.apply(f.read_text(), sky_url), out))
     mark = Path(__file__).with_name("brand").joinpath("mark.svg").read_text().replace("<svg ", '<svg width="40" height="28" aria-hidden="true" ', 1)
     sp = SP.Site(out, site, base, data, lines if (a.dict or imgs or text) else [], mark)
