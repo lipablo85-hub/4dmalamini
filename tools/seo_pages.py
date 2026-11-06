@@ -566,6 +566,28 @@ class Site:
         (self.out / "404").rmdir()
         self.urls.pop()
 
+    # Pages with no data date of their own. Pages that list draws change with the latest draw;
+    # written guides change when their generator does (last git commit touching that file).
+    _LM_DATA = ("special-draw/", "sitemap/")
+    _LM_SRC = {"guide/": "guide_pages.py", "info/": "info_pages.py", "about/": "about_pages.py",
+               "privacy/": "legal_pages.py", "terms/": "legal_pages.py", "contact/": "legal_pages.py", "data-policy/": "legal_pages.py"}
+
+    def _lastmod_fallback(self, tail: str, lastiso: str):
+        if tail.startswith(self._LM_DATA): return lastiso
+        for pre, src in self._LM_SRC.items():
+            if tail.startswith(pre):
+                if src not in self._lm_cache:
+                    import subprocess
+                    f = Path(__file__).with_name(src)
+                    try:
+                        d = subprocess.run(["git", "log", "-1", "--format=%cs", "--", str(f)], cwd=f.parent, capture_output=True, text=True, timeout=10).stdout.strip()
+                    except Exception:
+                        d = ""
+                    self._lm_cache[src] = d if re.fullmatch(r"\d{4}-\d{2}-\d{2}", d) else lastiso
+                return self._lm_cache[src]
+        return lastiso
+    _lm_cache: dict = {}
+
     def sitemap(self, home_alternates: list) -> None:
         """A sitemap index split by section, so Search Console reports indexing per group."""
         import re as _re
@@ -586,6 +608,7 @@ class Site:
                 g = "operators"
             else:
                 g = "main"
+            lm = lm or self._lastmod_fallback(tail, lastiso)
             groups[g].append(f"<url><loc>{loc}</loc>" + (f"<lastmod>{lm}</lastmod>" if lm else "") + "</url>")
         names, total = [], 0
         for g, rows in groups.items():

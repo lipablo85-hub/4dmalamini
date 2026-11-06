@@ -7,11 +7,23 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Theme release probe
+      - name: PageSpeed Insights (mobile)
         run: |
-          S=https://www.4dmalamini.com
-          for u in / zh/ ms/ ta/; do
-            H=$(curl -s "$S/$u?v=$RANDOM"); A=$(echo "$H" | grep -o 'assets/app\.[0-9a-f]*\.js' | head -1); K=$(echo "$H" | grep -o 'assets/sky\.[0-9a-f]*\.txt' | head -1)
-            printf '/%-4s html=%sB gz=%sB thsw=%s app=%s(%s) sky=%s(%s)\n' "$u" "${#H}" "$(curl -s -H 'Accept-Encoding: gzip' -o /dev/null -w '%{size_download}' $S/$u)" "$(echo "$H" | grep -c 'class="thsw"')" "$A" "$(curl -s -o /dev/null -w '%{http_code}' $S/$A)" "$K" "$(curl -s -o /dev/null -w '%{http_code}' $S/$K)"
+          for u in "" zh/ keputusan/2026-11-05/ zh/magnum-4d-result/ 4d/8888/ zh/4d-statistics/; do
+            for k in 1 2 3; do
+              curl -s --max-time 120 "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https%3A%2F%2Fwww.4dmalamini.com%2F${u//\//%2F}&strategy=mobile&category=performance" -o p.json
+              jq -e .lighthouseResult p.json >/dev/null 2>&1 && break; sleep 20
+            done
+            jq -r --arg u "/$u" '[$u,
+              "score=" + ((.lighthouseResult.categories.performance.score // 0) * 100 | floor | tostring),
+              "FCP=" + (.lighthouseResult.audits["first-contentful-paint"].displayValue // "-"),
+              "LCP=" + (.lighthouseResult.audits["largest-contentful-paint"].displayValue // "-"),
+              "TBT=" + (.lighthouseResult.audits["total-blocking-time"].displayValue // "-"),
+              "CLS=" + (.lighthouseResult.audits["cumulative-layout-shift"].displayValue // "-"),
+              "SI=" + (.lighthouseResult.audits["speed-index"].displayValue // "-"),
+              "TTFB=" + (.lighthouseResult.audits["server-response-time"].displayValue // "-"),
+              "bytes=" + ((.lighthouseResult.audits["total-byte-weight"].numericValue // 0) / 1024 | floor | tostring) + "KB",
+              "field=" + (if .loadingExperience.metrics then ((.loadingExperience.overall_category // "?") + " LCPp75=" + ((.loadingExperience.metrics.LARGEST_CONTENTFUL_PAINT_MS.percentile // 0)|tostring) + " INPp75=" + ((.loadingExperience.metrics.INTERACTION_TO_NEXT_PAINT.percentile // 0)|tostring) + " CLSp75=" + ((.loadingExperience.metrics.CUMULATIVE_LAYOUT_SHIFT_SCORE.percentile // 0)|tostring)) else "none" end),
+              "origin=" + (if .originLoadingExperience.metrics then (.originLoadingExperience.overall_category // "?") else "none" end),
+              (.error.message // "")] | join("  ")' p.json
           done
-          curl -sI "$S/$(curl -s $S/ | grep -o 'assets/app\.[0-9a-f]*\.js' | head -1)" | grep -i 'cache-control\|content-type'
