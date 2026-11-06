@@ -88,6 +88,51 @@ def prerender_lang(html: str, lang: str) -> str:
     return re.sub(r'data-t="(\w+)"([^>]*)></', lambda x: f'data-t="{x.group(1)}"{x.group(2)}>{H.escape(t.get(x.group(1)) or en.get(x.group(1), ""), quote=False)}</', html)
 
 
+def board_lang(html: str, lang: str) -> str:
+    """Prize labels and jackpot captions in the page's language, written as the script writes them, so
+    the card layout (Malay and Tamil labels wrap) is final at first paint."""
+    if lang == "en": return html
+    t = lang_strings(html, lang)
+    zh = {"p1": "首奖", "p2": "二奖", "p3": "三奖", "p4": "特别奖", "p5": "安慰奖"}
+    en = {"p1": "1st Prize", "p2": "2nd Prize", "p3": "3rd Prize", "p4": "Special", "p5": "Consolation"}
+    lab = lambda k: H.escape(t.get(k, en[k]), quote=False) if lang == "zh" else f'{H.escape(t.get(k, en[k]), quote=False)}<em>{zh[k]}</em>'
+    for k in ("p1", "p2", "p3"):
+        html = html.replace(f"<span>{en[k]}<em>{zh[k]}</em></span>", f"<span>{lab(k)}</span>")
+    for k in ("p4", "p5"):
+        html = html.replace(f'<div class="sec">{en[k]}<em>{zh[k]}</em></div>', f'<div class="sec">{lab(k)}</div>')
+    g = lambda k, d: H.escape(t.get(k, d), quote=False)
+    html = html.replace("<span>★ 4D Jackpot</span>", f"<span>★ {g('jpBar', '4D Jackpot')}</span>")
+    html = re.sub(r"<small>Jackpot (\d)</small>", lambda m: f"<small>{g('jpN', 'Jackpot {n}').replace('{n}', m.group(1))}</small>", html)
+    html = html.replace("<small>3D Jackpot</small>", f"<small>{g('jp3', '3D Jackpot')}</small>").replace("<small>6D Jackpot</small>", f"<small>{g('j6', '6D Jackpot')}</small>")
+    html = html.replace('<div class="nx">Next draw estimate:', f'<div class="nx">{g("nextEst", "Next draw estimate")}:')
+    html = re.sub(r'(class="rsb" data-rs="[^"]+") aria-label="Share"', lambda m: f'{m.group(1)} aria-label="{H.escape(t.get("shareBtn", "Share"))}"', html)
+    return html
+
+
+def rd_label(html: str, lang: str) -> str:
+    """The date button label in the page's own language, formatted by Intl exactly as the script does
+    (node has the same ICU data), so the label doesn't change length - or wrap - when the script runs."""
+    m = re.search(r'<span id="rdlabel">Latest · ([^<]*)</span>', html)
+    if not m: return html
+    d = _RD.get("d")
+    if not d: return html
+    tag = lang_strings(html, lang).get("latestTag", "Latest")
+    if lang not in _RD:
+        import subprocess
+        loc = {"en": "en-MY", "ms": "ms-MY", "zh": "zh-CN", "ta": "ta-MY"}[lang]
+        js = (f'console.log(new Intl.DateTimeFormat("{loc}",{{timeZone:"UTC",weekday:"short",day:"numeric",month:"short",year:"numeric"}})'
+              f'.format(Date.UTC({int(d[:4])},{int(d[4:6]) - 1},{int(d[6:])})))')
+        try:
+            _RD[lang] = subprocess.run(["node", "-e", js], capture_output=True, text=True, timeout=20).stdout.strip()
+        except Exception:
+            _RD[lang] = ""
+    if not _RD[lang]: return html
+    return html.replace(m.group(0), f'<span id="rdlabel">{H.escape(tag)} · {H.escape(_RD[lang])}</span>')
+
+
+_RD: dict = {}
+
+
 def prerender_spd(html: str) -> str:
     """The special-draw pill as the script draws it (English; the script relabels it), so it doesn't pop in."""
     import datetime
@@ -127,13 +172,13 @@ def prerender_latest(html: str, data: dict, xt: dict | None = None) -> str:
     """Write the results board (classic result slips, official draw order) into the page; the page script redraws it in the visitor's language."""
     import datetime
     board = [("M", "Magnum 4D", "#E9C46B"), ("D", "Da Ma Cai", "#4C8DFF"), ("T", "Sports Toto", "#FF5A5F"), ("S", "Singapore 4D", "#38BDF8"), ("C", "Cash Sweep", "#4ADE80"), ("B", "Sabah 88", "#E5484D"), ("H", "Sandakan 4D", "#FACC15"), ("G", "GD Lotto", "#F27BA5"), ("N", "9 Lotto", "#2EC4B6"), ("J", "Super J3 3pm", "#A78BFA"), ("K", "Super J9 9pm", "#FB923C")]
-    zh = {"M": "万能", "D": "大马彩", "T": "多多", "G": "豪龙", "N": "", "J": "下午3点", "K": "晚上9点", "S": "新加坡万字", "C": "砂拉越大万", "B": "沙巴88", "H": "山打根"}
+    zh = {"M": "万能", "D": "大马彩", "T": "多多", "G": "豪龙", "N": "", "J": "J3 下午3点", "K": "J9 晚上9点", "S": "新加坡万字", "C": "砂拉越大万", "B": "沙巴88", "H": "山打根"}
     hc = {"M": "#FFF200", "D": "#000080", "T": "#C00000", "G": "#B0121B", "N": "#0E8F86", "J": "#5B21B6", "K": "#C2410C", "S": "#B91C2C", "C": "#0B7A3B", "B": "#D7141A", "H": "#14532D"}
     fd = lambda d: datetime.date(int(d[:4]), int(d[4:6]), int(d[6:])).strftime("%a, %-d %b %Y")
     cdf = lambda d: datetime.date(int(d[:4]), int(d[4:6]), int(d[6:])).strftime("(%a) %d-%b-%Y")
     nb = lambda n: f'<button type="button" data-n="{n}">{n}</button>'
-    head = lambda k, name, sub: (f'<div class="sh"><span class="lgw">{('<img class="opl" src="img/op/n-s.webp" width="46" height="46" alt="9 Lotto">' if k == "N" else f'<img class="opl" src="img/op/{k.lower()}{"-n" if k in "DT" else ""}.webp?v=4" width="40" height="40" alt="">')}</span>'
-                                 f'<div class="sht"><b>{name} <i>{zh[k]}</i></b><small>{sub}</small></div></div>')
+    head = lambda k, name, sub, rs="": (f'<div class="sh"><span class="lgw">{('<img class="opl" src="img/op/n-s.webp" width="46" height="46" alt="9 Lotto">' if k == "N" else f'<img class="opl" src="img/op/{k.lower()}{"-n" if k in "DT" else ""}.webp?v=4" width="40" height="40" alt="">')}</span>'
+                                 f'<div class="sht"><b>{name} {f"<i>{zh[k]}</i>" if zh[k] else ""}</b><small>{sub}</small></div>{rs}</div>')
     lb = '<div class="lbar"><span>1st Prize<em>首奖</em></span><span>2nd Prize<em>二奖</em></span><span>3rd Prize<em>三奖</em></span></div>'
     cards, last = [], ""
     for k, name, c in board:
@@ -144,7 +189,9 @@ def prerender_latest(html: str, data: dict, xt: dict | None = None) -> str:
         d, no, dg = data[k].split("|")[-1].split(",")
         last = max(last, d)
         n = [dg[i:i + 4] for i in range(0, 92, 4)]
-        cards.append(f'<article class="rc slip k-{k}" id="rc-{k}" {stl}>{head(k, name, cdf(d) + (f" #{no}" if no else ""))}{lb}'
+        rsb = (f'<button type="button" class="rsb" data-rs="{k}|{d}" aria-label="Share"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">'
+               '<circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"></path></svg></button>')
+        cards.append(f'<article class="rc slip k-{k}" id="rc-{k}" {stl}>{head(k, name, cdf(d) + (f" #{no}" if no else ""), rsb)}{lb}'
                      f'<div class="s3">{"".join(nb(x) for x in n[:3])}</div>'
                      f'<div class="sec">Special<em>特别奖</em></div><div class="s5">{"".join(nb(x) for x in sorted(n[3:13]))}</div>'
                      f'<div class="sec">Consolation<em>安慰奖</em></div><div class="s5">{"".join(nb(x) for x in sorted(n[13:]))}</div>'
@@ -163,6 +210,7 @@ def prerender_latest(html: str, data: dict, xt: dict | None = None) -> str:
     jump = "".join(f'<a href="#rc-{k}" style="--c:{c}"><i></i>{name}</a>' for k, name, c in board)
     assert "<!--BOARD-->" in html
     html = html.replace("<!--BOARD-->", "".join(cards)).replace('<nav class="jump" id="rjump" aria-label="Jump to company"></nav>', f'<nav class="jump" id="rjump" aria-label="Jump to company">{jump}</nav>')
+    _RD["d"] = last
     return html.replace('<span id="rdlabel"></span>', f'<span id="rdlabel">Latest · {fd(last)}</span>')
 
 
@@ -343,6 +391,7 @@ def main() -> None:
                 .replace("__H1__", H.escape(h1[lang])).replace("<!--SEO-->", SC.block(lang) + SC.faq_ld(lang)).replace('id="nav-guide" href="info/"', f'id="nav-guide" href="{"" if lang == "en" else lang + "/"}info/"').replace('id="home" href="./"', f'id="home" href="{"./" if lang == "en" else lang + "/"}"')
                 .replace('id="lnk-stats" href="4d-statistics/"', f'id="lnk-stats" href="/{"" if lang == "en" else lang + "/"}4d-statistics/"')
                 .replace('id="lnk-pop" href="popular-4d-numbers/"', f'id="lnk-pop" href="/{"" if lang == "en" else lang + "/"}popular-4d-numbers/"'))
+        page = board_lang(rd_label(page, lang), lang)
         pre_ = "" if lang == "en" else lang + "/"
 
         # Footer: grouped link columns + company list, built for every language so the in-page

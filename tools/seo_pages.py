@@ -314,8 +314,11 @@ class Site:
             r = f"{i // 1000}000-{i // 1000}999"
             nav, ld = self.crumbs([("4D Malam Ini", ""), ("Kamus 4D", "4d/"), (r.replace("-", "–"), f"4d/{r}/"), (n, None)])
             name = " · ".join(x for x in (e["zh"], e["en"]) if x)
-            pic = ""
+            pic = pre = ""
             if e["img"]:
+                # The picture is the LCP element, but a background in a style attribute is invisible to the
+                # preload scanner: preload it so it downloads with the HTML instead of after layout.
+                pre = f'<link rel="preload" as="image" href="{self.u(f"img/d2/400/{int(n) // 25:03d}.avif")}" type="image/avif" fetchpriority="high">'
                 alt = esc(f"4D {n} {e['zh']} {e['en']}".strip())
                 o = int(n); c = o % 25
                 pic = (f'<span class="pic"><i class="sp" role="img" aria-label="{alt}" style="background-image:url({self.u(f"img/d2/400/{o // 25:03d}.avif")});'
@@ -412,7 +415,7 @@ class Site:
                                          {"@type": "PropertyValue", "name": "Menang terakhir", "value": d8(hits[0][0]).isoformat()}] if hits else
                                         [{"@type": "PropertyValue", "name": "Jumlah menang", "value": 0}]}
             body += self.verified(self.date_sh(last), "Statistik dikemas kini selepas cabutan")
-            self.page(f"4d/{n}/", title, desc, body, "ms", [ld, ld_n], lastmod)
+            self.page(f"4d/{n}/", title, desc, body, "ms", [ld, ld_n], lastmod, head=pre)
 
     def policy_page(self, last: str) -> None:
         upd = d8(last)

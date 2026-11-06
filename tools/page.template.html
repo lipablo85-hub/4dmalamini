@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="__HTMLLANG__">
-<head><script>(function(){var t=new Date(Date.now()+288e5),d=t.getUTCDay(),y=t.toISOString().slice(0,10).replace(/-/g,"");if(d!==0&&d!==3&&d!==6&&(__SPECIAL__).indexOf(y)<0){var m=t.getUTCHours()*60+t.getUTCMinutes(),e=document.documentElement.classList;e.add("nd");if(m>=895&&m<1135)e.add("sJ");else if(m>=1255)e.add("sK")}})()</script>
+<head><script>try{if(JSON.parse(localStorage.getItem("4dmine")||"[]").length)document.documentElement.classList.add("mine-on")}catch(e){}</script><script>(function(){var t=new Date(Date.now()+288e5),d=t.getUTCDay(),y=t.toISOString().slice(0,10).replace(/-/g,"");if(d!==0&&d!==3&&d!==6&&(__SPECIAL__).indexOf(y)<0){var m=t.getUTCHours()*60+t.getUTCMinutes(),e=document.documentElement.classList;e.add("nd");if(m>=895&&m<1135)e.add("sJ");else if(m>=1255)e.add("sK")}})()</script>
 <meta charset="utf-8">
 <base href="__BASE__">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -179,6 +179,10 @@ footer>p{line-height:1.6}
 .sch2{overflow-x:auto}.sch2 table{width:100%;border-collapse:collapse;font-size:13px}.sch2 th,.sch2 td{text-align:left;padding:8px 6px;border-bottom:1px solid #1D3157;vertical-align:top}.sch2 th{color:#9FB0D3;font-weight:700;font-size:12px}.sch2 td:last-child{white-space:nowrap;color:#F8F4E8;font-weight:700}
 .rp{margin-top:18px;padding:12px 14px;border-radius:14px;background:rgba(255,90,95,.08);border:1px solid rgba(255,90,95,.35)}.rp b{color:#FFB4B4}.rp p{margin:4px 0 0!important}
 .upd{margin:8px 0 0;text-align:center;font-size:12px;color:#9FB0D3}.upd b{color:#C9D4EA;font-weight:700}.upd i{display:inline-block;width:6px;height:6px;border-radius:50%;background:#4ADE80;margin-right:6px;vertical-align:1px}
+/* Off-screen sections skip layout and paint until scrolled near (cut first-load layout ~60%). Sizes are
+   the measured heights, and "auto" remembers the real size once rendered, so nothing jumps. */
+.rc{content-visibility:auto;contain-intrinsic-size:auto 360px}.jx{content-visibility:auto;contain-intrinsic-size:auto 2000px}
+.seo{content-visibility:auto;contain-intrinsic-size:auto 2000px}body>footer{content-visibility:auto;contain-intrinsic-size:auto 600px}
 .seo{margin-top:28px;font-size:14px;line-height:1.65;color:#A9B4CC}.seo h2{font-size:17px;color:#F8F4E8;margin:22px 0 8px}.seo p{margin:0 0 10px}.seo strong{color:#F8F4E8;font-weight:700}.seo a{color:#E9C46B;text-underline-offset:2px}.faq details{background:#0F1F3D;border:1px solid #233862;border-radius:12px;margin:0 0 8px}.faq summary{cursor:pointer;padding:12px 14px;color:#F8F4E8;font-weight:700;list-style:none}.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";float:right;color:#E9C46B}.faq details[open] summary::after{content:"−"}.faq details p{padding:0 14px 12px;margin:0}
 .rc>header b{display:inline-flex;align-items:center;gap:8px}.opl{width:32px;height:32px;flex:none;object-fit:contain}
 .ct{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px;margin-bottom:14px;background:#0F1F3D;border:1px solid #233862;border-radius:16px}.ct b{display:block;font-size:15px;color:#F8F4E8}.ct small{display:block;font-size:12px;margin-top:2px}.tgi{position:relative;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#fff;color:#1877B8;flex:none}.tgi::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #fff;animation:tgp 2s ease-out infinite}.tgi svg{margin-left:-2px;animation:tgf 3s ease-in-out infinite}@keyframes tgp{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.7);opacity:0}}@keyframes tgf{0%,55%,100%{transform:none;opacity:1}70%{transform:translate(9px,-9px) scale(.6);opacity:0}71%{transform:translate(-9px,9px) scale(.6);opacity:0}85%{transform:none;opacity:1}}@media (prefers-reduced-motion:reduce){.tgi::after,.tgi svg{animation:none}}.tg{display:inline-flex;align-items:center;gap:10px;padding-left:7px!important;flex:none;min-height:44px;padding:0 16px;border-radius:999px;background:#1877B8;color:#fff;font-weight:800;font-size:14px;text-decoration:none}.tg:active{transform:scale(.97)}
@@ -494,7 +498,9 @@ header{background-color:rgba(7,20,43,.92);background-image:radial-gradient(1px 1
 .rnav{height:48px;border-radius:14px;border:1px solid #233862;background:#0F1F3D;font-size:24px;line-height:1;color:#F8F4E8}
 .rnav[disabled]{opacity:.35;cursor:default}
 .rdate{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:48px;padding:0 12px;border-radius:14px;border:1px solid #233862;background:#0F1F3D;color:inherit;font-family:inherit;font-weight:800;font-size:15px;cursor:pointer}
-.rdate .cal{flex:none;color:#E9C46B}.rdate:hover{border-color:#E9C46B}.rdate:active{transform:scale(.99)}@media (prefers-reduced-motion:no-preference){.rdate .cal{animation:calhop 2.6s cubic-bezier(.3,.8,.4,1) infinite;transform-origin:50% 80%}}@keyframes calhop{0%,62%,100%{transform:translateY(0) scale(1)}68%{transform:translateY(-5px) scale(1.12)}74%{transform:translateY(0) scale(.94)}80%{transform:translateY(-2px) scale(1.04)}86%{transform:translateY(0) scale(1)}}
+.rdate .cal{flex:none;color:#E9C46B}#rdlabel{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}:lang(ms) .rdate,:lang(ta) .rdate{font-size:14px}
+/* Malay and Tamil status lines run to two lines once the script fills them: keep that room from the start */
+:lang(ms) .upd,:lang(ta) .upd{min-height:34px}.mine-on .mtop{min-height:59px}.mine.empty{padding:0;text-align:left;font-size:inherit;color:inherit}/* the generic .empty message style padded the card by 40px */.rdate:hover{border-color:#E9C46B}.rdate:active{transform:scale(.99)}@media (prefers-reduced-motion:no-preference){.rdate .cal{animation:calhop 2.6s cubic-bezier(.3,.8,.4,1) infinite;transform-origin:50% 80%}}@keyframes calhop{0%,62%,100%{transform:translateY(0) scale(1)}68%{transform:translateY(-5px) scale(1.12)}74%{transform:translateY(0) scale(.94)}80%{transform:translateY(-2px) scale(1.04)}86%{transform:translateY(0) scale(1)}}
 .rdate input{position:absolute;left:12px;bottom:4px;width:1px;height:1px;opacity:0;pointer-events:none;border:0;padding:0}
 .jump{position:sticky;top:61px;z-index:4;display:flex;gap:6px;overflow-x:auto;padding:10px 0;margin:0 -16px;padding-left:16px;padding-right:16px;background:rgba(7,20,43,.94);scrollbar-width:none}
 .jump::-webkit-scrollbar{display:none}
@@ -856,7 +862,11 @@ function resCard(k,d){const key=k+d+st.lang;if(RCP[key])return RCP[key];
       cv.toBlob(b=>{if(b)RCB[key]=b;res(b)},"image/jpeg",.9)}
   })}
 const rsIO="IntersectionObserver" in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const b=e.target.querySelector("[data-rs]");if(b){const [k,d]=b.dataset.rs.split("|");resCard(k,d)}rsIO.unobserve(e.target)}}),{rootMargin:"200px"}):null;
-function rsArm(){if(rsIO)document.querySelectorAll("#board .slip [data-rs]").forEach(b=>rsIO.observe(b.closest(".slip")))}
+/* Share images (~200 ms of canvas work each) are prepared only once the visitor touches or scrolls the
+   page, not during load, so they never block the first screen. */
+let rsGo=false;const rsStart=()=>{if(rsGo)return;rsGo=true;["pointerdown","scroll","keydown"].forEach(ev=>removeEventListener(ev,rsStart,true));setTimeout(rsArm,300)};
+["pointerdown","scroll","keydown"].forEach(ev=>addEventListener(ev,rsStart,{capture:true,passive:true}));
+function rsArm(){if(rsIO&&rsGo)document.querySelectorAll("#board .slip [data-rs]").forEach(b=>rsIO.observe(b.closest(".slip")))}
 document.addEventListener("click",e=>{const b=e.target.closest("[data-rs]");if(!b)return;e.stopPropagation();const [k,d]=b.dataset.rs.split("|"),sd=resShareData(k,d);if(!sd)return;
   const bl=RCB[k+d+st.lang],f=bl&&typeof File==="function"&&new File([bl],`4d-${k}-${d}.jpg`,{type:"image/jpeg"});ga("share",{method:"native",content_type:"result",item_id:k+d});
   if(f&&navigator.canShare&&navigator.canShare({files:[f]}))navigator.share({files:[f],title:sd.title,text:sd.text+" "+sd.url}).catch(()=>{});
@@ -919,6 +929,18 @@ $("#csheet").addEventListener("click",e=>{const m=e.target.closest("[data-cm]");
   const d=e.target.closest("[data-cd]");if(d){st.rd=d.dataset.cd===MAX?null:d.dataset.cd;calClose();renderLatest();hist();scrollTo({top:0});return}
   if(e.target.closest("[data-cx]"))calClose()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#csheet").hidden)calClose()});
+/* Update the board in place instead of replacing it: elements already on screen are kept (so the
+   prerendered first paint stays the Largest Contentful Paint and nothing re-lays out needlessly). */
+function morph(el,html){const t=document.createElement("template");t.innerHTML=html;mk(el,t.content)}
+function mk(a,b){const ac=[...a.childNodes],bc=[...b.childNodes];
+  bc.forEach((n,i)=>{const o=ac[i];
+    if(!o){a.appendChild(n);return}
+    if(o.nodeType!==n.nodeType||o.nodeName!==n.nodeName||(n.nodeType===1&&n.id!==o.id)){a.replaceChild(n,o);return}
+    if(n.nodeType===3||n.nodeType===8){if(o.nodeValue!==n.nodeValue)o.nodeValue=n.nodeValue;return}
+    if(n.nodeType===1){for(const at of [...o.attributes])if(!n.hasAttribute(at.name))o.removeAttribute(at.name);
+      for(const at of [...n.attributes])if(o.getAttribute(at.name)!==at.value)o.setAttribute(at.name,at.value);
+      if(o.innerHTML!==n.innerHTML)mk(o,n)}});
+  for(let i=ac.length-1;i>=bc.length;i--)a.removeChild(ac[i])}
 function renderLatest(){
   /* classic result slip: company colours, brown label bars, bordered grids, official draw order */
   const L=liveNow(),HC={M:"#FFF200",D:"#000080",T:"#C00000",G:"#B0121B",N:"#0E8F86",J:"#5B21B6",K:"#C2410C",S:"#B91C2C",C:"#0B7A3B",B:"#D7141A",H:"#14532D"};
@@ -930,7 +952,12 @@ function renderLatest(){
   const asc=a=>a.slice().sort(),spl=(n,x,dis)=>asc(n.slice(3,13)).map(v=>nb(v,dis)).join("");
   const body=(n,dis,x)=>`<div class="lbar">${["p1","p2","p3"].map(p=>`<span>${lab(p)}</span>`).join("")}</div><div class="s3">${n.slice(0,3).map(x=>nb(x,dis)).join("")}</div>`+
     `<div class="sec">${lab("p4")}</div><div class="s5">${spl(n,x,dis)}</div><div class="sec">${lab("p5")}</div><div class="s5">${(dis?n.slice(13):asc(n.slice(13))).map(x=>nb(x,dis)).join("")}</div>${x?jpBar(x):""}`;
-  const cards=BOARD.map(([k,c])=>{const o=LIVE.find(x=>x.k===k),nm=o?oname(o):OPS.find(x=>x.k===k).name,st_=`style="--c:${c};--hb:${HC[k]}"`;
+  /* DOM order = display order (same rule as the .nd/.sJ/.sK classes below and the build's prerender),
+     so the board HTML matches the prerendered one and is not replaced, and a half-loaded page never reorders. */
+  const BO=(()=>{const q=myt(),bd_=st.rd||(L&&L.ks.length?L.n.ymd:MAX),wd=new Date(Date.UTC(+bd_.slice(0,4),+bd_.slice(4,6)-1,+bd_.slice(6))).getUTCDay(),bg=LDAYS.M.includes(wd)||isSp("M",bd_),
+    sj_=!st.rd&&!bg&&q.m>=895&&q.m<1135,sk_=!st.rd&&!bg&&q.m>=1255,rk=k=>bg?0:k==="J"&&sj_||k==="K"&&sk_?-9:{G:-3,N:-2,J:-1,K:-1}[k]||0;
+    return BOARD.map((b,i)=>[b,i]).sort((x,y)=>rk(x[0][0])-rk(y[0][0])||x[1]-y[1]).map(x=>x[0])})();
+  const cards=BO.map(([k,c])=>{const o=LIVE.find(x=>x.k===k),nm=o?oname(o):OPS.find(x=>x.k===k).name,st_=`style="--c:${c};--hb:${HC[k]}"`;
     if(L&&L.wait.includes(k)){const on=L.n.m>=(DRAWM[k]||1140),pv=livePart(k,L.n);
       if(pv){const cell=v=>v?nb(v):'<button type="button" class="bl" disabled>----</button>',pad=(a,n)=>a.concat(Array(Math.max(0,n-a.length)).fill(""));
         return`<article class="rc slip wait live part k-${k}" id="rc-${k}" ${st_}>${head(k,o,nm,`${t("tonight")}${pv.no?" · #"+pv.no:""}`,1)}<div class="lbar">${["p1","p2","p3"].map(p=>`<span>${lab(p)}</span>`).join("")}</div><div class="s3">${pv.top.map(cell).join("")}</div><div class="sec">${lab("p4")}</div><div class="s5">${pad(pv.sl.filter(Boolean).sort(),10).map(cell).join("")}</div><div class="sec">${lab("p5")}</div><div class="s5">${pad(pv.co.filter(Boolean).sort(),10).map(cell).join("")}</div>${j6(k,pv.top)}<p class="lv"><i></i><span>${t("drawing")}</span></p></article>`}
@@ -939,7 +966,7 @@ function renderLatest(){
     const dr=boardDraw(k);
     if(!dr)return`<article class="rc slip none k-${k}" id="rc-${k}" ${st_}>${head(k,o,nm,fD(st.rd))}<div class="rb">${t("noDraw")}</div></article>`;
     return`<article class="rc slip k-${k}${L&&dr.d===L.n.ymd?" fresh":""}" id="rc-${k}" ${st_}>${head(k,o,nm,cd(dr.d)+(dr.no?` #${dr.no}`:""),0,k+"|"+dr.d)}${body(dr.n,0,X_(k,dr.d))}${j6(k,dr.n.slice(0,3))}</article>`}).join("");
-  if($("#board").innerHTML!==cards)$("#board").innerHTML=cards;
+  if($("#board").innerHTML!==cards)morph($("#board"),cards);
   $("#rjump").innerHTML=BOARD.map(([k,c])=>{const o=LIVE.find(x=>x.k===k),nn=!(L&&L.wait.includes(k))&&o&&o.D.length&&!boardDraw(k);return`<a href="#rc-${k}" class="${nn?"nn":""}" style="--c:${c}"><i></i>${o?oname(o):OPS.find(x=>x.k===k).name}</a>`}).join("");
   const i=st.rd?DATES.indexOf(st.rd):DATES.length-1;
   $("#rdlabel").textContent=st.rd?fD(st.rd):L&&L.ks.length?`● ${t("tonight")} · ${fD(L.n.ymd)}`:`${t("latestTag")} · ${fD(MAX)}`;
