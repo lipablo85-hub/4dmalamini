@@ -99,7 +99,12 @@ def starry_css():
 def fragment():
     return "<style>" + starry_css() + "</style>" + sky.LAYER
 
-INLINE_CSS_TAIL = "html{background:var(--r-bg)}[data-th=starry]{background:#050F2A}"
+# iOS 26 Safari ignores theme-color and tints its top/bottom bars from the page: the body
+# background or a fixed/sticky bar at the edge. A backdrop-filter on that bar stops the sampling,
+# so the two edge bars are
+# solid theme colour with no blur. (The date input is color-scheme:dark; Day sets it light.)
+INLINE_CSS_TAIL = ("html{background:var(--r-bg)}[data-th=starry]{background:#050F2A}[data-th=day] input{color-scheme:light}"
+                   "body>header,.bnav{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background-color:var(--r-bg)!important}")
 
 def body_js(sky_url):
     return ('<script>(function(){var M=' + str(META).replace("'", '"') + ',r=document.documentElement,m=document.querySelector("meta[name=theme-color]"),k=0;'
