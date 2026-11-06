@@ -241,6 +241,11 @@ pages (self-reference, reciprocity, x-default, canonical match); `/keputusan/` a
 single-language by design. Every sitemap URL now has `<lastmod>` (guides use their generator's
 last commit; deploy checks out 300 commits for this).
 
+**Cloudflare Web Analytics is off** (6 Nov): its auto-injected `beacon.min.js` (10 KB, legacy JS,
+a request chain) was the last Lighthouse warning and duplicated GA4. Turned off with
+`PUT accounts/{id}/rum/site_info/{site_tag}` `auto_install:false` using `CLOUDFLARE_API_TOKEN`
+(it can list and edit RUM sites); the site entry and its history are kept, so it can be turned back on.
+
 **Caching** (`_headers`): archive 10 min + 1 day SWR, dictionary and provider-year 1 day +
 7 day SWR, assets 1 year immutable, home and operator hubs `must-revalidate` (they show
 tonight's draw), `/live.json` `no-store`.
