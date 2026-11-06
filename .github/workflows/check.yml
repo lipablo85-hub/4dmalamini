@@ -7,21 +7,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Lighthouse mobile (Google default slow 4G, and a Malaysia 4G profile)
+      - name: Lighthouse insight details (home)
         run: |
-          npm i -g lighthouse@12 >/dev/null 2>&1; lighthouse --version
-          for prof in default my4g; do
-            if [ $prof = my4g ]; then T="--throttling.rttMs=60 --throttling.throughputKbps=20000 --throttling.cpuSlowdownMultiplier=4"; else T=""; fi
-            for u in "" zh/ keputusan/2026-11-05/ zh/magnum-4d-result/ 4d/8888/ zh/4d-statistics/; do
-              for k in 1 2; do
-                lighthouse "https://www.4dmalamini.com/$u" --only-categories=performance --form-factor=mobile --screenEmulation.mobile $T \
-                  --chrome-flags="--headless=new --no-sandbox" --output=json --output-path=l.json --quiet >/dev/null 2>&1 || continue
-                jq -r --arg u "$prof /$u" '[$u, "score=" + ((.categories.performance.score // 0) * 100 | floor | tostring),
-                  "FCP=" + .audits["first-contentful-paint"].displayValue, "LCP=" + .audits["largest-contentful-paint"].displayValue,
-                  "TBT=" + .audits["total-blocking-time"].displayValue, "CLS=" + .audits["cumulative-layout-shift"].displayValue,
-                  "SI=" + .audits["speed-index"].displayValue, "TTFB=" + (.audits["server-response-time"].numericValue | floor | tostring) + "ms",
-                  "bytes=" + ((.audits["total-byte-weight"].numericValue // 0) / 1024 | floor | tostring) + "KB",
-                  "LCPel=" + ((.audits["largest-contentful-paint-element"].details.items[0].items[0].node.selector // "?") | .[0:40])] | join("  ")' l.json
-              done
+          npm i -g lighthouse@12 >/dev/null 2>&1
+          for u in "" zh/; do
+            lighthouse "https://www.4dmalamini.com/$u" --only-categories=performance --form-factor=mobile --screenEmulation.mobile \
+              --chrome-flags="--headless=new --no-sandbox" --output=json --output-path=l.json --quiet >/dev/null 2>&1
+            lighthouse "https://www.4dmalamini.com/$u" --only-categories=performance --form-factor=mobile --screenEmulation.mobile \
+              --chrome-flags="--headless=new --no-sandbox" --output=json --output-path=l.json --quiet >/dev/null 2>&1
+            echo "== /$u score $(jq '.categories.performance.score' l.json)"
+            for a in cache-insight image-delivery-insight legacy-javascript-insight network-dependency-tree-insight uses-long-cache-ttl modern-image-formats uses-responsive-images legacy-javascript third-party-summary; do
+              jq -r --arg a "$a" '.audits[$a] // empty | "-- \($a): \(.displayValue // "") score=\(.score)", ((.details.items // [])[:12][] | "   " + ([.url // .entity // "", (.wastedBytes // .totalBytes // .transferSize // "" | tostring), (.cacheLifetimeMs // .ttl // "" | tostring), ((.subItems.items // [])[:6] | map(.signal // .reason // .url // "") | join(";"))] | map(tostring) | join(" | ")))' l.json
             done
           done
