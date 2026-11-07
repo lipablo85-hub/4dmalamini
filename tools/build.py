@@ -14,7 +14,7 @@ What it does:
 
 Run it again after every draw (add the new rows to the results CSV) and upload the dist folder.
 """
-import argparse, csv, hashlib, html as H, json, re, shutil, subprocess
+import argparse, csv, datetime, hashlib, html as H, json, re, shutil, subprocess
 from pathlib import Path
 
 OPS = {"Magnum 4D": "M", "Sports Toto 4D": "T", "Da Ma Cai 1+3D": "D", "GD Lotto 4D": "G", "9 Lotto 4D": "N", "9 Lotto 4D 9PM": "N", "Super J3 3PM": "J", "Super J9 9PM": "K", "Singapore 4D": "S", "Sarawak Cash Sweep": "C", "Sabah 88 4D": "B", "Sandakan 4D": "H"}
@@ -107,6 +107,28 @@ def board_lang(html: str, lang: str) -> str:
     html = html.replace('<div class="nx">Next draw estimate:', f'<div class="nx">{g("nextEst", "Next draw estimate")}:')
     html = re.sub(r'(class="rsb" data-rs="[^"]+") aria-label="Share"', lambda m: f'{m.group(1)} aria-label="{H.escape(t.get("shareBtn", "Share"))}"', html)
     return html
+
+
+# Festive greeting that runs in the header strip on one language's home page until a set time
+# (MYT). The strip stays at full height from first paint, so it causes no layout shift.
+GREET = {"ta": ("அன்பு பொங்க, மகிழ்ச்சி நிறைய, சொந்தங்கள் இணைந்து கொண்டாடுவோம் தீபாவளியை!", "2026-11-09T00:15:00+08:00")}
+
+
+def greeting(html: str, lang: str) -> str:
+    if lang not in GREET: return html
+    text, end = GREET[lang]
+    end_ms = int(datetime.datetime.fromisoformat(end).timestamp() * 1000)
+    if end_ms < datetime.datetime.now(datetime.timezone.utc).timestamp() * 1000: return html
+    css = ('<style>.dpv #tkr,.dpv #tkr[hidden]{display:block!important;height:auto}.dpv #tkr.off{display:none!important}.dpv .tkr .tk:empty{display:grid}'
+           '.dpg{display:none;height:30px;overflow:hidden;align-items:center;border-bottom:1px solid #1A2C50}.dpv .dpg{display:flex}'
+           '.dpg p{display:flex;flex:none;white-space:nowrap;animation:dpg 30s linear infinite;color:#FFD36A;font:700 14px/1 system-ui,-apple-system,"Noto Sans Tamil","Latha",sans-serif}'
+           '.dpg span{padding:0 28px}@keyframes dpg{to{transform:translateX(-50%)}}'
+           '@media (prefers-reduced-motion:reduce){.dpg{height:auto;padding:6px 14px}.dpg p{animation:none;white-space:normal;line-height:1.4}.dpg span+span{display:none}}</style>')
+    js = f'<script>if(Date.now()<{end_ms})document.documentElement.classList.add("dpv")</script>'
+    bar = f'<div class="dpg"><p><span>🪔 {H.escape(text)}</span><span aria-hidden="true">🪔 {H.escape(text)}</span></p></div>'
+    html = html.replace("</head>", css + js + "</head>", 1)
+    html = html.replace('<div class="tkr" id="tkr" hidden', f'<div class="tkr" id="tkr" data-dpe="{end_ms}" hidden', 1)
+    return html.replace('<div class="tk" id="tk">', bar + '<div class="tk" id="tk">', 1)
 
 
 def rd_label(html: str, lang: str) -> str:
@@ -399,7 +421,7 @@ def main() -> None:
                 .replace("__H1__", H.escape(h1[lang])).replace("<!--SEO-->", SC.block(lang) + SC.faq_ld(lang)).replace('id="nav-guide" href="info/"', f'id="nav-guide" href="{"" if lang == "en" else lang + "/"}info/"').replace('id="home" href="./"', f'id="home" href="{"./" if lang == "en" else lang + "/"}"')
                 .replace('id="lnk-stats" href="4d-statistics/"', f'id="lnk-stats" href="/{"" if lang == "en" else lang + "/"}4d-statistics/"')
                 .replace('id="lnk-pop" href="popular-4d-numbers/"', f'id="lnk-pop" href="/{"" if lang == "en" else lang + "/"}popular-4d-numbers/"'))
-        page = board_lang(rd_label(page, lang), lang)
+        page = greeting(board_lang(rd_label(page, lang), lang), lang)
         pre_ = "" if lang == "en" else lang + "/"
 
         # Footer: grouped link columns + company list, built for every language so the in-page

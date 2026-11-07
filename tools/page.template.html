@@ -877,7 +877,7 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-rs]");if(!
 // Header ticker: each company's tiny logo + its latest 1st/2nd/3rd prize, flipping in gold/silver/bronze.
 const TKI={M:0,T:1,D:2,S:3,C:4,H:5,G:6,N:7,J:8,K:9,B:10};
 /* The strip is a draw-night feature: Results tab, an MKT (Magnum / Da Ma Cai / Toto) result dated today, 8:30pm-10:00pm MYT. Hidden otherwise. */
-function tkVis(){const tr=$("#tkr");if(!tr)return;const n=new Date(Date.now()+288e5),d8=n.toISOString().slice(0,10).replace(/-/g,""),m=n.getUTCHours()*60+n.getUTCMinutes();
+function tkVis(){const tr=$("#tkr");if(!tr)return;const de=+tr.dataset.dpe,dp=de&&Date.now()<de&&document.documentElement.lang.startsWith("ta");document.documentElement.classList.toggle("dpv",!!dp);if(dp){tr.hidden=false;tr.classList.toggle("off",st.tab!=="results");return}tr.classList.remove("off");const n=new Date(Date.now()+288e5),d8=n.toISOString().slice(0,10).replace(/-/g,""),m=n.getUTCHours()*60+n.getUTCMinutes();
   tr.hidden=!(st.tab==="results"&&m>=1230&&m<1320&&["M","D","T"].some(k=>{const o=LIVE.find(x=>x.k===k);return o&&o.D.length&&o.D[o.D.length-1].d===d8}))}
 setInterval(tkVis,30000);
 function renderTicker(){const el=$("#tk");if(!el)return;const MD=["#FFD36A","#DCE4F2","#E9A877"];
