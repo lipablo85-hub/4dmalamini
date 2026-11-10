@@ -1,18 +1,11 @@
 name: check
 on:
   workflow_dispatch:
-permissions:
-  contents: write
 jobs:
   check:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-      - name: Fill missed Super J3 / J9 draws (8-9 Nov)
-        run: |
-          for d in 2026-11-08 2026-11-09; do python3 tools/fetch_results.py --csv malaysia_4d_draws_2021-2026.csv --date $d || true; done
-          grep -E "^Super J[39] [39]PM,2026-11-0[89]" malaysia_4d_draws_2021-2026.csv | cut -c1-80
-          git config user.name "4d-results-bot"; git config user.email "actions@users.noreply.github.com"
-          git add malaysia_4d_draws_2021-2026.csv extras.json 2>/dev/null; git commit -qm "Backfill Super J3/J9 8-9 Nov" || exit 0
-          git pull -q --rebase origin main && git push -q
+      - name: Probe placeholder (rewrite freely)
+        run: echo "nothing to check"
