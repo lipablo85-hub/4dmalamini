@@ -17,7 +17,7 @@ jobs:
       - name: Re-point the backup tag at the cleaned history
         run: |
           git push -q origin :refs/tags/data-20261110-0201 || true
-          git tag data-20261110-0201 && git push -q origin data-20261110-0201 && echo "tag moved"
+          git tag -f data-20261110-0201 && git push -q origin data-20261110-0201 && echo "tag moved"
       - name: Delete workflow runs from before the history cleanup
         run: |
           n=0
