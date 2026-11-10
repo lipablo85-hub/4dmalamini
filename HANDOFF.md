@@ -294,6 +294,15 @@ resolution, so only its extra wordings are kept (`dict_books/wz_alt.json`, 8th s
 covers all three; a 4-digit number matches the 3-digit books on its last 3 digits. Header results strip: Results tab only.
 Temp branch `luckybook-data` (raw pull, 221 MB) can be deleted.
 
+### 10 Nov: repo is public
+GitHub Actions were blocked from 8 Nov 8:25pm (failed account payment), so results stopped saving and deploys
+failed. The repo was made public (free Actions); before that, 4 commits' author emails were rewritten to the
+noreply address (history rewritten, force-pushed) and the two old `data-20261104-*` tags deleted. Missed draws
+8-9 Nov were backfilled (`backfill.yml` + a one-off `fetch_results.py --date` run). Note: pushes made by the
+workflows' own token do not trigger `deploy.yml`; a push from a session does. The proxy here blocks tag
+pushes, ref edits and repo-settings writes; do those in the browser. All Dataset JSON-LD carries
+`license: CC BY 4.0` (owner's choice), explained on /data-policy/#licence.
+
 ### Open
 - **HSTS** — user's decision, not started. Start at `max-age=86400`, no `includeSubDomains`,
   no `preload`. Hard to undo; see the reasoning in the session history.
