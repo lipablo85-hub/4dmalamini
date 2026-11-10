@@ -1,18 +1,18 @@
-name: Check sources (dry run)
-on: workflow_dispatch
+name: check
+on:
+  workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   check:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - name: LCP element detail
+      - uses: actions/checkout@v4
+      - name: Fill missed Super J3 / J9 draws (8-9 Nov)
         run: |
-          npm i -g lighthouse@12 >/dev/null 2>&1
-          for u in "" ms/ zh/ ta/; do for k in 1 2; do
-            lighthouse "https://www.4dmalamini.com/$u" --only-categories=performance --form-factor=mobile --screenEmulation.mobile \
-              --chrome-flags="--headless=new --no-sandbox" --output=json --output-path=l.json --quiet >/dev/null 2>&1
-            jq -r --arg u "/$u" '[$u, ((.categories.performance.score*100|floor|tostring)+"/100"), "CLS="+.audits["cumulative-layout-shift"].displayValue, "TBT="+.audits["total-blocking-time"].displayValue, .audits["largest-contentful-paint"].displayValue, (.audits["largest-contentful-paint-element"].details.items[0].items[0].node | (.selector + " :: " + (.snippet|.[0:120]))), ((.audits["largest-contentful-paint-element"].details.items[1].items // []) | map(.phase + "=" + (.timing|floor|tostring)) | join(" "))] | join("  |  ")' l.json
-            jq -r '.audits["legacy-javascript"].details.items[]? | "  legacy: " + .url + " " + ((.wastedBytes//0)|tostring)' l.json
-          done; done
+          for d in 2026-11-08 2026-11-09; do python3 tools/fetch_results.py --csv malaysia_4d_draws_2021-2026.csv --date $d || true; done
+          grep -E "^Super J[39] [39]PM,2026-11-0[89]" malaysia_4d_draws_2021-2026.csv | cut -c1-80
+          git config user.name "4d-results-bot"; git config user.email "actions@users.noreply.github.com"
+          git add malaysia_4d_draws_2021-2026.csv extras.json 2>/dev/null; git commit -qm "Backfill Super J3/J9 8-9 Nov" || exit 0
+          git pull -q --rebase origin main && git push -q
