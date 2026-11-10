@@ -179,7 +179,7 @@ def build(site) -> None:
             alts = "".join(f'<link rel="alternate" hreflang="{LANGS[l][0]}" href="{site.site}{LANGS[l][1]}{slug}/">' for l in LANGS) + f'<link rel="alternate" hreflang="x-default" href="{site.site}{slug}/">'
             title = f(x["title"]).replace("{d}", fd(d, lang))
             desc = f(x["desc"]).replace("{d}", fd(d, lang)).replace("{a}", n[0]).replace("{b}", n[1]).replace("{c}", n[2])
-            ld_d = {"@context": "https://schema.org", "@type": "Dataset", "name": title.split(" | ")[0], "inLanguage": hl,
+            ld_d = {"@context": "https://schema.org", "@type": "Dataset", "license": "https://creativecommons.org/licenses/by/4.0/", "name": title.split(" | ")[0], "inLanguage": hl,
                     "description": desc, "url": site.site + path, "isAccessibleForFree": True,
                     "license": site.site + "data-policy/", "temporalCoverage": f"{d8(min(r[0] for k in keys for r in rows[k])).isoformat()}/{d8(d).isoformat()}",
                     "creator": {"@type": "Organization", "name": "4D Malam Ini", "url": site.site}}
@@ -209,7 +209,7 @@ def build(site) -> None:
                          f'<h2>{esc(y_["yrs"])}</h2><div class="chips yr">{ychips}</div>'
                          + secs + f'<div class="cta"><a class="p" href="{site.u(f"{pre}{slug}/")}">{esc(y_["all"].format(n=nm))}</a>'
                          f'<a href="{site.u(f"keputusan/{yy}/") if lang == "ms" else site.u("?d=" + d8(rs[-1][0]).strftime("%Y%m%d"))}">{esc(x["archive"])} {yy}</a></div></div>')
-                yld = {"@context": "https://schema.org", "@type": "Dataset", "name": y_["h1"].format(**sub), "inLanguage": hl,
+                yld = {"@context": "https://schema.org", "@type": "Dataset", "license": "https://creativecommons.org/licenses/by/4.0/", "name": y_["h1"].format(**sub), "inLanguage": hl,
                        "description": y_["dsc"].format(**sub), "url": site.site + f"{pre}{slug}/{yy}/", "isAccessibleForFree": True,
                        "license": site.site + "data-policy/", "temporalCoverage": f"{d8(rs[0][0]).isoformat()}/{d8(rs[-1][0]).isoformat()}",
                        "creator": {"@type": "Organization", "name": "4D Malam Ini", "url": site.site}}

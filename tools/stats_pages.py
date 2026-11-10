@@ -344,7 +344,7 @@ def build(site) -> None:
                 + f'<a class="cta2" href="{site.u(pre + "popular-4d-numbers/")}">{esc(x["pop"])} ›</a><div class="nt">{esc(x["note"])}</div></div>'
                 + fscript())
         bc, bld = site.crumbs([(x["home"], pre), (x["crumb"], None)])
-        ds = {"@context": "https://schema.org", "@type": "Dataset", "name": x["title"], "description": x["desc"].format(n=f"{NDALL:,}", s=S), "inLanguage": hl,
+        ds = {"@context": "https://schema.org", "@type": "Dataset", "license": "https://creativecommons.org/licenses/by/4.0/", "name": x["title"], "description": x["desc"].format(n=f"{NDALL:,}", s=S), "inLanguage": hl,
               "temporalCoverage": f"{d8(s0).isoformat()}/{last.isoformat()}", "creator": {"@type": "Organization", "name": "4D Malam Ini"}}
         site.page(path(lang), x["title"] + " | 4D Malam Ini", x["desc"].format(n=f"{NDALL:,}", s=S), body, lang=hl, ld=[bld, ds],
                   head=f'<link rel="stylesheet" href="{site.u(css_name)}">' + alts, lastmod=last.isoformat())

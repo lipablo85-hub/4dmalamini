@@ -285,7 +285,7 @@ class Site:
             na = f'<a href="{self.u(f"keputusan/{d8(self.dates[i + 1]).isoformat()}/")}" aria-label="{self.date_ms(self.dates[i + 1])}">›</a>' if i + 1 < len(self.dates) else "<span>›</span>"
             TKI = {"M": 0, "T": 1, "D": 2, "S": 3, "C": 4, "H": 5, "G": 6, "N": 7, "J": 8, "K": 9, "B": 10}
             jmp = '<nav class="jmp" aria-label="Syarikat">' + "".join(f'<a href="#r-{k}"><i style="background-position:{-TKI[k] * 22}px 0"></i>{name}</a>' for k, name, _, _ in OPS if d in by[k]) + "</nav>"
-            ld_res = {"@context": "https://schema.org", "@type": "Dataset", "name": f"Keputusan 4D {self.date_ms(d)}",
+            ld_res = {"@context": "https://schema.org", "@type": "Dataset", "license": "https://creativecommons.org/licenses/by/4.0/", "name": f"Keputusan 4D {self.date_ms(d)}",
                       "description": f"Malaysia 4D results for {dd:%-d %B %Y}: " + ", ".join(titles) + ".",
                       "temporalCoverage": dd.isoformat(), "inLanguage": "ms", "isAccessibleForFree": True,
                       "license": self.site + "data-policy/", "url": self.site + f"keputusan/{dd.isoformat()}/",
@@ -406,7 +406,7 @@ class Site:
                     + (f"<h2>Susunan digit sama (Box) · {len(perms)}</h2><div class=\"chips\">{box}</div>" if perms else "") + pn
                     + f'<p class="note">Sumber: keputusan rasmi syarikat, disemak semula. <a href="{self.u("data-policy/")}">Dasar data · Data policy</a></p>')
             lastmod = d8(hits[0][0]).isoformat() if hits else None
-            ld_n = {"@context": "https://schema.org", "@type": "Dataset", "name": f"4D {n} — sejarah menang", "inLanguage": "ms",
+            ld_n = {"@context": "https://schema.org", "@type": "Dataset", "license": "https://creativecommons.org/licenses/by/4.0/", "name": f"4D {n} — sejarah menang", "inLanguage": "ms",
                     "description": f"Setiap kali nombor 4D {n} menang di Malaysia sejak {span}: {len(hits)} kali.",
                     "url": self.site + f"4d/{n}/", "isAccessibleForFree": True, "license": self.site + "data-policy/",
                     "dateModified": d8(last).isoformat(), "temporalCoverage": f"{d8(self.dates[0]).isoformat()}/{d8(last).isoformat()}",
@@ -432,6 +432,7 @@ class Site:
                 "<li>Special draw dates are added when they are announced.</li></ul>"
                 "<h2>Who maintains the data</h2><p>The 4D Malam Ini team. The history covers November 2021 to today. A few past draws are missing because no source published them (for example 7 Singapore 4D draws in 2025, 16 Cash Sweep draws in Aug–Sep 2023, 1 Sandakan draw in March 2024 and 1 Sabah 88 draw in November 2024); they are not guessed or filled in.</p>"
                 "<h2>Corrections</h2><p>If a number on this site differs from the operator's official result, the official result is correct. Tell us through the contact button on the home page with the company, date and number; we check it against the operator and correct the record.</p>"
+                "<h2 id=\"licence\">Reusing the data</h2><p>The results history on this site is shared under the <a href=\"https://creativecommons.org/licenses/by/4.0/\" rel=\"license\">Creative Commons Attribution 4.0 licence (CC BY 4.0)</a>. You may copy, share and build on it, including commercially, as long as you credit 4D Malam Ini with a link to https://www.4dmalamini.com/. Operator names and logos belong to their owners and are not covered by this licence.</p>"
                 "<h2>What we are not</h2><ul><li>We do not sell tickets, take bets or hold money.</li><li>We are not affiliated with any operator, and we do not predict numbers. Past results do not change the odds of future draws.</li>"
                 "<li>4D is for non-Muslims aged 21 and above in Malaysia. Play responsibly: set a budget and never chase losses.</li></ul>"
                 "<div class=\"card\"><p><b>Ringkasan (BM):</b> Keputusan diambil daripada laman rasmi syarikat atau penerbit keputusan bebas, dan disemak semula. Kami tidak menjual tiket atau menerima pertaruhan. Jika ada perbezaan, keputusan rasmi syarikat adalah betul; hubungi kami untuk pembetulan.</p>"
