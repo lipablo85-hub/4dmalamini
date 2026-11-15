@@ -50,7 +50,11 @@ jobs:
             if ! git diff --quiet -- $CSV extras.json || [ -n "$(git status --porcelain extras.json)" ]; then
               git add $CSV extras.json
               git commit -qm "Results $(TZ=Asia/Kuala_Lumpur date '+%Y-%m-%d %H:%M')"
-              git pull -q --rebase origin main && git push -q origin HEAD:main && gh workflow run deploy.yml --ref main && echo "published"
+              if ! git pull -q --rebase origin main; then
+                # another run saved first: drop our commit, take theirs, and fetch again on the next pass
+                git rebase --abort || true; git reset -q --hard origin/main; echo "rebased onto newer results"; continue
+              fi
+              git push -q origin HEAD:main && gh workflow run deploy.yml --ref main && echo "published"
             fi
             left=$(python3 tools/fetch_results.py --csv $CSV --pending)
             [ -z "$left" ] && { echo "all of today's draws are in"; break; }

@@ -664,7 +664,14 @@ def main() -> int:
         rows = list(csv.DictReader(open(a.csv, encoding="utf-8-sig")))
         have = {(r["operator"], r["date"]): r for r in rows}
         for r in sorted(rows, key=lambda r: r["date"]):
-            LAST_NO[r["operator"]] = r["draw_no"]
+            if r["draw_no"]:
+                LAST_NO[r["operator"]] = r["draw_no"]
+        # GD Lotto draws daily with one running number. A row saved without a number (e.g. from a
+        # backfill) must still count, or the check4d fallback would reuse a number.
+        gd = sorted((r for r in rows if r["operator"] == "GD Lotto 4D"), key=lambda r: r["date"])
+        k = max((i for i, r in enumerate(gd) if re.match(r"\d+/", r["draw_no"])), default=None)
+        if k is not None:
+            LAST_NO["GD Lotto 4D"] = f'{int(gd[k]["draw_no"].split("/")[0]) + len(gd) - 1 - k}/{gd[-1]["date"][:4]}'
         for r in sorted((r for r in rows if r["operator"] in (N7, N9)), key=lambda r: (r["date"], r["operator"] == N9)):
             HIST9.append((dt.date.fromisoformat(r["date"]), 9 if r["operator"] == N9 else 7, _drawkey(r["draw_no"])))
         new = []
