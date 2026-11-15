@@ -4,25 +4,8 @@ on:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-      - name: Probe GD Lotto sources
-        run: |
-          python3 - <<'PY'
-          import sys, re, datetime as dt
-          sys.path.insert(0, "tools")
-          import fetch_results as F
-          for d in ("2026-11-10","2026-11-15"):
-              day = dt.date.fromisoformat(d)
-              try:
-                  t = F.html_text(F.get("https://gdlotto.net/results/today/", {"Referer": "https://gdlotto.net/"}))
-                  print("gdlotto.net len", len(t)); print(re.sub(r"\s+"," ",t)[:1500])
-              except Exception as e: print("gdlotto.net ERR", repr(e))
-              try:
-                  c = F.check4d_text(); i = c.find("Grand Dragon"); print("check4d len", len(c), "GD at", i); print(re.sub(r"\s+"," ",c[i:i+900]))
-                  print("LAST_NO", F.LAST_NO.get("GD Lotto 4D"))
-                  print("parse_check4d_gd", F.parse_check4d_gd(c, dt.date(2026,11,15)))
-              except Exception as e: print("check4d ERR", repr(e))
-              break
-          PY
+      - name: Probe placeholder (rewrite freely)
+        run: echo "nothing to check"
